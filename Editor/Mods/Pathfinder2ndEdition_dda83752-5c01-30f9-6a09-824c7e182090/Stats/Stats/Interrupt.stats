@@ -4,7 +4,106 @@
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="7378d6dc-7088-4f62-9a0d-764a5b475d36" />
-        <field name="Name" type="NameTableFieldDefinition" value="g" />
+        <field name="Name" type="NameTableFieldDefinition" value="DeflectProjectileInterrupt" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h41c21140g9eccg9045g2e3fgb66df9f11b69" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h6aa06394gc39fgdf6fg97aeg84ab889735f6" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_DeflectMissiles" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll;OnPreDamage" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsRangedWeaponAttack() and not HasStatus('SG_Polymorph_BeastShape') and not AnyEntityIsItem()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="IF(HasInterruptedAttack()):AdjustRoll(-4);" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="8d53d12a-97bf-46a0-b8cc-fb1f0c1a3f4e" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Shield_Wizard" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc95d6305g110cg42ecg383ag89e7bf09eaf6" version="1" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll;OnPreDamage" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="not HasVerbalComponentBlocked(context.Observer) and IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and ((HasInterruptedAttack() and IsFlatValueInterruptInteresting(5, context.Source)) or IsSpellChildOrVariantFromContext('Projectile_MagicMissile')) and not AnyEntityIsItem() and not HasStatus('SHIELD',context.Observer)" />
+        <field name="Properties" type="StringTableFieldDefinition" value="IF(HasInterruptedAttack()):AdjustRoll(-5);IF(IsSpellChildOrVariantFromContext('Projectile_MagicMissile')):SetRoll(0);ApplyStatus(INTERRUPT_SHIELD_WIZARD,100,1);ApplyStatus(OBSERVER_OBSERVER,SHIELD,100,1);IF(HasPassive('ArcaneWard',context.Source)):ApplyStatus(SELF,ARCANE_WARD,100,-1)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1;SpellSlotsGroup:1:1:1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h792cf0dbg57bdga73egb646g263dc78c4008" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Shield" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="77491e14-ef33-4e82-a07c-ff77b4daa530" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_DeflectMissiles" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc108828cga875g6405g6c24ge5fc17388da1" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h56af71d3g5877g6ab4gec33gaf98b178eb09" version="1" />
+        <field name="ExtraDescription" type="TranslatedStringTableFieldDefinition" handle="hc364e0begb8afg5615gde3bg6cc0585c7bbe" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_DeflectMissiles" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPreDamage" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsRangedWeaponAttack() and not HasStatus('SG_Polymorph_BeastShape') and not AnyEntityIsItem()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(OBSERVER_OBSERVER,-(1d10+DexterityModifier+ClassLevel(Monk)));ApplyStatus(OBSERVER_TARGET,INTERRUPT_DEFLECT_MISSILES_HIT,100,1);RestoreResource(DeflectMissiles_Charge,1,0)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="95b87443-8080-453f-b48c-ef9b8d9d1896" />
+        <field name="Name" type="NameTableFieldDefinition" value="CraneFlutterInterrupt" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hee69f5c0g23b0g8b5cg38edg404aaa32d29b" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Shield" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll;OnPreDamage" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and (IsMeleeWeaponAttack() or IsMeleeUnarmedAttack()) and not HasStatus('SG_Polymorph_BeastShape') and not AnyEntityIsItem() and HasStatus('CraneStanceStatus')" />
+        <field name="Properties" type="StringTableFieldDefinition" value="IF(HasInterruptedAttack()):AdjustRoll(-2);UseAttack(OBSERVER_SOURCE)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="457fc6cd-2d2b-4907-9e16-d34b816da514" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_DeflectMissiles_Return" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hab695c1bg0152g2e97ga364g54866b7161fb" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd83eab25gfbc5g77e6gff01gf4f062593761" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_DeflectMissiles" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnCastHit" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsAttackType(AttackType.RangedWeaponAttack) and not (IsCriticalMiss() or IsMiss()) and HasActionResource('DeflectMissiles_Charge', 1, 0, false, false, context.Observer) and not AnyEntityIsItem()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="UseSpell(SWAP,Projectile_Deflect_Missiles,true,true,true,c4598bdb-fc07-40dd-a62c-90cc138bd76f);UseActionResource(OBSERVER_OBSERVER,DeflectMissiles_Charge,1,0)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="KiPoint:1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="29a55659-5e0c-4470-9cc9-5e4fab5e7549" />
+        <field name="Name" type="NameTableFieldDefinition" value="ReturnFireInterrupt" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h1eb91e60gc217g5fc4g1999g16e877dd0636" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5af38b96gefb2g8aa1ga865gd9b0471a39ed" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_DeflectMissiles" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnCastHit" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsAttackType(AttackType.RangedWeaponAttack) and not AnyEntityIsItem() and (IsCriticalMiss() or IsMiss())" />
+        <field name="Properties" type="StringTableFieldDefinition" value="UseSpell(SWAP,Projectile_Deflect_Missiles,true,true,true,c4598bdb-fc07-40dd-a62c-90cc138bd76f);" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:0" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
       </fields>
     </stat_object>
   </stat_objects>

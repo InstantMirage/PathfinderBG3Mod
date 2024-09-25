@@ -58,9 +58,40 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="bca6b197-d8fa-42b5-8a4b-bf75a2915e82" />
+        <field name="Name" type="NameTableFieldDefinition" value="DragonRoar" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerCombat" enumeration_type_name="CooldownType" version="1" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="SkillCheck(Skill.Intimidation,context.Target.GetPassiveSkill(Skill.Perception))" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty1Attack,100,1);ApplyStatus(StatusPenalty1Saves,100,1);ApplyStatus(StatusPenalty1AC,100,1);ApplyStatus(SELF,DragonRoarDamage,100,1)" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Enemy()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Dragonborn_BreathWeapon_FireCone" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h061800cbg5257ge707g52b9g52da021e7617" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5329b1a5g40c5g291bg88d6gee4eead89995" version="1" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Wisdom" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_BreathWeapon_Fire" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Loop_Damage_BreathWeapon_Fire" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_BreathWeapon_Fire" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="Shape" type="StringTableFieldDefinition" value="Cone" />
+        <field name="FrontOffset" type="IntegerTableFieldDefinition" value="-2" />
+        <field name="Range" type="IntegerTableFieldDefinition" value="4" />
+        <field name="Angle" type="IntegerTableFieldDefinition" value="360" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="Enemy() and not Dead()" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="ce0aa392-7d13-45a2-8a59-e6786830265d,,;,,;bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11;af7ebc22-2ad5-4a39-ad4f-4e93e45f88c1,,;4354d3c1-ffc2-4da2-9840-d8c5f0932cbf,,;,,;c6951776-8830-4d97-9286-35899fe08d0b,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Debuff" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('DragonStanceStatus')" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="a6389f1d-b548-41f0-b236-62172c1dab04" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="855a50f5-6ef5-4a32-a8e1-a83273176c9a" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="53412dd1-8066-4860-a2ae-b27e77bfdab5" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="34f28a4e-5cb8-4d46-8b50-b1641af0abc4" />
         <field name="Name" type="NameTableFieldDefinition" value="QiBlast" />
-        <field name="ContainerSpells" type="StringTableFieldDefinition" value="QiBlast1Action,QiBlast2Action,QiBlast3Action" />
+        <field name="ContainerSpells" type="StringTableFieldDefinition" value="Zone_QiBlast1Action;Zone_QiBlast2Action;Zone_QiBlast3Action" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Thunder" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -78,16 +109,16 @@
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(QiBlast1Action)" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="LevelMapValue(QiBlast1Action)" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Constitution" />
-        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_BreathWeapon_Fire" />
-        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Loop_Damage_BreathWeapon_Fire" />
-        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_BreathWeapon_Fire" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Thunder_Gen_L1to3" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Loop_Damage_Thunder_Gen_L1to3" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_Thunder_Thunderwave_L1to3_01" />
         <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
         <field name="Shape" type="StringTableFieldDefinition" value="Cone" />
         <field name="Range" type="IntegerTableFieldDefinition" value="4" />
         <field name="Angle" type="IntegerTableFieldDefinition" value="60" />
         <field name="CycleConditions" type="StringTableFieldDefinition" value="Enemy() and not Dead()" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1;KiPoint:1" />
-        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="ce0aa392-7d13-45a2-8a59-e6786830265d,,;,,;bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11;af7ebc22-2ad5-4a39-ad4f-4e93e45f88c1,,;4354d3c1-ffc2-4da2-9840-d8c5f0932cbf,,;,,;c6951776-8830-4d97-9286-35899fe08d0b,,;,,;,," />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;5e7e63e1-0e69-46e7-ade7-fe3dadcc9184,,;e9ad50df-e7f1-43a0-b782-4c08f92b0f5a,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="CanAreaDamageEvade" enumeration_type_name="SpellFlagList" version="1" />
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="a6389f1d-b548-41f0-b236-62172c1dab04" />
@@ -108,6 +139,7 @@
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(QiBlast2Action)" />
         <field name="Range" type="IntegerTableFieldDefinition" value="9" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;KiPoint:1" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="LevelMapValue(QiBlast2Action)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -122,6 +154,7 @@
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(QiBlast3Action)" />
         <field name="Range" type="IntegerTableFieldDefinition" value="18" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:3;KiPoint:1" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="LevelMapValue(QiBlast3Action)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -137,7 +170,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd43b6d93g1701g74acg75a8g70ed99aecb9f" version="2" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Constitution" />
         <field name="Range" type="IntegerTableFieldDefinition" value="7" />
-        <field name="Angle" type="IntegerTableFieldDefinition" value="0" />
+        <field name="Angle" type="IntegerTableFieldDefinition" value="360" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(CharacterLevel)/2,Fire)" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(CharacterLevel),Fire)" />
@@ -157,7 +190,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h34477fbeg1b2ege909g1817g5347ae9b0509" version="1" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Constitution" />
         <field name="Range" type="IntegerTableFieldDefinition" value="7" />
-        <field name="Angle" type="IntegerTableFieldDefinition" value="0" />
+        <field name="Angle" type="IntegerTableFieldDefinition" value="360" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(CharacterLevel)/2,Bludgeoning)" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(CharacterLevel),Bludgeoning)" />
@@ -177,7 +210,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha4a759b2g3deeg996bg1954g5e194620bcfe" version="1" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Constitution" />
         <field name="Range" type="IntegerTableFieldDefinition" value="7" />
-        <field name="Angle" type="IntegerTableFieldDefinition" value="0" />
+        <field name="Angle" type="IntegerTableFieldDefinition" value="360" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(CharacterLevel)/2,Poison)" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(CharacterLevel),Poison)" />
@@ -197,7 +230,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h37a7c8d4ge9c7g4aa7gc641gfe43b0e9d644" version="1" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Constitution" />
         <field name="Range" type="IntegerTableFieldDefinition" value="7" />
-        <field name="Angle" type="IntegerTableFieldDefinition" value="0" />
+        <field name="Angle" type="IntegerTableFieldDefinition" value="360" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(CharacterLevel)/2,Force)" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(CharacterLevel),Force)" />
@@ -217,7 +250,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hbd4f14d9gf972g44feg2243g7e7cf6a0a275" version="1" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Constitution" />
         <field name="Range" type="IntegerTableFieldDefinition" value="7" />
-        <field name="Angle" type="IntegerTableFieldDefinition" value="0" />
+        <field name="Angle" type="IntegerTableFieldDefinition" value="360" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(CharacterLevel)/2,Psychic)" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(CharacterLevel),Psychic)" />

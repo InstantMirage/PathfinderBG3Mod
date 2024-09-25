@@ -32,7 +32,7 @@
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="2" />
         <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
         <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpellVariant(HasStringInSpellRoll('Attack'),ModifyTooltipDescription());IF(not AgileMAP())RollBonus(Attack, -5);IF(AgileMAP())RollBonus(Attack, -4)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpellVariant(HasStringInSpellRoll('Attack') or SpellId('Target_Trip') or SpellId('Target_Grapple'),ModifyTooltipDescription()); IF(not AgileMAP())RollBonus(Attack, -5);IF(AgileMAP())RollBonus(Attack, -4); IF(SpellId('Target_Trip') or SpellId('Target_Grapple')):RollBonus(SkillCheck, -4, Athletics)" />
         <field name="Icon" type="StringTableFieldDefinition" value="statIcons_Goaded" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7ad2ed48g2addg377dg388egdf2acab7eda4" version="2" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="haf994059g5351g488cgd372g6027ad5ed846" version="1" />
@@ -46,7 +46,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="MAP_PENALTY_3RD" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="7f2a0ac0-dbb2-4771-8640-c3a272c7f0bf" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hdf07cfbagb2a2g69e5g7b6fg7d7bea381275" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpellVariant(HasStringInSpellRoll('Attack'),ModifyTooltipDescription());IF(not AgileMAP())RollBonus(Attack, -10);IF(AgileMAP())RollBonus(Attack, -8)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpellVariant(HasStringInSpellRoll('Attack') or SpellId('Target_Trip') or SpellId('Target_Grapple'),ModifyTooltipDescription()); IF(not AgileMAP())RollBonus(Attack, -10);IF(AgileMAP())RollBonus(Attack, -8); IF(SpellId('Target_Trip') or SpellId('Target_Grapple')):RollBonus(SkillCheck, -8, Athletics)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -832,6 +832,17 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="22a53161-ee74-4d98-a286-526552388fe7" />
+        <field name="Name" type="NameTableFieldDefinition" value="DragonRoarDamage" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd8cd86b5g7a22g7996gd4f9g9c4e99308679" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Dragonborn_BreathWeapon_FireCone" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="DamageBonus(4)" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatusEvent" version="1" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DamageBonus(4)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="e2d872e0-501e-421f-9a23-fff9e34879ef" />
         <field name="Name" type="NameTableFieldDefinition" value="InnerUpheavalStatus" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h886315bfga772gb38ag7c7dg23275c4cbfff" version="1" />
@@ -976,7 +987,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h1b85ab28g2a60g624cga4f3g51e7d2980b1e" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hebfe315bg1a68g4fcagdc78g0979de91d0c8" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Land_Mountain" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);ACOverrideFormula(18,true);UnlockSpell(Target_FallingStone)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);ACOverrideFormula(18,true);UnlockSpell(Target_FallingStone);IF(HasPassive('MountainStronghold'):ACOverrideFormula(19,true)" />
         <field name="Passives" type="StringTableFieldDefinition" value="MountainBonusAttack" />
       </fields>
     </stat_object>
