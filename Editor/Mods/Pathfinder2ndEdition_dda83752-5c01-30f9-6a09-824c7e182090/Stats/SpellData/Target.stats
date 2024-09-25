@@ -13,12 +13,41 @@
         <field name="Name" type="NameTableFieldDefinition" value="Shove" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="71a1860f-95ef-4b18-b8d8-9394adcfe37a" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsMelee;AddFallDamageOnLand;IsHarmful;CombatLogSetSingleLineRoll" enumeration_type_name="SpellFlagList" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="d193419f-3602-4b8f-8c45-26023de77750" />
         <field name="Name" type="NameTableFieldDefinition" value="Grapple" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="71a1860f-95ef-4b18-b8d8-9394adcfe37a" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="SkillCheck(Skill.Athletics,context.Target.GetPassiveSkill(Skill.Athletics))" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="ApplyStatus(Grappled,100,1);ApplyStatus(OFF_BALANCED,100,1);IF(HasPassive('CrushingGrab')):DealDamage(StrengthModifier,Bludgeoning)" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="not Self() and not Tagged('GASEOUS_FORM') and not (not Player(context.Source) and Combat(context.Source) and Character() and not (Enemy() or HasStatus('SG_Unconscious')))" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_NetherTentacle_Grapple" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h46153393gb209gc5d5g5385g952cecf1aceb" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd6ebb742g36d5gcfceg869fge45646f91320" version="1" />
+        <field name="ExtraDescription" type="TranslatedStringTableFieldDefinition" handle="h321c3027gda92g2518gebf1ga5cebb42ae7b" version="1" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(Grappled,100,1);ApplyStatus(OFF_BALANCED,100,1)" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="not Grounded()" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsMelee;AddFallDamageOnLand;IsHarmful;CombatLogSetSingleLineRoll" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="HitEffect" type="GuidObjectTableFieldDefinition" value="f81fd991-2166-4bc4-be0e-dc9d77ac8ff6" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="e208464f-f272-4bd8-a035-54fb296f3bb6" />
+        <field name="Name" type="NameTableFieldDefinition" value="Trip" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="2b4dcefd-3a65-4a59-9e21-0f89a57f117d" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="SkillCheck(Skill.Athletics,context.Target.GetPassiveSkill(Skill.Acrobatics))" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="ApplyStatus(PRONE,100,1);ApplyStatus(OFFBALANCE,100,1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_TripAttack_Melee" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h74c1d4beg7d7ag1187ga161gbbfe154dfb6a" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h34fdb843g1703gf48ege2e4g3413d2ba3432" version="1" />
+        <field name="ExtraDescription" type="TranslatedStringTableFieldDefinition" handle="hd2ee99d7gd961ge6bdgffbdg899dfa8bf65c" version="1" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="not Grounded()" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsMelee;AddFallDamageOnLand;IsHarmful;CombatLogSetSingleLineRoll" enumeration_type_name="SpellFlagList" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -49,7 +78,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="554daa9f-ad90-4a2c-8b2e-2ba576e7145a" />
         <field name="Name" type="NameTableFieldDefinition" value="Help_BonusAction" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="e38549b5-0d0b-40c1-a46d-7a4cdb92e490" />
-        <field name="UseCosts" type="StringTableFieldDefinition" value="BonusActionPoint:1" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Help" />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Utility" enumeration_type_name="VerbalIntent" version="1" />
       </fields>
@@ -516,12 +545,35 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="d03bc56a-55eb-49be-88a6-cbcd49877f8a" />
+        <field name="Name" type="NameTableFieldDefinition" value="GrappleFlurry" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="d193419f-3602-4b8f-8c45-26023de77750" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="not Grounded()" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsMelee;AddFallDamageOnLand;IsHarmful;CombatLogSetSingleLineRoll;Temporary" enumeration_type_name="SpellFlagList" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="9076e10d-b615-404e-a7d2-f73ee9a46072" />
+        <field name="Name" type="NameTableFieldDefinition" value="TripFlurry" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="e208464f-f272-4bd8-a035-54fb296f3bb6" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="not Grounded()" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsMelee;AddFallDamageOnLand;IsHarmful;CombatLogSetSingleLineRoll;Temporary" enumeration_type_name="SpellFlagList" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="090fc51f-1c20-48a5-9999-8151db2e3a0c" />
         <field name="Name" type="NameTableFieldDefinition" value="DragonFlurry" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="d529c07d-142c-4f78-b3e7-bd185b3ce21d" />
         <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsHarmful;IsMelee;Temporary" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(AnimalInstinct)+StrengthModifier, Bludgeoning);; IF(HasPassive('StunningBlows')):IF(not SavingThrow(Ability.Constitution, ManeuverSaveDC())):ApplyStatus(STUNNED,100,1)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -532,6 +584,8 @@
         <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsHarmful;IsMelee;Temporary" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(AnimalInstinct)+StrengthModifier, Bludgeoning); IF(HasPassive('StunningBlows')):IF(not SavingThrow(Ability.Constitution, ManeuverSaveDC())):ApplyStatus(STUNNED,100,1)" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf1662307g735bgb1afg7f05g4ec6d49c12f2" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -542,6 +596,7 @@
         <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsHarmful;IsMelee;Temporary" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(AnimalInstinct)+StrengthModifier, Slashing);IF(HasPassive('StunningBlows')):IF(not SavingThrow(Ability.Constitution, ManeuverSaveDC())):ApplyStatus(STUNNED,100,1)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -552,6 +607,15 @@
         <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsHarmful;IsMelee;Temporary" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(AnimalInstinct)+StrengthModifier, Bludgeoning);IF(HasPassive('StunningBlows')):IF(not SavingThrow(Ability.Constitution, ManeuverSaveDC())):ApplyStatus(STUNNED,100,1)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="8731778d-76c6-4163-8e07-fedd3271e341" />
+        <field name="Name" type="NameTableFieldDefinition" value="CobraFlurry" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="7f21d19c-cd8c-4804-8202-43189eb86664" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -561,7 +625,7 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="6707901c-81b4-4e77-8b0c-4eb486b44976" />
         <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="Attack(AttackType.MeleeWeaponAttack)" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(max(1,MainMeleeWeapon), MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(max(1,MainMeleeWeapon), MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);IF(HasPassive('StunningBlows')):IF(not SavingThrow(Ability.Constitution, ManeuverSaveDC())):ApplyStatus(STUNNED,100,1)" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsHarmful;IsMelee;Temporary" enumeration_type_name="SpellFlagList" version="1" />
       </fields>
@@ -573,7 +637,7 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="0db9cc77-b749-4938-995d-cdffe2729a8a" />
         <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('DragonStanceStatus)" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="Attack(AttackType.MeleeUnarmedAttack)" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(AnimalInstinct)+StrengthModifier, Bludgeoning)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(AnimalInstinct)+StrengthModifier, Bludgeoning);IF(HasPassive('StunningBlows')):IF(not SavingThrow(Ability.Constitution, ManeuverSaveDC())):ApplyStatus(STUNNED,100,1)" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hbe1812a5gb411gbad7g4deegc77cbd85e42f" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(AnimalInstinct)+StrengthModifier, Bludgeoning)" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Attack(AttackType.MeleeUnarmedAttack)" />
@@ -588,6 +652,7 @@
         <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('WolfStanceStatus')" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Barbarian_Rage_WolfTotem" />
         <field name="DamageType" type="EnumerationTableFieldDefinition" value="Piercing" enumeration_type_name="Damage Type" version="1" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha60972cege7b3g1675g6cb8g62ff71ec9151" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -596,7 +661,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="TigerClaw" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="95313887-269e-4c90-b8d5-2bbe539a3495" />
         <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('TigerStanceStatus')" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(AnimalInstinct)+StrengthModifier, Slashing)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(AnimalInstinct)+StrengthModifier, Slashing);IF(HasPassive('StunningBlows')):IF(not SavingThrow(Ability.Constitution, ManeuverSaveDC())):ApplyStatus(STUNNED,100,1)" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Barbarian_Rage_TigerTotem" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h94bca48dgfa8bg7976g9b75g379644549007" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8Unarmed)+StrengthModifier, Slashing)" />
@@ -612,6 +677,19 @@
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Land_Mountain" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4b66b944g76d4gcac4g66ebg5a1a93192404" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8Unarmed)+StrengthModifier, Bludgeoning)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="7f21d19c-cd8c-4804-8202-43189eb86664" />
+        <field name="Name" type="NameTableFieldDefinition" value="CobraFang" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="3e39e280-924c-4780-b191-aad8476b2da8" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('CobraStanceStatus')" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(AnimalSecondaryFrog)+StrengthModifier, Piercing);IF(HasPassive('StunningBlows')):IF(not SavingThrow(Ability.Constitution, ManeuverSaveDC())):ApplyStatus(STUNNED,100,1); IF(IsCritical()):DealDamage(LevelMapValue(DeadlyD10),Piercing)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_MartialArts_BonusUnarmedStrike" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h32ef759bgd8d3gd2f7g0c39ga2914fc3f7a6" version="1" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(AnimalSecondaryFrog)+StrengthModifier, Piercing)" />
+        <field name="DamageType" type="EnumerationTableFieldDefinition" value="Piercing" enumeration_type_name="Damage Type" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5172,7 +5250,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="UnarmedStrike_Monk" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="cb2e2d55-aef5-4d96-a881-7b5d5da09203" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="Attack(AttackType.MeleeUnarmedAttack)" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(UnarmedDamage , Bludgeoning)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(UnarmedDamage , Bludgeoning);IF(HasPassive('StunningBlows')):IF(not SavingThrow(Ability.Constitution, ManeuverSaveDC())):ApplyStatus(STUNNED,100,1)" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Monk_FreeUnarmedStrike" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2ab6915cg9d89g75a0g4f56gd50e7e7039b8" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7ab3f14dg4ba2g8f42g963eg133aaeab2261" version="2" />
