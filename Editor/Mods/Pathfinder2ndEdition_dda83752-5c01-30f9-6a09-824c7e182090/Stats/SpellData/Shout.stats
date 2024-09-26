@@ -114,7 +114,6 @@
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="17bb0bfd-7669-4e21-9d46-e3692f029ba3,,;,,;972109d9-0470-41b1-aa82-8b01cecfc556,,;a693a7c3-e7e7-4edb-98dd-db5fd700663f,,;b7388786-3e1f-49f5-904b-3414a227472d,,;,,;c91247cd-6e65-496a-9ed0-cd36f10bdc69,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Utility" enumeration_type_name="VerbalIntent" version="1" />
-        <field name="WeaponType" type="EnumerationListTableFieldDefinition" value="Melee" enumeration_type_name="WeaponFlags" version="1" />
         <field name="CastSound" type="StringTableFieldDefinition" value="Action_Cast_Steady" />
         <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_Steady" />
         <field name="Sheathing" type="EnumerationTableFieldDefinition" value="Melee" enumeration_type_name="SpellSheathing" version="1" />
@@ -581,7 +580,7 @@
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="f378a9ae-4a60-46b6-ad65-1de5709e498f" />
-        <field name="Name" type="NameTableFieldDefinition" value="GiantStature" />
+        <field name="Name" type="NameTableFieldDefinition" value="GiantsStature" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="f6b57c12-fac3-4bc7-917c-b6a2da294900" />
         <field name="Cooldown" type="EnumerationTableFieldDefinition" value="None" enumeration_type_name="CooldownType" version="1" />
         <field name="ExtraDescription" type="TranslatedStringTableFieldDefinition" handle="ha5b02041g7eb2gc502g5bc8g26b1b6b23bcc" version="2" />
@@ -687,6 +686,50 @@
         <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Paladin_OathBreaker_DreadfulAspect_L1to3" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Wisdom" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Paladin_DreadfulAspect" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="af6d9712-0f3c-4c78-b60e-0aec0802f94a" />
+        <field name="Name" type="NameTableFieldDefinition" value="ShieldsOfTheSpirit" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(StatusBonus1AC,100,2);ApplyStatus(SpiritShields,100,1);ApplyStatus(SELF,CircumstanceBonus2AC,100,1)" />
+        <field name="AreaRadius" type="IntegerTableFieldDefinition" value="4" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="not Enemy() and not Dead()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Abjuration_ShieldOfFaith" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h124e3bcfgdfa3gad35gd1b4gf76af74bd509" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="haaa84b17gbb7aga4e5gbc61gc5386cee86a5" version="1" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Action_Cast_Paladin_HealingRadiance" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_Paladin_HealingRadiance" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1;KiPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="83fb0115-57dd-4cce-ac40-87182b2865e2,,;,,;eb4f3d5f-6815-4ad5-a5af-870942af0863,,;ba5068a2-ed31-4b9a-87cc-be28edb9ad25,,;42014429-21fb-412d-bba6-0f8216f5e502,,;,,;43fa5e31-ad7e-47a9-9ca2-f6d40ba8e1cf,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Buff" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="MagicalNonDamage" enumeration_type_name="HitAnimationType" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="f719faf1-83e7-4407-a2f2-0880e26f9ca5" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="a851aded-d542-482c-81ea-aa807d8b630f" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="1dcca477-79be-4e15-bb70-8680a6dc49e5" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasShieldEquipped(context.Source)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="b2101b29-0358-4a5f-b07a-8e14112363d6" />
+        <field name="Name" type="NameTableFieldDefinition" value="DesperatePrayer" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="74b92b47-f91d-4135-bf7c-3bca3579e585" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="RestoreResource(SELF,KiPoint,1,0)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_PrayerOfHealing" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2f82e507g738dga1d8g6a42g998c5d5e6d61" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hbf0669e7g98e4ga7e2g4629g85a266d14e6b" version="1" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasVerbalComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="Requirements" type="StringTableFieldDefinition" value="Combat" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="07dd1178-87e9-4547-b09e-28784689eea5" />
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_0" />
       </fields>
     </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">

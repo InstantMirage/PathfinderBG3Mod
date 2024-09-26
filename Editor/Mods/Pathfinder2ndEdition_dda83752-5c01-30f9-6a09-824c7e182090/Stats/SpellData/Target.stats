@@ -5442,5 +5442,326 @@
         <field name="TooltipUpcastDescription" type="GuidObjectTableFieldDefinition" value="6ff1780a-855a-414c-a8bf-811251537206" />
       </fields>
     </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="a607576f-27c2-45b2-bad5-491082e39221" />
+        <field name="Name" type="NameTableFieldDefinition" value="LayOnHandsPathfinder" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="TARGET:RegainHitPoints(LevelMapValue(LayOnHandsHealing))" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="1.5" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead() and not Tagged('UNDEAD') and not Tagged('CONSTRUCT')" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Paladin_LayOnHands_SmallHeal" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf60866ddgc86bg07d8ga1edg660d59cd43ee" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd0eb41fdgb88agb2d8ge858g482cadfd20d4" version="2" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(LayOnHandsHealing)" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="RegainHitPoints(LevelMapValue(LayOnHandsHealing))" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Healing_LayOnHands_SmallHeal" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Healing_LayOnHands_SmallHeal" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="Ally() and not Dead()" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1;KiPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="83fb0115-57dd-4cce-ac40-87182b2865e2,,;,,;4b27cbbb-6774-4037-a620-80901b11a10f,4b27cbbb-6774-4037-a620-80901b11a10f,4b27cbbb-6774-4037-a620-80901b11a10f;52ffbb9a-a97b-448e-acaf-06344ce9be87,,;42014429-21fb-412d-bba6-0f8216f5e502,,;,,;43fa5e31-ad7e-47a9-9ca2-f6d40ba8e1cf,,;032cf56a-3808-45ad-9991-740431d9c14f,,;4b385541-a3a3-429d-93ae-dffa6da50050,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Healing" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsMelee;HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellAnimationType" type="EnumerationTableFieldDefinition" value="Assisting" enumeration_type_name="SpellAnimationType" version="1" />
+        <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="MagicalNonDamage" enumeration_type_name="HitAnimationType" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="b181c3a9-cbac-4997-9ab3-502ff5fa13e8" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="bf0ab3b7-c68f-4e8e-a2cb-b02e63bd0e1b" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="b730bde9-de9f-4134-9948-94daf4fb9245" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="9eaf20ea-2c71-435e-8140-6b29f82c8a5b" />
+        <field name="Name" type="NameTableFieldDefinition" value="LayOnHandsMercy" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="a607576f-27c2-45b2-bad5-491082e39221" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="TARGET:RegainHitPoints(LevelMapValue(LayOnHandsHealing));RemoveStatus(SG_Poisoned);RemoveStatus(SG_Disease);RemoveStatus(ASTARION_WEAK)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Paladin_LayOnHands_Cure" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3a299119g9ae1g2923gfa58g7fe5cf6e0063" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf7c38fabg9913gdfb0g3af4g674dbe72878a" version="2" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;KiPoint:1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="68388416-0c72-43b0-bf59-f57aa9d9c54f" />
+        <field name="Name" type="NameTableFieldDefinition" value="TouchOfTheVoid" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="1.5" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Constitution, SourceSpellDC())" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(H1D6),Necrotic);ApplyStatus(StatusPenalty2AC,100,1)" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(H1D6)/2,Necrotic)" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead() and not Tagged('UNDEAD') and not Tagged('CONSTRUCT')" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Necromancy_InflictWounds" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd7d12f4dg1024g33a9g8e2eg7c21795021bf" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h0814f5a2gb368g8b2eg6f31g0d4fd23ef896" version="2" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(H1D6)" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(H1D6))" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Constitution" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty2AC,100,1)" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Necrotic_Gen_L1to3" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Necrotic_Gen_L1to3_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_Necrotic_InflictWounds_L1to3" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Damage_Necrotic_InflictWounds_L1to3" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="Character() and Enemy() and not Dead()" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1;KiPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;477bdade-9c91-4373-9fad-113c6c3b0bbf,67ceaa8c-c0e3-409c-8cd7-1f7e089bfad2,c8efc85f-7718-4bcd-b35a-8739b436f1dc;06c28cf4-0e9b-4dad-8ed4-84780e7df33c,f36c1287-2de6-443c-aca5-a44966348e88,e9004fde-1183-45eb-8459-c33e2cd29078;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsMelee;HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="ec80b3cd-29fd-40d2-a41a-b703db1b6f8e" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="7bce304f-a409-495e-a092-012b727b0914" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="1d00a392-5444-4533-b125-d4cafc7e496a" />
+        <field name="DamageType" type="EnumerationTableFieldDefinition" value="Necrotic" enumeration_type_name="Damage Type" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="ada951eb-2c10-49e4-9406-4ff2d792c4d5" />
+        <field name="Name" type="NameTableFieldDefinition" value="TouchOfTheVoidCruelty" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="68388416-0c72-43b0-bf59-f57aa9d9c54f" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(H1D6),Necrotic);ApplyStatus(StatusPenalty2AC,100,1);ApplyStatus(StatusPenaltyDamage1,100,10);ApplyStatus(StatusPenalty1Attack,100,10)" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h7401176cgf9beg2bd8g4209g8310fd784545" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h634905dbg0120g880bg915age59df6cf0df6" version="2" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty2AC,100,1);ApplyStatus(StatusPenaltyDamage1,100,10);ApplyStatus(StatusPenalty1Attack,100,10)" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;KiPoint:1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="08b67438-9680-4b09-8e79-a002638cb159" />
+        <field name="Name" type="NameTableFieldDefinition" value="RangersCompanion" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="18" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Skill_Ranger_RangersCompanion" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he71a0f1agf661g4b5ag8975gbeba748db73a" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h48081b36gfb7fg408cg27abgdfd17ee6c55c" version="1" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="VFX_Somatic_03" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Action_Cast_RangersCompanion" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="85f63b1e-1fe6-4228-863d-71f43a945b46,,;,,;551b8855-805c-45fa-973f-88df0cbe646a,,;394f93b4-106a-44e4-8e08-2feae2881df1,,;db52441a-8a80-4630-bcb8-0f220e1b8323,,;,,;f588875b-9a5f-4e05-ac41-3f3e73cdb4e4,,;,,;,," />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IgnoreSilence;IsLinkedSpellContainer;CannotTargetItems;CannotTargetCharacter" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellPrepareCost" type="IntegerTableFieldDefinition" value="1" />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Summon" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="ContainerSpells" type="StringTableFieldDefinition" value="Target_RangersCompanion_Bear;Target_RangersCompanion_Boar;Target_RangersCompanion_GiantSpider;Target_RangersCompanion_Raven;Target_RangersCompanion_Wolf" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_RangersCompanion" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="2adc2574-07ac-4116-ba89-9ffe367ff77b" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="a8bd13f1-3918-4c25-a3c4-ca312ef20178" />
+        <field name="PositionEffect" type="GuidObjectTableFieldDefinition" value="47de8912-a859-436b-b88b-e849b1f5e180" />
+        <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="DamageType" type="EnumerationTableFieldDefinition" value="Poison" enumeration_type_name="Damage Type" version="1" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerShortRest" enumeration_type_name="CooldownType" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="a5d3dd43-3283-413f-8346-10f8fbd046b2" />
+        <field name="Name" type="NameTableFieldDefinition" value="RangersCompanion_Bear" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="08b67438-9680-4b09-8e79-a002638cb159" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he3e4c857g045cge47fg47efg36b5b0c2895c" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Ranger_RangersCompanion_Bear" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="CanStand('d642d398-f349-4eab-b98c-a82cbda19918') and not Character() and not Self()" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_RangersCompanion" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="he439807dg97dcg10fbg22d3g6c6ba89009d4" version="1" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:IF(not CharacterLevelGreaterThan(4)):Summon(d642d398-f349-4eab-b98c-a82cbda19918,Permanent,,,'CombatSummonStack',UNSUMMON_ABLE,RANGERS_COMPANION_BEAR,SHADOWCURSE_SUMMON_CHECK);GROUND:IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(6)):Summon(533d21da-878c-421d-a372-54e0125ae3bb,Permanent,,,'CombatSummonStack',UNSUMMON_ABLE,RANGERS_COMPANION_BEAR,SHADOWCURSE_SUMMON_CHECK)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="9dabf403-bc84-4917-ae87-b799f95d2545" />
+        <field name="Name" type="NameTableFieldDefinition" value="RangersCompanion_Boar" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="08b67438-9680-4b09-8e79-a002638cb159" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd2688dfag6d39g871egfce0gedeee70e7025" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Ranger_RangersCompanion_Boar" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="CanStand('be71d66c-5328-490f-b962-4fdb7ca2647f') and not Character() and not Self()" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_RangersCompanion" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h2f0d715cg3aaeg3660g78f2g520bfc569242" version="1" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:IF(not CharacterLevelGreaterThan(4)):Summon(be71d66c-5328-490f-b962-4fdb7ca2647f,Permanent,,,'CombatSummonStack',UNSUMMON_ABLE,RANGERS_COMPANION_BOAR,SHADOWCURSE_SUMMON_CHECK);GROUND:IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(6)):Summon(4ab10523-7e35-4a68-9afa-4839c484c579,Permanent,,,'CombatSummonStack',UNSUMMON_ABLE,RANGERS_COMPANION_BOAR,SHADOWCURSE_SUMMON_CHECK)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="ccc75109-8962-44e6-8f42-4323df834af8" />
+        <field name="Name" type="NameTableFieldDefinition" value="RangersCompanion_GiantSpider" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="08b67438-9680-4b09-8e79-a002638cb159" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hfdb1877fgc330g4c50gd486gee58fad03397" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Ranger_RangersCompanion_GiantSpider" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="CanStand('7542dc70-4f9d-439a-ba96-1bc0c1b89d9c') and not Character() and not Self()" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_RangersCompanion" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h12848c4agd523g5d36g9611gf073433a865c" version="1" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:IF(not CharacterLevelGreaterThan(4)):Summon(7542dc70-4f9d-439a-ba96-1bc0c1b89d9c,Permanent,,,'CombatSummonStack',UNSUMMON_ABLE,RANGERS_COMPANION_GIANTSPIDER,SHADOWCURSE_SUMMON_CHECK);GROUND:IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(6)):Summon(e3161996-d439-45ff-a42a-3fdb3f76b9f4,Permanent,,,'CombatSummonStack',UNSUMMON_ABLE,RANGERS_COMPANION_GIANTSPIDER,SHADOWCURSE_SUMMON_CHECK)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="52b57a04-50de-412a-8ac6-1d56dfb385a1" />
+        <field name="Name" type="NameTableFieldDefinition" value="RangersCompanion_Raven" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="08b67438-9680-4b09-8e79-a002638cb159" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h38e33ba7g4e99g624cgb666g5f16619d24a2" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Ranger_RangersCompanion_Raven" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_RangersCompanion" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="CanStand('ca69f1a8-28c6-4eb3-863e-fa95040dc7e7') and not Character() and not Self()" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf6ade912g4d81g24abgff83g8d56377999ee" version="1" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:IF(not CharacterLevelGreaterThan(4)):Summon(ca69f1a8-28c6-4eb3-863e-fa95040dc7e7,Permanent,,,'CombatSummonStack',UNSUMMON_ABLE,RANGERS_COMPANION_RAVEN,SHADOWCURSE_SUMMON_CHECK);GROUND:IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(6)):Summon(c390b2fc-7039-4600-bd5d-e96380dd72e9,Permanent,,,'CombatSummonStack',UNSUMMON_ABLE,RANGERS_COMPANION_RAVEN,SHADOWCURSE_SUMMON_CHECK)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="979af1b5-c725-4ad1-953f-d0490cc7f989" />
+        <field name="Name" type="NameTableFieldDefinition" value="RangersCompanion_Wolf" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="08b67438-9680-4b09-8e79-a002638cb159" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h441b6926g9c26g1b91g3dc0g2c7f45a9f498" version="1" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="CanStand('9beee5c9-279e-49d8-a4a8-18f9ee0b1519') and not Character() and not Self()" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_RangersCompanion" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hda920d8ag4bc0g61afgdb89ga3e6defffff7" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Ranger_RangersCompanion_Wolf" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:IF(not CharacterLevelGreaterThan(4)):Summon(9beee5c9-279e-49d8-a4a8-18f9ee0b1519,Permanent,,,'CombatSummonStack',UNSUMMON_ABLE,RANGERS_COMPANION_WOLF,SHADOWCURSE_SUMMON_CHECK);GROUND:IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(6)):Summon(b428c4e0-d3ca-449c-a5c5-9e0fb310081a,Permanent,,,'CombatSummonStack',UNSUMMON_ABLE,RANGERS_COMPANION_WOLF,SHADOWCURSE_SUMMON_CHECK)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="1cbaf598-e2e1-47c5-bd6b-be51dc96447f" />
+        <field name="Name" type="NameTableFieldDefinition" value="PathfinderAnimal" />
+        <field name="ContainerSpells" type="StringTableFieldDefinition" value="Target_PathfinderBear;Target_PathfinderBoar;Target_PathfinderGiantSpider;Target_PathfinderGiantRaven;Target_PathfinderWolf" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerRest" enumeration_type_name="CooldownType" version="1" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="18" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Skill_Ranger_RangersCompanion" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc5759269g9b5ag2afbg6487ge6bdd0b3740e" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hc450f644ge5f4gc44bg6791g15f413781383" version="1" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Action_Cast_RangersCompanion" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Damage_Necrotic_InflictWounds_L1to3" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="VFX_Somatic_03" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="85f63b1e-1fe6-4228-863d-71f43a945b46,,;,,;551b8855-805c-45fa-973f-88df0cbe646a,,;394f93b4-106a-44e4-8e08-2feae2881df1,,;db52441a-8a80-4630-bcb8-0f220e1b8323,,;,,;f588875b-9a5f-4e05-ac41-3f3e73cdb4e4,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Summon" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IgnoreSilence;IsLinkedSpellContainer;CannotTargetItems;CannotTargetCharacter" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellPrepareCost" type="IntegerTableFieldDefinition" value="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="2adc2574-07ac-4116-ba89-9ffe367ff77b" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="a8bd13f1-3918-4c25-a3c4-ca312ef20178" />
+        <field name="PositionEffect" type="GuidObjectTableFieldDefinition" value="47de8912-a859-436b-b88b-e849b1f5e180" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="03e02671-66af-4669-b011-a7814bd3a882" />
+        <field name="Name" type="NameTableFieldDefinition" value="PathfinderBear" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="1cbaf598-e2e1-47c5-bd6b-be51dc96447f" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_PathfinderAnimal" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:Summon(d642d398-f349-4eab-b98c-a82cbda19918,Permanent,,,'CombatSummonStack',UNSUMMON_ABLE,RANGERS_COMPANION_BEAR,SHADOWCURSE_SUMMON_CHECK)" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="CanStand('d642d398-f349-4eab-b98c-a82cbda19918') and not Character() and not Self()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Ranger_RangersCompanion_Bear" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4d61344ag1de8g8091g33a1g77a51560ab89" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hb6e50faegea6bg2eb7gfabagef4a124e7c88" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="5d6f2925-5782-4afe-accc-498867fad494" />
+        <field name="Name" type="NameTableFieldDefinition" value="PathfinderBoar" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="1cbaf598-e2e1-47c5-bd6b-be51dc96447f" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_PathfinderAnimal" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:Summon(be71d66c-5328-490f-b962-4fdb7ca2647f,Permanent,,,'CombatSummonStack',UNSUMMON_ABLE,RANGERS_COMPANION_BEAR,SHADOWCURSE_SUMMON_CHECK)" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="CanStand('be71d66c-5328-490f-b962-4fdb7ca2647f') and not Character() and not Self()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Ranger_RangersCompanion_Boar" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h02bf57c7g8e46g2d19g7b63gd05765543dc7" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h00ae8c2bg089bge6d2g998fg868bf459da64" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="dee53fa9-4095-4729-9cb8-648cbf284f32" />
+        <field name="Name" type="NameTableFieldDefinition" value="PathfinderGiantSpider" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="1cbaf598-e2e1-47c5-bd6b-be51dc96447f" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_PathfinderAnimal" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:Summon(7542dc70-4f9d-439a-ba96-1bc0c1b89d9c,Permanent,,,'CombatSummonStack',UNSUMMON_ABLE,RANGERS_COMPANION_BEAR,SHADOWCURSE_SUMMON_CHECK)" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="CanStand('7542dc70-4f9d-439a-ba96-1bc0c1b89d9c') and not Character() and not Self()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Ranger_RangersCompanion_GiantSpider" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h426d98c0g028agffddg6eaag2d5a137cb919" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hbdf5ec52g2604geef5gbd7bg7709c6adde5a" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="ced4d6a4-252a-44f2-ad85-f987ab42d004" />
+        <field name="Name" type="NameTableFieldDefinition" value="PathfinderGiantRaven" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="1cbaf598-e2e1-47c5-bd6b-be51dc96447f" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_PathfinderAnimal" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:Summon(ca69f1a8-28c6-4eb3-863e-fa95040dc7e7,Permanent,,,'CombatSummonStack',UNSUMMON_ABLE,RANGERS_COMPANION_BEAR,SHADOWCURSE_SUMMON_CHECK)" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="CanStand('ca69f1a8-28c6-4eb3-863e-fa95040dc7e7') and not Character() and not Self()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Ranger_RangersCompanion_Raven" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h9a8329dfg28d8g9563gf810g1d69b9a6859c" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hdbef0774gc155g682dg48a6g78ba39333c7d" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2c7a8dec-b255-40c6-b58d-d556c7dd5e88" />
+        <field name="Name" type="NameTableFieldDefinition" value="PathfinderWolf" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="1cbaf598-e2e1-47c5-bd6b-be51dc96447f" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_PathfinderAnimal" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:Summon(9beee5c9-279e-49d8-a4a8-18f9ee0b1519,Permanent,,,'CombatSummonStack',UNSUMMON_ABLE,RANGERS_COMPANION_BEAR,SHADOWCURSE_SUMMON_CHECK)" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="CanStand('9beee5c9-279e-49d8-a4a8-18f9ee0b1519') and not Character() and not Self()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Ranger_RangersCompanion_Wolf" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hdf28b717ga2f6gf509gf330g7dfafeea8ba4" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h9e09f7c9g6cfcg96feg4940gd0a57d727d36" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="0010657a-9e88-4dab-8b6c-a34e941a596c" />
+        <field name="Name" type="NameTableFieldDefinition" value="PathfinderCompanionBuff" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerRest" enumeration_type_name="CooldownType" version="1" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(PathfinderCompanionScaler,100,LevelMapValue(CharacterLevel))" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="18" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Tagged('BEAST') and HasPassive('HuntersMark_RangerCompanion')" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Transmutation_EnhanceAbility_BullsStrenght" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2d7e05bdg203fgd535g6038gf8ef13d47df8" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hb8bb3487gcd65gbdd9g5fdcgbbdd7df10ecd" version="1" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Buff_EnhanceAbilityBullsStrength_L1to3" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Buff_EnhanceAbilityBullsStrength_L1to3" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="03496c4a-49e0-4132-b585-3e5ecd1ad8e5,,;,,;8252328a-66dd-4dc0-bbe0-00eea3204922,,;982d842b-5d44-4ef6-ab33-14d5ae514a50,,;a9682ef9-5d9e-4ac0-8144-2c7fe6eb868c,,;,,;32fb4d91-7fde-4b05-9144-ea87b9a4284a,,;dada6495-752c-4f30-a503-f05b8c811e2b,,;8ce53f9b-b559-49cd-9607-1991545060d7,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Buff" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IgnoreSilence" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="5ea8f8f4-ba5f-4417-82f6-ed2ce4ffe264" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="bcd66fb0-b0bc-41d0-abba-ad443d63dd72" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="fbb955f8-a644-451b-89bd-7950ad4cebad" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="f5cb9e4e-d4aa-4f09-abe5-a2296e380cf0" />
+        <field name="Name" type="NameTableFieldDefinition" value="PathfinderMatureCompanionBoost" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="0010657a-9e88-4dab-8b6c-a34e941a596c" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerRest" enumeration_type_name="CooldownType" version="1" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(PathfinderMatureCompanionStatus,100,-1)" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="18" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Tagged('BEAST') and HasPassive('HuntersMark_RangerCompanion')" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h001c21d0gec34g25a5g65f5g740fcb78061e" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf48aa715g2e40gb0d9g40c4gb4c61b1f1e2c" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="1bfed60b-2a8f-429d-981e-0ca8575332d4" />
+        <field name="Name" type="NameTableFieldDefinition" value="SmitePathfinder" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(PathfinderSmiteStatus,100,-1)" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="18" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Self() and not (not Player(context.Source) and not Enemy()) and not HasStatus('DOWNED') and not HasStatus('SmitePathfinderStatus')" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_SearingSmite" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hbacb8643g7174g916fgf157g19b7962bed95" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7efaa410g4cc4gb320gbf8agc35d4fa19ef9" version="1" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Buff_DivineFavor_L1to3" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Buff_DivineFavor_L1to3" />
+        <field name="VocalComponentSound" type="StringTableFieldDefinition" value="Vocal_Component_Prayer" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="71369b20-18f1-4d33-89ad-a99b10f0444c,,;,,;35b644cf-5c13-4407-9dc1-23bf4309216e,,;823e3ddf-c670-41ef-b7b4-9f4a4e38300b,,;3b9da8d4-3eff-43bd-9eaa-1c13fba0045e,,;,,;d5be826c-163f-4cc3-b195-2101e32e3da2,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Buff" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IgnoreSilence" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="747ac7e5-c52e-4e5a-be78-1f9de85b55ea" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="1516f4b2-5a53-4adf-bf85-d6e46826cffe" />
+      </fields>
+    </stat_object>
   </stat_objects>
 </stats>
