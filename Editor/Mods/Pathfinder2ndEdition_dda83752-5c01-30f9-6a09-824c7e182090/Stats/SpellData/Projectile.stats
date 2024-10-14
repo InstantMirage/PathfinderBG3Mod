@@ -30,7 +30,6 @@
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="b6bebde2-ecff-4df6-9d24-cd9fabb9fe79,,;,,;f49c1788-7819-481f-9b83-2344d708e682,,;8ee67630-f1c7-441d-aaf6-fa4633c890da,,;f8fe2e89-2313-48f7-963c-0907b6306fd1,,;,,;5abe3725-c152-42de-98c8-0dbf872e1ff2,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Utility" enumeration_type_name="VerbalIntent" version="1" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsJump;AddFallDamageOnLand;HasHighGroundRangeExtension;IgnoreVisionBlock;Stealth;Invisible;CannotTargetCharacter;CannotTargetItems" enumeration_type_name="SpellFlagList" version="1" />
-        <field name="Requirements" type="StringTableFieldDefinition" value="!Immobile" />
         <field name="AddRangeFromAbility" type="StringTableFieldDefinition" value="Strength,1" />
         <field name="SpellActionType" type="EnumerationTableFieldDefinition" value="Jump" enumeration_type_name="SpellActionType" version="1" />
         <field name="SpellJumpType" type="EnumerationTableFieldDefinition" value="Jump" enumeration_type_name="SpellJumpType" version="1" />
@@ -348,7 +347,7 @@
         <field name="TargetRadius" type="StringTableFieldDefinition" value="RangedMainWeaponRange" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="Attack(AttackType.RangedWeaponAttack)" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(MainRangedWeapon+ LevelMapValue(SneakAttack), MainRangedWeaponDamageType);ExecuteWeaponFunctors(MainHand)" />
-        <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Self() and not Dead() and (HasAllyWithinRange('SG_Incapacitated',1.5)) or HasStatus('OFF_BALANCED',context.Target) or (HasPassive(DreadStrike,context.Source) and HasStatus('StatusPenalty1AC',context.Target) or HasStatus('StatusPenalty2AC',context.Target)) and not Tagged('INANIMATE')" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Self() and not Dead() and (HasAllyWithinRange('SG_Incapacitated',1.5) or HasStatus('OFF_BALANCED',context.Target) or (HasPassive(DreadStrike,context.Source) and HasStatus('StatusPenalty1AC',context.Target) or HasStatus('StatusPenalty2AC',context.Target)) and not Tagged('INANIMATE')" />
         <field name="ProjectileCount" type="StringTableFieldDefinition" value="1" />
         <field name="Trajectories" type="StringTableFieldDefinition" value="52f94ae8-7b9d-4410-9290-91a8a909b612,b50a1c9f-0414-6136-3910-4579d6f162f9,5d0c3de8-d2cd-0f2f-1274-821d99ad1dcf" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_SneakAttack_Ranged" />

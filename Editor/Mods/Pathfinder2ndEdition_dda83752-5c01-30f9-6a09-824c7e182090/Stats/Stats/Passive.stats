@@ -2490,6 +2490,15 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="88a0a38b-27e6-428c-a798-f2fd41c3d1a0" />
+        <field name="Name" type="NameTableFieldDefinition" value="SneakAttackPassive" />
+        <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="Character() and not Self() and not Dead() and (HasAllyWithinRange('SG_Incapacitated',1.5) or HasStatus('OFF_BALANCED',context.Target) or (HasPassive(DreadStrike,context.Source) and HasStatus('StatusPenalty1AC',context.Target) or HasStatus('StatusPenalty2AC',context.Target)) and not Tagged('INANIMATE')" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(SneakAttack), MainMeleeWeaponDamageType)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="e2088caf-b163-4ca4-99f4-c91c808b559b" />
         <field name="Name" type="NameTableFieldDefinition" value="TrapFinder" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hcd6c1decg5c48g30edgb55cg0a6ed3a37e00" version="1" />
@@ -2508,8 +2517,9 @@
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Flurry" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnAttack" enumeration_type_name="StatsFunctorContext" version="1" />
-        <field name="Conditions" type="StringTableFieldDefinition" value="IS(SpellId('TwinFeint'))" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="SpellId('Target_TwinFeint')" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="RollBonus(Attack,2)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_TwinFeint)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2658,6 +2668,218 @@
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Enchantment_CommandDrop" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_SlyDisarm)" />
+      </fields>
+    </stat_object>
+    <stat_object color="#FFFF0000" is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="0d37adda-9ee3-4c0b-8c06-ae91d57504d0" />
+        <field name="Name" type="NameTableFieldDefinition" value="Sorcerer" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="bef9235e-6040-4681-b0ff-219dde345684" />
+        <field name="Name" type="NameTableFieldDefinition" value="DivineDragonBloodline" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h864ba09dg26a3g9db6g037cg6e2a22d45c81" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h438866fdg215cgfe90g7e6ag289eb776da05" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_FlurryOfClawsForce);ActionResource(KiPoint,1,0)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Dragonborn_BreathWeapon_Lightning" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="1db7d66f-9244-4082-aaa5-60f358b1bd95" />
+        <field name="Name" type="NameTableFieldDefinition" value="OccultDragonBloodline" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hac14a73ag9ed8g2e2dg07dfgc1dd0b7d4c7d" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h2fc5e4acg3cccgfcacg0fc8g14354ff13736" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_FlurryOfClawsMental);ActionResource(KiPoint,1,0)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Dragonborn_BreathWeapon_Cold" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="aa71a127-3ef2-4613-baa1-aeb10fb772a9" />
+        <field name="Name" type="NameTableFieldDefinition" value="ArcaneDragonBloodline" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2d8724b5g748fgf157g1c29g9d7279a6faaf" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf6bba01cgf05bgd3e0g03fag682266fd0c8f" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_FlurryOfClawsForce);ActionResource(KiPoint,1,0)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Dragonborn_BreathWeapon_FireCone" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="dca83f3b-8581-48a3-9fce-9a8181501c5f" />
+        <field name="Name" type="NameTableFieldDefinition" value="PrimalDragonBloodline" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hcb10721bg35a3g3d86g1407g084e890194c5" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha2a2c10agf81bga7bbg8055g798af3347fd2" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_FlurryOfClawsFire);ActionResource(KiPoint,1,0)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Dragonborn_BreathWeapon_Acid" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="1710f10d-ce33-4ad7-8304-d19ac32506fd" />
+        <field name="Name" type="NameTableFieldDefinition" value="HagBloodline" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h300274b9g93fdgc419g08e4g7fadf7c0b05e" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h1a193998gd4d1g4c3dgda49g4d283e175dbc" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_JealousHex);ActionResource(KiPoint,1,0)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="statIcons_HagsTrickery" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2eeef286-7e4c-4e73-b697-a439f5565512" />
+        <field name="Name" type="NameTableFieldDefinition" value="AngelicBloodline" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h15a4ca9bgb4dcg41cfgc84fgbbab10f79fa5" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha61d2957g9357g4891gb48bg338b06bba952" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_AngelicHalo);ActionResource(KiPoint,1,0)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Paladin_DivineSense" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="ca38f73e-29f3-4222-93de-da6c6d9ba96f" />
+        <field name="Name" type="NameTableFieldDefinition" value="DemonicBloodline" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5305df16g881cg0b2eg3269gccfee1eb6100" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf797ad7cgf86fg3b48g1d13gcfcc51d09aa1" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="statIcons_DemonicLeech" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="134421e0-57de-461c-b41e-c55ff5a1db2e" />
+        <field name="Name" type="NameTableFieldDefinition" value="DiabolicBloodline" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h90b42277g11e8gae13g4a64gc370f1f1aa5f" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hef77a935g07f8gace7g9270g1631139c0432" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_DevilsSight" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="324322d9-467a-45b2-afa1-adbc1c6c4d12" />
+        <field name="Name" type="NameTableFieldDefinition" value="UndeadBloodline" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h8728f272gd04bg17aagfa6eg80e7e53d2e29" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5b39bedbg44dag34dag7423g76158dcca379" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Cleric_TurnUndead" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2cb5347a-efe0-446e-b0cd-0c1708c457c8" />
+        <field name="Name" type="NameTableFieldDefinition" value="ElementalBloodlineAir" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6ca0676bg15edg4e3dg7ae2g52d4d7e6f757" version="2" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hab383f2egb50ag8718gb3c1g6f6b673a0a1d" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_WitchBolt" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="0de7d07d-3a58-4ae7-81fc-f965fc0ab66b" />
+        <field name="Name" type="NameTableFieldDefinition" value="ElementalBloodlineEarth" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd23f70f0ga49ag7aa0gb4e1g7c80b4014b9a" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_MelfsAcidArrow" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="10fc98f6-dd88-4ae9-8268-c0a9d28e2d0e" />
+        <field name="Name" type="NameTableFieldDefinition" value="ElementalBloodlineFire" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd7090d93g7cb6ga924gf68cg5712dc854ddc" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_Fireball" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="0922dae4-ca1e-426e-9acb-caaac3b37941" />
+        <field name="Name" type="NameTableFieldDefinition" value="ElementalBloodlineMetal" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h72f09703gcddcg08b2gd930g141a39ab9cec" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Transmutation_HeatMetal" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="61f0c1fe-e5cf-4d05-bc0f-718ce68e7d2a" />
+        <field name="Name" type="NameTableFieldDefinition" value="ElementalBloodlineWater" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd99ea550g39b9ga250g6acbgdeb02bdaacbd" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_ElementalWildShape_Myrmidon_Water" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="4c669cba-35c6-480f-aea4-2882bd4b1962" />
+        <field name="Name" type="NameTableFieldDefinition" value="ElementalBloodlineWood" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he79ea2c5g3190g67dcg8ee6gc7793d990a9a" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Conjuration_ConjureWoodlandBeings" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="94b9df9c-0eb0-4247-b79d-cab1c0bda6b5" />
+        <field name="Name" type="NameTableFieldDefinition" value="FeyBloodline" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6493b8b6g355bgd62ag6914g3ec828313939" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h70cf3181g0b32g119fg29c0g8eb4b4f16a41" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_FeyPresence" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="dd9ad4ae-40f8-4ed3-b106-1bfdf6011f5a" />
+        <field name="Name" type="NameTableFieldDefinition" value="ImperialBloodline" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4fa5d83fg89d1g93b8ge1aegaeedf82be436" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h05f9f8f2gf17eg0e33g1fa4g37e8dce3b3f0" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Skill_Wizard_ArcaneRecovery" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2a11c802-54cd-47fa-9491-fb77974b66d5" />
+        <field name="Name" type="NameTableFieldDefinition" value="AberrantBloodline" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5e5ab146g673aga5d6g1b20g3e69fbbca07e" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h1e0ea820g3da2gaa42gb138g0ac7ec88eca6" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_TentacularLimbs);ActionResource(KiPoint,1,0)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_EvardsBlackTentacles" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="96eeecd4-d1e0-4ee7-ab64-63ec053d8f2c" />
+        <field name="Name" type="NameTableFieldDefinition" value="TentacularLimbsReach" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3f6ce588g5f4cga2b6g03d6g0a6947ca5e58" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7d006fd7g4eb3gfde1g28e9gcb0dbe2a7eee" version="1" />
+        <field name="EnabledConditions" type="StringTableFieldDefinition" value="HasActionResource('ActionPoint', 1, 0, false, false, context.Source)" />
+        <field name="EnabledContext" type="EnumerationListTableFieldDefinition" value="OnCastResolved;OnLongRest;OnActionResourcesChanged" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="IsToggled;ToggledDefaultAddToHotbar;MetaMagic" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpellVariant(DistantTouchSpellCheck(),ModifyTargetRadius(Override,6),ModifySpellFlags(Melee,0),ModifyUseCosts(Add,ActionPoint,1,0))" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_EvardsBlackTentacles" />
       </fields>
     </stat_object>
   </stat_objects>
