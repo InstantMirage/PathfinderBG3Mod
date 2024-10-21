@@ -1,0 +1,155 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+//This script manages movement and the relevant statuses/actions.
+
+//These statuses indicate available Movement.
+DB_MovementStatus("STRIDE");
+DB_MovementStatus("DASH");
+DB_MovementStatus("DASH_STACKED");
+DB_MovementStatus("DASH_STACKED_2");
+DB_MovementStatus("DISENGAGE");
+
+//These spells provide Movement resources.
+DB_MovementSpell("Shout_Dash");
+DB_MovementSpell("Shout_Dash_NPC");
+DB_MovementSpell("Shout_Dash_BonusAction");
+DB_MovementSpell("Shout_Dash_BonusAction_NPC");
+DB_MovementSpell("Shout_Dash_StepOfTheWind");
+DB_MovementSpell("Shout_Dash_CunningAction");
+DB_MovementSpell("Shout_Dash_CunningAction_NPC_OncePerTurn");
+DB_MovementSpell("Shout_ExpeditiousRetreat");
+DB_MovementSpell("Shout_GOB_WolfPens_Dash_GoblinAdult");
+DB_MovementSpell("Shout_GOB_WolfPens_Dash_GoblinKid");
+DB_MovementSpell("Shout_Dash_HookHorror");
+DB_MovementSpell("Shout_LOW_Dolor_Dash");
+DB_MovementSpell("Shout_SteelWatcher_Quadruped_Dash");
+
+DB_MovementSpell("Shout_Disengage");
+DB_MovementSpell("Shout_Disengage_BonusAction");
+DB_MovementSpell("Shout_Disengage_CunningAction");
+DB_MovementSpell("Shout_Disengage_StepOfTheWind");
+DB_MovementSpell("Shout_Disengage_Goblin");
+DB_MovementSpell("Shout_GOB_WolfPens_Disengage_GoblinKid");
+DB_MovementSpell("Shout_LOW_Dolor_Disengage");
+
+//Other Move actions being reacted to should not reset your movement.
+DB_MovementSpell("Shout_ReactToMove");
+
+//These SpellTypes indicate a ranged weapon attack. Ranged spells also use Target, but weapons don't use that.
+DB_RangedWeaponSpelltype("Projectile");
+DB_RangedWeaponSpelltype("Throw");
+KBSECTION
+//REGION Reset and automatically queue Stride movement
+
+//Reset status is applied on turn start by universal passive PathfinderDCBoost
+//Stride when moving - uses stat conditions to check for this if reset movement is available
+
+//Using a non-movement spell will reset movement
+IF
+CastedSpell((CHARACTER)_Char, (STRING)_Spell, _, _, _)
+AND
+NOT DB_MovementSpell(_Spell)
+AND
+NOT QRY_ExplorationMode(_Char)
+THEN
+RemoveStatus(_Char, "DEBUG_RESET_MOVE");
+ApplyStatus(_Char, "DEBUG_RESET_MOVE", -1.0, 0);
+
+//Remove reset move if movement status acquired
+IF
+StatusApplied((CHARACTER)_Char, (STRING)_Status, _, _)
+AND
+DB_MovementStatus(_Status)
+THEN
+RemoveStatus(_Char, "DEBUG_RESET_MOVE");
+
+//END_REGION
+
+//REGION More Attack of Opportunity triggers
+
+//TODO: Turn these into statuses so that the interrupt can respond properly (counterspell only works on spells)
+//On receiving the Stride status (can be automatic)
+IF
+StatusApplied((CHARACTER)_Char, (STRING)_Status, _, _)
+AND
+_Status != "DISENGAGE"
+AND
+QRY_CanBeOpportunityAttacked(_Char)
+AND
+DB_MovementStatus(_Status)
+THEN
+UseSpell(_Char,"Shout_ReactToMove",_Char,_Char,0);
+
+//On standing up
+IF
+StatusRemoved((CHARACTER)_Char, (STRING)_Status, _, _)
+AND
+QRY_CanBeOpportunityAttacked(_Char)
+AND
+IsStatusFromGroup(_Status, "SG_Prone", 1)
+THEN
+UseSpell(_Char,"Shout_ReactToMove",_Char,_Char,0);
+
+//Ranged attacks that aren't already spells
+IF
+CastedSpell((CHARACTER)_Char, (STRING)_Spell, (STRING)_SpellType, _, _)
+AND
+QRY_CanBeOpportunityAttacked(_Char)
+AND
+DB_RangedWeaponSpelltype(_SpellType)
+AND
+SpellHasSpellFlag(_Spell, "IsAttack", 1)
+AND
+NOT SpellHasSpellFlag(_Spell, "IsSpell", 1)
+AND
+NOT SpellHasSpellFlag(_Spell, "IgnoreAoO", 1)
+THEN
+UseSpell(_Char,"Shout_ReactToManipulate",_Char,_Char,0);
+
+//Anything else that has a somatic component (except ReactToManipulate, which would otherwise infinitely loop)
+IF
+CastedSpell((CHARACTER)_Char, (STRING)_Spell, _, _, _)
+AND
+QRY_CanBeOpportunityAttacked(_Char)
+AND
+_Spell != "Shout_ReactToManipulate"
+AND
+NOT SpellHasSpellFlag(_Spell, "IsSpell", 1)
+AND
+SpellHasSpellFlag(_Spell, "HasSomaticComponent", 1)
+AND
+NOT SpellHasSpellFlag(_Spell, "IgnoreAoO", 1)
+THEN
+UseSpell(_Char,"Shout_ReactToManipulate",_Char,_Char,0);
+
+//END_REGION
+
+//REGION Queries
+
+//Not turn based
+QRY
+QRY_ExplorationMode((CHARACTER)_Char)
+AND
+NOT DB_Is_InCombat(_Char, _)
+AND
+IsInForceTurnBasedMode(_Char, 0)
+THEN
+DB_NOOP(1);
+
+// In range and does not have any conditions preventing opportunity attacks
+QRY
+QRY_CanBeOpportunityAttacked((CHARACTER)_Char)
+AND
+NOT QRY_ExplorationMode(_Char)
+AND
+HasAppliedStatus(_Char, "FLANKED_AOO", 1)
+AND
+NOT HasAppliedStatusWithGroup(_Char, "SG_Ignore_AOO", 1)
+THEN
+DB_NOOP(1);
+
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
