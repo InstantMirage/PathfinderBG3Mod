@@ -3,6 +3,23 @@
   <stat_objects>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="5a8353bd-aa42-4191-b85e-2c48b17eba30" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_AttackOfOpportunity_OnCast" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="85927720-6624-4571-afdb-67381fcf374e" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hcf244533g8a50g71dbge8aag2b24f55e0534" version="2" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7b342ca0gea2dgca07gb43fg7ad99f8143ba" version="2" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_AttackOfOpportunity" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and not Self(context.Source, context.Observer) and Enemy(context.Source, context.Observer) and not Uninterruptible() and not DistanceToEntityGreaterThan(2, context.ObserverPosition, context.Source) and not AnyEntityIsItem() and IsSpell()" />
+        <field name="Properties" type="StringTableFieldDefinition" value=";" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="Roll" type="StringTableFieldDefinition" value="Attack(AttackType.MeleeWeaponAttack,false,false,context.Source,context.SourcePosition,context.Observer,context.ObserverPosition)" />
+        <field name="Success" type="StringTableFieldDefinition" value="Counterspell(); ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_RIPOSTE,100,0); UseSpell(OBSERVER_SOURCE,Target_AttackOfOpportunity_Crit,true,true,true);" />
+        <field name="Failure" type="StringTableFieldDefinition" value="UseSpell(OBSERVER_SOURCE,Target_AttackOfOpportunity_NoCrit,true,true,true);" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnSpellCast" enumeration_type_name="InterruptContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="7378d6dc-7088-4f62-9a0d-764a5b475d36" />
         <field name="Name" type="NameTableFieldDefinition" value="DeflectProjectileInterrupt" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h41c21140g9eccg9045g2e3fgb66df9f11b69" version="1" />
