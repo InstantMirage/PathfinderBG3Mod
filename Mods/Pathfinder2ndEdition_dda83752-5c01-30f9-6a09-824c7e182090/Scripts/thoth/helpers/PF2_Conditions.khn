@@ -132,6 +132,53 @@ function TrainedSkill() --Proficient
 	return HasProficiencyBonus(context.CheckedAbility,context.CheckedSkill,context.Source)
 end
 
+-- Off-guard
+
+function Flanking(exclusionStatus, distance, tag, hasShield, target, source)
+	distance = distance or 1.5
+    target = target or context.Target
+    source = source or context.Source
+
+    local errorTrue = {ConditionError("HasAllyWithinRange", {ConditionErrorData.MakeFromNumber(distance, EErrorDataType.Distance)})}
+    local errorFalse = {ConditionError("HasNotAllyWithinRange", {ConditionErrorData.MakeFromNumber(distance, EErrorDataType.Distance)})}
+
+    local allies = GetAlliesWithinRange(distance, target, source)
+    if allies ~= nil then
+        for _, entity in ipairs(allies.Allies) do
+			
+            -- ensure entity does not have the excluded status
+            local noExcludedStatus = ConditionResult(exclusionStatus == nil)
+            if exclusionStatus then
+                noExcludedStatus = ~HasStatus(exclusionStatus, entity)
+            end
+
+            -- filter by tag if provided
+            local hasTag = ConditionResult(tag == nil)
+            if tag then
+                hasTag = Tagged(tag, entity)
+            end
+
+            -- filter by having a shield if requested
+            local shieldEquipped = ConditionResult(not hasShield)
+            if hasShield then
+                shieldEquipped = HasShieldEquipped(entity)
+            end
+
+			-- need to be looking at an ally, and that ally must be looking at you and the enemy
+			local flankingAngles = ConditionResult(false)
+			if FacingMe(entity,source).Result then
+				flankingAngles = ConditionResult(true)
+			end
+
+            if noExcludedStatus.Result and hasTag.Result and shieldEquipped.Result and flankingAngles.Result then
+                return ConditionResult(true, errorFalse, errorTrue)
+            end
+        end
+    end
+
+    return ConditionResult(false, errorFalse, errorTrue)
+end
+
 -- Status MAP_X_ATTACKS
 
 --~functional for Stats.
@@ -174,6 +221,12 @@ function WeaponDieSizeNum(num)
 	--GetModifier(context.Source.WeaponAttackRollAbility)
 	--DealDamage(MainMeleeWeapon, MainMeleeWeaponDamageType)
     return ConditionResult(true)
+end
+
+--Barbarian
+
+function RageSpell()
+	return SpellId('Shout_Rage') | SpellId('Shout_AnimalRage') | SpellId('Shout_FuryRage') | SpellId('Shout_BludgeoningDragonRage') | SpellId('Shout_PoisonDragonRage') | SpellId('Shout_FifeDragonRage') | SpellId('Shout_ForceDragonRage') | SpellId('Shout_PsychicDragonRage') | SpellId('Shout_GiantRage') | SpellId('Shout_Rage_Frenzy') | SpellId('Shout_Rage_Totem_Bear') | SpellId('Shout_Rage_Boar')
 end
 
 --Fighter

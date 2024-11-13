@@ -62,15 +62,15 @@
         <field name="Name" type="NameTableFieldDefinition" value="DragonRoar" />
         <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerCombat" enumeration_type_name="CooldownType" version="1" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="SkillCheck(Skill.Intimidation,context.Target.GetPassiveSkill(Skill.Perception))" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty1Attack,100,1);ApplyStatus(StatusPenalty1Saves,100,1);ApplyStatus(StatusPenalty1AC,100,1);ApplyStatus(SELF,DragonRoarDamage,100,1)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="ApplyStatus(FRIGHTENED,100,1);IF(IsCritical()):ApplyStatus(FRIGHTENED,100,2); ApplyStatus(SELF,DragonRoarDamage,100,2);ApplyStatus(SELF,DRAGON_ROAR_AURA,100,2);" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Enemy()" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Action_Dragonborn_BreathWeapon_FireCone" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_Banite_AuraOfTerror" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h061800cbg5257ge707g52b9g52da021e7617" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5329b1a5g40c5g291bg88d6gee4eead89995" version="1" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Wisdom" />
         <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_BreathWeapon_Fire" />
         <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Loop_Damage_BreathWeapon_Fire" />
-        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_BreathWeapon_Fire" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="CrSpell_Cast_RedDragon_FrightfulPresence" />
         <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
         <field name="Shape" type="StringTableFieldDefinition" value="Cone" />
         <field name="FrontOffset" type="IntegerTableFieldDefinition" value="-2" />
@@ -78,12 +78,14 @@
         <field name="Angle" type="IntegerTableFieldDefinition" value="360" />
         <field name="CycleConditions" type="StringTableFieldDefinition" value="Enemy() and not Dead()" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
-        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="ce0aa392-7d13-45a2-8a59-e6786830265d,,;,,;bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11;af7ebc22-2ad5-4a39-ad4f-4e93e45f88c1,,;4354d3c1-ffc2-4da2-9840-d8c5f0932cbf,,;,,;c6951776-8830-4d97-9286-35899fe08d0b,,;,,;,," />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="ce0aa392-7d13-45a2-8a59-e6786830265d,,;,,;6bac9e6f-c3c6-489f-8d39-2df012b3e40b,,;aec7ed45-2dec-4ee6-b5dc-6403a87a1aad,,;4354d3c1-ffc2-4da2-9840-d8c5f0932cbf,,;,,;c6951776-8830-4d97-9286-35899fe08d0b,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Debuff" enumeration_type_name="VerbalIntent" version="1" />
         <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('DragonStanceStatus')" />
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="a6389f1d-b548-41f0-b236-62172c1dab04" />
-        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="855a50f5-6ef5-4a32-a8e1-a83273176c9a" />
-        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="53412dd1-8066-4860-a2ae-b27e77bfdab5" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="81c2e0fb-64a9-4d39-b24c-0afd01c1ddb6" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="3ec121cf-0862-40b9-ba59-0881af7da550" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(FRIGHTENED,100,1);ApplyStatus(DragonRoarDamage,100,2);ApplyStatus(DRAGON_ROAR_AURA,100,2)" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="CrSpell_Impact_RedDragon_FrightfulPresence" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">

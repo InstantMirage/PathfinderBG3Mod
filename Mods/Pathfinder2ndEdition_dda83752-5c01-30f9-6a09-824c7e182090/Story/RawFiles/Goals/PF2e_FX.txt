@@ -1,0 +1,46 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+//REGION Voice barks
+
+//Demoralize Cast
+IF
+UsingSpellOnTarget((CHARACTER)_Player,(CHARACTER)_Target, "Target_Demoralize",_,_,_)
+AND
+DB_IsOrWasInParty(_Player)
+AND
+NOT DB_CantTalk_IgnoreCombat(_Player)
+THEN
+PROC_TryStartSpellVocalAD((DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Cast_6dafdccd-091d-c0f4-4543-1199bdcb46d6,_Player,_Target);
+//Demoralize Preview
+IF
+StartedPreviewingSpell((CHARACTER)_Player,"Target_Demoralize",_, _)
+AND
+DB_IsOrWasInParty(_Player)
+THEN
+PROC_TryStartSpellVocalAD((DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Prepare_b523412d-1ea5-f3b0-ee9d-fa80cf72100a,_Player);
+
+
+//You're Next! Cast
+IF
+UsingSpellOnTarget((CHARACTER)_Player,(CHARACTER)_Target, "Target_FreeDemoralize",_,_,_)
+AND
+DB_IsOrWasInParty(_Player)
+AND
+NOT DB_CantTalk_IgnoreCombat(_Player)
+THEN
+PROC_TryStartSpellVocalAD((DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Cast_6dafdccd-091d-c0f4-4543-1199bdcb46d6,_Player,_Target);
+//You're Next! Preview
+IF
+StartedPreviewingSpell((CHARACTER)_Player,"Target_FreeDemoralize",_, _)
+AND
+DB_IsOrWasInParty(_Player)
+THEN
+PROC_TryStartSpellVocalAD((DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Prepare_b523412d-1ea5-f3b0-ee9d-fa80cf72100a,_Player);
+
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
