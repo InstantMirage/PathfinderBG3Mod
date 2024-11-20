@@ -3,6 +3,23 @@
   <stat_objects>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="5a8353bd-aa42-4191-b85e-2c48b17eba30" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_AttackOfOpportunity_OnCast" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="85927720-6624-4571-afdb-67381fcf374e" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hcf244533g8a50g71dbge8aag2b24f55e0534" version="2" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7b342ca0gea2dgca07gb43fg7ad99f8143ba" version="2" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_AttackOfOpportunity" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and not Self(context.Source, context.Observer) and Enemy(context.Source, context.Observer) and not Uninterruptible() and not DistanceToEntityGreaterThan(2, context.ObserverPosition, context.Source) and not AnyEntityIsItem() and IsSpell()" />
+        <field name="Properties" type="StringTableFieldDefinition" value=";" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="Roll" type="StringTableFieldDefinition" value="Attack(AttackType.MeleeWeaponAttack,false,false,context.Source,context.SourcePosition,context.Observer,context.ObserverPosition)" />
+        <field name="Success" type="StringTableFieldDefinition" value="Counterspell(); ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_RIPOSTE,100,0); UseSpell(OBSERVER_SOURCE,Target_AttackOfOpportunity_Crit,true,true,true);" />
+        <field name="Failure" type="StringTableFieldDefinition" value="UseSpell(OBSERVER_SOURCE,Target_AttackOfOpportunity_NoCrit,true,true,true);" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnSpellCast" enumeration_type_name="InterruptContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="7378d6dc-7088-4f62-9a0d-764a5b475d36" />
         <field name="Name" type="NameTableFieldDefinition" value="DeflectProjectileInterrupt" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h41c21140g9eccg9045g2e3fgb66df9f11b69" version="1" />
@@ -23,18 +40,33 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="8d53d12a-97bf-46a0-b8cc-fb1f0c1a3f4e" />
         <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Shield_Wizard" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc95d6305g110cg42ecg383ag89e7bf09eaf6" version="1" />
-        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll;OnPreDamage" enumeration_type_name="InterruptContext" version="1" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc95d6305g110cg42ecg383ag89e7bf09eaf6" version="2" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPreDamage" enumeration_type_name="InterruptContext" version="1" />
         <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
         <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
-        <field name="Conditions" type="StringTableFieldDefinition" value="not HasVerbalComponentBlocked(context.Observer) and IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and ((HasInterruptedAttack() and IsFlatValueInterruptInteresting(5, context.Source)) or IsSpellChildOrVariantFromContext('Projectile_MagicMissile')) and not AnyEntityIsItem() and not HasStatus('SHIELD',context.Observer)" />
-        <field name="Properties" type="StringTableFieldDefinition" value="IF(HasInterruptedAttack()):AdjustRoll(-5);IF(IsSpellChildOrVariantFromContext('Projectile_MagicMissile')):SetRoll(0);ApplyStatus(INTERRUPT_SHIELD_WIZARD,100,1);ApplyStatus(OBSERVER_OBSERVER,SHIELD,100,1);IF(HasPassive('ArcaneWard',context.Source)):ApplyStatus(SELF,ARCANE_WARD,100,-1)" />
-        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1;SpellSlotsGroup:1:1:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="not HasVerbalComponentBlocked(context.Observer) and IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsAttack() and HasStatus('SHIELD',context.Observer)" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(-LevelMapValue(Shield_Cantrip));ApplyStatus(OBSERVER_OBSERVER,SHIELD_SPELL_BROKEN,100,100);" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
         <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h792cf0dbg57bdga73egb646g263dc78c4008" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h792cf0dbg57bdga73egb646g263dc78c4008" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Shield" />
         <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
         <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(Shield_Cantrip)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="afd08539-b612-4151-ab9d-3d47aa20ba0e" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_ShieldBlock" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="77491e14-ef33-4e82-a07c-ff77b4daa530" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc02d3cdag0fa2ge726gf72bgb60a67601a95" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h3efb60d6g9b5ag42deg2516gd7dd6d52271d" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(Shield_Sturdy)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ShieldMaster_Block" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsAttack() and IsHit()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(-LevelMapValue(Shield_Sturdy));" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="HasStatus('RAISE_SHIELD') or HasStatus('RAISE_SHIELD_SPIRIT')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -308,6 +340,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd4333571g1d85g2f3dgcadcge0bbf11bd335" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsMeleeWeaponAttack() or IsMeleeUnarmedAttack() and not HasStatus('SG_Polymorph_BeastShape') and not AnyEntityIsItem()" />
         <field name="Properties" type="StringTableFieldDefinition" value="IF(HasInterruptedAttack()):AdjustRoll(-2);" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_UncannyDodge" />
       </fields>
     </stat_object>
   </stat_objects>

@@ -1,24 +1,87 @@
 local __util = require 'larian.util'
 --Conditions for Baldur's Path
 
--- Passive PF2_Movement
+-- Status: Movement (todo: refactor movement statuses to use these)
+
+--Returns if it is currently possible to Stride, if not, movement will be cleared
 function AutoStride()
-	return ~HasStatus('MANUAL_STRIDE') & HasActionResource('ActionPoint', 1 , 0, false, false)
+	local hasActions = HasActionResource('ActionPoint', 1 , 0, false, false) or HasStatus('HASTE_ATTACK')
+	local automaticStride = ~HasStatus('MANUAL_STRIDE')
+	
+	return ~Immobilized() & hasActions & automaticStride
 end
 
--- Status BOOST: Movement (todo: refactor movement statuses to use these)
-function DashSpell()
-	return SpellId('Shout_Dash')
+-- Can~Step into Difficult Terrain
+function DifficultTerrainStatusID()
+	return StatusId('DIFFICULT_TERRAIN') | StatusId('DIFFICULT_TERRAIN_DEEPWATER') | StatusId('DIFFICULT_TERRAIN_MUD') | StatusId('DIFFICULT_TERRAIN_VINES') | StatusId('DIFFICULT_TERRAIN_OVERGROWTH') | StatusId('DIFFICULT_TERRAIN_WEB') | StatusId('MAG_RAMPART_AURA_DIFFICULT_TERRAIN') | StatusId('DIFFICULT_TERRAIN_LAVA')
 end
 
-function DisengageSpell()
-	return SpellId('Shout_Disengage')
+function HasDifficultTerrainStatus()
+	return HasStatus('DIFFICULT_TERRAIN') | HasStatus('DIFFICULT_TERRAIN_DEEPWATER') | HasStatus('DIFFICULT_TERRAIN_MUD') | HasStatus('DIFFICULT_TERRAIN_VINES') | HasStatus('DIFFICULT_TERRAIN_OVERGROWTH') | HasStatus('DIFFICULT_TERRAIN_WEB') | HasStatus('MAG_RAMPART_AURA_DIFFICULT_TERRAIN') | HasStatus('DIFFICULT_TERRAIN_LAVA')
 end
 
 function HasDashStatus(entity)
     entity = entity or context.Source
 	return HasStatus('DASH', entity ) | HasStatus('DASH_STACKED', entity ) | HasStatus('DASH_STACKED_2', entity )
 end
+
+function StrideCostSpellCheck()
+	return SpellCategoryIs(SpellCategory.Dash) | HasUseCosts('Movement') | HasUseCosts('Stride')
+end
+
+function HasteSpellCheck()
+	return ( ExtraAttackSpellCheck() | SpellCategoryIs(SpellCategory.Dash) | HasUseCosts('Movement',false) | HasUseCosts('Stride',false) ) & HasUseCosts('ActionPoint',true)
+end
+
+--Chance of a crit on an opportunity attack
+function OpportunityAttackCritRoll(source,source_pos,observer,observer_pos)
+	
+	local attacktype = AttackType.MeleeUnarmedAttack
+	
+	if WieldingWeapon('Melee', false, true, context.Observer) and not HasStatus('DISARMED',OBSERVER_OBSERVER).Result then
+		attacktype = AttackType.MeleeWeaponAttack
+	end
+	
+	local attack = Attack(attacktype,false,false,source,source_pos,observer,observer_pos)
+
+	--Crit chance can be more than success-50%, with Advantage or an exceedingly high bonus.
+	local crit_chance = attack.Chance - 0.5
+	local crit_flat_dc = math.floor( 21 - crit_chance*20 )
+	
+    return ConditionResult(true,{},{},1.0) --RollDieAgainstDC(DiceType.d20,crit_flat_dc)
+end
+
+function OpportunityAttackNonCritRoll()
+	--Used in a SpellRoll, so the attack field can be simpler.
+	local attacktype = AttackType.MeleeUnarmedAttack
+	
+	if WieldingWeapon('Melee', false, true, context.Source) and not HasStatus('DISARMED').Result then
+		attacktype = AttackType.MeleeWeaponAttack
+	end
+	
+	local attack = Attack(AttackType.MeleeWeaponAttack)
+	
+	--Note: Crit chance can be more than success-50%, with Advantage or an exceedingly high bonus.
+	local crit_chance = math.max(attack.Chance - 0.5, 0.05)
+	local success_chance = attack.Chance - crit_chance
+	local fail_chance = 1 - attack.Chance
+	local non_crit_percentile_dc = math.floor( 100*fail_chance/(success_chance + fail_chance) + 1 )
+	
+	local roll = RollDieAgainstDC(DiceType.d100,non_crit_percentile_dc)
+	local roll_chance = success_chance/(success_chance + fail_chance)
+	
+	return ConditionResult(roll.Result,{},{},roll_chance)
+end
+
+
+function OpportunityAttackCheck()
+	local isMove = SpellCategoryIs(SpellCategory.Dash) | SpellCategoryIs(SpellCategory.Jump) | SpellTypeIs(SpellType.Rush)
+	local canHitMove = (~Player(context.Source) & Tagged('AI_IGNORED_TARGET') & ~HasStatus('GNOLL_SUDDENRUSH')) & ~HasStatus('SHOCKWAVE') & ~(HasStatus('MOBILE_NO_AOO', context.Source) & HasStatus('MOBILE_NO_AOO_SOURCE', context.Target)) & ~HasStatus('FLAMING_SPHERE_AURA') & ~HasStatus('SNEAKING',context.Target) & ~HasStatus('SG_Ignore_AOO',context.Target)
+	
+	return (~HasStatus('SANCTUARY',context.Source) & ~HasSpellFlag(SpellFlags.IgnoreAoO, context.Target)) & ( IsSpell() | (isMove & canHitMove) | IsRangedAttack() | HasSpellFlag(SpellFlags.HasSomaticComponent, context.Target) )
+end
+
+--Deprecated movement functions
 
 function IsAnyActionStatusEvent()
 	return IsStatusEvent(StatusEvent.OnAttack) | IsStatusEvent(StatusEvent.OnSpellCast)
@@ -62,16 +125,63 @@ function TrainedArmor() --Proficient or unarmored
     | armor.ArmorType == ArmorType.BreastPlate
     | armor.ArmorType == ArmorType.HalfPlate 
 
-	return HasProficiency('HeavyArmor',context.Source) or (HasProficiency('LightArmor',context.Source) and hasLightArmor) or (HasProficiency('MediumArmor',context.Source) and hasMediumArmor)
+	return HasProficiency('HeavyArmor',context.Source) or (HasProficiency('LightArmor',context.Source) & hasLightArmor) or (HasProficiency('MediumArmor',context.Source) & hasMediumArmor)
 end
 
 function TrainedSkill() --Proficient
 	return HasProficiencyBonus(context.CheckedAbility,context.CheckedSkill,context.Source)
 end
 
+-- Off-guard
+
+function Flanking(exclusionStatus, distance, tag, hasShield, target, source)
+	distance = distance or 1.5
+    target = target or context.Target
+    source = source or context.Source
+
+    local errorTrue = {ConditionError("HasAllyWithinRange", {ConditionErrorData.MakeFromNumber(distance, EErrorDataType.Distance)})}
+    local errorFalse = {ConditionError("HasNotAllyWithinRange", {ConditionErrorData.MakeFromNumber(distance, EErrorDataType.Distance)})}
+
+    local allies = GetAlliesWithinRange(distance, target, source)
+    if allies ~= nil then
+        for _, entity in ipairs(allies.Allies) do
+			
+            -- ensure entity does not have the excluded status
+            local noExcludedStatus = ConditionResult(exclusionStatus == nil)
+            if exclusionStatus then
+                noExcludedStatus = ~HasStatus(exclusionStatus, entity)
+            end
+
+            -- filter by tag if provided
+            local hasTag = ConditionResult(tag == nil)
+            if tag then
+                hasTag = Tagged(tag, entity)
+            end
+
+            -- filter by having a shield if requested
+            local shieldEquipped = ConditionResult(not hasShield)
+            if hasShield then
+                shieldEquipped = HasShieldEquipped(entity)
+            end
+
+			-- need to be looking at an ally, and that ally must be looking at you and the enemy
+			local flankingAngles = ConditionResult(false)
+			if FacingMe(entity,source).Result then
+				flankingAngles = ConditionResult(true)
+			end
+
+            if noExcludedStatus.Result and hasTag.Result and shieldEquipped.Result and flankingAngles.Result then
+                return ConditionResult(true, errorFalse, errorTrue)
+            end
+        end
+    end
+
+    return ConditionResult(false, errorFalse, errorTrue)
+end
+
 -- Status MAP_X_ATTACKS
 
---Not functional for Stats.
+--~functional for Stats.
 function CalculateMAP()
 	local MAP = -5
 	if AgileMAP() then
@@ -87,19 +197,19 @@ end
 -- Interrupt CritThreshold
 
 function CritThresholdSuccess()
-    local notCrit = context.InterruptedRoll.NaturalRoll < 20 and context.InterruptedRoll.NaturalRoll > 1
+    local notCrit = context.InterruptedRoll.NaturalRoll < 20 & context.InterruptedRoll.NaturalRoll > 1
 	local critDC = context.InterruptedRoll.Difficulty + 10
     local exceededBy10 = context.InterruptedRoll.Total >= critDC
 
-    return ConditionResult(notCrit and exceededBy10)
+    return ConditionResult(notCrit & exceededBy10)
 end
 
 function CritThresholdFail()
-    local notCrit = context.InterruptedRoll.NaturalRoll < 20 and context.InterruptedRoll.NaturalRoll > 1
+    local notCrit = context.InterruptedRoll.NaturalRoll < 20 & context.InterruptedRoll.NaturalRoll > 1
 	local critTotal = context.InterruptedRoll.Total + 10
     local failedBy10 = critTotal <= context.InterruptedRoll.Difficulty
 
-    return ConditionResult(notCrit and failedBy10)
+    return ConditionResult(notCrit & failedBy10)
 end
 
 -- Weapons
@@ -113,8 +223,14 @@ function WeaponDieSizeNum(num)
     return ConditionResult(true)
 end
 
+--Barbarian
+
+function RageSpell()
+	return SpellId('Shout_Rage') | SpellId('Shout_AnimalRage') | SpellId('Shout_FuryRage') | SpellId('Shout_BludgeoningDragonRage') | SpellId('Shout_PoisonDragonRage') | SpellId('Shout_FifeDragonRage') | SpellId('Shout_ForceDragonRage') | SpellId('Shout_PsychicDragonRage') | SpellId('Shout_GiantRage') | SpellId('Shout_Rage_Frenzy') | SpellId('Shout_Rage_Totem_Bear') | SpellId('Shout_Rage_Boar')
+end
+
 --Fighter
 
 function ExactingStrikeFX()
-    return (SpellId('Target_ExactingStrike') or SpellId('Projectile_ExactingStrike')) and HasStatus('MAP_2_ATTACKS',SELF)
+    return (SpellId('Target_ExactingStrike') or SpellId('Projectile_ExactingStrike')) & HasStatus('MAP_2_ATTACKS',SELF)
 end

@@ -9,18 +9,18 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h3578cb77g1ee7gae35gfc8cgda107b1f2b90" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Status_Prone" />
         <field name="FormatColor" type="EnumerationTableFieldDefinition" value="White" enumeration_type_name="FormatStringColor" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="AC(-2)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(OFF_GUARD)" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="IgnoredByImmobilized;InitiateCombat;DisableOverhead" enumeration_type_name="StatusPropertyFlags" version="1" />
-        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnTurn;OnMove" enumeration_type_name="StatusEvent" version="1" />
-        <field name="OnRemoveFunctors" type="FunctorsTableFieldDefinition" value="UseActionResource(Action,1,0,true)" />
-        <field name="StatusGroups" type="EnumerationListTableFieldDefinition" value="SG_Prone;SG_Condition;SG_Unconscious" enumeration_type_name="StatusGroupFlags" version="1" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnTurn" enumeration_type_name="StatusEvent" version="1" />
+        <field name="OnRemoveFunctors" type="FunctorsTableFieldDefinition" value="IF(TurnBased(context.Source)):ApplyStatus(DEBUG_RESET_MOVE); AI_ONLY:RestoreResource(Movement,100%,0,true);" />
+        <field name="StatusGroups" type="EnumerationListTableFieldDefinition" value="SG_Prone;SG_Condition;SG_Helpable_Condition" enumeration_type_name="StatusGroupFlags" version="1" />
         <field name="StillAnimationPriority" type="EnumerationTableFieldDefinition" value="KO" enumeration_type_name="StillAnimPriority" version="1" />
-        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="RemoveStatus(SNEAKING);RemoveStatus(SLEEP);RemoveStatus(SG_Sleeping);" />
+        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="RemoveStatus(SNEAKING);RemoveStatus(SLEEP);RemoveStatus(SG_Sleeping); AI_ONLY:ApplyStatus(AI_HELPER_HUNTERSMARK,100,1)" />
         <field name="UseLyingPickingState" type="EnumerationTableFieldDefinition" value="Yes" enumeration_type_name="YesNo" version="1" />
         <field name="SplatterDirtAmount" type="FloatTableFieldDefinition" value="0.1" />
         <field name="Sheathing" type="EnumerationTableFieldDefinition" value="Sheathed" enumeration_type_name="StatusSheathing" version="1" />
         <field name="StillAnimationType" type="EnumerationTableFieldDefinition" value="KO" enumeration_type_name="StatusAnimationType" version="1" />
-        <field name="StackId" type="StringTableFieldDefinition" value="CIRCUMSTANCE_PENALTY_AC" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="HasActionResource('ActionPoint',1,0) and ( not Combat() or IsCurrentTurnInCombat())" />
       </fields>
     </stat_object>
   </stat_objects>

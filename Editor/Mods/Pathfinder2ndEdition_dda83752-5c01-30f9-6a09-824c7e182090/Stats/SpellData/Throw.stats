@@ -79,5 +79,36 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h1bfc5ef4gd12cg1082gd028gcdd5cac988ba" version="1" />
       </fields>
     </stat_object>
+    <stat_object color="#FFA52A2A" is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="4397f707-e595-41de-a13f-d4246f20a6ab" />
+        <field name="Name" type="NameTableFieldDefinition" value="SPELLS" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="6a9d0c61-1bf7-43c6-9d0c-80bfe698fbe5" />
+        <field name="Name" type="NameTableFieldDefinition" value="TelekineticProjectile" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="7151b415-3c1c-402b-b83c-1f660e42b1fe" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="0" />
+        <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Evocation" enumeration_type_name="SpellSchool" version="1" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="9" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:DealDamage(LevelMapValue(D6Cantrip),Bludgeoning);" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="Attack(AttackType.RangedSpellAttack)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="TARGET:IF(IsLightThrownObject(context.HitDescription.ThrownObject,false)):DealDamage(LevelMapValue(D6Cantrip),Bludgeoning);TARGET:IF(HasWeaponProperty(WeaponProperties.Thrown,context.HitDescription.ThrownObject)):DealDamage(LevelMapValue(D6Cantrip), ThrownWeaponDamageType);" />
+        <field name="ThrowableSpellProperties" type="StringTableFieldDefinition" value=";" />
+        <field name="ThrowableTargetConditions" type="StringTableFieldDefinition" value="not Grounded() and not IsItemDisabled() and not HasAttribute('InventoryBound') and ( (Item() and not HasWeightGreaterThan(5000)) or Dead()) and (not IsEquipped() or IsEquipmentSlot(EquipmentSlot.MeleeMainHand) or IsEquipmentSlot(EquipmentSlot.MeleeOffHand) or IsEquipmentSlot(EquipmentSlot.Boots))" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Transmutation_Levitate" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5c8acea4g3472g5267g1c78g73787f3f7f0f" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha9743f03g415cg49a2g4e07g428521662fd3" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="Distance(9)" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Cantrip),Bludgeoning,Magical)" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="RangedAttack" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value=";" />
+        <field name="ProjectileTerrainOffset" type="EnumerationTableFieldDefinition" value="Yes" enumeration_type_name="YesNo" version="1" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2" />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
+      </fields>
+    </stat_object>
   </stat_objects>
 </stats>
