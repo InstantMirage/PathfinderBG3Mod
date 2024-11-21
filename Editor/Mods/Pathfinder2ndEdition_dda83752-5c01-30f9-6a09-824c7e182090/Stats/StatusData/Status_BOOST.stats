@@ -220,6 +220,16 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="e723d6ef-6bb7-4e7f-b5ee-54203ebeb662" />
+        <field name="Name" type="NameTableFieldDefinition" value="StatusBonus1SpellAttack" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="3b0076bb-a3fe-4aad-beac-5ae36ece6f1d" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hdfce80f7gccfege9b6g8eb2gcad3e8085906" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h8ce8e9ebga859g4484g2402g0fa10d12f255" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="RollBonus(MeleeSpellAttack,1);RollBonus(RangedSpellAttack,1)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="4b2202fe-3b22-49c0-936b-7e53d63f661d" />
         <field name="Name" type="NameTableFieldDefinition" value="StatusPenalty1Attack" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="3b0076bb-a3fe-4aad-beac-5ae36ece6f1d" />
@@ -305,13 +315,31 @@
         <field name="Name" type="NameTableFieldDefinition" value="StatusPenalty2Saves" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="3b0076bb-a3fe-4aad-beac-5ae36ece6f1d" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h56edaa58gad66gbfbfgaed1g52ec4e25cb3b" version="2" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hb3f4bb53g4b31g3c1cg34d2gee027df648f0" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hb3f4bb53g4b31g3c1cg34d2gee027df648f0" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_Intent_Debuff" />
         <field name="StackId" type="StringTableFieldDefinition" value="STATUS_PENALTY_SAVES" />
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="2" />
         <field name="Boosts" type="StringTableFieldDefinition" value="RollBonus(SavingThrow,-2)" />
         <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not Tagged('STAT_PEN_2SAVES')" />
         <field name="OnRemoveFunctors" type="FunctorsTableFieldDefinition" value="IF(Tagged('STAT_PEN_1SAVES')):ApplyStatus(StatusPenalty1Saves,100,-1)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="b72b055a-22ba-4395-85c1-0252a26db28e" />
+        <field name="Name" type="NameTableFieldDefinition" value="StatusPenalty2WillSaves" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="2f9f0b7e-59d8-45ad-a4af-4b9c79c9a3ee" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h24f5f834g92c4g62d5gfc24g44254c332772" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="RollBonus(SavingThrow,-2,Wisdom)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="9c634c2c-8d24-451f-9433-81ba0b339f84" />
+        <field name="Name" type="NameTableFieldDefinition" value="StatusPenalty1WillSaves" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="b72b055a-22ba-4395-85c1-0252a26db28e" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hfecce871g0f2eg4e68g9f1dg6a1ec7bb88ee" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="RollBonus(SavingThrow,-1,Wisdom)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -437,6 +465,17 @@
         <field name="Boosts" type="StringTableFieldDefinition" value="SpellSaveDC(-2)" />
         <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not Tagged('STAT_PEN_2DC')" />
         <field name="OnRemoveFunctors" type="FunctorsTableFieldDefinition" value="IF(Tagged('CIRC_PEN_2DC')):ApplyStatus(CircumstancePenalty2SpellDC,100,-1);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="631576a2-fe88-4754-aacb-ba91ebcb571e" />
+        <field name="Name" type="NameTableFieldDefinition" value="StatusBonus1Skills" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="3b0076bb-a3fe-4aad-beac-5ae36ece6f1d" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd0210435g30a4g4551gb4dfgae72a5077f79" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h874e5390g56e0g4609g05e7gb2ca44981f84" version="1" />
+        <field name="StackId" type="StringTableFieldDefinition" value="STATUS_BONUS_SKILLS" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="RollBonus(SkillCheck,1)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2053,6 +2092,48 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h9b4c4988g574fgc8fcgf5fcg9fbc3988b615" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Paladin_DivineSense" />
         <field name="Passives" type="StringTableFieldDefinition" value="AngelicHaloPassive" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="e89cb8c8-9543-4b24-bd08-0dc532b292a5" />
+        <field name="Name" type="NameTableFieldDefinition" value="GluttonsJawsHP" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h750e4e66g5a69ga0f5g639cg05396da89f2a" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="TemporaryHP(LevelMapValue(D4Bonus))" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2ed56272-06b3-4301-910f-ecea4471c034" />
+        <field name="Name" type="NameTableFieldDefinition" value="UndeathsBlessing" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2efd3b12gf6b4gf2e0gf6c7gbc12a9219a11" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd716c8c9ge92fg1133gae2ag8fc13ed4eee9" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Necromancy_ChillTouch" />
+        <field name="Passives" type="StringTableFieldDefinition" value="UndeathsBlessingFullPassive" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="f5a0b7df-3849-45e4-b5d5-c5dd9179efce" />
+        <field name="Name" type="NameTableFieldDefinition" value="UndeathsBlessingSuccess" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5a507a0fg9b23gdf56ge743g76887b4108ea" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h474308f6g5ff5g3e48g2f1fg1f3818e4442a" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Necromancy_ChillTouch" />
+        <field name="Passives" type="StringTableFieldDefinition" value="UndeathsBlessingHalfPassive" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="839955eb-4594-483c-b0e6-d6d8f86c0b5d" />
+        <field name="Name" type="NameTableFieldDefinition" value="HagBlood" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="15d2f192-eff4-4bcf-bc26-aca94bc7d295" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hfdc841b3g106fg7878g5929g818683b87cce" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hfe04b125gb2d0g1772g6182gd46736980fdc" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(4*(LevelMapValue(H1Plus1),Psychic)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="statIcons_HagsTrickery" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="TemporaryHP(4*(LevelMapValue(H1Plus1))" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not Combat()" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatusEvent" version="1" />
       </fields>
     </stat_object>
   </stat_objects>
