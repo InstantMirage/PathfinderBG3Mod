@@ -583,7 +583,7 @@
         <field name="Level" type="IntegerTableFieldDefinition" value="0" />
         <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Evocation" enumeration_type_name="SpellSchool" version="1" />
         <field name="TargetFloor" type="StringTableFieldDefinition" value="-1" />
-        <field name="TargetRadius" type="StringTableFieldDefinition" value="9" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="18" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="Attack(AttackType.RangedSpellAttack)" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D4Cantrip),Piercing,Magical)" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="not Self() and not Dead()" />
@@ -1892,7 +1892,7 @@
         <field name="Level" type="IntegerTableFieldDefinition" value="1" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="DealDamage(1d4+1,Force,Magical)" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="18" />
-        <field name="AmountOfTargets" type="StringTableFieldDefinition" value="3" />
+        <field name="AmountOfTargets" type="StringTableFieldDefinition" value="1" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="not Self() and not Dead()" />
         <field name="ProjectileCount" type="StringTableFieldDefinition" value="1" />
         <field name="Trajectories" type="StringTableFieldDefinition" value="348013df-7958-4ca9-ac9f-80337e054bee,7bff57fa-fd21-4ab3-9384-83fb14237690" />
@@ -1905,7 +1905,7 @@
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:3;SpellSlotsGroup:1:1:1" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;38cdb41c-2eec-4e03-bb31-83cff0346c35,,;85414f5f-b448-4dda-9370-1b6c4b38b561,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
-        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasVerbalComponent;HasSomaticComponent;IsSpell;HasHighGroundRangeExtension;RangeIgnoreVerticalThreshold;IsHarmful" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasVerbalComponent;HasSomaticComponent;IsSpell;HasHighGroundRangeExtension;RangeIgnoreVerticalThreshold;IsHarmful;IsLinkedSpellContainer" enumeration_type_name="SpellFlagList" version="1" />
         <field name="RechargeValues" type="StringTableFieldDefinition" value="4-6" />
         <field name="SpellPrepareCost" type="IntegerTableFieldDefinition" value="1" />
         <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Evocation" enumeration_type_name="SpellSchool" version="1" />
@@ -1922,38 +1922,124 @@
         <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Force_Gen_L1to3_Loop" />
         <field name="CastTargetHitDelay" type="IntegerTableFieldDefinition" value="100" />
         <field name="CombatAIOverrideSpell" type="StatReferenceTableFieldDefinition" value="Projectile_MagicMissile_AI" />
+        <field name="ContainerSpells" type="StringTableFieldDefinition" value="Projectile_MagicMissile_Rank1_1Action;Projectile_MagicMissile_Rank1_2Action;Projectile_MagicMissile_Rank1_3Action" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="392e28a9-c596-4fef-86eb-bf106a65bd91" />
-        <field name="Name" type="NameTableFieldDefinition" value="MagicMissile_2" />
+        <field name="UUID" type="IdTableFieldDefinition" value="2b3cca61-49c8-4af4-92ce-f3fe1101d57f" />
+        <field name="Name" type="NameTableFieldDefinition" value="MagicMissile_Rank1_1Action" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="caf875f1-9d04-4853-90d6-4ccecc08312f" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Projectile_MagicMissile" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(1d4+1,Force)" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1;SpellSlotsGroup:1:1:1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="6819dd70-1485-4a87-8387-e76fe76b80a5" />
+        <field name="Name" type="NameTableFieldDefinition" value="MagicMissile_Rank1_2Action" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="caf875f1-9d04-4853-90d6-4ccecc08312f" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Projectile_MagicMissile" />
+        <field name="AmountOfTargets" type="StringTableFieldDefinition" value="2" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(2d4+2,Force)" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="e9544044-4420-4408-a4ac-83fa70c51c30" />
+        <field name="Name" type="NameTableFieldDefinition" value="MagicMissile_Rank1_3Action" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="caf875f1-9d04-4853-90d6-4ccecc08312f" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Projectile_MagicMissile" />
         <field name="AmountOfTargets" type="StringTableFieldDefinition" value="3" />
-        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:3;SpellSlotsGroup:1:1:2" />
-        <field name="RootSpellID" type="StringTableFieldDefinition" value="Projectile_MagicMissile" />
-        <field name="PowerLevel" type="IntegerTableFieldDefinition" value="2" />
-        <field name="Using" type="BaseClassTableFieldDefinition" value="caf875f1-9d04-4853-90d6-4ccecc08312f" />
-        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(3d4+3,Force)" />
-        <field name="CombatAIOverrideSpell" type="StatReferenceTableFieldDefinition" value="Projectile_MagicMissile_2_AI" />
-        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(1d4+1,Force);3" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h24c9a75dg48ceg8d6eg7807gbe9cf3779442" version="1" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc8c7b5d2gf358g8fb1g7da4gd9f8644b1e61" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="99460986-8251-44ab-8649-6bdb696a5c8d" />
-        <field name="Name" type="NameTableFieldDefinition" value="MagicMissile_3" />
-        <field name="AmountOfTargets" type="StringTableFieldDefinition" value="6" />
-        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:3;SpellSlotsGroup:1:1:3" />
-        <field name="RootSpellID" type="StringTableFieldDefinition" value="Projectile_MagicMissile" />
-        <field name="PowerLevel" type="IntegerTableFieldDefinition" value="3" />
+        <field name="UUID" type="IdTableFieldDefinition" value="3b58002a-b09a-4823-9c33-e3cc48508449" />
+        <field name="Name" type="NameTableFieldDefinition" value="MagicMissileRank3" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="caf875f1-9d04-4853-90d6-4ccecc08312f" />
-        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(6d4+5,Force)" />
-        <field name="CombatAIOverrideSpell" type="StatReferenceTableFieldDefinition" value="Projectile_MagicMissile_3_AI" />
-        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(1d4+1,Force);6" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h6f496a09g0437g4275g823fga87680847457" version="1" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h25ae72e1gfb4ag357cga9cdgc5bbf8290c72" version="1" />
+        <field name="ContainerSpells" type="StringTableFieldDefinition" value="Projectile_MagicMissile_Rank3_1Action;Projectile_MagicMissile_Rank3_2Action;Projectile_MagicMissile_Rank3_3Action;" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="87173ccf-c470-438d-861c-1ff5f64a7db0" />
+        <field name="Name" type="NameTableFieldDefinition" value="MagicMissile_Rank3_1Action" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="caf875f1-9d04-4853-90d6-4ccecc08312f" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="3" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Projectile_MagicMissile" />
+        <field name="AmountOfTargets" type="StringTableFieldDefinition" value="2" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(2d4+2,Force)" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1;SpellSlotsGroup:1:1:3" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="f0cdcd11-178c-45b6-9f28-ad615084b4cb" />
+        <field name="Name" type="NameTableFieldDefinition" value="MagicMissile_Rank3_2Action" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="caf875f1-9d04-4853-90d6-4ccecc08312f" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="3" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Projectile_MagicMissile" />
+        <field name="AmountOfTargets" type="StringTableFieldDefinition" value="4" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(4d4+4,Force)" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:3" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="b78e0e9c-c327-45cd-b3cf-00137c427b30" />
+        <field name="Name" type="NameTableFieldDefinition" value="MagicMissile_Rank3_3Action" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="caf875f1-9d04-4853-90d6-4ccecc08312f" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="3" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Projectile_MagicMissile" />
+        <field name="AmountOfTargets" type="StringTableFieldDefinition" value="6" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(6d4+6,Force)" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:3;SpellSlotsGroup:1:1:3" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="e8097763-81b0-4188-9979-87307b36accd" />
+        <field name="Name" type="NameTableFieldDefinition" value="MagicMissileRank5" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="caf875f1-9d04-4853-90d6-4ccecc08312f" />
+        <field name="ContainerSpells" type="StringTableFieldDefinition" value="Projectile_MagicMissile_Rank5_1Action;Projectile_MagicMissile_Rank5_2Action;Projectile_MagicMissile_Rank5_3Action;" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="c7d5456d-a050-4e56-9ff7-3472c802b37c" />
+        <field name="Name" type="NameTableFieldDefinition" value="MagicMissile_Rank5_1Action" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="caf875f1-9d04-4853-90d6-4ccecc08312f" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="5" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Projectile_MagicMissile" />
+        <field name="AmountOfTargets" type="StringTableFieldDefinition" value="3" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1;SpellSlotsGroup:1:1:5" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="fa115430-74ab-4b9b-8f87-2339ce49fa38" />
+        <field name="Name" type="NameTableFieldDefinition" value="MagicMissile_Rank5_2Action" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="caf875f1-9d04-4853-90d6-4ccecc08312f" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="5" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Projectile_MagicMissile" />
+        <field name="AmountOfTargets" type="StringTableFieldDefinition" value="6" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(6d4+6,Force)" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:5" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="697d4988-27ad-40cd-84ad-e8315eeef882" />
+        <field name="Name" type="NameTableFieldDefinition" value="MagicMissile_Rank5_3Action" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="caf875f1-9d04-4853-90d6-4ccecc08312f" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="5" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Projectile_MagicMissile" />
+        <field name="AmountOfTargets" type="StringTableFieldDefinition" value="9" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(9d4+9,Force)" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:3;SpellSlotsGroup:1:1:5" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">

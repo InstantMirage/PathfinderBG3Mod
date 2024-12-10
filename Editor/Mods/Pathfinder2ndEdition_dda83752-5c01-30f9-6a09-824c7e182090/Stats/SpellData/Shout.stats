@@ -401,7 +401,7 @@
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="50e7cd15-5b95-47e9-b6f8-ed7900d23d9d,,;,,;289b4f53-3ca5-4dff-a1d4-e84a84a283f0,,;772a34bf-06c1-43ee-ae7b-1a1ffd3fef9e,,;03239618-40c7-47ab-a7b4-d2e0b111e5f7,,;,,;bc09e561-370b-4307-88d7-6462b6fbabec,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Buff" enumeration_type_name="VerbalIntent" version="1" />
         <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
-        <field name="RequirementConditions" type="StringTableFieldDefinition" value="not HasStatus('SG_RAGE') and not HasStatus('CALM_EMOTIONS')" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="not HasStatus('SG_Rage') and not HasStatus('CALM_EMOTIONS')" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="f5269188-8099-49b1-8515-b549bd8b61b9" />
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="3b4c35ad-4d0a-4889-8408-46181439be42" />
@@ -489,7 +489,7 @@
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="78edc237-11ea-49c0-8f9d-d88510f5c685" />
-        <field name="Name" type="NameTableFieldDefinition" value="FireDragonDrage" />
+        <field name="Name" type="NameTableFieldDefinition" value="FireDragonRage" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="0ecae5ee-bb32-483a-a656-959de6a30ee3" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="he6288c4bg214egb24cg03d0g013229054828" version="1" />
         <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_DRAGON_FIRE,100,10);ApplyStatus(RageTempHp,100,10)" />
@@ -3758,6 +3758,29 @@
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="8f9043e2-4608-43c5-b78f-c4a1b91ea340" />
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="d822f332-8213-49a1-bc48-4668a89199ad" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="101fd8dd-1c64-4d1e-b417-6cf222b80f36" />
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_0" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="ba6dd501-1bea-4509-b54c-bfccdebd7bfa" />
+        <field name="Name" type="NameTableFieldDefinition" value="ArcaneTap" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="fdf204ae-9aa9-4e1b-b3f6-4905ee2f8f94" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:IF( not HasStatus('DISENGAGE')):UseActionResource(Movement,100%,0,true);AI_IGNORE:RestoreResource(Movement,4.5,0);AI_IGNORE:IF(not Tagged('DOUBLE_STEP')):UseActionResource(Movement,1.5,0); AI_IGNORE:ApplyStatus(DISENGAGE,100,1);AI_ONLY:IF(HasStatus('FLANKED_AOO')):ApplyStatus(DISENGAGE,100,1);" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0d847bddge89ag1a97g4152gf13d691e89a5" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h6b09eb6eg10f6gf3d6g48d2g051ac7d4c4b6" version="1" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(DISENGAGE_TAP,100,1)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="f4fd9018-9362-4196-ad25-60b7c40d57fb" />
+        <field name="Name" type="NameTableFieldDefinition" value="BespellStriks" />
       </fields>
     </stat_object>
   </stat_objects>

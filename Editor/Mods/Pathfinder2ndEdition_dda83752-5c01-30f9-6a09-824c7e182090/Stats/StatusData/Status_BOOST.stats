@@ -666,6 +666,16 @@
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="9b17c359-417d-466e-9d1a-81fe614ad1a2" />
+        <field name="Name" type="NameTableFieldDefinition" value="DISENGAGE_TAP" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="ec8273bd-c522-49c3-b0bf-c2b833c549eb" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5425a57cgb62ag5e06g407ag9736f85c1f66" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hdb6f025cgb4abg390bge550g1892ff9a3257" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IgnoreLeaveAttackRange();UnlockSpellVariant(HasUseCosts('Movement'),ModifyUseCosts(Replace,ActionPoint,1,0,Movement)); ActionResourceBlock(Stride)" />
+      </fields>
+    </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="03f2ba03-f0c8-4769-ac64-fdb2dc9bb73a" />
@@ -878,10 +888,14 @@
         <field name="Boosts" type="StringTableFieldDefinition" value=";" />
         <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="(IsStatusEvent(StatusEvent.OnTurn) and RollDieAgainstDC(DiceType.d20,15) ) or not HasHPPercentageEqualOrLessThan(99)" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnHeal;OnTurn" enumeration_type_name="StatusEvent" version="1" />
-        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(2, Slashing);" />
-        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(2, Slashing); ;AI_ONLY:DealDamage(1,Slashing)" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(1, Slashing);" />
+        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(1, Slashing); ;AI_ONLY:DealDamage(1,Slashing)" />
         <field name="StatusGroups" type="EnumerationListTableFieldDefinition" value="SG_Condition" enumeration_type_name="StatusGroupFlags" version="1" />
         <field name="SplatterBloodAmount" type="FloatTableFieldDefinition" value="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(1,Slashing);" />
+        <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
+        <field name="TooltipSave" type="StringTableFieldDefinition" value="RollDieAgainstDC(DiceType.d20,15)" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="InitiateCombat;MultiplyEffectsByDuration" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2134,6 +2148,42 @@
         <field name="Boosts" type="StringTableFieldDefinition" value="TemporaryHP(4*(LevelMapValue(H1Plus1))" />
         <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not Combat()" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatusEvent" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="5a45a99c-3524-4435-aef6-3cd41bb96e03" />
+        <field name="Name" type="NameTableFieldDefinition" value="BloodMagicSelf" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4728f7e6g7470g7d7cgb081gbe20d3136a74" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h9eff44e4g54d2gf5d7gd3c2g72be2558c12a" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="statIcons_MAG_TemporaryHP" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="9110796f-3280-4833-ab19-139affd9e314" />
+        <field name="Name" type="NameTableFieldDefinition" value="BleedOutUnlock" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h9995367cg3615g3774gaba8g2c30122b58df" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd781be31g4c35g07fdg6a4agca01eda3f8f7" version="1" />
+        <field name="StackId" type="StringTableFieldDefinition" value="BleedOut" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="0" />
+        <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_BleedOut)" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnTurn;OnCombatEnded;OnSpellCast" enumeration_type_name="StatusEvent" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="cb13a4c3-9ed3-4845-96cf-93f63476b03b" />
+        <field name="Name" type="NameTableFieldDefinition" value="BespellStrikes" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="e2d872e0-501e-421f-9a23-fff9e34879ef" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc7438a3dgfd61g7200g102bga73bb8d0a587" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf35bd381g040ag4f76g96c5g2232a5216a41" version="1" />
+        <field name="StackId" type="StringTableFieldDefinition" value="BespellStrikes" />
+        <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="DamageBonus(1d6,Force)" />
+        <field name="Passives" type="StringTableFieldDefinition" value=";" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DamageBonus(1d6,Force)" />
       </fields>
     </stat_object>
   </stat_objects>
