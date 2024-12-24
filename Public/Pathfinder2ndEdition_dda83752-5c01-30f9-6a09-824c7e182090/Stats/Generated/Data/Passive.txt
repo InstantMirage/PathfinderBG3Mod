@@ -2488,7 +2488,61 @@ type "PassiveData"
 new entry "RANGER"
 type "PassiveData"
 
-new entry "New_Stat_1"
+new entry "HuntPreyPrecisionUnlock"
+type "PassiveData"
+data "DisplayName" "hb38d397fge400g042fg0cf4g4035e461f29b;1"
+data "Description" "h848f94f0g1735g19e0gb961g709b2f5ab890;1"
+data "Icon" "PassiveFeature_HuntersMark"
+data "Properties" "Highlighted"
+data "Boosts" "UnlockSpell(Target_HuntPreyPrecision)"
+
+new entry "HuntPreyPrecisionPassive"
+type "PassiveData"
+data "StatsFunctorContext" "OnDamage"
+data "Conditions" "HasStatus('HuntersMarkPrecisionStatus',context.Target,context.Source) and not HasStatus('PrecisionEdgeRound',context.Source)"
+data "StatsFunctors" "DealDamage(1d8,Piercing);ApplyStatus(SELF,PrecisionEdgeRound,100,1)"
+
+new entry "AnimalCompanionRanger"
+type "PassiveData"
+using "FaithfulSteed"
+data "DisplayName" "hef02f8bcg89e8g088fg9ff1g6d75769094f8;1"
+data "Description" "hc1f79915g8401ga4aagdd8dgf5ad34959c90;1"
+
+new entry "HuntedShot"
+type "PassiveData"
+
+new entry "TwinTakedown"
+type "PassiveData"
+data "DisplayName" "hd839ef7egc43ag19f9g2c79ga7a78571171a;1"
+data "Description" "h7c73ac50g3323g5ef2ged30g172032c99124;1"
+data "DescriptionParams" "Allows you to make an offhand attack as a free action after attacking your hunted prey."
+data "Icon" "Action_Flurry"
+data "Properties" "Highlighted"
+data "StatsFunctorContext" "OnAttack"
+data "Conditions" "HasStatus('HuntersMarkPrecisionStatus',context.Target,context.Source)"
+data "StatsFunctors" "ApplyStatus(SELF, TwinTakedownUnlock,100,1)"
+
+new entry "AnimalEmpathy"
+type "PassiveData"
+
+new entry "HuntersAim"
+type "PassiveData"
+
+new entry "CompanionsCry"
+type "PassiveData"
+
+new entry "FarShot"
+type "PassiveData"
+
+new entry "TwinParry"
+type "PassiveData"
+
+new entry "MatureAnimalCompanion"
+type "PassiveData"
+using "LoyalWarhorse"
+data "DisplayName" "h578a88e9g099bg14a0gae4egcfd7d22b9db1;1"
+
+new entry "SnapShot"
 type "PassiveData"
 
 new entry "DRUID"
@@ -2499,4 +2553,17 @@ type "PassiveData"
 
 new entry "WARLOCK"
 type "PassiveData"
+
+new entry "HuntersMark"
+type "PassiveData"
+data "DisplayName" "h214555a9g5fccg083ag376dg38754b65bfc9;1"
+data "Description" "h28b13c59g90aege733gd9e2gf7d6350bb0d0;1"
+data "DescriptionParams" "DealDamage(1d6,MainMeleeWeaponDamageType)"
+data "Icon" "PassiveFeature_HuntersMark"
+data "PriorityOrder" "2"
+data "Properties" "Highlighted"
+data "Boosts" "IF(HasStatus('HUNTERS_MARK',context.Target,context.Source) and IsWeaponAttack() and HasDamageEffectFlag(DamageFlags.Hit)):CharacterWeaponDamage(1d6)"
+data "StatsFunctorContext" "OnAttack"
+data "Conditions" "HasStatus('HUNTERS_MARK',context.Target,context.Source) and IsWeaponAttack() and HasDamageEffectFlag(DamageFlags.Hit) and TotalAttackDamageDoneGreaterThan(0)"
+data "StatsFunctors" "ApplyStatus(PASSIVE_HUNTERS_MARK,100,0)"
 

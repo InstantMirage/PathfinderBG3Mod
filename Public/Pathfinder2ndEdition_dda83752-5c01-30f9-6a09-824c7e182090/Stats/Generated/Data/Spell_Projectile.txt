@@ -146,7 +146,7 @@ data "SpellProperties" "GROUND:DealDamage(MainRangedWeapon, MainRangedWeaponDama
 data "TargetFloor" "-1"
 data "TargetRadius" "RangedMainWeaponRange"
 data "SpellRoll" "Attack(AttackType.RangedWeaponAttack);CastOffhand[Attack(AttackType.RangedOffHandWeaponAttack)]"
-data "SpellSuccess" "DealDamage(max(1,MainRangedWeapon)-DexterityModifier, MainRangedWeaponDamageType); ExecuteWeaponFunctors(MainHand)"
+data "SpellSuccess" "DealDamage(max(1,MainRangedWeapon), MainRangedWeaponDamageType); ExecuteWeaponFunctors(MainHand)"
 data "SpellFail" "IF(HasStatus('YSRSLIDFWWADNIWHWIHLY')):SpawnExtraProjectiles(Projectile_MainHandAttack);ApplyStatus(YSRSLIDFWWADNIWHWIHLY_YWNK,100,1)"
 data "TargetConditions" "not Self() and not Dead()"
 data "ProjectileCount" "1"
