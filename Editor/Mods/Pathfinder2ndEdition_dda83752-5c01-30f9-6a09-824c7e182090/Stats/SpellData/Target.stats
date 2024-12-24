@@ -4498,6 +4498,35 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="db180f57-e321-431d-b1e5-43e05e35d80d" />
+        <field name="Name" type="NameTableFieldDefinition" value="HuntPreyPrecision" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="0" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(SELF,HuntPreyPrecisionOwner,100,-1);ApplyStatus(HuntersMarkPrecisionStatus,100,-1)" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="18" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Self() and not (not Player(context.Source) and not Enemy()) and not HasStatus('DOWNED')" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Divination_HuntersMark" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h06119728g446aga285g47b6gcba06de1c750" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="haa4d2a3fgb7ddgf239g4afegf180f5e0bb6a" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(1d8,MainWeaponDamageType)" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(1d8,MainWeaponDamageType,,,,ad727a13-c6f0-4b5b-aefd-aac79c6ed46e)" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(HuntersMarkPrecisionStatus,100,-1)" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Debuff_HuntersMark_L1to3" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Debuff_HuntersMark_L1to3" />
+        <field name="VocalComponentSound" type="StringTableFieldDefinition" value="Vocal_Component_HuntersMark" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1;" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="9313094a-bae2-454f-9701-f920d0e8e98d,,;,,;3e441d3f-11f9-432d-877c-c0ba4d92c74a,,;8b7ae969-2a04-4720-9685-3bde54c18ffe,,;808fdfab-2e6c-472e-b3c4-19ce4a719d9d,,;,,;ea745d30-eb87-447f-b190-c81298e27d9c,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Debuff" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasHighGroundRangeExtension" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellPrepareCost" type="IntegerTableFieldDefinition" value="0" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="de6dddd8-8a32-4db1-a521-70706648a83b" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="2e44371c-a637-4cab-a120-3088b3d83369" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="7537e8f0-1897-4a66-83fe-7f58e9dbd12e" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="f43cc666-64fb-47ec-9b1b-6fc4a7308561" />
         <field name="Name" type="NameTableFieldDefinition" value="Sanctuary" />
         <field name="Level" type="IntegerTableFieldDefinition" value="1" />
@@ -7330,6 +7359,29 @@
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="ec80b3cd-29fd-40d2-a41a-b703db1b6f8e" />
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="d97c5b65-eccd-4b54-a665-64539e7924bf" />
         <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="ef274710-5f43-4af5-ad69-fc87b41ccbb5" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="0d6f0a3c-4a6b-464c-be5b-480f42c82694" />
+        <field name="Name" type="NameTableFieldDefinition" value="TwinTakedownStrike" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="6c28df10-3ec4-48fa-9e59-fe50fd9181fd" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:DealDamage(OffhandMeleeWeapon, OffhandMeleeWeaponDamageType); GROUND:ExecuteWeaponFunctors(OffHand)" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="MeleeMainWeaponRange" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('HuntersMarkPrecisionStatus',context.target)" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="Attack(AttackType.MeleeOffHandWeaponAttack)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(max(0,OffhandMeleeWeapon), OffhandMeleeWeaponDamageType);ExecuteWeaponFunctors(OffHand)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Flurry" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h21140503gcb7egcb80gba36gb08184db4023" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h176fd279g339fg7737g500dg62de523b178a" version="1" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(OffhandMeleeWeapon, OffhandMeleeWeaponDamageType)" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="MeleeWeaponAttack" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Action_Cast_DisarmingAttack_Melee" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_DisarmingAttack" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="CastOffhand" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="8b8bb757-21ce-4e02-a2f3-97d55cf2f90b,,;c1df9aea-8be9-4de3-bcbc-4e4c1e44dc37,,;722df2d7-7898-4b0b-b930-5a850b55ccf0,,;a693a7c3-e7e7-4edb-98dd-db5fd700663f,,;7bb52cd4-0b1c-4926-9165-fa92b75876a3,,;35f5cba8-3706-46d5-9a1e-2def9ba22473,,;0b07883a-08b8-43b6-ac18-84dc9e84ff50,,;,,;,," />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsAttack;IsMelee;IsHarmful;Temporary" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="Sheathing" type="EnumerationTableFieldDefinition" value="DontChange" enumeration_type_name="SpellSheathing" version="1" />
       </fields>
     </stat_object>
   </stat_objects>
