@@ -356,8 +356,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="SneakAttack" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="RangedMainWeaponRange" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="Attack(AttackType.RangedWeaponAttack)" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(MainRangedWeapon+ LevelMapValue(SneakAttack), MainRangedWeaponDamageType);ExecuteWeaponFunctors(MainHand)" />
-        <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Self() and not Dead() and (HasAllyWithinRange('SG_Incapacitated',1.5) or HasStatus('OFF_BALANCED',context.Target) or (HasPassive(DreadStrike,context.Source) and HasStatus('StatusPenalty1AC',context.Target) or HasStatus('StatusPenalty2AC',context.Target)) and not Tagged('INANIMATE')" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="OffGuard() and CanPrecisionDamage()" />
         <field name="ProjectileCount" type="StringTableFieldDefinition" value="1" />
         <field name="Trajectories" type="StringTableFieldDefinition" value="52f94ae8-7b9d-4410-9290-91a8a909b612,b50a1c9f-0414-6136-3910-4579d6f162f9,5d0c3de8-d2cd-0f2f-1274-821d99ad1dcf" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_SneakAttack_Ranged" />
@@ -3744,6 +3743,27 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h090b0200g6d1fgb26eg2447gfdc4bb21ab06" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha962b763gfdc5gfb91g8ffag2d9cd0cd5074" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Cantrip),Fire,Magical)" />
+      </fields>
+    </stat_object>
+    <stat_object color="#FFA52A2A" is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="fcf48268-8b72-45f8-a5f9-0237e45c8544" />
+        <field name="Name" type="NameTableFieldDefinition" value="RANGER" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="230ac060-1fe2-4b04-9a96-077db2f6b67f" />
+        <field name="Name" type="NameTableFieldDefinition" value="HuntedShot" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="af0f61fe-c4e5-4353-8019-1aef1e84aec8" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Self() and not Dead() and HuntedPrey()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_CrossbowExpert_BonusShot" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h56c445bdgc725ga519g4aabg13c6e6d128e5" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="18188471-a2d8-4ed8-82ee-f4a1917eb6ff" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="19e5f1f1-33e2-47cd-a634-ccf21808dc6e" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="a5341b2a-c161-4a4a-aa97-ea6a493d1402" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h1051c7aegfa74g4a05g4ad9g3a88c02be005" version="1" />
       </fields>
     </stat_object>
     <stat_object color="#FFFF0000" is_substat="false">
