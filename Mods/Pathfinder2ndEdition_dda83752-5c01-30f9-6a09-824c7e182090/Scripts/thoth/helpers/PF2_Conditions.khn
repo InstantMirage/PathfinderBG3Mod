@@ -134,6 +134,19 @@ end
 
 -- Off-guard
 
+function OffGuard(target,source)
+    target = target or context.Target
+    source = source or context.Source
+	
+	local feint = IsMeleeAttack() & (HasStatus('FEINT_ROUND',target,source) or HasStatus('FEINT_ONCE',target,source))
+	local hidden = HasStatus('SG_Invisible',source) or HasStatus('SNEAKING',source)
+	--You aren't off-guard to hidden, undetected, or flanking creatures of your level or lower
+	local denyadvantage = Tagged('ROGUE_DENYADVANTAGE',target) & (target.Level >= source.Level)
+	local dreadstriker = Tagged('ROGUE_DREADSTRIKER',source) & HasStatus('SG_Frightened',target)
+	
+	return Tagged('OFF_GUARD',target) | feint | dreadstriker --hidden & ~denyadvantage | dreadstriker
+end
+
 function Flanking(exclusionStatus, distance, tag, hasShield, target, source)
 	distance = distance or 1.5
     target = target or context.Target
@@ -233,4 +246,64 @@ end
 
 function ExactingStrikeFX()
     return (SpellId('Target_ExactingStrike') or SpellId('Projectile_ExactingStrike')) & HasStatus('MAP_2_ATTACKS',SELF)
+end
+
+--Ranger
+
+function HuntedPrey(target,source)
+	source = source or context.Source
+	target = target or context.Target
+	return HasStatus('HUNT_PREY',target,source)
+end
+
+function CanCommandMinion(entity)
+	entity = entity or context.Source
+	-- Must be able to take actions.
+	local hasActions = HasActionResource('ActionPoint', 1 , 0, false, false)
+	-- Must be able to speak or use telepathy (as a mind flayer).
+	local canConcentrate = Tagged('MINDFLAYER',entity) | HasPassive('TAD_PartialCeremorph',entity) | ~( HasVerbalComponentBlocked() | HasSpellCastBlocked() )
+	-- Cannot be incapacitated.
+	local blockedStatusGroups = HasStatus('SG_Incapacitated',entity) | HasStatus('SG_Prone',entity) | HasStatus('SG_Stunned',entity) | HasStatus('SG_Dominated',entity) | HasStatus('SG_Paralyzed',entity) |  HasStatus('SG_Unconscious',entity)
+	local blockedStatuses = HasStatus('STINKING_CLOUD',entity) | HasStatus('INCAPACITATED_DND',entity) | HasStatus('COMMAND_APPROACH') | HasStatus('COMMAND_FLEE',entity) | HasStatus('CROWNOFKARSUS_UNCONCIOUS',entity) | HasStatus('LURING_SONG',entity) | HasStatus('IRRESISTIBLE_DANCE') | HasStatus('LOW_OSKARSBELOVED_UNNERVED',entity) | HasStatus('MIND_MASTERY',entity) | HasStatus('END_KARSUSCOMPULSION_CHANNEL',entity)
+	
+	return hasActions & canConcentrate & ~Dead(entity) & ~blockedStatusGroups & ~blockedStatuses
+end
+
+--Rogue
+
+function CanPrecisionDamage(target)
+    target = target or context.Target
+    return ~(Tagged('OOZE',target)|Tagged('SHADOW',target)|Tagged('GHOST',target)|Tagged('DISPLACER_BEAST',target)|Tagged('SCRYING_EYE',target)|HasPassive('Ethereal',target))
+end
+
+function SneakAttackWeapon(entity, weapon)
+	entity = entity or context.Source
+	weapon = context.AttackWeapon
+	
+	-- Agile, finesse, or ranged
+	local standard_weapon = HasWeaponProperty(WeaponProperties.Light, weapon) | HasWeaponProperty(WeaponProperties.Finesse, weapon) | HasWeaponProperty(WeaponProperties.Ammunition, weapon)
+	
+	local thrown_weapon = IsUnarmedAttack() & SpellTypeIs(SpellType.Throw) & ( HasWeaponProperty(WeaponProperties.Light, context.HitDescription.ThrownObject) |HasWeaponProperty(WeaponProperties.Finesse, context.HitDescription.ThrownObject) )
+	
+	-- maximum: d8 simple, d6 martial (one-handed versatiles)
+	local is_ruffian = HasPassive('Ruffian',entity)
+	local onehand_check = WieldingWeapon('Melee', true, false, entity) | HasShieldEquipped(entity)
+	local ruffian_weapon = IsWeaponOfProficiencyGroup('SimpleWeapons', weapon) | IsWeaponOfProficiencyGroup('Morningstars', weapon) | ( onehand_check & IsWeaponOfProficiencyGroup('Tridents', weapon) )
+	
+	return IsMeleeUnarmedAttack() | standard_weapon | thrown_weapon | (is_ruffian & ruffian_weapon)
+end
+
+function WieldingSneakAttackWeapon(entity)
+    entity = entity or context.Target
+    local weaponEntity = GetActiveWeapon(entity, true)
+	
+	-- Agile or finesse
+	local standard_weapon = WieldingWeapon('Finesse', false, true, entity) | WieldingWeapon('Light', false, true, entity)
+	
+	-- maximum: d8 simple, d6 martial (one-handed versatiles)
+	local is_ruffian = HasPassive('Ruffian',entity)
+	local onehand_check = WieldingWeapon('Melee', true, false, entity) | HasShieldEquipped(entity)
+	local ruffian_weapon = IsWeaponOfProficiencyGroup('SimpleWeapons', weaponEntity) | IsWeaponOfProficiencyGroup('Morningstars', weaponEntity) | ( onehand_check & IsWeaponOfProficiencyGroup('Tridents', weaponEntity) )
+	
+	return standard_weapon | (is_ruffian & ruffian_weapon)
 end

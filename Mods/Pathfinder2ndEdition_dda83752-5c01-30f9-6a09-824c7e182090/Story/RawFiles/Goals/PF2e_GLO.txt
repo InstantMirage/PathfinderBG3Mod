@@ -1,0 +1,33 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+//REGION Queries
+
+//Not turn based
+QRY
+QRY_ExplorationMode((CHARACTER)_Char)
+AND
+NOT DB_Is_InCombat(_Char, _)
+AND
+IsInForceTurnBasedMode(_Char, 0)
+THEN
+DB_NOOP(1);
+
+// In range and does not have any conditions preventing opportunity attacks
+QRY
+QRY_CanBeOpportunityAttacked((CHARACTER)_Char)
+AND
+NOT QRY_ExplorationMode(_Char)
+AND
+HasAppliedStatus(_Char, "FLANKED_AOO", 1)
+AND
+NOT HasAppliedStatusWithGroup(_Char, "SG_Ignore_AOO", 1)
+THEN
+DB_NOOP(1);
+
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
