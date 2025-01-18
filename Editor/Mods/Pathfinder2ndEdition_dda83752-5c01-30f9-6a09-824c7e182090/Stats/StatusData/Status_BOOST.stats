@@ -80,6 +80,30 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="5df296f9-ce4d-43be-944c-cc3a90ec6f02" />
+        <field name="Name" type="NameTableFieldDefinition" value="FEINT_ONCE" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb03d411bge1f5gdd4bgd87agefe396dd2e21" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h43b73e87g979ega0beg3b0fgb89170996786" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="statIcons_OffBalanced" />
+        <field name="StillAnimationType" type="EnumerationTableFieldDefinition" value="Blinded" enumeration_type_name="StatusAnimationType" version="1" />
+        <field name="StillAnimationPriority" type="EnumerationTableFieldDefinition" value="Blinded" enumeration_type_name="StillAnimPriority" version="1" />
+        <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="HasStatus('FEINT_ONCE',context.Target,context.Source)" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnAttacked" enumeration_type_name="StatusEvent" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="InitiateCombat;TickingWithSource" enumeration_type_name="StatusPropertyFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="c2a35ae3-1955-4577-adee-bf23b73d15f6" />
+        <field name="Name" type="NameTableFieldDefinition" value="FEINT_ROUND" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="5df296f9-ce4d-43be-944c-cc3a90ec6f02" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h89899f7cg4988g90d6g8d9fgd992705d9587" version="1" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="None" enumeration_type_name="StatusEvent" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="0ee29aa8-ff7d-4096-999e-870fd5dac2fc" />
         <field name="Name" type="NameTableFieldDefinition" value="CircumstanceBonus1Attack" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5b42b87bg3a77g826dgf0beg3a81eaf2f1d0" version="1" />
@@ -513,6 +537,15 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="4d52f561-68e2-4b95-8512-6e1b97c59099" />
+        <field name="Name" type="NameTableFieldDefinition" value="SURPRISED" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="55c1ae4f-01b0-44dd-b926-855170ae58eb" />
+        <field name="TickType" type="EnumerationTableFieldDefinition" value="StartTurn" enumeration_type_name="TickType" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="da22122f-b9eb-4aab-a718-4630d6debc57" />
         <field name="Name" type="NameTableFieldDefinition" value="ENCUMBERED_LIGHT" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="habaefca7g5183g3610g409egdb2138021d08" version="1" />
@@ -689,7 +722,8 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="ec8273bd-c522-49c3-b0bf-c2b833c549eb" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5425a57cgb62ag5e06g407ag9736f85c1f66" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hdb6f025cgb4abg390bge550g1892ff9a3257" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IgnoreLeaveAttackRange();UnlockSpellVariant(HasUseCosts('Movement'),ModifyUseCosts(Replace,ActionPoint,1,0,Movement)); ActionResourceBlock(Stride)" />
+        <field name="ApplyEffect" type="GuidObjectTableFieldDefinition" value="57190c62-9877-46f5-acd4-ca35093a5e8a" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="3c134510-649a-4aa7-a4bf-2dd243cc173b" />
       </fields>
     </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">
@@ -720,7 +754,7 @@
         <field name="Icon" type="StringTableFieldDefinition" value="Status_Poisoned" />
         <field name="FormatColor" type="EnumerationTableFieldDefinition" value="Poison" enumeration_type_name="FormatStringColor" version="1" />
         <field name="StackId" type="StringTableFieldDefinition" value="POISONED" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="RollBonus(MeleeWeaponAttack, -1); RollBonus(RangedWeaponAttack, -1)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(STAT_PEN_1ATTACK)" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="InitiateCombat" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="SoundLoop" type="StringTableFieldDefinition" value="Misc_Status_Poison_MO" />
         <field name="StatusGroups" type="EnumerationListTableFieldDefinition" value="SG_Surface;SG_Poisoned;SG_Condition" enumeration_type_name="StatusGroupFlags" version="1" />
@@ -882,6 +916,8 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="556bbe40-4d70-44c9-9fa2-96df353b1753" />
         <field name="Boosts" type="StringTableFieldDefinition" clear_inherited_value="true" value="" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnEntityDrop" enumeration_type_name="StatusEvent" version="1" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="7190843d-53c9-47c5-9d8f-9d989b71b18a" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableCombatlog;DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -963,7 +999,7 @@
         <field name="AuraFlags" type="EnumerationListTableFieldDefinition" value="ShouldCheckLOS;DangerousForPathfinding;DangerousOnlyToEnemies" enumeration_type_name="AuraFlags" version="1" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;IgnoreResting;ApplyToDead" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="StatusGroups" type="EnumerationListTableFieldDefinition" value="SG_RemoveOnRespec" enumeration_type_name="StatusGroupFlags" version="1" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd594a783gff8eg789fgd63bgb168fb225fcd" version="1" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd594a783gff8eg789fgd63bgb168fb225fcd" version="2" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h0726250eg09bcg2a74g2bb4gaa17b0d30ccb" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="IF(SpellId('Target_AttackOfOpportunity_Crit')):CriticalHit(AttackRoll,Success,Always); IF(SpellId('Target_AttackOfOpportunity_NoCrit')):CriticalHit(AttackRoll,Success,Never)" />
       </fields>
@@ -992,7 +1028,6 @@
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_FeralInstinct" />
         <field name="StackId" type="StringTableFieldDefinition" value="RAGE" />
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpellVariant(RageSpell(),ModifyIconGlow(),ModifyUseCosts(Replace,ActionPoint,0,0,ActionPoint))" />
-        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnTurn;OnAttack" enumeration_type_name="StatusEvent" version="1" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="BringIntoCombat;DisableOverhead;DisableCombatlog" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
@@ -1004,7 +1039,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h8266d1e9g8fe9g00e5g6ebbgffc41deaa765" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Barbarian_Rage" />
         <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);UnlockSpell(Shout_EndRage);Attribute(ForceMainhandAlternativeEquipBones);IF(HasPassive(AnimalSkin)):ACOverrideFormula(19,true);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);Attribute(ForceMainhandAlternativeEquipBones);IF(HasPassive(AnimalSkin)):ACOverrideFormula(19,true);" />
         <field name="OnRemoveFunctors" type="FunctorsTableFieldDefinition" value="RemoveStatus(RAGE_MUTE);RemoveStatus(RAGE_STOP_REMOVE);RemoveStatus(RAGE_NO_HEAVY_ARMOUR_VFX);IF(RemoveCause(StatusRemoveCause.TimeOut) or RemoveCause(StatusRemoveCause.Condition)):ApplyStatus(RAGE_ENDED,100,1);IF(RemoveCause(StatusRemoveCause.TimeOut) or RemoveCause(StatusRemoveCause.Condition)):UseSpell(Shout_EndRage,true,true,true)" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnCombatEnded" enumeration_type_name="StatusEvent" version="1" />
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="0" />
@@ -1030,7 +1065,7 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="855fb809-8a50-44a1-98fc-911b67ed0f33" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h09823658g2788gf015gcdc9ga51846fa3e7e" version="1" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(DragonRage)" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);UnlockSpell(Shout_EndRage);Attribute(ForceMainhandAlternativeEquipBones);IF(HasPassive('DragonBreathRage',context.source)):UnlockSpell(Zone_DragonsRageBreathBludgeoning)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);Attribute(ForceMainhandAlternativeEquipBones);IF(HasPassive('DragonBreathRage',context.source)):UnlockSpell(Zone_DragonsRageBreathBludgeoning)" />
         <field name="Passives" type="StringTableFieldDefinition" value="DragonRageBoost" />
         <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="None&#xD;&#xA;" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="None" enumeration_type_name="StatusPropertyFlags" version="1" />
@@ -1046,7 +1081,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="RAGE_DRAGON_POISON" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="a2bf3dd9-5dec-457a-bd61-736f2ef19f73" />
         <field name="Passives" type="StringTableFieldDefinition" value="PoisonDragonRageBoost" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);UnlockSpell(Shout_EndRage);Attribute(ForceMainhandAlternativeEquipBones);IF(HasPassive('DragonBreathRage',context.source)):UnlockSpell(Zone_DragonsRageBreathPoison)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);Attribute(ForceMainhandAlternativeEquipBones);IF(HasPassive('DragonBreathRage',context.source)):UnlockSpell(Zone_DragonsRageBreathPoison)" />
         <field name="ApplyEffect" type="GuidObjectTableFieldDefinition" value="a6d13ad5-0346-4211-933a-6f69b77fafaa" />
       </fields>
     </stat_object>
@@ -1056,7 +1091,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="RAGE_DRAGON_FIRE" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="a2bf3dd9-5dec-457a-bd61-736f2ef19f73" />
         <field name="Passives" type="StringTableFieldDefinition" value="FireDragonRageBoost" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);UnlockSpell(Shout_EndRage);Attribute(ForceMainhandAlternativeEquipBones);IF(HasPassive('DragonBreathRage',context.source)):UnlockSpell(Zone_DragonsRageBreathFire)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);Attribute(ForceMainhandAlternativeEquipBones);IF(HasPassive('DragonBreathRage',context.source)):UnlockSpell(Zone_DragonsRageBreathFire)" />
         <field name="ApplyEffect" type="GuidObjectTableFieldDefinition" value="53412dd1-8066-4860-a2ae-b27e77bfdab5" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="30fd26c7-1a1e-4328-9a9a-38c0f55be597" />
       </fields>
@@ -1067,7 +1102,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="RAGE_DRAGON_FORCE" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="a2bf3dd9-5dec-457a-bd61-736f2ef19f73" />
         <field name="Passives" type="StringTableFieldDefinition" value="ForceDragonRageBoost" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(HasPassive('DragonBreathRage',context.source)):UnlockSpell(Zone_DragonsRageBreathForce);Tag(VFX_RAGE);UnlockSpell(Shout_EndRage);Attribute(ForceMainhandAlternativeEquipBones);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(HasPassive('DragonBreathRage',context.source)):UnlockSpell(Zone_DragonsRageBreathForce);Tag(VFX_RAGE);Attribute(ForceMainhandAlternativeEquipBones);" />
         <field name="ApplyEffect" type="GuidObjectTableFieldDefinition" value="2534712b-d31e-45a4-b8e3-6385caa9ddc1" />
       </fields>
     </stat_object>
@@ -1077,7 +1112,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="RAGE_DRAGON_PSYCHIC" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="a2bf3dd9-5dec-457a-bd61-736f2ef19f73" />
         <field name="Passives" type="StringTableFieldDefinition" value="PsychicDragonRageBoost" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);UnlockSpell(Shout_EndRage);Attribute(ForceMainhandAlternativeEquipBones);IF(HasPassive('DragonBreathRage',context.source)):UnlockSpell(Zone_DragonsRageBreathPsychic)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);Attribute(ForceMainhandAlternativeEquipBones);IF(HasPassive('DragonBreathRage',context.source)):UnlockSpell(Zone_DragonsRageBreathPsychic)" />
         <field name="ApplyEffect" type="GuidObjectTableFieldDefinition" value="6b6b660b-1d43-42ac-89b7-e361802a7ded" />
       </fields>
     </stat_object>
@@ -1119,6 +1154,19 @@
         <field name="UUID" type="IdTableFieldDefinition" value="5060d387-981a-432f-bbb0-c01b255ff1c9" />
         <field name="Name" type="NameTableFieldDefinition" value="AcuteVision" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="0e879fbc-8fcf-40dc-acc8-bd55954bc91a" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="dae4133a-8046-4ce8-ab6e-a74e89b0f37d" />
+        <field name="Name" type="NameTableFieldDefinition" value="RageTempHp" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="b2e93fcb-6b73-4d36-99db-95877cd658d5" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h80931f66gff40g6ef7g0c81g2fa9440d3918" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="2+ConstitutionModifier" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="TemporaryHP(2+ConstitutionModifier)" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnCombatEnded" enumeration_type_name="StatusEvent" version="1" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not HasTemporaryHP() or not Combat()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="statIcons_MAG_TemporaryHP" />
       </fields>
     </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">
@@ -1279,7 +1327,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he26e1268g0268ga03fgb5b3gca2abbb2c020" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hbcd20a6dg416bgc6dagd812gc509a3a37ae9" version="2" />
         <field name="StackId" type="StringTableFieldDefinition" value="MARTIAL_ARTS_BONUS_UNARMED_STRIKE" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_UnarmedStrike_Monk);RollBonus(Attack,1)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpellVariant(IsMonkUnarmedSpell(),ModifyUseCosts(Replace,ActionPoint,0,0,ActionPoint),ModifyIconGlow(),ModifyTooltipDescription())" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_MartialArts_UnarmedDamage" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnAttack;OnTurn;OnMove;OnCombatEnded" enumeration_type_name="StatusEvent" version="1" />
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="0" />
@@ -1347,89 +1395,6 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="31cbac42-dbeb-479a-b5a3-37f3ce36b611" />
-        <field name="Name" type="NameTableFieldDefinition" value="WolfFlurryStatus" />
-        <field name="Using" type="BaseClassTableFieldDefinition" value="92f4c647-a5b8-4b46-88d6-a6686818e82f" />
-        <field name="StackPriority" type="IntegerTableFieldDefinition" value="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_WolfFlurry);RollBonus(Attack,1)" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h8045b1e6gea7agb373ga6c0g994448c8dc50" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="8edfb860-a3ab-4d83-95c1-b5adfa740585" />
-        <field name="Name" type="NameTableFieldDefinition" value="DragonFlurryStatus" />
-        <field name="Using" type="BaseClassTableFieldDefinition" value="92f4c647-a5b8-4b46-88d6-a6686818e82f" />
-        <field name="StackPriority" type="IntegerTableFieldDefinition" value="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_DragonFlurry)" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hee804f6eg69c7gb57bgff18gfeb52c73e2af" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="4e94f8ec-1b6e-4b7a-808f-e04d5b236b23" />
-        <field name="Name" type="NameTableFieldDefinition" value="MountainFlurryStatus" />
-        <field name="Using" type="BaseClassTableFieldDefinition" value="92f4c647-a5b8-4b46-88d6-a6686818e82f" />
-        <field name="StackPriority" type="IntegerTableFieldDefinition" value="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_MountainFlurry)" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h88f3f043gc856g68fage493g9a4654f0bbcb" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="8dde39bf-e247-4e56-bad8-6c75da7bb9da" />
-        <field name="Name" type="NameTableFieldDefinition" value="TigerFlurryStatus" />
-        <field name="Using" type="BaseClassTableFieldDefinition" value="92f4c647-a5b8-4b46-88d6-a6686818e82f" />
-        <field name="StackPriority" type="IntegerTableFieldDefinition" value="1" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc1aa6558gbcc0gbcd1g7b40gc141e2e02434" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_TigerFlurry);RollBonus(Attack,1)" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="4be9ad01-e320-46d1-a8e4-c59a2a93dd9c" />
-        <field name="Name" type="NameTableFieldDefinition" value="MonasticArcherFlurryStatus" />
-        <field name="Using" type="BaseClassTableFieldDefinition" value="92f4c647-a5b8-4b46-88d6-a6686818e82f" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hcccaa103gf4c9g7895g12cagb7ddceceb52b" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_MonasticArcherFlurry)" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="17e6889a-812c-4b55-83f1-dcf0fb812a0c" />
-        <field name="Name" type="NameTableFieldDefinition" value="CobraFlurryStatus" />
-        <field name="Using" type="BaseClassTableFieldDefinition" value="92f4c647-a5b8-4b46-88d6-a6686818e82f" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0698f388gd62cg4fb8g3087g99b9cab84331" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_CobraFlurry);RollBonus(Attack,1)" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="7e8849ce-0d0e-43b6-a046-3a9543cafac1" />
-        <field name="Name" type="NameTableFieldDefinition" value="MonasticWeaponFlurry" />
-        <field name="Using" type="BaseClassTableFieldDefinition" value="92f4c647-a5b8-4b46-88d6-a6686818e82f" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_MonasticWeapon);" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="03216e86-8bb9-4c8f-8525-5aa4ca195829" />
-        <field name="Name" type="NameTableFieldDefinition" value="ManueverFlurryStatus" />
-        <field name="Using" type="BaseClassTableFieldDefinition" value="92f4c647-a5b8-4b46-88d6-a6686818e82f" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_GrappleFlurry);UnlockSpell(Target_TripFlurry)" />
-        <field name="StackId" type="StringTableFieldDefinition" value="None" />
-        <field name="StackType" type="EnumerationTableFieldDefinition" value="Stack" enumeration_type_name="StatusStackType" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="b0b6f6f2-fa1e-4ec3-81e3-22585ed20e25" />
-        <field name="Name" type="NameTableFieldDefinition" value="MonasticWeaponryStatus" />
-        <field name="Passives" type="StringTableFieldDefinition" value="MonasticWeaponBonusAttack" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="9ef00628-cf8e-43d2-996f-8d8e905c10c8" />
         <field name="Name" type="NameTableFieldDefinition" value="CraneStanceStatus" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h78df480fg0fb0g5077g5a31g9403b257b11c" version="1" />
@@ -1438,9 +1403,11 @@
         <field name="StackId" type="StringTableFieldDefinition" value="STANCE" />
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="0" />
         <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
-        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnCombatEnded" enumeration_type_name="StatusEvent" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);UnlockSpell(Target_CraneWing);Tag(CIRC_BON_1AC);JumpMaxDistanceBonus(1.5)" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnCombatEnded;OnEquip" enumeration_type_name="StatusEvent" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="AttackSpellOverride(Target_CraneWing, Target_MainHandAttack);AttackSpellOverride(Target_CraneWing, Target_UnarmedAttack)Tag(CIRC_BON_1AC);JumpMaxDistanceBonus(1.5)" />
         <field name="Sheathing" type="EnumerationTableFieldDefinition" value="Sheathed" enumeration_type_name="StatusSheathing" version="1" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="WearingArmor(context.Source) or not Combat()" />
+        <field name="DynamicAnimationTag" type="GuidObjectTableFieldDefinition" value="c4598bdb-fc07-40dd-a62c-90cc138bd76f" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1451,8 +1418,8 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h10dbc8dega4bag3307g962bgc0afd7d1e5d1" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h71a7c58bg2664g5482gbd9cg37481f770f25" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Barbarian_Rage_WolfTotem" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);UnlockSpell(Target_WolfJaw)" />
-        <field name="Passives" type="StringTableFieldDefinition" value="WolfBonusAttack" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="AttackSpellOverride(Target_WolfJaw, Target_MainHandAttack);AttackSpellOverride(Target_WolfJaw, Target_UnarmedAttack)" />
+        <field name="Passives" type="StringTableFieldDefinition" value="Block_NonUnarmedStrike" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1462,9 +1429,9 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="9ef00628-cf8e-43d2-996f-8d8e905c10c8" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h8abe6c22g0d0cg6cfeg2ae5g9c062dd5df55" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h2eb9fd0egd5dbg1e8egb839g25f7b8a79321" version="1" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Action_Dragonborn_BreathWeapon_FireCone" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);UnlockSpell(Target_DragonStance)" />
-        <field name="Passives" type="StringTableFieldDefinition" value="DragonBonusAttack" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_FavoredEnemy_RangerKnight" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="AttackSpellOverride(Target_DragonStance, Target_MainHandAttack);AttackSpellOverride(Target_DragonStance, Target_UnarmedAttack)" />
+        <field name="Passives" type="StringTableFieldDefinition" value="Block_NonUnarmedStrike" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1475,8 +1442,8 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h1b85ab28g2a60g624cga4f3g51e7d2980b1e" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hebfe315bg1a68g4fcagdc78g0979de91d0c8" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Land_Mountain" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);ACOverrideFormula(18,true);UnlockSpell(Target_FallingStone);IF(HasPassive('MountainStronghold')):ACOverrideFormula(19,true)" />
-        <field name="Passives" type="StringTableFieldDefinition" value="MountainBonusAttack" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="AttackSpellOverride(Target_FallingStone, Target_MainHandAttack);AttackSpellOverride(Target_FallingStone, Target_UnarmedAttack);ACOverrideFormula(18,true);IF(HasPassive('MountainStronghold')):ACOverrideFormula(19,true)" />
+        <field name="Passives" type="StringTableFieldDefinition" value="Block_NonUnarmedStrike" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1487,8 +1454,8 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb3dcb3e1g98a5gcb40g7aabg487dc248e33e" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hb31418c3ga81dg7a68g9cb1gf518a91e5b45" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Barbarian_Rage_TigerTotem" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);UnlockSpell(Target_TigerClaw);Tag(DOUBLE_STEP)" />
-        <field name="Passives" type="StringTableFieldDefinition" value="TigerBonusAttack" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="AttackSpellOverride(Target_TigerClaw, Target_MainHandAttack);AttackSpellOverride(Target_TigerClaw, Target_UnarmedAttack);Tag(DOUBLE_STEP)" />
+        <field name="Passives" type="StringTableFieldDefinition" value="Block_NonUnarmedStrike" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1498,10 +1465,11 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="9ef00628-cf8e-43d2-996f-8d8e905c10c8" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha92ca62ag146dge407gce1ega62fa237901f" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h65894b23g0c8dg087eg50e2g72c6175fe2ca" version="1" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Action_HordeBreaker_Ranged" />
-        <field name="Passives" type="StringTableFieldDefinition" value="MonasticArcherBonusAttack" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_Duergar_MentalArrow" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpellVariant(NonBowStrikeCheck(),ModifyUseCosts(Add,Block,1,0))" />
         <field name="Sheathing" type="EnumerationTableFieldDefinition" value="Ranged" enumeration_type_name="StatusSheathing" version="1" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="WieldingWeapon('Loading', false, false, context.Source) or not WieldingWeapon('Ammunition', false, false, context.Source) or WearingArmor(context.Source) or not Combat()" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnCombatEnded;OnEquip;OnUnequip" enumeration_type_name="StatusEvent" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1512,8 +1480,8 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h85154251gace0g264dg56f3g8e151baa3fef" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h4a01e173g93b6g6e2bgaee2g5adc5efaac64" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Monk_FangsOfTheFireSnake" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);UnlockSpell(Target_CobraFang); Tag(CIRC_BON_1FORT);" />
-        <field name="Passives" type="StringTableFieldDefinition" value="CobraBonusAttack" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="AttackSpellOverride(Target_CobraFang, Target_MainHandAttack);AttackSpellOverride(Target_CobraFang, Target_UnarmedAttack); Tag(CIRC_BON_1FORT);" />
+        <field name="Passives" type="StringTableFieldDefinition" value="Block_NonUnarmedStrike" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1529,19 +1497,6 @@
         <field name="Boosts" type="StringTableFieldDefinition" value="Tag(CIRC_BON_2AC)" />
         <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:ApplyStatus(CircumstanceBonus2AC,100,1)" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="235ac2cc-6c6c-4866-8646-8b4a7c6a7f09" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="dae4133a-8046-4ce8-ab6e-a74e89b0f37d" />
-        <field name="Name" type="NameTableFieldDefinition" value="RageTempHp" />
-        <field name="Using" type="BaseClassTableFieldDefinition" value="b2e93fcb-6b73-4d36-99db-95877cd658d5" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h7e6a2a97gabd6g5277ga214gfa4899c214f3" version="1" />
-        <field name="DescriptionParams" type="StringTableFieldDefinition" value="2+ConstitutionModifier" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="TemporaryHP(2+ConstitutionModifier)" />
-        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnCombatEnded" enumeration_type_name="StatusEvent" version="1" />
-        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not HasTemporaryHP() or not Combat()" />
-        <field name="Icon" type="StringTableFieldDefinition" value="statIcons_MAG_TemporaryHP" />
       </fields>
     </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">
@@ -1759,7 +1714,7 @@
         <field name="StillAnimationPriority" type="EnumerationTableFieldDefinition" value="Feared" enumeration_type_name="StillAnimPriority" version="1" />
         <field name="StackId" type="StringTableFieldDefinition" value="FRIGHTENED" />
         <field name="Boosts" type="StringTableFieldDefinition" value="Tag(STAT_PEN_1ATTACK);Tag(STAT_PEN_1AC);Tag(STAT_PEN_1DC);Tag(STAT_PEN_1SAVES)" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="InitiateCombat;OverheadOnTurn;TickingWithSource" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="InitiateCombat;OverheadOnTurn" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="StatusGroups" type="EnumerationListTableFieldDefinition" value="SG_Frightened;SG_Condition" enumeration_type_name="StatusGroupFlags" version="1" />
         <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
         <field name="ManagedStatusEffectType" type="EnumerationTableFieldDefinition" value="Negative" enumeration_type_name="ManagedStatusEffectType" version="1" />
@@ -1838,7 +1793,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hda2e281cg8037ga997g9245g8cc26eb277f3" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha362a261g5756g2d15gd117gc65247954c22" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Transmutation_EnhanceAbility_BullsStrenght" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Ability(Strength,2);Ability(Dexterity,2);Ability(Constitution,2);Ability(Wisdom,2);DamageBonus(1d6);RollBonus(SavingThrow,2,Dexterity);RollBonus(SavingThrow,2,Constitution);RollBonus(SavingThrow,2,Wisdom)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Ability(Strength,2);Ability(Dexterity,2);Ability(Constitution,2);Ability(Wisdom,2);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1909,10 +1864,10 @@
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="91db53d6-d246-474e-9160-e27a7dace611" />
-        <field name="Name" type="NameTableFieldDefinition" value="MINION_INITIATIVE" />
+        <field name="Name" type="NameTableFieldDefinition" value="SHARE_SUMMONER_INITIATIVE " />
         <field name="StackType" type="EnumerationTableFieldDefinition" value="Ignore" enumeration_type_name="StatusStackType" version="1" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-        <field name="StatusGroups" type="EnumerationListTableFieldDefinition" value="SG_Dominated" enumeration_type_name="StatusGroupFlags" version="1" />
+        <field name="Owner" type="CommentTableFieldDefinition" value="Requires Summon Initiative Fixer to take effect." />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2095,7 +2050,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb8b7af92gfa26gb488gf47dg439f720dcd15" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hdc04a079gd435g569eg8d95g3c7f1b8ee8d4" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Enchantment_ViciousMockery" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_FreeDemoralize)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_FreeDemoralize); IF(SpellId('Target_FreeDemoralize')):RollBonus(SkillCheck, 2, Intimidation)" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnSpellCast;OnAttack;OnMove" enumeration_type_name="StatusEvent" version="1" />
       </fields>
     </stat_object>
@@ -2164,6 +2119,29 @@
         <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="HasShieldEquipped() or WieldingWeapon('Twohanded', false, false) or not ( WieldingWeapon('Melee', false, false) and IsOffHandSlotEmpty() )" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnUnequip;OnEquip" enumeration_type_name="StatusEvent" version="1" />
         <field name="DynamicAnimationTag" type="GuidObjectTableFieldDefinition" value="ee40b340-0e2f-4bf0-9f91-334a30cb1f85" />
+        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:ApplyStatus(CircumstanceBonus2AC,100,1); ApplyEquipmentStatus(MeleeMainHand, RAISE_SHIELD_FX,100, 1)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="27b1277d-eb5c-416a-912a-b90e72389a75" />
+        <field name="Name" type="NameTableFieldDefinition" value="TWIN_PARRY" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="0be5a465-3ec5-49ed-8516-4c8f56011139" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hcf873862g59bfgc2d1g62d8ga7814c2616c5" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(CIRC_BON_1AC)" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not DualWielder()" />
+        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:ApplyStatus(CircumstanceBonus1AC,100,1); ApplyEquipmentStatus(MeleeMainHand, RAISE_SHIELD_FX,100, 1); ApplyEquipmentStatus(MeleeOffHand, RAISE_SHIELD_FX,100, 1)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="f149e610-bd30-44db-9a59-7432ad1cfbca" />
+        <field name="Name" type="NameTableFieldDefinition" value="DWARF_PARRY" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="0be5a465-3ec5-49ed-8516-4c8f56011139" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he62ba26fgc15fg1ef3g3b8bg1e0e28858a0c" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(CIRC_BON_1AC)" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not HasPassive('ParryTrait',context.Source)" />
+        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:ApplyStatus(CircumstanceBonus1AC,100,1); ApplyEquipmentStatus(MeleeMainHand, RAISE_SHIELD_FX,100, 1)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2339,13 +2317,13 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h82b2274fg9e0egf821gaec8g5a5ff28aafeb" version="3" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h2aa3af66gf09fgb69fg4368gb38834a82546" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_HuntersMark" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="InitiateCombat;BringIntoCombat;ApplyToDead" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="InitiateCombat;BringIntoCombat" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="SoundStart" type="StringTableFieldDefinition" value="Spell_Status_HuntersMark_MO" />
         <field name="SoundLoop" type="StringTableFieldDefinition" value="Spell_Status_HuntersMark_MO_Stop" />
         <field name="ApplyEffect" type="GuidObjectTableFieldDefinition" value="5a259bdd-10d5-453a-9aee-1e85a986baf4" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="0d122bff-6d13-4373-a807-b8663d48559e" />
-        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="HasStatus('KNOCKED_OUT') or HasStatus('CLEAR_HUNT_PREY',context.Target,context.Source) or not Combat()" />
-        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnAttacked;OnCombatEnded" enumeration_type_name="StatusEvent" version="1" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="HasStatus('KNOCKED_OUT') or HasStatus('CLEAR_HUNT_PREY',context.Target,context.Source) or IsStatusEvent(StatusEvent.OnCombatEnded)" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnCombatEnded" enumeration_type_name="StatusEvent" version="1" />
         <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:IF(not HasStatus('HUNTERS_MARK') and not IsDowned() and (not HasStatus('HUNTERS_MARK_OWNER', context.Source) or HasStatus('HUNTERS_MARK_REAPPLY', context.Source))):ApplyStatus(SELF,AI_HELPER_HUNTERSMARK_OWNER,100,-1);AI_ONLY:IF(not HasStatus('HUNTERS_MARK') and not HasStatus('DOWNED') and (not HasStatus('HUNTERS_MARK_OWNER', context.Source) or HasStatus('HUNTERS_MARK_REAPPLY', context.Source))):ApplyStatus(AI_HELPER_HUNTERSMARK,100,-1);" />
         <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:IF(not HasStatus('HUNTERS_MARK') and not IsDowned() and (not HasStatus('HUNTERS_MARK_OWNER', context.Source) or HasStatus('HUNTERS_MARK_REAPPLY', context.Source))):ApplyStatus(SELF,AI_HELPER_HUNTERSMARK_OWNER,100,-1);AI_ONLY:IF(not HasStatus('HUNTERS_MARK') and not HasStatus('DOWNED') and (not HasStatus('HUNTERS_MARK_OWNER', context.Source) or HasStatus('HUNTERS_MARK_REAPPLY', context.Source))):ApplyStatus(AI_HELPER_HUNTERSMARK,100,-1);" />
         <field name="Passives" type="StringTableFieldDefinition" value="HuntPreyOutwitPassive" />
@@ -2404,6 +2382,7 @@
         <field name="TickType" type="EnumerationTableFieldDefinition" value="StartTurn" enumeration_type_name="TickType" version="1" />
         <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(GRAVITY_WEAPON_ACTIVE,100,1)" />
         <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(GRAVITY_WEAPON_ACTIVE,100,1)" />
+        <field name="OnRemoveFunctors" type="FunctorsTableFieldDefinition" value="RemoveStatus(GRAVITY_WEAPON_ACTIVE)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2419,6 +2398,7 @@
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="77be532a-1dc8-4e79-bb54-736612c46e71" />
         <field name="TickFunctors" type="FunctorsTableFieldDefinition" value=";" />
         <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value=";" />
+        <field name="OnRemoveFunctors" type="FunctorsTableFieldDefinition" value=";" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2441,6 +2421,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hcc41caa7g078aga264gf52eg3b894c1cdde6" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Barbarian_Rage_TigerTotem" />
         <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);UnlockSpell(Target_AnimalClaws)" />
+        <field name="StatusGroups" type="EnumerationListTableFieldDefinition" value="SG_RemoveOnRespec" enumeration_type_name="StatusGroupFlags" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2451,6 +2432,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h375568a4g1548geecbgc0c9g37737f8f6ea2" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Barbarian_Rage_WolfTotem" />
         <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);UnlockSpell(Target_AnimalJaws)" />
+        <field name="StatusGroups" type="EnumerationListTableFieldDefinition" value="SG_RemoveOnRespec" enumeration_type_name="StatusGroupFlags" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2552,6 +2534,87 @@
         <field name="StackId" type="StringTableFieldDefinition" value="DISTRACTING" />
         <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
         <field name="TickType" type="EnumerationTableFieldDefinition" value="StartTurn" enumeration_type_name="TickType" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="bdc99d34-b93e-456a-a4bf-5dabbb55c42c" />
+        <field name="Name" type="NameTableFieldDefinition" value="WARDENS_BOON" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3922a9deg12fcg22edg1ebcg036de0def1ba" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h8c6b09ebg4231g0485g1971ge82d3b015559" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_CommandersStrike" />
+        <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="BringIntoCombat;DisableOverhead;DisableCombatlog;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="304f685e-bda7-4fc3-8fae-64f93abecc26" />
+        <field name="Name" type="NameTableFieldDefinition" value="WARDENS_BOON_PREY" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_HuntersMark" />
+        <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="TickingWithSource;DisableOverhead;DisableCombatlog;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="f0a2c374-2462-484e-8d86-b6904617ee07" />
+        <field name="Name" type="NameTableFieldDefinition" value="WARDENS_BOON_OUTWIT" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd944f9d3gd3e4g23f2g196eg3c406768c835" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h1fd95729g4d07g27ebg12eag47d1a5a5e4d4" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_EscapeTheHorde" />
+        <field name="StackId" type="StringTableFieldDefinition" value="WARDENS_BOON_TYPE" />
+        <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
+        <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(HuntedPrey_WardensBoon('HuntPreyOutwitUnlock')):RollBonus(SkillCheck, 2, Deception); IF(HuntedPrey_WardensBoon('HuntPreyOutwitUnlock')):RollBonus(SkillCheck, 2, Intimidation)" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog" enumeration_type_name="StatusPropertyFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="c031e4e6-45d2-404b-8437-566b9ab4b937" />
+        <field name="Name" type="NameTableFieldDefinition" value="WARDENS_BOON_PRECISION" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="f0a2c374-2462-484e-8d86-b6904617ee07" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ColossusSlayer" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+        <field name="Passives" type="StringTableFieldDefinition" value="WardensBoonPrecision" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="951c966a-57e8-4857-8e9d-6abba75e8c47" />
+        <field name="Name" type="NameTableFieldDefinition" value="WARDENS_BOON_FLURRY" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="f0a2c374-2462-484e-8d86-b6904617ee07" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_StalkersFlurry" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(HasStatus('MAP_PENALTY_2ND',context.Source) and HuntedPrey_WardensBoon('HuntPreyFlurryUnlock')):RollBonus(Attack,2); IF(HasStatus('MAP_PENALTY_3RD',context.Source) and HuntedPrey_WardensBoon('HuntPreyFlurryUnlock')):RollBonus(Attack,4);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="b0e4ba36-beeb-4e9d-b3ed-f099864a813e" />
+        <field name="Name" type="NameTableFieldDefinition" value="COMPANIONS_CRY" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h13a360e5g0768g76c4gf943g636327fbb3ca" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h54c35f50g74f1g0274g0c35g051ef233bc1f" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_DireWolfPack_Howl" />
+        <field name="SoundVocalStart" type="EnumerationTableFieldDefinition" value="DODGE" enumeration_type_name="SoundVocalType" version="1" />
+        <field name="SoundLoop" type="StringTableFieldDefinition" value="Spell_Status_Longstrider_MO" />
+        <field name="SoundStop" type="StringTableFieldDefinition" value="Spell_Status_Haste_MO_Stop" />
+        <field name="StackId" type="StringTableFieldDefinition" value="MINION_TURN" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="3" />
+        <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(ActionPoint,1,0)" />
+        <field name="ApplyEffect" type="GuidObjectTableFieldDefinition" value="e0438396-b78d-4249-bc46-f45dd6feb10a" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="b79270c7-13cd-44d9-82f5-11eb41ca5f8a" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="9ea052b2-d89c-4e2a-8c2b-737073fa1dd7" />
+        <field name="Name" type="NameTableFieldDefinition" value="DAZZLING_DISPLAY" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="de9d9cbc-e561-4486-9a3e-e7cefe0eda02" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hff16e6begdb17g1d05g74feg63019770b79a" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hafdda4f0gead1g7562gf18fg61d5e2bd6e5e" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(SpellId('Shout_DazzlingDisplay')):RollBonus(SkillCheck, 1, Intimidation); UnlockSpellVariant(SpellId('Shout_DazzlingDisplay'),ModifyIconGlow())" />
       </fields>
     </stat_object>
   </stat_objects>

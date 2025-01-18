@@ -28,6 +28,44 @@ THEN
 DB_NOOP(1);
 
 //END_REGION
+
+//REGION
+//Remove focus spell statuses - refocusing should take at least 10 in-game minutes.
+//This should make it so that prebuffing out of combat has the appropriate resource cost.
+IF
+ShortRested(_Char)
+AND
+DB_PartyMembers(_Char)
+THEN
+//Champion
+RemoveStatus(_Char,"SpiritShields"); //Can be extended to 1 minute with the Security feat
+//Cleric
+RemoveStatus(_Char,"HealersBlessingStatus");
+RemoveStatus(_Char,"VibrantThornsStatus");
+RemoveStatus(_Char,"WeaponSurgeStatus");
+//Druid
+RemoveStatus(_Char,"WILDSHAPE_CAT_PLAYER");
+RemoveStatus(_Char,"WILDSHAPE_BADGER_PLAYER");
+RemoveStatus(_Char,"WILDSHAPE_GIANT_SPIDER_PLAYER");
+RemoveStatus(_Char,"WILDSHAPE_WOLF_DIRE_PLAYER");
+//Ranger
+RemoveStatus(_Char, "GRAVITY_WEAPON");
+RemoveStatus(_Char, "MAGICHIDE");
+RemoveStatus(_Char, "ENLARGE");
+RemoveStatus(_Char, "AnimalClawsStatus");
+RemoveStatus(_Char, "AnimalJawsStatus");
+RemoveStatus(_Char, "AnimalOwlEyesStatus");
+RemoveStatus(_Char, "AnimalWingsStatus");
+RemoveStatus(_Char, "WarningStripesStatus");
+//Sorcerer
+RemoveStatus(_Char,"TentacularLimbsStatus");
+RemoveStatus(_Char,"AngelicHaloStatus");
+RemoveStatus(_Char,"UndeathsBlessing");
+RemoveStatus(_Char,"UndeathsBlessingSuccess");
+RemoveStatus(_Char,"BloodMagicSelf");
+//Other
+
+//END_REGION
 EXITSECTION
 
 ENDEXITSECTION
