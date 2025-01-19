@@ -2,6 +2,11 @@ Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
 DB_HuntPrey((CHARACTER)NULL_00000000-0000-0000-0000-000000000000,(CHARACTER)NULL_00000000-0000-0000-0000-000000000000);
+DB_WardensBoon((CHARACTER)NULL_00000000-0000-0000-0000-000000000000,(CHARACTER)NULL_00000000-0000-0000-0000-000000000000);
+
+DB_WardensBoonType("HuntPreyPrecisionUnlock","WARDENS_BOON_PRECISION");
+DB_WardensBoonType("HuntPreyOutwitUnlock","WARDENS_BOON_OUTWIT");
+DB_WardensBoonType("HuntPreyFlurryUnlock","WARDENS_BOON_FLURRY");
 
 DB_SummonMinion((CHARACTER)NULL_00000000-0000-0000-0000-000000000000,(CHARACTER)NULL_00000000-0000-0000-0000-000000000000);
 
@@ -11,25 +16,31 @@ DB_FollowUpAttack_Creature((CHARACTER)NULL_00000000-0000-0000-0000-000000000000,
 DB_FollowUpOffhand_Spell("Target_TwinFeint");
 DB_FollowUpOffhand_Spell("Target_TwinTakedownStrike");
 KBSECTION
+//REGION Ranger-specific features
+
 //REGION Hunt prey uniqueness
 
-//Add to database
+//When using Hunt Prey, check for old prey and remove its status & DB entry
+IF
+UsingSpellOnTarget((CHARACTER)_Hunter,(CHARACTER)_Prey,"Target_HuntPrey",_,_,_)
+AND
+NOT DB_HuntPrey(_Hunter,_Prey)
+AND
+DB_HuntPrey(_Hunter,(CHARACTER)_OldPrey)
+THEN
+ApplyStatus(_OldPrey, "CLEAR_HUNT_PREY", 1.0, 1, _Hunter );
+//Remove all Warden's Boon targets - they'll be automatically assigned in the next step
+RemoveStatus(_OldPrey,"WARDENS_BOON_PREY");
+NOT DB_HuntPrey(_Hunter,_OldPrey);
+
+//Add targets to database
 IF
 StatusApplied((CHARACTER)_Prey, "HUNT_PREY", (CHARACTER)_Hunter, _)
 AND
 NOT DB_HuntPrey(_Hunter,_Prey)
 THEN
-PROC_ClearHuntPrey(_Hunter,_Prey);
 DB_HuntPrey(_Hunter,_Prey);
-
-//Check for old prey and remove its status & DB entry
-PROC
-PROC_ClearHuntPrey((CHARACTER)_Hunter, (CHARACTER)_Prey)
-AND
-DB_HuntPrey(_Hunter,(CHARACTER)_OldPrey)
-THEN
-ApplyStatus(_OldPrey, "CLEAR_HUNT_PREY", 1.0, 1, _Hunter );
-NOT DB_HuntPrey(_Hunter,_OldPrey);
+PROC_AssignWardensBoonPrey();
 
 //Remove from DB after losing status
 IF
@@ -40,6 +51,64 @@ AND
 DB_HuntPrey((CHARACTER)_OldHunter,_Prey)
 THEN
 NOT DB_HuntPrey(_OldHunter,_Prey);
+
+//END_REGION
+
+//REGION Warden's Boon
+
+PROC
+PROC_AddWardensBoonToPet((CHARACTER)_Minion,(CHARACTER)_Summoner)
+AND
+HasPassive(_Minion,"HuntersMark_RangerCompanion",1)
+THEN
+ApplyStatus(_Minion, "WARDENS_BOON", 1.0, 1, _Summoner );
+
+IF
+StatusApplied((CHARACTER)_Ally, "WARDENS_BOON", (CHARACTER)_Warden, _)
+AND
+DB_WardensBoonType((STRING)_Passive,(STRING)_Status)
+AND
+HasPassive(_Warden,_Passive,1)
+THEN
+ApplyStatus(_Ally, _Status, 1.0, 1, _Warden );
+DB_WardensBoon(_Warden,_Ally);
+PROC_InitializeWardensBoonPrey(_Warden,_Ally);
+
+//Get current Hunt Prey and also tie it to the ally
+PROC
+PROC_InitializeWardensBoonPrey((CHARACTER)_Warden,(CHARACTER)_Ally)
+AND
+DB_HuntPrey(_Warden,(CHARACTER)_Prey)
+THEN
+ApplyStatus(_Prey,"WARDENS_BOON_PREY",1.0,1,_Ally);
+
+//Apply Warden's Boon to all creatures in intersecting DBs
+PROC
+PROC_AssignWardensBoonPrey()
+AND
+DB_WardensBoon((CHARACTER)_Warden,(CHARACTER)_Ally)
+AND
+DB_HuntPrey(_Warden,(CHARACTER)_Prey)
+THEN
+ApplyStatus(_Prey,"WARDENS_BOON_PREY",1.0,1,_Ally);
+
+//Remove prey from Warden's Boon DB if they leave the Hunt Prey DB
+PROC
+PROC_RemoveFromWardensBoon((CHARACTER)_OldHunter,(CHARACTER)_Prey)
+AND
+DB_WardensBoon(_OldHunter,(CHARACTER)_OldAlly)
+THEN
+NOT DB_WardensBoon(_OldHunter,_OldAlly);
+
+//Remove from DB after losing status - it's only one turn, so a lot safer
+IF
+StatusRemoved((CHARACTER)_Ally, "WARDENS_BOON", _, _)
+AND
+DB_WardensBoon((CHARACTER)_OldHunter,_Ally)
+THEN
+NOT DB_WardensBoon(_OldHunter,_Ally);
+
+//END_REGION
 //END_REGION
 
 //REGION Minion actions
@@ -50,11 +119,14 @@ StatusApplied((CHARACTER)_Minion, "MINION_AWAITING", _, _)
 AND
 CharacterGetOwner(_Minion,(CHARACTER)_Summoner)
 AND
+DB_PartyMembers(_Summoner)
+AND
 NOT DB_SummonMinion(_Summoner,_Minion)
 THEN
 DB_SummonMinion(_Summoner,_Minion);
-ApplyStatus(_Minion,"MINION_INITIATIVE",1.0,1,_Summoner);
+//ApplyStatus(_Minion,"SHARE_SUMMONER_INITIATIVE",-1,1,_Summoner);
 ApplyStatus(_Summoner,"MINION_OWNER",1.0,1);
+PROC_AddWardensBoonToPet(_Minion,_Summoner);
 
 //Consume action
 IF
@@ -89,6 +161,35 @@ AND
 DB_SummonMinion(_Summoner,(CHARACTER)_Minion)
 THEN
 RemoveStatus(_Minion,"MINION_STUCK");
+
+
+//Re-summon companion on level up for non-rangers, adapted from GLO_Spells
+IF
+LeveledUp(_Player)
+AND
+DB_Players(_Player)
+AND
+NOT IsTagged(_Player, (TAG)RANGER_37a733c1-a862-4157-b92a-9cff46232c6a, 1)
+AND
+GetLevel(_Player, _Level)
+AND
+DB_GLO_Spells_RangersCompanion_LevelChange(_Level)
+AND
+DB_PlayerSummons(_Summon)
+AND
+CharacterGetOwner(_Summon, _Player)
+AND
+DB_GLO_Spells_RangersCompanion_Spell(_Status, _Spell)
+AND
+HasActiveStatus(_Summon, _Status, 1)
+AND
+GetPosition(_Summon, _X, _Y, _Z)
+AND
+GetDistanceToPosition(_Player, _X, _Y, _Z, _Dist)
+AND
+HasLineOfSight(_Player, _Summon, _CanTargetSummon)
+THEN
+PROC_GLO_Spells_Resummon(_Player, _Spell, _X, _Y, _Z, _Dist, _CanTargetSummon);
 
 //END_REGION
 

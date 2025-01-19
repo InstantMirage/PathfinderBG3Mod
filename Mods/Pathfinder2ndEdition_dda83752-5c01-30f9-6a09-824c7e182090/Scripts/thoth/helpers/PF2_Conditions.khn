@@ -138,13 +138,17 @@ function OffGuard(target,source)
     target = target or context.Target
     source = source or context.Source
 	
-	local feint = IsMeleeAttack() & (HasStatus('FEINT_ROUND',target,source) or HasStatus('FEINT_ONCE',target,source))
-	local hidden = HasStatus('SG_Invisible',source) or HasStatus('SNEAKING',source)
+	local feint = IsMeleeAttack() & (HasStatus('FEINT_ROUND',target,source) | HasStatus('FEINT_ONCE',target,source))
+	local hidden = HasStatus('SG_Invisible',source) | HasStatus('SNEAKING',source)
 	--You aren't off-guard to hidden, undetected, or flanking creatures of your level or lower
 	local denyadvantage = Tagged('ROGUE_DENYADVANTAGE',target) & (target.Level >= source.Level)
-	local dreadstriker = Tagged('ROGUE_DREADSTRIKER',source) & HasStatus('SG_Frightened',target)
 	
-	return Tagged('OFF_GUARD',target) | feint | dreadstriker --hidden & ~denyadvantage | dreadstriker
+	--Class-specific off-guard conditions
+	local surpriseattack = HasPassive('SneakAttackPassive',source) & HasStatus('SURPRISED',target)
+	local dreadstriker = Tagged('ROGUE_DREADSTRIKER',source) & HasStatus('SG_Frightened',target)
+	local naturesedge = HasPassive('NaturesEdge',source) & HasStatus('SG_DifficultTerrain',target)
+	
+	return Tagged('OFF_GUARD',target) | feint | (hidden & ~denyadvantage) | surpriseattack | dreadstriker | naturesedge
 end
 
 function Flanking(exclusionStatus, distance, tag, hasShield, target, source)
@@ -239,7 +243,7 @@ end
 --Barbarian
 
 function RageSpell()
-	return SpellId('Shout_Rage') | SpellId('Shout_AnimalRage') | SpellId('Shout_FuryRage') | SpellId('Shout_BludgeoningDragonRage') | SpellId('Shout_PoisonDragonRage') | SpellId('Shout_FifeDragonRage') | SpellId('Shout_ForceDragonRage') | SpellId('Shout_PsychicDragonRage') | SpellId('Shout_GiantRage') | SpellId('Shout_Rage_Frenzy') | SpellId('Shout_Rage_Totem_Bear') | SpellId('Shout_Rage_Boar')
+	return SpellId('Shout_Rage') | SpellId('Shout_AnimalRage') | SpellId('Shout_FuryRage') | SpellId('Shout_BludgeoningDragonRage') | SpellId('Shout_PoisonDragonRage') | SpellId('Shout_FireDragonRage') | SpellId('Shout_ForceDragonRage') | SpellId('Shout_PsychicDragonRage') | SpellId('Shout_GiantRage') | SpellId('Shout_Rage_Frenzy') | SpellId('Shout_Rage_Totem_Bear') | SpellId('Shout_Rage_Boar')
 end
 
 --Fighter
@@ -248,12 +252,50 @@ function ExactingStrikeFX()
     return (SpellId('Target_ExactingStrike') or SpellId('Projectile_ExactingStrike')) & HasStatus('MAP_2_ATTACKS',SELF)
 end
 
+--Monk
+
+-- Can be part of Flurry of Blows
+function IsMonkUnarmedSpell()
+	return MonkUnarmedStrike() | MonasticWeaponry() | MonasticArcher() | FlurryOfManeuvers()
+end
+
+function MonkUnarmedStrike()
+	return SpellId('Target_UnarmedAttack') | SpellId('Target_CraneWing') | SpellId('Target_TigerClaw') | SpellId('Target_CobraFang') | SpellId('Target_FallingStone') | SpellId('Target_DragonStance') | SpellId('Target_WolfJaw')
+end
+
+function MonasticWeaponry()
+	return ~WieldingWeapon('Twohanded', false, false, context.Source) & HasPassive('MonasticWeaponry',context.Source) & (SpellId('Target_MainHandAttack') | SpellId('Target_OffHandAttack'))
+end
+
+function MonasticArcher()
+	return ~WieldingWeapon('Loading', false, false, context.Source) & HasStatus('MonasticArcherStatus',context.Source) & SpellId('Projectile_MainHandAttack')
+end
+
+function FlurryOfManeuvers()
+	return HasPassive('FlurryOfManuevers',context.Source) & (SpellId('Target_Shove_Linked') | SpellId('Target_Grapple') | SpellId('Target_Trip') | SpellId('Target_SkillActions'))
+end
+
+function NonUnarmedStrikeCheck()
+	return HasStringInSpellRoll('WeaponAttack') | HasStringInSpellRoll('RangedUnarmedAttack') | HasStringInSpellRoll('ThrowAttack')
+end
+
+function NonBowStrikeCheck()
+	return HasStringInSpellRoll('Melee') | HasStringInSpellRoll('UnarmedAttack') | HasStringInSpellRoll('ThrowAttack') 
+end
+
 --Ranger
 
 function HuntedPrey(target,source)
 	source = source or context.Source
 	target = target or context.Target
 	return HasStatus('HUNT_PREY',target,source)
+end
+
+function HuntedPrey_WardensBoon(passive,target,source)
+	source = source or context.Source
+	target = target or context.Target
+	-- Exclude Warden's Boon from taking effect if you're already benefitting from that hunter's edge
+	return HasStatus('WARDENS_BOON_PREY',target,source) & ~( HasPassive(passive,source) & HuntedPrey(target,source))
 end
 
 function CanCommandMinion(entity)
@@ -267,6 +309,34 @@ function CanCommandMinion(entity)
 	local blockedStatuses = HasStatus('STINKING_CLOUD',entity) | HasStatus('INCAPACITATED_DND',entity) | HasStatus('COMMAND_APPROACH') | HasStatus('COMMAND_FLEE',entity) | HasStatus('CROWNOFKARSUS_UNCONCIOUS',entity) | HasStatus('LURING_SONG',entity) | HasStatus('IRRESISTIBLE_DANCE') | HasStatus('LOW_OSKARSBELOVED_UNNERVED',entity) | HasStatus('MIND_MASTERY',entity) | HasStatus('END_KARSUSCOMPULSION_CHANNEL',entity)
 	
 	return hasActions & canConcentrate & ~Dead(entity) & ~blockedStatusGroups & ~blockedStatuses
+end
+
+function PrecisionEdge()
+	return IsAttack() & HuntedPrey() & CanPrecisionDamage() & ~HasStatus('PrecisionEdgeRound',context.Source)
+end
+
+function PrecisionEdge_WardensBoon()
+	return IsAttack() & HuntedPrey_WardensBoon('HuntPreyPrecisionUnlock') & CanPrecisionDamage() & ~HasStatus('PrecisionEdgeRound',context.Source)
+end
+
+function OutwitEdgeDefense(target,source)
+	source = source or context.Source
+	target = target or context.Target
+	return ( HasPassive('HuntPreyOutwitUnlock',target) & HuntedPrey(source,target) )|( HasStatus('WARDENS_BOON_OUTWIT',target) & HuntedPrey_WardensBoon('HuntPreyOutwitUnlock',source,target) )
+end
+
+function YoungAnimal()
+	return ~(HasPassive('MatureAnimalCompanion',source) | HasPassive('LoyalWarhorse',source))
+end
+
+function MatureAnimal()
+	source = context.Source
+	return (HasPassive('MatureAnimalCompanion',source) | HasPassive('LoyalWarhorse',source)) & ~(HasPassive('IncredibleCompanion',source) | HasPassive('LoyalWarhorse',source))
+end
+
+function IncredibleAnimal()
+	source = context.Source
+	return (HasPassive('MatureAnimalCompanion',source) | HasPassive('LoyalWarhorse',source)) & (HasPassive('IncredibleCompanion',source) | HasPassive('ImposingDestrier',source))
 end
 
 --Rogue

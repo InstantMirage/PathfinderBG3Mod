@@ -25,10 +25,10 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h41c21140g9eccg9045g2e3fgb66df9f11b69" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h6aa06394gc39fgdf6fg97aeg84ab889735f6" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_DeflectMissiles" />
-        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll;OnPreDamage" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll" enumeration_type_name="InterruptContext" version="1" />
         <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
         <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
-        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsRangedWeaponAttack() or IsRangedUnarmedAttack() and not HasStatus('SG_Polymorph_BeastShape') and not AnyEntityIsItem()" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and (IsRangedWeaponAttack() or IsRangedUnarmedAttack()) and IsFlatValueInterruptInteresting(4, context.Source) and not HasStatus('SG_Polymorph_BeastShape') and not AnyEntityIsItem()" />
         <field name="Properties" type="StringTableFieldDefinition" value="IF(HasInterruptedAttack()):AdjustRoll(-4);" />
         <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
         <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
@@ -338,9 +338,10 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="7378d6dc-7088-4f62-9a0d-764a5b475d36" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd986e2ccgbb0fg4a36gf4c5g40f1dbcadfa4" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd4333571g1d85g2f3dgcadcge0bbf11bd335" version="1" />
-        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsMeleeWeaponAttack() or IsMeleeUnarmedAttack() and not HasStatus('SG_Polymorph_BeastShape') and not AnyEntityIsItem()" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and (HasInterruptedAttack() and IsFlatValueInterruptInteresting(2, context.Source) and not HasStatus('SG_Polymorph_BeastShape') and not AnyEntityIsItem()" />
         <field name="Properties" type="StringTableFieldDefinition" value="IF(HasInterruptedAttack()):AdjustRoll(-2);" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_UncannyDodge" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll" enumeration_type_name="InterruptContext" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -400,6 +401,31 @@
         <field name="Properties" type="StringTableFieldDefinition" value=";" />
         <field name="Roll" type="StringTableFieldDefinition" value="Attack(AttackType.RangedWeaponAttack)" />
         <field name="Success" type="StringTableFieldDefinition" value="DealDamage(max(1,MainRangedWeapon), MainRangedWeaponDamageType); ExecuteWeaponFunctors(MainHand)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="49f0a53a-cfac-4052-a333-09a337c8034f" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_TwinRiposte" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="c7444d60-f45a-4dbf-8bf6-203acf40af5b" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h72d4cd23gfcdbg494bg554bg36c6a96000e1" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf16a4a62g4777gc6c6ge587gb167f71efb70" version="1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Enemy(context.Source,context.Observer) and IsMeleeAttack() and IsMiss() and IsCriticalMiss() and not HasStatus('INVISIBILITY') and not AnyEntityIsItem() and not DistanceToEntityGreaterThan(2, context.ObserverPosition, context.Source) and HasLastAttackTriggered()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="UseAttack(OBSERVER_SOURCE);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_RIPOSTE,100,0)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="HasStatus('TWIN_PARRY')" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="7190588b-4ca4-4fad-96de-a57cde03d7e7" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_TwinRiposte_Disarm" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="49f0a53a-cfac-4052-a333-09a337c8034f" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he646cbcagbe5bg58f2g56c1gcceff2332f24" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf5c13d2dg738ag9492g22fbg715de6c91d6a" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_DisarmingAttack_Melee" />
+        <field name="Properties" type="StringTableFieldDefinition" value="UseSpell(SWAP,Target_Disarm,true,true,true);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_RIPOSTE,100,0)" />
       </fields>
     </stat_object>
   </stat_objects>
