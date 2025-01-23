@@ -911,6 +911,21 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="653cac13-40f0-4193-a567-bf8593b2bfdd" />
+        <field name="Name" type="NameTableFieldDefinition" value="ParagonShield" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4aa5b0f4g39eeg51e4gc096gad0d00314b0f" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ShieldMaster_Block" />
+        <field name="StackId" type="StringTableFieldDefinition" value="SHIELD" />
+        <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(CIRC_BON_2AC)" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not HasShieldEquipped()" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnUnequip" enumeration_type_name="StatusEvent" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableCombatlog" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:ApplyStatus(CircumstanceBonus2AC,100,1); ApplyEquipmentStatus(MeleeOffHand, RAISE_SHIELD_FX,100, 1)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="901970ac-e664-4f90-9d2c-d70e814c56e0" />
         <field name="Name" type="NameTableFieldDefinition" value="RAISE_SHIELD_FX" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="556bbe40-4d70-44c9-9fa2-96df353b1753" />
@@ -1314,6 +1329,21 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h8ccfa9c2g4060gbe10gbc9bg0940ad399e69" version="1" />
       </fields>
     </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="20ee71a8-f325-4600-8dc8-1acb1a2fe17b" />
+        <field name="Name" type="NameTableFieldDefinition" value="DuelingStanceStatus" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="9ef00628-cf8e-43d2-996f-8d8e905c10c8" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he24403c0ga61agfcffg19f6gee5beb4b1956" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hcddfdd00gae97g045ag087bg86636b13a5ca" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_FightingStyle_Duelling" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(CIRC_BON_1AC)" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="HasShieldEquipped() or WieldingWeapon('Twohanded', true, true)" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnCombatEnded" enumeration_type_name="StatusEvent" version="1" />
+        <field name="DynamicAnimationTag" type="GuidObjectTableFieldDefinition" value="721dfac3-92d4-41f5-b773-b7072a86232f" />
+        <field name="Sheathing" type="EnumerationTableFieldDefinition" value="Melee" enumeration_type_name="StatusSheathing" version="1" />
+      </fields>
+    </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="7ea89cc3-92fb-4930-92c6-d99bf202b0d6" />
@@ -1404,7 +1434,7 @@
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="0" />
         <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnCombatEnded;OnEquip" enumeration_type_name="StatusEvent" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="AttackSpellOverride(Target_CraneWing, Target_MainHandAttack);AttackSpellOverride(Target_CraneWing, Target_UnarmedAttack)Tag(CIRC_BON_1AC);JumpMaxDistanceBonus(1.5)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="AttackSpellOverride(Target_CraneWing, Target_MainHandAttack);AttackSpellOverride(Target_CraneWing, Target_UnarmedAttack);Tag(CIRC_BON_1AC);JumpMaxDistanceBonus(1.5)" />
         <field name="Sheathing" type="EnumerationTableFieldDefinition" value="Sheathed" enumeration_type_name="StatusSheathing" version="1" />
         <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="WearingArmor(context.Source) or not Combat()" />
         <field name="DynamicAnimationTag" type="GuidObjectTableFieldDefinition" value="c4598bdb-fc07-40dd-a62c-90cc138bd76f" />
@@ -2615,6 +2645,16 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hff16e6begdb17g1d05g74feg63019770b79a" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hafdda4f0gead1g7562gf18fg61d5e2bd6e5e" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="IF(SpellId('Shout_DazzlingDisplay')):RollBonus(SkillCheck, 1, Intimidation); UnlockSpellVariant(SpellId('Shout_DazzlingDisplay'),ModifyIconGlow())" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="207f2815-85a8-4fd9-821b-7a90f1781cc9" />
+        <field name="Name" type="NameTableFieldDefinition" value="ThiefFinesseStatus" />
+        <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsWeaponAttack()):DamageBonus(DexterityModifier)" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnUnequip" enumeration_type_name="StatusEvent" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
   </stat_objects>
