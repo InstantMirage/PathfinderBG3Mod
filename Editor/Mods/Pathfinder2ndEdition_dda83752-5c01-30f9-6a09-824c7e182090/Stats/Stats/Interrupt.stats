@@ -451,5 +451,161 @@
         <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
       </fields>
     </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="08053482-fab5-4c0b-a95a-ace911f7b488" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Critspec_Knife" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd28d9ee6g5c93gd8a3g8a70gc90adeb26d09" version="2" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="1d6" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Slash" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnCastHit" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((IsWeaponOfProficiencyGroup('Daggers|Sickles|Javelins', GetAttackWeapon()) and IsMeleeAttack() and IsWeaponAttack()) or IsWeaponOfProficiencyGroup('Daggers|Sickles|Javelins',context.HitDescription.ThrownObject)) and not Item() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsCritical() and not IsKillingBlow() and not AnyEntityIsItem()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="ApplyStatus(BLEEDING,100,10)" />
+        <field name="Cost" type="StringTableFieldDefinition" value=";" />
+        <field name="Stack" type="StringTableFieldDefinition" value="CriticalSpecialization" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="HasPassive('CriticalSpecialization')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnProficiencyChange;OnLongRest;OnCreate;OnCombatStarted;OnEquip" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="Owner" type="CommentTableFieldDefinition" value="Can be thrown" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hef2c0217g387fg0a48g0dedgbf3b041472e3" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="873f32d0-2434-4929-852b-29ff724524a7" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Critspec_Club" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="08053482-fab5-4c0b-a95a-ace911f7b488" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0f92bae1g0c70g59e2g79f4gc83bee98c91e" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hfeea3dc6gf4d6gde75g8a91g97114dc30d49" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="Distance(3)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_PushingAttack_Melee" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and (IsWeaponOfProficiencyGroup('Clubs|Greatclubs|Maces|Morningstars|Quarterstaffs', GetAttackWeapon()) and IsMeleeAttack() and IsWeaponAttack()) and not Item() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsCritical() and not IsKillingBlow() and not AnyEntityIsItem()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="ApplyStatus(CRITSPEC_CLUB,100,1)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="96ee94f0-4ee2-4bc5-93a8-ea3ea3a55c40" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Critspec_Axe" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="08053482-fab5-4c0b-a95a-ace911f7b488" />
+        <field name="Owner" type="CommentTableFieldDefinition" value="Can technically be thrown, but it interacts weirdly with the bonus attack" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb3820e0egea81g1671gfc9agc58141be7321" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hed6d997dgb83cgd126g0c64g2dd678c22105" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon, MainMeleeWeaponDamageType)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_PolearmMaster_BonusAttack" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and (IsWeaponOfProficiencyGroup('Handaxes|Battleaxes|Greataxes', GetAttackWeapon()) and IsMeleeAttack() and IsWeaponAttack()) and not Item() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsCritical() and not IsKillingBlow() and not AnyEntityIsItem()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="ApplyStatus(OBSERVER_OBSERVER,CRITSPEC_AXE_AURA,100,1);ApplyStatus(OBSERVER_OBSERVER,CRITSPEC_AXE_UNLOCK,100,1)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="3ca4823a-3c74-47cc-8e71-13499c6f4983" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Critspec_Bow" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="08053482-fab5-4c0b-a95a-ace911f7b488" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hba287c8egcaa7g9fa9gd453g005847f07cc0" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_PiercingShot" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and (IsWeaponOfProficiencyGroup('Shortbows|Longbows', GetAttackWeapon()) and IsRangedAttack() and IsWeaponAttack()) and not Item() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsCritical() and not IsKillingBlow() and not AnyEntityIsItem()" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="5fd241ef-9192-45ae-9aee-df85d7c598d8" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Critspec_Crossbow" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="3ca4823a-3c74-47cc-8e71-13499c6f4983" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h840a26acgedc4g61a0g4740gf7b119b16302" version="1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and (IsWeaponOfProficiencyGroup('HandCrossbows|LightCrossbows|HeavyCrossbows', GetAttackWeapon()) and IsRangedAttack() and IsWeaponAttack()) and not Item() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsCritical() and not IsKillingBlow() and not AnyEntityIsItem()" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="c8ff3026-41ba-4f5a-8e98-62954483cf83" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Critspec_Flail" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="08053482-fab5-4c0b-a95a-ace911f7b488" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h7cd6f492geba0ga5cbg56feg570b89651e69" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h53cf7702gbe0dg254ag656dg5da7decbbd01" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_HeartStopper" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and (IsWeaponOfProficiencyGroup('Flails', GetAttackWeapon()) and IsMeleeAttack() and IsWeaponAttack()) and not Item() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsCritical() and not IsKillingBlow() and not AnyEntityIsItem()" />
+        <field name="Properties" type="StringTableFieldDefinition" value=";" />
+        <field name="Roll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, 10 + context.Observer.ProficiencyBonus + GetModifier(context.Observer.Strength))" />
+        <field name="Success" type="StringTableFieldDefinition" value="ApplyStatus(PRONE,100,2)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="538e4c4b-3f1d-4c53-bd0e-99853661874a" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Critspec_Hammer" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="c8ff3026-41ba-4f5a-8e98-62954483cf83" />
+        <field name="Owner" type="CommentTableFieldDefinition" value="Can be thrown" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hcdfe2bf1g9c91gfc8fg336cgef6b91982b77" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h8b154a31gd0b5gd71egcc87g3d4d915d7cb8" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_ConcussiveSmash" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((IsWeaponOfProficiencyGroup('LightHammers|Warhammers|Mauls', GetAttackWeapon()) and IsMeleeAttack() and IsWeaponAttack()) or IsWeaponOfProficiencyGroup('LightHammers|Warhammers|Mauls',context.HitDescription.ThrownObject)) and not Item() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsCritical() and not IsKillingBlow() and not AnyEntityIsItem()" />
+        <field name="Roll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Constitution, 10 + context.Observer.ProficiencyBonus + GetModifier(context.Observer.Strength))" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="9469e604-7b02-4e3a-b694-0f9f4dc3b4da" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Critspec_Pick" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="08053482-fab5-4c0b-a95a-ace911f7b488" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf9456d26g59bdg3831gb3a3gc4ea19fe4b40" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h44cb476bgc06bg97cdg27c7g824596870363" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="2" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Mag_RevitalizingStrike" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and (IsWeaponOfProficiencyGroup('Warpicks', GetAttackWeapon()) and IsMeleeAttack() and IsWeaponAttack()) and not Item() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsCritical() and not IsKillingBlow() and not AnyEntityIsItem()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="DealDamage(2,Piercing,Magical,,0,,true,false)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="d22444f6-c0b6-42a8-b05e-9cf0c8a60f37" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Critspec_Polearm" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="08053482-fab5-4c0b-a95a-ace911f7b488" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h13fe6950g8133g1af6ge1begee321886d267" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h8878f354g7e5fgaeacge196gb7f7516f428d" version="2" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="Distance(1.5)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_Gortash_ReelIn" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and (IsWeaponOfProficiencyGroup('Glaives|Halberds', GetAttackWeapon()) and IsMeleeAttack() and IsWeaponAttack()) and not Item() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsCritical() and not IsKillingBlow() and not AnyEntityIsItem()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="ApplyStatus(CRITSPEC_POLE_TARGET,100,1);ApplyStatus(OBSERVER_OBSERVER,CRITSPEC_POLE_UNLOCK,100,1)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="fad23121-f81f-4f4e-aa03-3a7868df5826" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Critspec_Spear" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="08053482-fab5-4c0b-a95a-ace911f7b488" />
+        <field name="Owner" type="CommentTableFieldDefinition" value="Can be thrown" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0db80440ga15bge1fdge527g8388a8bcb794" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hfcc493c7g7282gd99ag08cag54ec87d3ec80" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_PiercingThrust" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((IsWeaponOfProficiencyGroup('Spears|Tridents|Pikes', GetAttackWeapon()) and IsMeleeAttack() and IsWeaponAttack()) or IsWeaponOfProficiencyGroup('Spears|Tridents|Pikes',context.HitDescription.ThrownObject)) and not Item() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsCritical() and not IsKillingBlow() and not AnyEntityIsItem()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="ApplyStatus(CLUMSY,100,1)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="c00ba57d-e2c0-4919-9bb1-1cc9d111cfe2" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Critspec_Sword" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="08053482-fab5-4c0b-a95a-ace911f7b488" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf50f9a64g4f36gf812g7cf8g1ae0783aeaf4" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h9d5665begb153g92e4g8062gb2cc2d10f6c5" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_OpeningAttack" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and (IsWeaponOfProficiencyGroup('Shortswords|Longswords|Greatswords|Rapiers|Scimitars', GetAttackWeapon()) and IsMeleeAttack() and IsWeaponAttack()) and not Item() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsCritical() and not IsKillingBlow() and not AnyEntityIsItem()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="ApplyStatus(OFF_BALANCED,100,1)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2b82b433-fe3e-4f7a-ac1c-254f495be9f8" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Critspec_Brawling" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="538e4c4b-3f1d-4c53-bd0e-99853661874a" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb0666af1g1fa3gca69g45a9g490c944e6e32" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="he7a50bbag0c04g000bg7653gfdb35a20a3a9" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Monk_OpenHandTechnique_NoReactions" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and (IsUnarmedAttack()) and not Item() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsCritical() and not IsKillingBlow() and not AnyEntityIsItem()" />
+        <field name="Success" type="StringTableFieldDefinition" value="ApplyStatus(STUNNED1,100,1)" />
+      </fields>
+    </stat_object>
   </stat_objects>
 </stats>

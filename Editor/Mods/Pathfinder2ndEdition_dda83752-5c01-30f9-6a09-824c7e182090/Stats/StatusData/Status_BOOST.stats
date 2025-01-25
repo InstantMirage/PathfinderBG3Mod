@@ -866,7 +866,7 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="c71fd888-b375-42b8-b0da-21c0e4af8b5d" />
         <field name="Name" type="NameTableFieldDefinition" value="STUNNED1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(ActionPoint,1,-1)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(ActionPoint,-1,0)" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnTurn" enumeration_type_name="StatusEvent" version="1" />
         <field name="StackId" type="StringTableFieldDefinition" value="SLOW" />
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="1" />
@@ -945,6 +945,17 @@
         <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:ApplyStatus(CircumstancePenalty2Attack,100,1)" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="9d0c4b8e-4d02-4828-8bf0-b9953f97c4cd" />
         <field name="Boosts" type="StringTableFieldDefinition" value="Tag(CIRC_PEN_2ATTACK)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="adf03886-96e1-4420-839e-a1f64d0dcbea" />
+        <field name="Name" type="NameTableFieldDefinition" value="CLUMSY" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h84800c00g75a3gae2bg8fb6g001d064d3208" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5a56b52bg4209gbe4fg0a11ge63e366ab549" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="statIcons_OffBalanced" />
+        <field name="StackId" type="StringTableFieldDefinition" value="CLUMSY" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(STAT_PEN_1AC);Skill(Acrobatics,-1);Skill(Stealth,-1);Skill(SleightOfHand,-1)" />
       </fields>
     </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">
@@ -1027,6 +1038,72 @@
         <field name="StackType" type="EnumerationTableFieldDefinition" value="Ignore" enumeration_type_name="StatusStackType" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="AI_IGNORE:IF( HasActionResource('ActionPoint', 1 , 0, false, false) and not (Immobilized() or HasDifficultTerrainStatus() or HasStatus('SG_Ignore_AOO'))):UnlockSpellVariant(SpellId('Shout_Disengage'),ModifyIconGlow());" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;IgnoreResting;ApplyToDead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="edfc1b15-79f6-47cf-bd4f-ef9719cb9fe0" />
+        <field name="Name" type="NameTableFieldDefinition" value="CRITSPEC_CLUB" />
+        <field name="UseLyingPickingState" type="EnumerationTableFieldDefinition" value="Yes" enumeration_type_name="YesNo" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;DisablePortraitIndicator;InitiateCombat" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="RemoveStatus(SNEAKING);RemoveStatus(SLEEP);RemoveStatus(SLEEPING);Force(3);RemoveStatus(SG_Sleeping);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="96f9250d-c197-4587-994d-fddc4a35b92f" />
+        <field name="Name" type="NameTableFieldDefinition" value="CRITSPEC_POLE_UNLOCK" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Teleportation_Critspec_Polearm)" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnMove;OnSpellCast" enumeration_type_name="StatusEvent" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;DisablePortraitIndicator;BringIntoCombat" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="04e49f47-cceb-4026-a2b2-a14c03f321ef" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="45e9cbf5-97f9-40d7-9a44-a70922509f5b" />
+        <field name="Name" type="NameTableFieldDefinition" value="CRITSPEC_AXE_UNLOCK" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="96f9250d-c197-4587-994d-fddc4a35b92f" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_Critspec_Axe_Spell)" />
+        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="UseActionResource(Movement,100%,0,true); RemoveStatus(DEBUG_RESET_MOVE)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="4b85e58f-53e6-41e5-ab47-ace8bcf984d0" />
+        <field name="Name" type="NameTableFieldDefinition" value="CRITSPEC_AXE_AURA" />
+        <field name="StillAnimationType" type="EnumerationTableFieldDefinition" value="Weakened" enumeration_type_name="StatusAnimationType" version="1" />
+        <field name="StillAnimationPriority" type="EnumerationTableFieldDefinition" value="Weakened" enumeration_type_name="StillAnimPriority" version="1" />
+        <field name="StackId" type="StringTableFieldDefinition" value="CRITSPEC_AXE" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="2" />
+        <field name="AuraRadius" type="IntegerTableFieldDefinition" value="2" />
+        <field name="AuraStatuses" type="StringTableFieldDefinition" value="IF(not Self()):ApplyStatus(CRITSPEC_AXE_TARGET);" />
+        <field name="AuraFlags" type="EnumerationListTableFieldDefinition" value="IgnoreItems;AIIgnoreOnSelf" enumeration_type_name="AuraFlags" version="1" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnAttacked" enumeration_type_name="StatusEvent" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;DisablePortraitIndicator;InitiateCombat;TickingWithSource" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="IsUnique" type="BoolTableFieldDefinition" value="True" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="1a5a621b-3dde-4738-bbb0-103a36fe3e0f" />
+        <field name="Name" type="NameTableFieldDefinition" value="CRITSPEC_AXE_TARGET" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h630b5e09ge518g62eag8bb8g246bed2e31c7" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_PolearmMaster_BonusAttack" />
+        <field name="StackId" type="StringTableFieldDefinition" value="CRITSPEC_AXE" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="7f3c7f07-7c1f-49c5-9174-29581ded8f30" />
+        <field name="Name" type="NameTableFieldDefinition" value="CRITSPEC_POLE_TARGET" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hfa2a9dcfgc4a0g71f0gab53g96a42a37af26" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_Gortash_ReelIn" />
+        <field name="StillAnimationType" type="EnumerationTableFieldDefinition" value="Weakened" enumeration_type_name="StatusAnimationType" version="1" />
+        <field name="StillAnimationPriority" type="EnumerationTableFieldDefinition" value="Weakened" enumeration_type_name="StillAnimPriority" version="1" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnAttacked" enumeration_type_name="StatusEvent" version="1" />
+        <field name="IsUnique" type="BoolTableFieldDefinition" value="True" />
       </fields>
     </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">
@@ -1936,6 +2013,7 @@
         <field name="Boosts" type="StringTableFieldDefinition" value="CharacterWeaponDamage(1)" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4bd81e64g6284g0b3dg46b0g1ad41a7238bc" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Transmutation_MagicWeapon" />
+        <field name="Passives" type="StringTableFieldDefinition" value="CriticalSpecialization" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2562,8 +2640,8 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h81590873g5511g657fg2571gd6494787d9aa" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Conjuration_EnsnaringStrikeRanged" />
         <field name="StackId" type="StringTableFieldDefinition" value="DISTRACTING" />
-        <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
         <field name="TickType" type="EnumerationTableFieldDefinition" value="StartTurn" enumeration_type_name="TickType" version="1" />
+        <field name="IsUnique" type="BoolTableFieldDefinition" value="True" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">

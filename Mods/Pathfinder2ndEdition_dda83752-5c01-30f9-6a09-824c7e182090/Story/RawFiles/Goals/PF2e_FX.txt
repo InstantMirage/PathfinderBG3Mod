@@ -1,44 +1,79 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
+//DB_WildMagic_AD("Shout_WildMagic_TurnMagic", (DIALOGRESOURCE)GLO_WildMagic_AD_TurnMagic_544e5cfb-ea0c-1b50-5814-1b00e7c5236c);
+//DB_WildMagic_AD("Shout_WildMagic_Burning", (DIALOGRESOURCE)GLO_WildMagic_AD_Burning_d1e2d251-e12c-c226-732a-d1234ad8afcd);
+//DB_WildMagic_AD("Shout_WildMagic_Teleport", (DIALOGRESOURCE)GLO_WildMagic_AD_Teleport_b08eed48-f531-7a68-93c2-6ea83cbfa7e7);
+//DB_WildMagic_AD("Shout_WildMagic_Enchant", (DIALOGRESOURCE)GLO_WildMagic_AD_Enchant_bf2f449a-2630-5367-96ba-3612debf2cc2);
+//DB_WildMagic_AD("Shout_WildMagic_SorceryPoints", (DIALOGRESOURCE)GLO_WildMagic_AD_SorceryPoints_4291bb00-2d08-4ae7-ef60-e7b793c30327);
+//DB_WildMagic_AD("Shout_WildMagic_Fog", (DIALOGRESOURCE)GLO_WildMagic_AD_Fog_36972b46-9846-8372-6b48-4537b6fc9d45);
+//DB_WildMagic_AD("Shout_WildMagic_Blur", (DIALOGRESOURCE)GLO_WildMagic_AD_Blur_1fbe352f-8f83-26c0-1054-179c7e51d99f);
+//DB_WildMagic_AD("Shout_WildMagic_Heal", (DIALOGRESOURCE)GLO_WildMagic_AD_Healing_8e6739f5-8884-a81d-ff35-e36980d10bd7);
+//DB_WildMagic_AD("Shout_WildMagic_Mephit", (DIALOGRESOURCE)GLO_WildMagic_AD_Mephit_ca35289b-e504-4948-9d84-9d7e6660ea83);
+//DB_WildMagic_AD("Shout_WildMagic_Swap", (DIALOGRESOURCE)GLO_WildMagic_AD_Swap_b23fc826-4bc6-2b21-416f-59ae8efae161);
 
+DB_AlwaysPrepare_AD("Target_Demoralize",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Prepare_b523412d-1ea5-f3b0-ee9d-fa80cf72100a);
+DB_AlwaysPrepare_AD("Target_FreeDemoralize",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Prepare_b523412d-1ea5-f3b0-ee9d-fa80cf72100a);
+
+DB_AlwaysCast_AD("Target_FreeDemoralize",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Cast_6dafdccd-091d-c0f4-4543-1199bdcb46d6);
+DB_AlwaysCast_AD("Target_Demoralize",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Cast_6dafdccd-091d-c0f4-4543-1199bdcb46d6);
+
+DB_SendSpellToWildMagic_AD("Shout_DesperatePrayer","Shout_WildMagic_SorceryPoints");
+DB_SendSpellToWildMagic_AD("Rush_QiRush","Shout_WildMagic_Teleport");
+DB_SendSpellToWildMagic_AD("Shout_ArcaneTap","Shout_WildMagic_Teleport");
+DB_SendSpellToWildMagic_AD("Target_Critspec_Axe_Spell","Shout_WildMagic_Enchant");
+
+DB_SendStatusToWildMagic_AD("SHIELD_SPELL_BROKEN","Shout_WildMagic_TurnMagic");
 KBSECTION
 //REGION Voice barks
 
 //Demoralize Cast
 IF
-UsingSpellOnTarget((CHARACTER)_Player,(CHARACTER)_Target, "Target_Demoralize",_,_,_)
+UsingSpellOnTarget((CHARACTER)_Player,(CHARACTER)_Target,(STRING)_Spell,_,_,_)
 AND
 DB_IsOrWasInParty(_Player)
 AND
 NOT DB_CantTalk_IgnoreCombat(_Player)
+AND
+DB_AlwaysCast_AD(_Spell,_Dialog)
 THEN
-PROC_TryStartSpellVocalAD((DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Cast_6dafdccd-091d-c0f4-4543-1199bdcb46d6,_Player,_Target);
+PROC_TryStartSpellVocalAD(_Dialog,_Player,_Target);
+
 //Demoralize Preview
 IF
-StartedPreviewingSpell((CHARACTER)_Player,"Target_Demoralize",_, _)
-AND
-DB_IsOrWasInParty(_Player)
-THEN
-PROC_TryStartSpellVocalAD((DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Prepare_b523412d-1ea5-f3b0-ee9d-fa80cf72100a,_Player);
-
-
-//You're Next! Cast
-IF
-UsingSpellOnTarget((CHARACTER)_Player,(CHARACTER)_Target, "Target_FreeDemoralize",_,_,_)
+StartedPreviewingSpell((CHARACTER)_Player,(STRING)_Spell,_, _)
 AND
 DB_IsOrWasInParty(_Player)
 AND
 NOT DB_CantTalk_IgnoreCombat(_Player)
+AND
+DB_AlwaysPrepare_AD(_Spell,_Dialog)
 THEN
-PROC_TryStartSpellVocalAD((DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Cast_6dafdccd-091d-c0f4-4543-1199bdcb46d6,_Player,_Target);
-//You're Next! Preview
+PROC_TryStartSpellVocalAD(_Dialog,_Player);
+
+//The Wild Magic AD can trigger dialog infrequently, with a set of cooldown rules.
+//For spells
 IF
-StartedPreviewingSpell((CHARACTER)_Player,"Target_FreeDemoralize",_, _)
+UsingSpell((CHARACTER)_Player,(STRING)_Spell,_,_,_)
 AND
 DB_IsOrWasInParty(_Player)
+AND
+DB_SendSpellToWildMagic_AD(_Spell,_AsSpell)
 THEN
-PROC_TryStartSpellVocalAD((DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Prepare_b523412d-1ea5-f3b0-ee9d-fa80cf72100a,_Player);
+PROC_WildMagic_TryAD(_Player,_AsSpell);
+
+//React to status effects
+IF StatusApplied((CHARACTER)_Player,(STRING)_Status,_,_)
+AND
+DB_IsOrWasInParty(_Player)
+AND
+DB_SendStatusToWildMagic_AD(_Status,_AsSpell)
+THEN
+PROC_WildMagic_TryAD(_Player,_AsSpell);
+
+//ReactionInterruptUsed((CHARACTER)_Player,_Interrupt, _)
+//To do: use Shout_WildMagic_Heal dialog for casting Harm with void healing
+
 //END_REGION
 EXITSECTION
 

@@ -128,7 +128,7 @@
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsMelee;IsHarmful" enumeration_type_name="SpellFlagList" version="1" />
         <field name="SpellActionType" type="EnumerationTableFieldDefinition" value="None" enumeration_type_name="SpellActionType" version="1" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
-        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="96377661-f17e-476b-8e01-540de022fb03" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="9342eaf4-6a20-44c6-a740-863b0f9c2475" />
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="6ebc0b77-460f-4be0-90ce-355cfa5b67c1" />
         <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="68c7914d-11d3-4bb5-9fa2-524fbc013c0d" />
         <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_SkillActions" />
@@ -231,6 +231,12 @@
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Utility" enumeration_type_name="VerbalIntent" version="1" />
       </fields>
     </stat_object>
+    <stat_object color="#FFA52A2A" is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="73ebf89c-9cd0-462c-8b8e-cd5818d151c7" />
+        <field name="Name" type="NameTableFieldDefinition" value="REACTIONS" />
+      </fields>
+    </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="24d68472-4ef7-49c7-92d4-e97a7f3c6393" />
@@ -258,10 +264,167 @@
         <field name="Name" type="NameTableFieldDefinition" value="OffHand_Free" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="34c87ba1-754a-4700-9178-d939ad7003c6" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="HasStatus('FOLLOW_UP_OFFHAND_TARGET',context.Target,context.Source)" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd4dcae4eg0067g1d86g562dg0cd4963922b5" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd3b27a7eg4512g3c53gd954g1624a672189a" version="1" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hbab5658eg1d18gd113g7076gb9007d5962ff" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="he12d45bfg80fbgf8a7g5f6eg58661796c0cc" version="1" />
         <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="7d77db98-76e4-408b-a63a-c723657d8dfa" />
+        <field name="Name" type="NameTableFieldDefinition" value="Critspec_Axe" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_PolearmMaster_BonusAttack" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="8b8bb757-21ce-4e02-a2f3-97d55cf2f90b,,;c1df9aea-8be9-4de3-bcbc-4e4c1e44dc37,,;722df2d7-7898-4b0b-b930-5a850b55ccf0,,;a693a7c3-e7e7-4edb-98dd-db5fd700663f,,;7bb52cd4-0b1c-4926-9165-fa92b75876a3,,;35f5cba8-3706-46d5-9a1e-2def9ba22473,,;0b07883a-08b8-43b6-ac18-84dc9e84ff50,,;,,;,," />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsDefaultWeaponAction" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="InterruptPrototype" type="StringTableFieldDefinition" value="Interrupt_Critspec_Axe" />
+        <field name="AIFlags" type="EnumerationListTableFieldDefinition" value="CanNotUse" enumeration_type_name="AIFlags" version="1" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h75b17c17gda61g53ccgafc2gf3b93eccafa0" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5a2cc919g35cbgef10g4d61g922084d09a0c" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon, MainMeleeWeaponDamageType)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="81d2e468-48b1-47a5-8563-bb185ba3a52b" />
+        <field name="Name" type="NameTableFieldDefinition" value="Critspec_Bow" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="7d77db98-76e4-408b-a63a-c723657d8dfa" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_PiercingShot" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc77b8fc1g33d8gb802g005fgf06e561f727d" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5e8d3df5gecbdg3987g28ebga463aed07a0c" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="1d6" />
+        <field name="InterruptPrototype" type="StringTableFieldDefinition" value="Interrupt_Critspec_Bow" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="1ee87041-0a43-41c8-878a-b49266fb93e0" />
+        <field name="Name" type="NameTableFieldDefinition" value="Critspec_Crossbow" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="81d2e468-48b1-47a5-8563-bb185ba3a52b" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hbe2f32d7g7882gc29dg4249g2a0520b52bf3" version="1" />
+        <field name="InterruptPrototype" type="StringTableFieldDefinition" value="Interrupt_Critspec_Crossow" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="dd9fd2ad-0f0b-4724-9d05-5200fa9224ee" />
+        <field name="Name" type="NameTableFieldDefinition" value="Critspec_Club" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="7d77db98-76e4-408b-a63a-c723657d8dfa" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_PushingAttack_Melee" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb8a19a05gf09cg287aga9ebgd89ae6c2f043" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h98a667e8g7b79g06d2gd7cege017b4df3805" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="Distance(3)" />
+        <field name="InterruptPrototype" type="StringTableFieldDefinition" value="Interrupt_Critspec_Club" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="85dcb1a8-7efb-4145-89be-2a2eb0c20f51" />
+        <field name="Name" type="NameTableFieldDefinition" value="Critspec_Flail" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="7d77db98-76e4-408b-a63a-c723657d8dfa" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_HeartStopper" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h593bcc2fgbe56ge2acg2197gc334c8fd01a8" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hb363ec71gd39bgf764g6a27gd2dff7c48d91" version="1" />
+        <field name="InterruptPrototype" type="StringTableFieldDefinition" value="Interrupt_Critspec_Flail" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="5e85c13d-a925-44e1-9f6a-2222e9af6a86" />
+        <field name="Name" type="NameTableFieldDefinition" value="Critspec_Hammer" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="85dcb1a8-7efb-4145-89be-2a2eb0c20f51" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_ConcussiveSmash" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h319acb27g3619ge6f7gadfcg9cf7db85fb47" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h09525b11g87d0g1b57g1b2bg23bbb7375f2f" version="1" />
+        <field name="InterruptPrototype" type="StringTableFieldDefinition" value="Interrupt_Critspec_Hammer" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="9bceba64-77a2-49cb-8420-99d68a068e74" />
+        <field name="Name" type="NameTableFieldDefinition" value="Critspec_Knife" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="7d77db98-76e4-408b-a63a-c723657d8dfa" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Slash" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5d927e78g5fbcg2766g2ecag01f0f67a1025" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h914b3f32g449eg3468g1024g753d8420ed4f" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="1d6" />
+        <field name="InterruptPrototype" type="StringTableFieldDefinition" value="Interrupt_Critspec_Knife" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="16f32cbd-a1d6-4a62-97ce-d4de79701c41" />
+        <field name="Name" type="NameTableFieldDefinition" value="Critspec_Pick" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="7d77db98-76e4-408b-a63a-c723657d8dfa" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Mag_RevitalizingStrike" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6f847ad3gb691g4302g4f8eg8367a482ab86" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h81ff274ega743g0d9bg5bdcg8d92cdada13c" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="2" />
+        <field name="InterruptPrototype" type="StringTableFieldDefinition" value="Interrupt_Critspec_Pick" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2a97a1b1-1f05-4feb-b81e-02d5cea05d6b" />
+        <field name="Name" type="NameTableFieldDefinition" value="Critspec_Polearm" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="7d77db98-76e4-408b-a63a-c723657d8dfa" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_Gortash_ReelIn" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h984ff71fgb59eg730eg5f73g4a10efb93d0e" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hea92dc27g1babgd435gb6d6g25bfff4e4073" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="Distance(1.5)" />
+        <field name="InterruptPrototype" type="StringTableFieldDefinition" value="Interrupt_Critspec_Polearm" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="80921b29-141d-457b-93e2-5c6f760cb81f" />
+        <field name="Name" type="NameTableFieldDefinition" value="Critspec_Spear" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="7d77db98-76e4-408b-a63a-c723657d8dfa" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_PiercingThrust" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h7e217618g52d1g4874g0342gdb86c6baae07" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h92f30a5dg8a59g4877gd5aagf4aa4c114ab9" version="1" />
+        <field name="InterruptPrototype" type="StringTableFieldDefinition" value="Interrupt_Critspec_Spear" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="e07205e1-6b37-4999-9914-457d923494d8" />
+        <field name="Name" type="NameTableFieldDefinition" value="Critspec_Sword" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="7d77db98-76e4-408b-a63a-c723657d8dfa" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_OpeningAttack" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h07ecd6d7g1be0gfc54g6839g7248b0851ed4" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h80dd971cgcb7eg905ag070cg748a38fb28cc" version="1" />
+        <field name="InterruptPrototype" type="StringTableFieldDefinition" value="Interrupt_Critspec_Sword" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="adf91fa8-4665-4b6e-8b17-eeb508d329aa" />
+        <field name="Name" type="NameTableFieldDefinition" value="Critspec_Axe_Spell" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon, MainMeleeWeaponDamageType)" />
+        <field name="TargetCeiling" type="StringTableFieldDefinition" value="0" />
+        <field name="TargetFloor" type="StringTableFieldDefinition" value=".25" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="MeleeMainWeaponRange" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_PushingAttack_Melee" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h32b6760fg5ce2g4109gf065gb2250ffec1db" version="1" />
+        <field name="PreviewCursor" type="EnumerationTableFieldDefinition" value="Melee" enumeration_type_name="CursorMode" version="1" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="Character() and Enemy() and not Dead()" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="8b8bb757-21ce-4e02-a2f3-97d55cf2f90b,,;711781fb-5f5a-4b9a-bd8b-e0b4ff9dec46,,;a17a7bf3-7381-4191-83f4-304d37c738e0,,;1172e0b6-08d1-4f28-a651-a01681b84ee6,,;7bb52cd4-0b1c-4926-9165-fa92b75876a3,,;,,;0b07883a-08b8-43b6-ac18-84dc9e84ff50,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="WeaponType" type="EnumerationListTableFieldDefinition" value="Melee" enumeration_type_name="WeaponFlags" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsHarmful;Temporary;IsMelee" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="Sheathing" type="EnumerationTableFieldDefinition" value="Melee" enumeration_type_name="SpellSheathing" version="1" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="HasStatus('CRITSPEC_AXE_TARGET',context.Target)" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h56c9578fgcaf6g4153g6edbg736beab01843" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon, MainMeleeWeaponDamageType)" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon, MainMeleeWeaponDamageType)" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Action_Cast_Gen_PolearmMasterBonusAttack" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="18188471-a2d8-4ed8-82ee-f4a1917eb6ff" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="19e5f1f1-33e2-47cd-a634-ccf21808dc6e" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="a5341b2a-c161-4a4a-aa97-ea6a493d1402" />
+        <field name="HighlightConditions" type="StringTableFieldDefinition" value="HasStatus('CRITSPEC_AXE_TARGET',context.Target)" />
       </fields>
     </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">
@@ -298,7 +461,7 @@
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
         <field name="DamageType" type="EnumerationTableFieldDefinition" value="Piercing" enumeration_type_name="Damage Type" version="1" />
         <field name="Sheathing" type="EnumerationTableFieldDefinition" value="Sheathed" enumeration_type_name="SpellSheathing" version="1" />
-        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('RAGE')" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('SG_Rage')" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="not Self()" />
       </fields>
     </stat_object>
@@ -347,12 +510,17 @@
         <field name="UUID" type="IdTableFieldDefinition" value="6f5c92e6-a775-402e-9a7b-7df479514783" />
         <field name="Name" type="NameTableFieldDefinition" value="FuriousFinish" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="e1772ad5-cf56-4e88-89c7-c431112fd712" />
-        <field name="RequirementConditions" type="StringTableFieldDefinition" value="CanUseWeaponActions() and (HasStatus('BoostDragonRage') or HasStatus('RAGE'))" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon+1d10, MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);RemoveStatus(SELF, BoostDragonRage)" />
-        <field name="SpellFail" type="StringTableFieldDefinition" value="RemoveStatus(SELF, BoostDragonRage)" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('SG_Rage')" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon+1d10, MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);RemoveStatus(SELF, SG_Rage)" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="RemoveStatus(SELF, SG_Rage)" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hdff55a45g459bg24fcg55d3ge386824176a3" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon+1d10, MainMeleeWeaponDamageType);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Action_Cast_RecklessAttack" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_RecklessAttack" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="13fd2ef9-25e3-4e61-91bb-62b62fc481df" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="01105230-e44d-42ee-90ed-5c6df38ada2b" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="37f17e67-ede8-4447-9df3-03406c4ce257" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">

@@ -25,8 +25,8 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc8b41abfg6f35gdf54g5641g7ebea2544482" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd738d21bgca0ega196gd773g3e138871cf44" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ExtraAttack" />
-        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeWeaponAttack):DamageBonus:2;IF(IsRangedWeaponAttack):DamageBonus:2;IF(IsMeleeUnarmedAttack):DamageBonus:2;IF(IsRangedUnarmedAttack):DamageBonus:2" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted;DisplayBoostInTooltip" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="CharacterWeaponDamage(2)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -36,17 +36,16 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb82c03c3ge389g576agf412ge7200e5fb632" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h036cfa47g1a89ga1f8g7c99gceffc32557a4" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ExtraAttack" />
-        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeWeaponAttack):DamageBonus:2;IF(IsRangedWeaponAttack):DamageBonus:2;IF(IsMeleeUnarmedAttack):DamageBonus:2;IF(IsRangedUnarmedAttack):DamageBonus:2" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="CharacterWeaponDamage(3)" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="08957b63-75a7-46f5-acaa-6c6758851570" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="2bd8b321-bd8d-45f9-9265-20c5f912bae3" />
         <field name="Name" type="NameTableFieldDefinition" value="WeaponSpecializationFighter" />
-        <field name="Using" type="BaseClassTableFieldDefinition" value="08957b63-75a7-46f5-acaa-6c6758851570" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="2d66a474-e912-4763-b31b-29baada332f2" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hddc31b8ag82cdg46d2gc029g2bfe3290015a" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeWeaponAttack):DamageBonus:3;IF(IsRangedWeaponAttack):DamageBonus:3;IF(IsMeleeUnarmedAttack):DamageBonus:3;IF(IsRangedUnarmedAttack):DamageBonus:3" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -319,7 +318,7 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="5950c5af-28e7-4ce7-8006-e25cd1647730" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h81d6cd48g557dg9dc4g26e2g570511d64d9b" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h58a5eb81g825cgb794ga8dbg4164397c6ee4" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Skill(Perception, 2)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ExpertiseBonus(Perception)" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_DungeonDelver_Perception" />
       </fields>
     </stat_object>
@@ -330,7 +329,7 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="798e8f9c-b3b0-424e-aaac-ce1de37bd3a5" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h9dade3c3g4492g1630g7349gaf7bdae24226" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7ea1e28dg95e8gf5b6gb3f9g3c05e3e2dcbd" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="ExpertiseBonus(Perception)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Skill(Perception, 2)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -662,6 +661,17 @@
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(Interrupt_ShieldBlock)" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h8e834ba0g59feg71b3gf6aag721858ba871f" version="1" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(Shield_Sturdy)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="ce9f4d29-15d6-4d01-9394-f919807115ef" />
+        <field name="Name" type="NameTableFieldDefinition" value="CriticalSpecialization" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h96681fb7g9e07g7f79ge459g1de9ab369636" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h3bd55effgb475g8cf8g7c11gdbda146a47ce" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ImprovedCritical" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(Interrupt_Critspec_Brawling)" />
       </fields>
     </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">
@@ -2175,8 +2185,22 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="e1cdf1ee-5993-451c-b73d-fb8ad2ad4cd1" />
         <field name="Name" type="NameTableFieldDefinition" value="IncredibleMovement" />
-        <field name="Using" type="BaseClassTableFieldDefinition" value="9156ceab-7ef5-4646-a263-bc7e1064c33a" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(Movement, (LevelMapValue(MonkMovement)), 0)" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="21d64b71-9121-4523-ae8e-ffae19736005" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="not WearingArmor(context.Source)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="c42951a7-344c-4419-9dfe-3bb5c2fe9b2c" />
+        <field name="Name" type="NameTableFieldDefinition" value="UnarmoredMovement_2" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="68633632-9efd-4892-8b12-d9c3d2b059b8" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="339153dd-e65e-408d-9309-633de32e063d" />
+        <field name="Name" type="NameTableFieldDefinition" value="UnarmoredMovement_3" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="8ade4bc5-9528-4fba-9781-e1cb58865a4b" />
       </fields>
     </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">
