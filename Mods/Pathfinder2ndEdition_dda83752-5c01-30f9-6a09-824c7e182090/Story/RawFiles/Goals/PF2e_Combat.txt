@@ -9,6 +9,19 @@ DB_WardensBoonType("HuntPreyOutwitUnlock","WARDENS_BOON_OUTWIT");
 DB_WardensBoonType("HuntPreyFlurryUnlock","WARDENS_BOON_FLURRY");
 
 DB_SummonMinion((CHARACTER)NULL_00000000-0000-0000-0000-000000000000,(CHARACTER)NULL_00000000-0000-0000-0000-000000000000);
+DB_SummonFamiliar((CHARACTER)NULL_00000000-0000-0000-0000-000000000000,(CHARACTER)NULL_00000000-0000-0000-0000-000000000000);
+
+DB_FamiliarPassive("PerceptionIncrease","PerceptionIncrease");
+DB_FamiliarPassive("PerceptionIncrease2","PerceptionIncrease2");
+DB_FamiliarPassive("ACExpert","ACExpert");
+DB_FamiliarPassive("ACMaster","ACMaster");
+DB_FamiliarPassive("FortitudeExpert","FortitudeExpert");
+DB_FamiliarPassive("ReflexExpert","ReflexExpert");
+DB_FamiliarPassive("WillExpert","WillExpert");
+DB_FamiliarPassive("WitchFamiliar","Familiar_Tough");
+
+DB_InterruptUseSpellOnFamiliar("Interrupt_FreezingRime","Target_FreezingRime");
+DB_InterruptUseSpellOnFamiliar("Interrupt_StalkingNight","Target_StalkingNight");
 
 DB_FollowUpAttack_Spell("Projectile_HuntedShot");
 DB_FollowUpAttack_Creature((CHARACTER)NULL_00000000-0000-0000-0000-000000000000,(GUIDSTRING)NULL_00000000-0000-0000-0000-000000000000);
@@ -190,6 +203,71 @@ AND
 HasLineOfSight(_Player, _Summon, _CanTargetSummon)
 THEN
 PROC_GLO_Spells_Resummon(_Player, _Spell, _X, _Y, _Z, _Dist, _CanTargetSummon);
+
+//END_REGION
+
+//REGION Familiar & Witch
+
+//Add upon summon
+IF
+StatusApplied((CHARACTER)_Familiar, "IS_FAMILIAR", _, _)
+AND
+CharacterGetOwner(_Familiar,(CHARACTER)_Summoner)
+AND
+DB_PartyMembers(_Summoner)
+AND
+NOT DB_SummonFamiliar(_Summoner,_Familiar)
+THEN
+DB_SummonFamiliar(_Summoner,_Familiar);
+PROC_InitFamiliarPassives(_Summoner,_Familiar);
+
+//Remove upon death
+IF
+Died(_Familiar)
+AND
+DB_SummonFamiliar((CHARACTER)_Summoner,_Familiar)
+THEN
+NOT DB_SummonFamiliar(_Summoner,_Familiar);
+
+//Add any buffs based on passives
+PROC
+PROC_InitFamiliarPassives((CHARACTER)_Summoner,(CHARACTER)_Familiar)
+AND
+DB_FamiliarPassive((STRING)_SourcePassive,(STRING)_TargetPassive)
+AND
+HasPassive(_Summoner,_SourcePassive,1)
+AND
+NOT HasPassive(_Familiar,_TargetPassive,1)
+THEN
+AddPassive(_Familiar,_TargetPassive);
+
+//Update on level up
+IF
+LeveledUp(_Player)
+AND
+DB_Players(_Player)
+AND
+DB_SummonFamiliar(_Player,(CHARACTER)_Familiar)
+THEN
+PROC_InitFamiliarPassives(_Player,_Familiar);
+
+//Add familiar aura on casting hex
+IF
+StatusApplied((CHARACTER)_Summoner,"WITCH_HEX",_,_)
+AND
+DB_SummonFamiliar(_Summoner,(CHARACTER)_Familiar)
+THEN
+ApplyStatus(_Familiar,"FAMILIAR_AURA",1.0,1,_Summoner);
+
+//Certain hex-enabled abilities affect all creatures near the familiar
+IF
+ReactionInterruptUsed((CHARACTER)_Summoner,(STRING)_Interrupt,_)
+AND
+DB_InterruptUseSpellOnFamiliar(_Interrupt,(STRING)_Spell)
+AND
+DB_SummonFamiliar(_Summoner,(CHARACTER)_Familiar)
+THEN
+UseSpell(_Summoner,_Spell,_Familiar,_Familiar,1);
 
 //END_REGION
 

@@ -26,7 +26,7 @@ function HasDashStatus(entity)
 end
 
 function StrideCostSpellCheck()
-	return SpellCategoryIs(SpellCategory.Dash) | HasUseCosts('Movement') | HasUseCosts('Stride')
+	return SpellCategoryIs(SpellCategory.Dash) | HasUseCosts('Movement',true) | HasUseCosts('Stride',true)
 end
 
 function HasteSpellCheck()
@@ -246,6 +246,23 @@ function RageSpell()
 	return SpellId('Shout_Rage') | SpellId('Shout_AnimalRage') | SpellId('Shout_FuryRage') | SpellId('Shout_BludgeoningDragonRage') | SpellId('Shout_PoisonDragonRage') | SpellId('Shout_FireDragonRage') | SpellId('Shout_ForceDragonRage') | SpellId('Shout_PsychicDragonRage') | SpellId('Shout_GiantRage') | SpellId('Shout_Rage_Frenzy') | SpellId('Shout_Rage_Totem_Bear') | SpellId('Shout_Rage_Boar')
 end
 
+--Champion
+
+function RetributiveStrikeRange(observer,source)
+	observer = observer or context.Observer
+	source = source or context.Source
+	
+	local reach_nimble = WieldingWeapon('Reach', false, false, observer) & ~DistanceToGreaterThan(observer, source, 4.5)
+	local ranged = WieldingWeapon('Ammunition', false, false, observer)
+	local melee_nimble = ~WieldingWeapon('Ammunition', false, false, observer) & ~DistanceToGreaterThan(observer, source, 3)
+	local nimble_reprisal = (ranged|reach_nimble|melee_nimble) & HasPassive('NimbleReprisal',observer)
+	
+	local reach = WieldingWeapon('Reach', false, false, observer) & ~DistanceToGreaterThan(observer, source, 3)	
+	local melee = ~WieldingWeapon('Ammunition', false, false, observer) & ~DistanceToGreaterThan(observer, source, 1.5)
+
+	return nimble_reprisal | reach | melee
+end
+
 --Fighter
 
 function ExactingStrikeFX()
@@ -326,6 +343,7 @@ function OutwitEdgeDefense(target,source)
 end
 
 function YoungAnimal()
+	source = context.Source
 	return ~(HasPassive('MatureAnimalCompanion',source) | HasPassive('LoyalWarhorse',source))
 end
 
@@ -376,4 +394,10 @@ function WieldingSneakAttackWeapon(entity)
 	local ruffian_weapon = IsWeaponOfProficiencyGroup('SimpleWeapons', weaponEntity) | IsWeaponOfProficiencyGroup('Morningstars', weaponEntity) | ( onehand_check & IsWeaponOfProficiencyGroup('Tridents', weaponEntity) )
 	
 	return standard_weapon | (is_ruffian & ruffian_weapon)
+end
+
+-- Witch
+
+function OngoingMisery()
+	return HasAnyStatus({'OFF_BALANCED','Grappled','FEINT_ROUND','POISONED','BLINDED','CLUMSY','STUNNED1','STUNNED2','Stupefied1','Stupefied2','ENFEEBLED'}, {}, {},context.Target)
 end

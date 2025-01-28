@@ -82,7 +82,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="fdf204ae-9aa9-4e1b-b3f6-4905ee2f8f94" />
         <field name="Name" type="NameTableFieldDefinition" value="Disengage" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="98f7d181-873d-42a7-9534-e0c3d62c0423" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:IF( not HasStatus('DISENGAGE')):UseActionResource(Movement,100%,0,true);AI_IGNORE:RestoreResource(Movement,3,0);AI_IGNORE:IF(not Tagged('DOUBLE_STEP')):UseActionResource(Movement,1.5,0); AI_IGNORE:ApplyStatus(DISENGAGE,100,1);AI_ONLY:IF(HasStatus('FLANKED_AOO')):ApplyStatus(DISENGAGE,100,1);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:IF( not HasStatus('DISENGAGE')):UseActionResource(Movement,100%,0,true);AI_IGNORE:RestoreResource(Movement,3,0);AI_IGNORE:IF(not Tagged('DOUBLE_STEP')):UseActionResource(Movement,1.5,0,true); AI_IGNORE:ApplyStatus(DISENGAGE,100,1);AI_ONLY:IF(HasStatus('FLANKED_AOO')):ApplyStatus(DISENGAGE,100,1);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hfa510585g605fg9622ga9a6g1174817faaa0" version="1" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IgnoreSilence;Stealth;Invisible;NoCameraMove" enumeration_type_name="SpellFlagList" version="1" />
         <field name="RequirementConditions" type="StringTableFieldDefinition" value="not Immobilized() and not HasDifficultTerrainStatus()" />
@@ -798,9 +798,9 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="af6d9712-0f3c-4c78-b60e-0aec0802f94a" />
         <field name="Name" type="NameTableFieldDefinition" value="ShieldsOfTheSpirit" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(SELF,RAISE_SHIELD_SPIRIT,100,1);AI_ONLY:ApplyStatus(StatusBonus1AC,100,1);AI_ONLY:ApplyStatus(SpiritShields,100,1);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(SELF,RAISE_SHIELD_SPIRIT,100,1);ApplyStatus(SELF,CHAMPION_AURA,100,-1);AI_ONLY:ApplyStatus(StatusBonus1AC,100,1);AI_ONLY:ApplyStatus(SpiritShields,100,1);" />
         <field name="AreaRadius" type="IntegerTableFieldDefinition" value="4" />
-        <field name="TargetConditions" type="StringTableFieldDefinition" value="not Enemy() and not Dead() and not Item()" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Ally() and not Dead()" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Abjuration_ShieldOfFaith" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h124e3bcfgdfa3gad35gd1b4gf76af74bd509" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="haaa84b17gbb7aga4e5gbc61gc5386cee86a5" version="1" />
@@ -836,6 +836,30 @@
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="Temporary" enumeration_type_name="SpellFlagList" version="1" />
         <field name="Requirements" type="StringTableFieldDefinition" value="Combat" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="83fb0115-57dd-4cce-ac40-87182b2865e2,,;,,;f67fc499-6be4-47f3-a65e-1570b4b1d64a,,;71e2555d-947c-47c1-aff8-16cfc6e55dd3,,;42014429-21fb-412d-bba6-0f8216f5e502,,;,,;43fa5e31-ad7e-47a9-9ca2-f6d40ba8e1cf,,;,,;,," />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="85d51e84-e650-445e-8b79-a575e2fe941d" />
+        <field name="Name" type="NameTableFieldDefinition" value="ExpandAura" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not CharacterLevelGreaterThan(9)):ApplyStatus(EXPAND_AURA,100,1);IF(CharacterLevelGreaterThan(9)):ApplyStatus(EXPAND_AURA,100,10);ApplyStatus(SELF,CHAMPION_AURA,100,-1)" />
+        <field name="AreaRadius" type="IntegerTableFieldDefinition" value="9" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Self()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Paladin_AuraOfDevotion" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h53744f11gc81fg8d07g6e17g8ec5305a571c" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hbc7483b5gad02g336dg892dg3fdd3d6dd00c" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="Distance(9)" />
+        <field name="ExtraDescription" type="TranslatedStringTableFieldDefinition" handle="h92aded39g8c7fgd93fg6f0cg2fc07d411dcd" version="1" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(EXPAND_AURA,100,1)" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Paladin_AuraOfCourage_L1ti3" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Paladin_AuraOfCourage_L1to3" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="dd86aa43-8189-4d9f-9a5c-454b5fe4a197,,;,,;9d86c202-31a5-4ba3-ae60-ec4fbb425665,,;a4112e22-e36f-44ff-828f-81252360da53,,;cc5b0caf-3ed1-4711-a50d-11dc3f1fdc6a,,;,,;1715b877-4512-472e-9bd0-fd568a112e90,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Utility" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="747ac7e5-c52e-4e5a-be78-1f9de85b55ea" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="e06ae4c2-6367-4bf6-a7a4-938d1ab90d23" />
       </fields>
     </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">

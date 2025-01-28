@@ -1,0 +1,578 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_GLO_PaladinOathbreaker_SinsAndCrimeTypes("KilledProtectedNPC");
+
+//REGION Crimes
+// For crimes specific to oaths:
+// 		DB_GLO_PaladinOathbreaker_CrimesToReact(_PaladinOath, _Crime, _VictimTag);
+// For crimes shared between all oaths and usual victim tags:
+// 		DB_GLO_PaladinOathbreaker_GenericCrimes(_Crime);
+
+DB_GLO_PaladinOathbreaker_GenericCrimes("Murder");
+DB_GLO_PaladinOathbreaker_GenericCrimes("GuardKiller");
+//END_REGION Crimes
+
+// Protected characters will count as breaking the Oath if paladins kill any of them
+// DB_GLO_PaladinOathbreaker_ProtectedNPCs(_PaladinOath, _Char)
+NOT DB_GLO_PaladinOathbreaker_ProtectedNPCs((TAG)NULL_00000000-0000-0000-0000-000000000000, (CHARACTER)NULL_00000000-0000-0000-0000-000000000000);
+NOT DB_GLO_PaladinOathbreaker_ProtectedNPCs((CHARACTER)NULL_00000000-0000-0000-0000-000000000000);
+
+//DB_GLO_PaladinOathbreaker_SubclassTags(_NonOathbreaker, _Oathbreaker);
+DB_GLO_PaladinOathbreaker_SubclassTags((TAG)PALADIN_ANCIENTS_7c89622b-4194-41df-b2ff-145a5056ee49, (TAG)OATHBREAKER_ANCIENTS_d84a8a0b-b648-464c-9bd5-1ed9b965da2a);
+DB_GLO_PaladinOathbreaker_SubclassTags((TAG)PALADIN_DEVOTION_2de0a4fc-5831-4439-94d3-a7ff9b7aacf6, (TAG)OATHBREAKER_DEVOTION_d274b482-4add-4f36-a0a4-a94740f6630e);
+
+//Specific oath moments for each oath
+DB_GLO_PaladinOathbreaker_SubclassOathBrokenFlags((FLAG)GLO_PaladinOathbreaker_Event_AncientsBrokeOath_7cf0bd9c-f089-45a3-88fb-03087d3d8b95, (TAG)PALADIN_ANCIENTS_7c89622b-4194-41df-b2ff-145a5056ee49);
+DB_GLO_PaladinOathbreaker_SubclassOathBrokenFlags((FLAG)GLO_PaladinOathbreaker_Event_DevotionBrokeOath_fd2e1a9a-bca6-482e-8b42-2f1c16aaefee, (TAG)PALADIN_DEVOTION_2de0a4fc-5831-4439-94d3-a7ff9b7aacf6);
+
+//Evil tags: won't break a paladin's oath. 
+//		PROTECTED NPCS STILL BREAK OATHS!!!!!
+DB_GLO_PaladinOathbreaker_EvilTags((TAG)PALADIN_BLOCK_OATHBREAK_b5825091-f2ed-4657-8d86-c0d020c358a0);
+DB_GLO_PaladinOathbreaker_EvilTags((TAG)GOBLIN_608597d9-bf00-4ede-aabe-767457280925);
+DB_GLO_PaladinOathbreaker_EvilTags((TAG)HOBGOBLIN_193938c4-ed1c-4648-af3f-f4b59152ec92);
+
+NOT DB_GLO_PaladinOathbreaker_LinkedDialogues((DIALOGRESOURCE)NULL_00000000-0000-0000-0000-000000000000);
+KBSECTION
+//REGION Crimes
+IF
+DB_GLO_PaladinOathbreaker_GenericCrimes(_Crime)
+THEN
+DB_GLO_PaladinOathbreaker_CrimesToReact((TAG)PALADIN_ANCIENTS_7c89622b-4194-41df-b2ff-145a5056ee49, 	_Crime, (TAG)CIVILIAN_71120d5d-3853-46e4-9762-33f59aa6b4ae);
+DB_GLO_PaladinOathbreaker_CrimesToReact((TAG)PALADIN_ANCIENTS_7c89622b-4194-41df-b2ff-145a5056ee49, 	_Crime, (TAG)CROWDSYS_NPC_1274ffab-2fa2-4d6f-801e-751664ceb771);
+DB_GLO_PaladinOathbreaker_CrimesToReact((TAG)PALADIN_ANCIENTS_7c89622b-4194-41df-b2ff-145a5056ee49, 	_Crime, (TAG)KID_ee978587-6c68-4186-9bfc-3b3cc719a835);
+DB_GLO_PaladinOathbreaker_CrimesToReact((TAG)PALADIN_ANCIENTS_7c89622b-4194-41df-b2ff-145a5056ee49, 	_Crime, (TAG)GUARD_0b52f35e-fb1f-4865-bcd2-5d21ef7343cd);
+DB_GLO_PaladinOathbreaker_CrimesToReact((TAG)PALADIN_DEVOTION_2de0a4fc-5831-4439-94d3-a7ff9b7aacf6, 	_Crime, (TAG)CIVILIAN_71120d5d-3853-46e4-9762-33f59aa6b4ae);
+DB_GLO_PaladinOathbreaker_CrimesToReact((TAG)PALADIN_DEVOTION_2de0a4fc-5831-4439-94d3-a7ff9b7aacf6, 	_Crime, (TAG)CROWDSYS_NPC_1274ffab-2fa2-4d6f-801e-751664ceb771);
+DB_GLO_PaladinOathbreaker_CrimesToReact((TAG)PALADIN_DEVOTION_2de0a4fc-5831-4439-94d3-a7ff9b7aacf6, 	_Crime, (TAG)KID_ee978587-6c68-4186-9bfc-3b3cc719a835);
+DB_GLO_PaladinOathbreaker_CrimesToReact((TAG)PALADIN_DEVOTION_2de0a4fc-5831-4439-94d3-a7ff9b7aacf6, 	_Crime, (TAG)GUARD_0b52f35e-fb1f-4865-bcd2-5d21ef7343cd);
+
+IF
+DB_GLO_PaladinOathbreaker_ProtectedNPCs(_Char)
+THEN
+DB_GLO_PaladinOathbreaker_ProtectedNPCs((TAG)PALADIN_DEVOTION_2de0a4fc-5831-4439-94d3-a7ff9b7aacf6, _Char);
+DB_GLO_PaladinOathbreaker_ProtectedNPCs((TAG)PALADIN_ANCIENTS_7c89622b-4194-41df-b2ff-145a5056ee49, _Char);
+DB_GLO_PaladinOathbreaker_ProtectedNPCs((TAG)PALADIN_VENGEANCE_a1aa47b2-4d0a-4c97-931b-2c53353d5b23, _Char);
+
+// Fill to what kind of crimes we will react.
+IF
+DB_GLO_PaladinOathbreaker_CrimesToReact(_, _CrimeType, _)
+AND
+NOT DB_GLO_PaladinOathbreaker_SinsAndCrimeTypes(_CrimeType)
+THEN
+DB_GLO_PaladinOathbreaker_SinsAndCrimeTypes(_CrimeType);
+
+// Find who is the main/controlling culprit
+PROC
+PROC_CharacterRegisterCrime_Success((CHARACTER)_Char, (STRING)_Crime, (INTEGER)_StoryActionID, (GUIDSTRING)_Evidence, (CHARACTER)_Victim, (INTEGER)_CrimeID)
+AND
+DB_GLO_PaladinOathbreaker_SinsAndCrimeTypes(_CrimeType)
+AND
+QRY_CRIME_IsCrimeFamilyMember(_Crime, _CrimeType)
+AND
+DB_PartyMembers(_Char)
+AND
+QRY_CharacterGetOwnerOrSelf(_Char)
+AND
+DB_QRYRTN_CharacterGetOwnerOrSelf(_Culprit)
+AND
+IsTagged(_Culprit, (TAG)PALADIN_6d85ab2d-5c23-498c-a61e-98f05a00177a, 1)
+THEN
+PROC_GLO_PaladinOathbreaker_MightBreakOath(_Culprit, _CrimeType, _CrimeID, _Victim);
+
+IF
+DB_GLO_PaladinOathbreaker_ProtectedNPCs(_, _NPC)
+THEN
+DB_ReportKiller(_NPC, (GUIDSTRING)PALADIN_PROTECTED_NPC_85a96b13-23ae-4cdf-91db-9a92973a1a9e);
+
+// React to protected NPCs
+PROC
+PROC_ReportKiller(_, _KillerOwner, _Victim, PALADIN_PROTECTED_NPC_85a96b13-23ae-4cdf-91db-9a92973a1a9e)
+AND
+IsTagged(_KillerOwner, (TAG)PALADIN_6d85ab2d-5c23-498c-a61e-98f05a00177a, 1)
+THEN
+PROC_GLO_PaladinOathbreaker_MightBreakOath(_KillerOwner, "KilledProtectedNPC", -1, _Victim);
+
+PROC
+PROC_GLO_PaladinOathbreaker_MightBreakOath((CHARACTER)_Culprit, (STRING)_CrimeType, (INTEGER)_CrimeID, (CHARACTER)_Victim)
+AND
+DB_GLO_PaladinOathbreaker_PotentialCrimeID(_PreviousCrimeID)
+THEN
+NOT DB_GLO_PaladinOathbreaker_PotentialCrimeID(_PreviousCrimeID);
+
+PROC
+PROC_GLO_PaladinOathbreaker_MightBreakOath((CHARACTER)_Culprit, (STRING)_CrimeType, (INTEGER)_CrimeID, (CHARACTER)_Victim)
+AND
+_CrimeID != -1
+THEN
+DB_GLO_PaladinOathbreaker_PotentialCrimeID(_CrimeID);
+
+PROC
+PROC_GLO_PaladinOathbreaker_MightBreakOath((CHARACTER)_Culprit, (STRING)_CrimeType, (INTEGER)_CrimeID, (CHARACTER)_Victim)
+AND
+QRY_GLO_PaladinOathBreaker_IsValidVictim(_Victim)
+AND
+NOT QRY_GLO_PaladinOathBreaker_BlockBreakingOath(_Victim) // Custom reasons in which a victim would not break an oath
+AND
+NOT QRY_GLO_PaladinOathBreaker_BlockBreakingOath(_Culprit)
+AND
+NOT QRY_GLO_PaladinOathbreaker_IsOathbreaker(_Culprit)
+AND
+QRY_GLO_PaladinOathbreaker_IsBreakingOath(_Culprit, _CrimeType, _Victim)
+AND
+QRY_GLO_PaladinOathbreaker_TrySetCrime((CHARACTER)_Culprit)
+THEN
+PROC_GLO_PaladinOathbreaker_BrokeOath(_Culprit);
+
+QRY
+QRY_GLO_PaladinOathBreaker_IsValidVictim((CHARACTER)_Victim)
+AND
+NOT QRY_GLO_PaladinOathBreaker_HasAnyEvilTags(_Victim)
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_GLO_PaladinOathBreaker_IsValidVictim((CHARACTER)_Victim)
+AND
+DB_GLO_PaladinOathbreaker_ProtectedNPCs(_, _Victim)
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_GLO_PaladinOathBreaker_HasAnyEvilTags((CHARACTER)_Victim)
+AND
+DB_GLO_PaladinOathbreaker_EvilTags(_Tag)
+AND
+IsTagged(_Victim, _Tag, 1)
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_GLO_PaladinOathBreaker_BlockBreakingOath((CHARACTER)_Char)
+AND
+0 == 1
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_GLO_PaladinOathbreaker_TrySetCrime((CHARACTER)_Char)
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_GLO_PaladinOathbreaker_TrySetCrime((CHARACTER)_Char)
+AND
+DB_GLO_PaladinOathbreaker_PotentialCrimeID(_CrimeID)
+THEN
+DB_GLO_PaladinOathbreaker_CrimeID(_Char, _CrimeID);
+
+QRY
+QRY_GLO_PaladinOathbreaker_IsBreakingOath((CHARACTER)_Char, (STRING)_CrimeType, (CHARACTER)_Victim)
+AND
+DB_GLO_PaladinOathbreaker_CrimesToReact(_PaladinTag, _CrimeType, _VictimTag)
+AND
+IsTagged(_Char, _PaladinTag, 1)
+AND
+IsTagged(_Victim, _VictimTag, 1)
+THEN
+DB_NOOP(1);
+
+// Killing a protected NPC
+QRY
+QRY_GLO_PaladinOathbreaker_IsBreakingOath((CHARACTER)_Char, "KilledProtectedNPC", (CHARACTER)_Victim)
+AND
+DB_GLO_PaladinOathbreaker_ProtectedNPCs(_PaladinTag, _Victim)
+AND
+IsTagged(_Char, _PaladinTag, 1)
+THEN
+DB_NOOP(1);
+
+// Crimes marked as null always pass.
+QRY
+QRY_GLO_PaladinOathbreaker_IsBreakingOath((CHARACTER)_Char, (STRING)_CrimeType, (CHARACTER)_Victim)
+AND
+DB_GLO_PaladinOathbreaker_CrimesToReact(_PaladinTag, _CrimeType, NULL_00000000-0000-0000-0000-000000000000)
+AND
+IsTagged(_Char, _PaladinTag, 1)
+THEN
+DB_NOOP(1);
+
+// If crime has finished clear related crime DB entries
+PROC
+PROC_CRIME_Finished(_CrimeID)
+AND
+DB_GLO_PaladinOathbreaker_CrimeID(_Culprit, _CrimeID)
+THEN
+NOT DB_GLO_PaladinOathbreaker_CrimeID(_Culprit, _CrimeID);
+//END_REGION
+
+//REGION Dialog reactions
+IF
+FlagSet(GLO_PaladinOathbreaker_Event_BrokeOath_0246da96-5ef8-4c65-9f0d-c2856bd17674, (CHARACTER)_Player, _DialogID)
+AND
+IsTagged(_Player, (TAG)PALADIN_6d85ab2d-5c23-498c-a61e-98f05a00177a, 1)
+THEN
+PROC_GLO_PaladinOathbreaker_BrokeOath(_Player, _DialogID);
+
+IF
+FlagSet(GLO_PaladinOathbreaker_Event_BrokeOath_0246da96-5ef8-4c65-9f0d-c2856bd17674, (CHARACTER)_Player, _)
+THEN
+ClearFlag(GLO_PaladinOathbreaker_Event_BrokeOath_0246da96-5ef8-4c65-9f0d-c2856bd17674, _Player);
+
+// Custom oath moments
+IF
+FlagSet(_Flag, (CHARACTER)_Player, _DialogID)
+AND
+DB_GLO_PaladinOathbreaker_SubclassOathBrokenFlags(_Flag, _Tag)
+AND
+IsTagged(_Player, _Tag, 1)
+THEN
+PROC_GLO_PaladinOathbreaker_BrokeOath(_Player, _DialogID);
+
+// Clear flag
+IF
+FlagSet(_Flag, (CHARACTER)_Player, _DialogID)
+AND
+DB_GLO_PaladinOathbreaker_SubclassOathBrokenFlags(_Flag, _)
+THEN
+ClearFlag(_Flag, _Player);
+
+PROC
+PROC_FlagReactionAfterDialog((CHARACTER)_Player, (FLAG)GLO_PaladinOathbreaker_Event_BecomesOathbreakerAfterDialog_ec820ae7-58e4-4242-b417-e36c4048f619)
+THEN
+ClearFlag((FLAG)GLO_PaladinOathbreaker_Event_BecomesOathbreakerAfterDialog_ec820ae7-58e4-4242-b417-e36c4048f619, _Player);
+PROC_GLO_PaladinOathbreaker_BecomesOathbreaker(_Player);
+
+PROC
+PROC_FlagReactionAfterDialog((CHARACTER)_Player, GLO_PaladinOathbreaker_Event_ObtainedRedemption_4640a2da-599a-4911-87c3-4b1cabd13ee1)
+THEN
+ClearFlag(GLO_PaladinOathbreaker_Event_ObtainedRedemption_4640a2da-599a-4911-87c3-4b1cabd13ee1, _Player);
+PROC_GLO_PaladinOathbreaker_RedemptionObtained(_Player);
+
+IF
+FlagSet(GLO_PaladinOathbreaker_Event_AllObtainedRedemption_a7694991-e2b0-4720-9970-748166b7c52c, _, _)
+THEN
+ClearFlag(GLO_PaladinOathbreaker_Event_AllObtainedRedemption_a7694991-e2b0-4720-9970-748166b7c52c, NULL_00000000-0000-0000-0000-000000000000);
+
+IF
+FlagSet(GLO_PaladinOathbreaker_Event_AllObtainedRedemption_a7694991-e2b0-4720-9970-748166b7c52c, _, _)
+AND
+DB_GLO_PaladinOathbreaker_Oathbreakers(_Player)
+THEN
+PROC_GLO_PaladinOathbreaker_RedemptionObtained(_Player);
+
+//END_REGION
+
+//REGION Oathbreaker
+IF
+FlagSet((FLAG)GLO_PaladinOathbreaker_Event_BecomesOathbreaker_a5664f6e-929e-449d-9cc4-ea212d37a4b1, (CHARACTER)_Player, _)
+THEN
+ClearFlag((FLAG)GLO_PaladinOathbreaker_Event_BecomesOathbreaker_a5664f6e-929e-449d-9cc4-ea212d37a4b1, _Player);
+PROC_GLO_PaladinOathbreaker_BecomesOathbreaker(_Player);
+
+PROC
+PROC_GLO_PaladinOathbreaker_BrokeOath((CHARACTER)_Char)
+THEN
+PROC_GLO_PaladinOathbreaker_BrokeOath((CHARACTER)_Char, -1);
+
+PROC
+PROC_GLO_PaladinOathbreaker_BrokeOath((CHARACTER)_Char, (INTEGER)_DialogID)
+AND
+NOT QRY_GLO_PaladinOathbreaker_IsOrWillBecomeOathbreaker(_Char)
+THEN
+ApplyStatus(_Char, "PALADIN_OATH_BROKEN", -1.0, 1);
+DB_GLO_PaladinOathbreaker_Oathbreakers(_Char);
+SetFlag((FLAG)GLO_PaladinOathbreaker_State_AboutToBecomeOathbreaker_3ad5db08-0191-4308-b127-ad1cdc6f8718, _Char);
+PROC_ObjectCountHelper(_Char, "GLO_PaladinOathbreaker_BrokeOathCount");
+PROC_GLO_PaladinOathbreaker_BrokeOath_Internal(_Char, _DialogID);
+
+PROC
+PROC_GLO_PaladinOathbreaker_BrokeOath_Internal((CHARACTER)_Char, (INTEGER)_DialogID)
+AND
+DB_GLO_PaladinOathbreaker_SubclassTags(_PaladinTag, _OathbreakerTag)
+AND
+IsTagged(_Char, _PaladinTag, 1)
+THEN
+SetTag(_Char, _OathbreakerTag); // Remember previous oath
+
+PROC
+PROC_GLO_PaladinOathbreaker_BrokeOath_Internal((CHARACTER)_Char, (INTEGER)_DialogID)
+AND
+DB_DialogName(_Dialog, _DialogID)
+AND
+DB_GLO_PaladinOathbreaker_LinkedDialogues(_Dialog)
+THEN
+DB_GLO_PaladinOathbreaker_NotifyAfterDialogEnds(_Dialog, _DialogID, _Char);
+
+IF
+DialogEnded(_Dialog, _DialogID)
+AND
+DB_GLO_PaladinOathbreaker_LinkedDialogues(_Dialog)
+AND
+DB_GLO_PaladinOathbreaker_NotifyAfterDialogEnds(_Dialog, _DialogID, (CHARACTER)_Player)
+THEN
+PROC_GLO_PaladinOathbreaker_DialogEnded(_Dialog, _DialogID, _Player);
+
+PROC
+PROC_GLO_PaladinOathbreaker_DialogEnded((DIALOGRESOURCE)_Dialog, (INTEGER)_DialogID, (CHARACTER)_Player)
+THEN
+DB_NOOP(1);
+
+// Edge case for attacking using the generic attack button: clear DB_GLO_PaladinOathbreaker_NotifyAfterDialogEnds()
+QRY
+QRY_DialogAttackRequested_CustomResponse(_, _Player)
+AND
+QRY_GLO_PaladinOathbreaker_ClearNotifyAfterDialog((CHARACTER)_Player)
+AND
+0 == 1
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_GLO_PaladinOathbreaker_ClearNotifyAfterDialog((CHARACTER)_Player)
+AND
+DB_GLO_PaladinOathbreaker_NotifyAfterDialogEnds(_Dialog, _DialogID, _Player)
+THEN
+NOT DB_GLO_PaladinOathbreaker_NotifyAfterDialogEnds(_Dialog, _DialogID, _Player);
+
+IF
+DialogEnded(_Dialog, _DialogID)
+AND
+DB_GLO_PaladinOathbreaker_NotifyAfterDialogEnds(_Dialog, _DialogID, _Char)
+THEN
+NOT DB_GLO_PaladinOathbreaker_NotifyAfterDialogEnds(_Dialog, _DialogID, _Char);
+
+IF
+DB_GLO_PaladinOathbreaker_Oathbreakers(_Player)
+AND
+DB_Players(_Player)
+AND
+NOT DB_CantTalk(_Player)
+AND
+NOT DB_GLO_PaladinOathbreaker_ReactedToBreakingOath(_Player)
+THEN
+DB_GLO_PaladinOathbreaker_ReactedToBreakingOath(_Player);
+PROC_TryStartAD(GLO_PaladinOathbreaker_PAD_BrokeOath_12e1f1c8-a088-4fcb-f8eb-e3d21fa89cd2, _Player);
+
+PROC
+PROC_GLO_PaladinOathbreaker_BecomesOathbreaker((CHARACTER)_Char)
+AND
+QRY_GLO_PaladinOathbreaker_WillBecomeOathbreaker(_Char)
+AND
+NOT QRY_GLO_PaladinOathbreaker_IsOathbreaker(_Char)
+THEN
+PROC_GLO_PaladinOathbreaker_BecomesOathbreaker_Internal(_Char);
+
+PROC
+PROC_GLO_PaladinOathbreaker_BecomesOathbreaker_Internal((CHARACTER)_Char)
+THEN
+RemoveStatus(_Char, "PALADIN_OATH_BROKEN");
+ClearFlag((FLAG)GLO_PaladinOathbreaker_State_AboutToBecomeOathbreaker_3ad5db08-0191-4308-b127-ad1cdc6f8718, _Char);
+DebugText(_Char, "You are now an Oathbreaker!");
+PROC_GLO_PaladinOathbreaker_BecomesOathbreakerHook(_Char);
+
+PROC
+PROC_GLO_PaladinOathbreaker_BecomesOathbreaker_Internal((CHARACTER)_Char)
+THEN
+PROC_TryLaunchRespec(_Char, "GLO_OathbreakerRespec");
+
+PROC
+PROC_LaunchRespec((CHARACTER)_Character, "GLO_OathbreakerRespec")
+THEN
+StartRespecToOathbreaker(_Character);
+
+PROC
+PROC_GLO_PaladinOathbreaker_BecomesOathbreakerHook((CHARACTER)_Char)
+THEN
+DB_NOOP(1);
+
+PROC
+PROC_GLO_PaladinOathbreaker_RedemptionObtained((CHARACTER)_Char)
+AND
+QRY_GLO_PaladinOathbreaker_IsOathbreaker((CHARACTER)_Char)
+THEN
+DB_GLO_PaladinOathbreaker_RedemptionFromOathbreaker(_Char);
+
+PROC
+PROC_GLO_PaladinOathbreaker_RedemptionObtained((CHARACTER)_Char)
+THEN 
+RemoveStatus(_Char, "PALADIN_OATH_BROKEN");
+SetFlag((FLAG)GLO_PaladinOathbreaker_State_HasBeenOathbreakerOnce_3f3ec686-bbc1-4fdd-a08b-984e6a3030a6, _Char);
+ClearFlag((FLAG)GLO_PaladinOathbreaker_State_AboutToBecomeOathbreaker_3ad5db08-0191-4308-b127-ad1cdc6f8718, _Char);
+NOT DB_GLO_PaladinOathbreaker_Oathbreakers(_Char);
+NOT DB_GLO_PaladinOathbreaker_ReactedToBreakingOath(_Char);
+
+PROC
+PROC_GLO_PaladinOathbreaker_RedemptionObtained((CHARACTER)_Char)
+AND
+DB_GLO_PaladinOathbreaker_SubclassTags(_PaladinTag, _OathbreakerTag)
+AND
+IsTagged(_Char, _OathbreakerTag, 1)
+THEN
+ClearTag(_Char, _OathbreakerTag);
+
+PROC
+PROC_GLO_PaladinOathbreaker_RedemptionObtained((CHARACTER)_Char)
+AND
+DB_GLO_PaladinOathbreaker_RedemptionFromOathbreaker(_Char) // If they only had the becoming an oathbreaker status don't show respec screen.
+AND
+IsTagged(_Char, (TAG)PALADIN_BLOCK_OATHBREAK_b5825091-f2ed-4657-8d86-c0d020c358a0, 1) //PF2e: change from (TAG)OATHBREAKER_c7bdcdf2-15e7-456e-adf1-21dda3172e18
+THEN
+PROC_TryLaunchRespec(_Char, "GLO_PaladinRespec"); //Disabled in the editor. TODO: change subclass from script and lock it in the respec screen.
+
+PROC
+PROC_LaunchRespec((CHARACTER)_Character, "GLO_PaladinRespec")
+THEN
+StartRespecRestore(_Character);
+
+PROC
+PROC_GLO_PaladinOathbreaker_RedemptionObtained((CHARACTER)_Char)
+AND
+DB_GLO_PaladinOathbreaker_RedemptionFromOathbreaker(_Char)
+THEN
+NOT DB_GLO_PaladinOathbreaker_RedemptionFromOathbreaker(_Char);
+
+PROC
+PROC_GLO_PaladinOathbreaker_RedemptionObtained((CHARACTER)_Char)
+THEN
+PROC_GLO_PaladinOathbreaker_RedemptionObtainedHook(_Char);
+
+PROC
+PROC_GLO_PaladinOathbreaker_RedemptionObtainedHook((CHARACTER)_Char)
+THEN
+DB_NOOP(1);
+
+IF
+TagSet((CHARACTER)_Char, (TAG)PALADIN_BLOCK_OATHBREAK_b5825091-f2ed-4657-8d86-c0d020c358a0) //PF2e: change from (TAG)OATHBREAKER_c7bdcdf2-15e7-456e-adf1-21dda3172e18
+THEN
+PROC_FinishedRespecing(_Char, "GLO_OathbreakerRespec");
+
+IF
+TagCleared((CHARACTER)_Char, (TAG)PALADIN_BLOCK_OATHBREAK_b5825091-f2ed-4657-8d86-c0d020c358a0) //PF2e: change from (TAG)OATHBREAKER_c7bdcdf2-15e7-456e-adf1-21dda3172e18
+THEN
+PROC_FinishedRespecing(_Char, "GLO_PaladinRespec");
+//END_REGION Oathbreaker
+
+//REGION Oathbreaker queries
+QRY
+QRY_GLO_PaladinOathbreaker_AnyOathbreakerPlayer()
+AND
+DB_Players(_Player)
+AND
+QRY_GLO_PaladinOathbreaker_IsOrWillBecomeOathbreaker(_Player)
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_GLO_PaladinOathbreaker_IsOrWillBecomeOathbreaker((CHARACTER)_Char)
+AND
+QRY_GLO_PaladinOathbreaker_WillBecomeOathbreaker(_Char)
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_GLO_PaladinOathbreaker_IsOrWillBecomeOathbreaker((CHARACTER)_Char)
+AND
+QRY_GLO_PaladinOathbreaker_IsOathbreaker(_Char)
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_GLO_PaladinOathbreaker_IsOathbreaker((CHARACTER)_Char)
+AND
+IsTagged(_Char, (TAG)PALADIN_BLOCK_OATHBREAK_b5825091-f2ed-4657-8d86-c0d020c358a0,1) //PF2e: change from (TAG)OATHBREAKER_c7bdcdf2-15e7-456e-adf1-21dda3172e18
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_GLO_PaladinOathbreaker_WillBecomeOathbreaker((CHARACTER)_Char)
+AND
+GetFlag((FLAG)GLO_PaladinOathbreaker_State_AboutToBecomeOathbreaker_3ad5db08-0191-4308-b127-ad1cdc6f8718, _Char, 1)
+THEN
+DB_NOOP(1);
+//END_REGION Oathbreaker queries
+
+//REGION Debug
+IF
+TextEvent("MakeOathbreaker")
+AND
+DB_Players(_Player)
+AND
+IsControlled(_Player, 1)
+AND
+IsTagged(_Player, (TAG)PALADIN_6d85ab2d-5c23-498c-a61e-98f05a00177a, 1)
+THEN
+SetFlag(GLO_PaladinOathbreaker_Event_BrokeOath_0246da96-5ef8-4c65-9f0d-c2856bd17674, (CHARACTER)_Player);
+
+IF
+TextEvent("MakeOathbreaker")
+AND
+DB_Players(_Player)
+AND
+IsControlled(_Player, 1)
+AND
+IsTagged(_Player, (TAG)PALADIN_6d85ab2d-5c23-498c-a61e-98f05a00177a, 0)
+THEN
+DebugText(_Player, "Player needs to be a paladin.");
+
+IF
+TextEvent("RevertFromOathbreaker")
+THEN
+SetFlag(GLO_PaladinOathbreaker_Event_AllObtainedRedemption_a7694991-e2b0-4720-9970-748166b7c52c);
+
+IF
+TextEvent("OathbreakerRespecUI")
+AND
+DB_Players(_Player)
+AND
+IsControlled(_Player, 1)
+AND
+IsTagged(_Player, (TAG)PALADIN_6d85ab2d-5c23-498c-a61e-98f05a00177a, 1)
+THEN
+DB_Debug_GLO_PaladinOathbreaker_ForceOathbreaker(1);
+PROC_GLO_PaladinOathbreaker_BecomesOathbreaker(_Player);
+
+IF
+TextEvent("OathbreakerRespecUI")
+AND
+DB_Players(_Player)
+AND
+IsControlled(_Player, 1)
+AND
+IsTagged(_Player, (TAG)PALADIN_6d85ab2d-5c23-498c-a61e-98f05a00177a, 0)
+THEN
+DebugText(_Player, "Player needs to be a paladin.");
+
+QRY
+QRY_GLO_PaladinOathbreaker_WillBecomeOathbreaker((CHARACTER)_Char)
+AND
+DB_Debug_GLO_PaladinOathbreaker_ForceOathbreaker(1)
+THEN
+NOT DB_Debug_GLO_PaladinOathbreaker_ForceOathbreaker(1);
+
+IF
+TextEvent("PaladinRespecUI")
+AND
+DB_Players(_Player)
+AND
+IsControlled(_Player, 1)
+AND
+IsTagged(_Player, (TAG)OATHBREAKER_c7bdcdf2-15e7-456e-adf1-21dda3172e18, 1)
+THEN
+PROC_GLO_PaladinOathbreaker_RedemptionObtained(_Player);
+
+IF
+TextEvent("PaladinRespecUI")
+AND
+DB_Players(_Player)
+AND
+IsControlled(_Player, 1)
+AND
+IsTagged(_Player, (TAG)PALADIN_BLOCK_OATHBREAK_b5825091-f2ed-4657-8d86-c0d020c358a0, 0) //PF2e: change from (TAG)OATHBREAKER_c7bdcdf2-15e7-456e-adf1-21dda3172e18
+THEN
+DebugText(_Player, "Player needs to be an oathbreaker.");
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "__Shared_Campaign"
