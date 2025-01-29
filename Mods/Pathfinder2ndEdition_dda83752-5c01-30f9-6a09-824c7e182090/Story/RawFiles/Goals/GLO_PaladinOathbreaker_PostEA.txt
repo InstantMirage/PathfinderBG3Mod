@@ -1,0 +1,129 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+//Palading of vengeance post-EA
+DB_GLO_PaladinOathbreaker_SubclassOathBrokenFlags((FLAG)GLO_PaladinOathbreaker_Event_VengeanceBrokeOath_1510bcc9-e974-4789-b1fa-4612f92f30a1, (TAG)PALADIN_VENGEANCE_a1aa47b2-4d0a-4c97-931b-2c53353d5b23);
+
+DB_GLO_PaladinOathbreaker_SubclassTags((TAG)PALADIN_VENGEANCE_a1aa47b2-4d0a-4c97-931b-2c53353d5b23, (TAG)OATHBREAKER_VENGEANCE_732db1ed-740c-4af3-8a08-7f135d3f703c);
+
+//EVIL TAGS
+DB_GLO_PaladinOathbreaker_EvilTags((TAG)KOBOLD_f68151f2-58ee-42e6-98ad-7d858c4a0f13);
+
+//PF2e: Force oathbreaker tag to lock respec for champions that break their oath in play
+DB_GLO_PaladinOathbreaker_SubclassTags((TAG)PALADIN_6d85ab2d-5c23-498c-a61e-98f05a00177a, (TAG)OATHBREAKER_c7bdcdf2-15e7-456e-adf1-21dda3172e18);
+KBSECTION
+//Palading of vengeance post-EA
+IF
+DB_GLO_PaladinOathbreaker_GenericCrimes(_Crime)
+THEN
+DB_GLO_PaladinOathbreaker_CrimesToReact((TAG)PALADIN_VENGEANCE_a1aa47b2-4d0a-4c97-931b-2c53353d5b23, 	_Crime, (TAG)CIVILIAN_71120d5d-3853-46e4-9762-33f59aa6b4ae);
+DB_GLO_PaladinOathbreaker_CrimesToReact((TAG)PALADIN_VENGEANCE_a1aa47b2-4d0a-4c97-931b-2c53353d5b23, 	_Crime, (TAG)CROWDSYS_NPC_1274ffab-2fa2-4d6f-801e-751664ceb771);
+DB_GLO_PaladinOathbreaker_CrimesToReact((TAG)PALADIN_VENGEANCE_a1aa47b2-4d0a-4c97-931b-2c53353d5b23, 	_Crime, (TAG)KID_ee978587-6c68-4186-9bfc-3b3cc719a835);
+DB_GLO_PaladinOathbreaker_CrimesToReact((TAG)PALADIN_VENGEANCE_a1aa47b2-4d0a-4c97-931b-2c53353d5b23, 	_Crime, (TAG)GUARD_0b52f35e-fb1f-4865-bcd2-5d21ef7343cd);
+
+//REGION Paladin betraying sovereign
+IF
+DB_GlobalFlag((FLAG)UND_BroodingSovereign_State_AskedCircle_1d4839de-a9f1-72e2-2ae4-45579ad49309)
+AND
+NOT DB_GlobalFlag((FLAG)UND_BroodingSovereign_State_RefusedCircle_d0237569-b266-24c9-60f8-06eda3131892)
+AND
+NOT DB_GlobalFlag((FLAG)UND_MyconidCircle_BroodingSovereign_State_PermaDefeated_da7ae2b1-fa67-0889-6003-48d6aef7271d)
+THEN
+DB_GLO_PaladinOathbreaker_ProtectedNPCs((TAG)PALADIN_VENGEANCE_a1aa47b2-4d0a-4c97-931b-2c53353d5b23, (CHARACTER)S_UND_MyconidSovereign_ea0f222f-eaad-4d83-bbcd-cbae51ccf265);
+
+IF
+DB_GlobalFlag((FLAG)UND_MyconidCircle_Event_BetraySpaw_2d4dfc5d-fcd1-281d-c397-002c57a975db)
+THEN
+DB_GLO_PaladinOathbreaker_ProtectedNPCs((TAG)PALADIN_VENGEANCE_a1aa47b2-4d0a-4c97-931b-2c53353d5b23, (CHARACTER)S_UND_MyconidSovereign_ea0f222f-eaad-4d83-bbcd-cbae51ccf265);
+
+IF
+DB_GlobalFlag((FLAG)UND_BroodingSovereign_State_RefusedCircle_d0237569-b266-24c9-60f8-06eda3131892)
+AND
+NOT DB_GlobalFlag((FLAG)UND_MyconidCircle_Event_BetraySpaw_2d4dfc5d-fcd1-281d-c397-002c57a975db)
+THEN
+NOT DB_GLO_PaladinOathbreaker_ProtectedNPCs((TAG)PALADIN_VENGEANCE_a1aa47b2-4d0a-4c97-931b-2c53353d5b23, (CHARACTER)S_UND_MyconidSovereign_ea0f222f-eaad-4d83-bbcd-cbae51ccf265);
+
+IF
+DB_GlobalFlag((FLAG)UND_MyconidCircle_BroodingSovereign_State_PermaDefeated_da7ae2b1-fa67-0889-6003-48d6aef7271d)
+AND
+NOT DB_GlobalFlag((FLAG)UND_MyconidCircle_Event_BetraySpaw_2d4dfc5d-fcd1-281d-c397-002c57a975db)
+THEN
+NOT DB_GLO_PaladinOathbreaker_ProtectedNPCs((TAG)PALADIN_VENGEANCE_a1aa47b2-4d0a-4c97-931b-2c53353d5b23, (CHARACTER)S_UND_MyconidSovereign_ea0f222f-eaad-4d83-bbcd-cbae51ccf265);
+//END_REGION Paladin betraying sovereign
+
+//REGION Freeing SAZZA
+IF
+DestroyedBy(S_DEN_GoblinCageDoor_208e7554-1199-4737-b107-b3c1ccddd588,_Player,_,_)
+AND
+NOT DB_PermaDefeated(S_DEN_CapturedGoblin_783d7572-a846-455f-b686-247a95263ebb)
+THEN
+PROC_DEN_CapturedGoblin_TryBreakOath(_Player);
+
+PROC
+PROC_BlockUseOfItem(_Player, (ITEM)S_DEN_GoblinCageDoor_208e7554-1199-4737-b107-b3c1ccddd588)
+AND
+NOT DB_PermaDefeated(S_DEN_CapturedGoblin_783d7572-a846-455f-b686-247a95263ebb)
+AND
+IsLocked((ITEM)S_DEN_GoblinCageDoor_208e7554-1199-4737-b107-b3c1ccddd588, 0)
+THEN
+PROC_DEN_CapturedGoblin_TryBreakOath(_Player);
+
+//PF2e: Liberators use vengeance tag, but should be fine freeing Sazza
+PROC
+PROC_DEN_CapturedGoblin_TryBreakOath((CHARACTER)_Player)
+AND
+DB_Players(_Player)
+AND
+NOT HasPassive(_Player,"LiberationCause",1)
+THEN
+SetFlag(GLO_PaladinOathbreaker_Event_VengeanceBrokeOath_1510bcc9-e974-4789-b1fa-4612f92f30a1, _Player);
+
+//PF2e: break oath for Justice cause
+PROC
+PROC_DEN_CapturedGoblin_TryBreakOath((CHARACTER)_Player)
+AND
+DB_Players(_Player)
+AND
+HasPassive(_Player,"JusticeCause",1)
+THEN
+SetFlag(GLO_PaladinOathbreaker_Event_DevotionBrokeOath_fd2e1a9a-bca6-482e-8b42-2f1c16aaefee, _Player);
+//END_REGION
+
+//REGION PF2e: Oathbreaker tag when outside of camp
+
+//The Oathbreaker tag unlocks new dialog features, but also prevents being respec'd at Withers.
+//Evil starting champions can be freely respec'd
+
+//Status is applied OnCreate
+
+//Remove upon entering camp
+IF
+DB_InCamp(_Player)
+AND
+HasAppliedStatus(_Player,"PALADIN_OATHBREAKER_TAG",1)
+THEN
+RemoveStatus(_Player,"PALADIN_OATHBREAKER_TAG");
+
+//Apply when leaving camp
+PROC
+PROC_CAMP_LeftCamp((CHARACTER)_Player)
+AND
+DB_Players(_Player)
+AND
+HasPassive(_Player,"OathbreakerTag",1)
+THEN
+ApplyStatus(_Player,"PALADIN_OATHBREAKER_TAG",-1.0,1);
+
+//If gained while in camp, remove it
+IF
+StatusApplied((CHARACTER)_Player,"PALADIN_OATHBREAKER_TAG",_,_)
+AND
+DB_InCamp(_Player)
+THEN
+RemoveStatus(_Player,"PALADIN_OATHBREAKER_TAG");
+
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "__Shared_Campaign"
