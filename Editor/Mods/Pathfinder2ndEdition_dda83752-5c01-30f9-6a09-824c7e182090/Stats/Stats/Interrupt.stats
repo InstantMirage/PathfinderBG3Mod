@@ -663,5 +663,469 @@
         <field name="Properties" type="StringTableFieldDefinition" value="ApplyStatus(ENFEEBLED,100,2)" />
       </fields>
     </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="b1e5048c-3fd3-4c4e-98e9-f0d546727cd1" />
+        <field name="Name" type="NameTableFieldDefinition" value="KnockbackInterrupt" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h24418ebagb97cg4c8agaf91gc82c1f4a3a17" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hb563ce56g3fd4g4cd0gaa59gc50ebf83078a" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_HeartStopper" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnCastHit" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and IsMeleeAttack() and IsWeaponAttack()) and not Item() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and not IsKillingBlow() and not AnyEntityIsItem()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="IF(not Ally()):Force(ShoveDistance,OriginToEntity,Aggressive);IF(Ally()):Force(ShoveDistance,OriginToEntity,Friendly);IF(HasStatus('MAP_PENALTY_2ND', context.Source)):ApplyStatus(SELF,MAP_PENALTY_3RD,100,1);IF(not HasStatus('MAP_PENALTY_3RD', context.Source) and not HasStatus('MAP_PENALTY_2ND', context.Source)):ApplyStatus(SELF,MAP_PENALTY_2ND,100,1);IF(HasPassive('ShoveDown',context.Source)):ApplyStatus(SELF,ShoveDownStatus,100,1)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="69a8b87d-5e72-459e-8147-e085af7f5655" />
+        <field name="Name" type="NameTableFieldDefinition" value="TangleOfBattleInterrupt" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h7d5e2e06g27a2g7578g284cg1735915f769e" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hcb68bd79g2877gd7bag9c19g65fa6bea057f" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_NetherTentacle_Grapple" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnCastHit" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and IsMeleeAttack() and IsWeaponAttack()) and not Item() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and not IsKillingBlow() and not AnyEntityIsItem() and IsCritical()" />
+        <field name="Roll" type="StringTableFieldDefinition" value="SkillCheck(Skill.Athletics,context.Target.GetPassiveSkill(Skill.Athletics))" />
+        <field name="Success" type="StringTableFieldDefinition" value="ApplyStatus(Grappled,100,2);ApplyStatus(SELF,GRAPPLED_SOURCE,100,2);IF(HasStatus('MAP_PENALTY_2ND', context.Source)):ApplyStatus(SELF,MAP_PENALTY_3RD,100,1);IF(not HasStatus('MAP_PENALTY_3RD', context.Source) and not HasStatus('MAP_PENALTY_2ND', context.Source)):ApplyStatus(SELF,MAP_PENALTY_2ND,100,1)" />
+        <field name="Failure" type="StringTableFieldDefinition" value="ApplyStatus(SAVED_AGAINST_HOSTILE_SPELL, 100, 0);IF(HasStatus('MAP_PENALTY_2ND', context.Source)):ApplyStatus(SELF,MAP_PENALTY_3RD,100,1);IF(not HasStatus('MAP_PENALTY_3RD', context.Source) and not HasStatus('MAP_PENALTY_2ND', context.Source)):ApplyStatus(SELF,MAP_PENALTY_2ND,100,1)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="SkillCheck(Skill.Athletics,context.Target.GetPassiveSkill(Skill.Athletics))" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(Grappled,100,2);ApplyStatus(SELF,GRAPPLED_SOURCE,100,2);IF(HasStatus('MAP_PENALTY_2ND', context.Source)):ApplyStatus(SELF,MAP_PENALTY_3RD,100,1);IF(not HasStatus('MAP_PENALTY_3RD', context.Source) and not HasStatus('MAP_PENALTY_2ND', context.Source)):ApplyStatus(SELF,MAP_PENALTY_2ND,100,1)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="86e2fadb-8756-4f3f-954f-f07de0d33169" />
+        <field name="Name" type="NameTableFieldDefinition" value="EmbraceThePainDisarm" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3a546debgfa18gc247g734bgc83188671504" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h3ebee34fg52b8g8440g9fb6g7903e4155cad" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_HinderingStrike" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPreDamage" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsAttack() and IsHit() and IsPhysicalDamage()" />
+        <field name="Roll" type="StringTableFieldDefinition" value="SkillCheck(Skill.Athletics,context.Target.GetPassiveSkill(Skill.Acrobatics))" />
+        <field name="Success" type="StringTableFieldDefinition" value="IF(IsCritical()):ApplyStatus(DISARM, 100, 1);ApplyStatus(HINDERED,100,1);" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="SkillCheck(Skill.Athletics,context.Target.GetPassiveSkill(Skill.Acrobatics))" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="IF(IsCritical()):ApplyStatus(DISARM, 100, 1);ApplyStatus(HINDERED,100,1);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="e8a9173d-7dca-42b8-85ca-e5ae54545d92" />
+        <field name="Name" type="NameTableFieldDefinition" value="EmbraceThePainGrapple" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h20ae1295g6ecegbb1fgbcbfgcfea1cf094c5" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h2f2d8663g1fe5gc527gd82cg899f0affe510" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_NetherTentacle_Grapple" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPreDamage" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsAttack() and IsHit() and IsPhysicalDamage()" />
+        <field name="Roll" type="StringTableFieldDefinition" value="SkillCheck(Skill.Athletics,context.Target.GetPassiveSkill(Skill.Athletics))" />
+        <field name="Success" type="StringTableFieldDefinition" value="ApplyStatus(Grappled,100,2);ApplyStatus(SELF,GRAPPLED_SOURCE,100,2);" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="SkillCheck(Skill.Athletics,context.Target.GetPassiveSkill(Skill.Athletics))" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(Grappled,100,2);ApplyStatus(SELF,GRAPPLED_SOURCE,100,2);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="f7dba11d-948b-475b-ac66-f0bd0734bcd7" />
+        <field name="Name" type="NameTableFieldDefinition" value="FuriousGrabInterrupt" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha2a716b8gad99g721fg00e2gfe9a7946ab02" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5b3a57e3g8eedg7d10gb001gb8a58aab80b9" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Barbarian_FrenziedThrow" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnCastHit" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and IsMeleeAttack() and IsWeaponAttack()) and not Item() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and not IsKillingBlow() and not AnyEntityIsItem()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="ApplyStatus(Grappled,100,2);ApplyStatus(SELF,GRAPPLED_SOURCE,100,2);" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(Grappled,100,2);ApplyStatus(SELF,GRAPPLED_SOURCE,100,2);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="5f9d8f82-2d7e-44b6-a88e-5d2c21ebbfe5" />
+        <field name="Name" type="NameTableFieldDefinition" value="AmuletInitiateInterrupt" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="720399d3-a3a1-4b30-a4c0-b69f0e443236" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hcfd27d6fg99aag29cdg31degfedd49550e3e" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h4e2eea1egfa25g9dccg7bd2g70f784817fb8" version="1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Ally(context.Target,context.Observer) and HasStatus('Exploited',context.Target,context.Observer) and not AnyEntityIsItem()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(OBSERVER_TARGET,-(LevelMapValue(CharacterLevel)+2));IF(HasPassive('AmuletAdept'),context.Observer):ApplyStatus(OBSERVER_OBSERVER,AmuletAdeptStatus,100,1)" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="63eb7435-2018-43c9-b3a4-25d69ab08d62" />
+        <field name="Name" type="NameTableFieldDefinition" value="BellInitiateInterruptSpell" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf3ba6944gfcebg704ag1db5gf22525215768" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h43e7ef5fg5ca4g5269gcab6g15e504eda14a" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_Shatter" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnSpellCast" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Nearby" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Ally(context.Target,context.Observer) and HasStatus('Exploited',context.Target,context.Observer) and not AnyEntityIsItem() and IsSpell()" />
+        <field name="Roll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Constitution, 10 + context.Observer.ProficiencyBonus + GetModifier(context.Observer.Charisma))" />
+        <field name="Success" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty1SpellDC,100,1);IF(IsCritical()):ApplyStatus(StatusPenalty2SpellDC,100,1);ApplyStatus(StatusPenalty1WillSaves,100,1);IF(IsCritical()):ApplyStatus(StatusPenalty2WillSaves,100,1)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Constitution, 10 + context.Observer.ProficiencyBonus + GetModifier(context.Observer.Charisma))" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty1SpellDC,100,1);IF(IsCritical()):ApplyStatus(StatusPenalty2SpellDC,100,1);IF(HasPassive('BellAdept'),context.Observer):ApplyStatus(StatusPenalty1SpellDC,100,3);IF(IsCritical() and HasPassive('BellAdept'),context.Observer):ApplyStatus(StatusPenalty2SpellDC,100,3)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="bbddc4fb-cfcc-430b-8f3b-38bcd023568b" />
+        <field name="Name" type="NameTableFieldDefinition" value="BellInitiateInterruptStrike" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h142c8950g9dc6gb1c6g329dge6887a8a1e5e" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hcb6676f2g2bbdg975fgc7fbg4f9ad3d06d22" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_Shatter" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Nearby" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Ally(context.Target,context.Observer) and HasStatus('Exploited',context.Target,context.Observer) and not AnyEntityIsItem()" />
+        <field name="Roll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Wisdom, 10 + context.Observer.ProficiencyBonus + GetModifier(context.Observer.Charisma))" />
+        <field name="Success" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty1Attack,100,1);IF(IsCritical()):ApplyStatus(StatusPenalty2Attack,100,1)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Wisdom, 10 + context.Observer.ProficiencyBonus + GetModifier(context.Observer.Charisma))" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty1Attack,100,1);IF(IsCritical()):ApplyStatus(StatusPenalty2Attack,100,1);IF(HasPassive('BellAdept'),context.Observer):ApplyStatus(StatusPenalty1Attack,100,3);IF(IsCritical() and HasPassive('BellAdept'),context.Observer):ApplyStatus(StatusPenalty2Attack,100,3)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2fb43459-7b0e-4e4c-a824-fdca013ab14e" />
+        <field name="Name" type="NameTableFieldDefinition" value="ChaliceAdeptInterrupt" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Nearby" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value=" IsAttack() and IsHit() and IsPhysicalDamage() and IsCritical() and Ally(context.Target,context.Observer) " />
+        <field name="Properties" type="StringTableFieldDefinition" value="ApplyStatus(OBSERVER_OBSERVER,ChaliceCritical,100,1)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ActionPoint:0" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="adb3cc82-be90-4b3a-a087-ba54a284c47e" />
+        <field name="Name" type="NameTableFieldDefinition" value="MirrorShatter" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h81f45380gaafbg3d9eg791ag86c8f49dd5bf" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h38724484g4911ge171geb2dg02b82cb94401" version="1" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Nearby" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value=" IsAttack() and IsHit() and IsPhysicalDamage() and HasStatus('MirrorCloneStatus',context.Target,context.Observer)" />
+        <field name="Properties" type="StringTableFieldDefinition" value="DealDamage(OBSERVER_SOURCE,2+LevelMapValue(CharacterLevel)/2,Piercing,Magical,,0,,true,false)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ActionPoint:0" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="04a3ece3-8a56-4fd9-a169-8e308850bfaa" />
+        <field name="Name" type="NameTableFieldDefinition" value="ImplementsInterruption" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="6b435f5b-931f-4d26-aa61-656582325124" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnLeaveAttackRange;OnSpellCast" enumeration_type_name="InterruptContext" version="1" />
+        <field name="Properties" type="StringTableFieldDefinition" value=";" />
+        <field name="Roll" type="StringTableFieldDefinition" value="Attack(AttackType.MeleeWeaponAttack,false,false,context.Source,context.SourcePosition,context.Observer,context.ObserverPosition)" />
+        <field name="Success" type="StringTableFieldDefinition" value="DealDamage(max(1,MainMeleeWeapon), MainMeleeWeaponDamageType); ExecuteWeaponFunctors(MainHand)" />
+        <field name="Failure" type="StringTableFieldDefinition" value="IF(HasPassive(OBSERVER_OBSERVER,'WeaponAdept')):DealDamage(1,MainMeleeWeaponType);IF(HasPassive(OBSERVER_OBSERVER,'WeaponAdept')): ExecuteWeaponFunctors(MainHand)" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Enabled;Ask" enumeration_type_name="InterruptDefaultValue" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_1_TOME" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf93978beg2161gc488gcdc3g52b1953ca972" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7b7c80d0g83b8gd333g986eg2ba0245f4dbb" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="1" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(1, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(1);RemoveStatus(OBSERVER_OBSERVER,PORTENT_1);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="ExtraDescription" type="TranslatedStringTableFieldDefinition" handle="h1c1d934bgb383gf88cg0333g749a6e55ec7d" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_1" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_1:1" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="c6d104ae-fdd4-4c49-b2e0-42b783963b98" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_2_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4823e1e2g2643g12f4g4389g37b273530d2d" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="2" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(2);RemoveStatus(OBSERVER_OBSERVER,PORTENT_2);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_2" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_2:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(2, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="cd39e84a-8d8e-4718-a9e9-e966c6b96022" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_3_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="habe597ecg4c1dg01d6gc852gc0d3987906fa" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="3" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(3);RemoveStatus(OBSERVER_OBSERVER,PORTENT_3);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_3" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_3:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(3, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="b07f58ab-9fb0-41d7-9520-d05354b5d656" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_4_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h7386efb1gad78gee43gf046g4df0fd70264e" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="4" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(4);RemoveStatus(OBSERVER_OBSERVER,PORTENT_4);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_4" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_4:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(4, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="e1341f3e-7105-475f-b073-a56a26d70e06" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_5_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3de4a41dg0b39g1e66gffaegde021531533f" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="5" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(5);RemoveStatus(OBSERVER_OBSERVER,PORTENT_5);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_5" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_5:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(5, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="8493976e-8132-4e19-9d17-0be8089a3c71" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_6_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he4e8b1d3g32eag31bfg0758g5d61ce1e2ca1" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="6" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(6);RemoveStatus(OBSERVER_OBSERVER,PORTENT_6);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_6" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_6:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(6, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="81d4a1b5-ddde-4321-ac82-08e49b355b83" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_7_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h27acff5ag5966gbea8ga64cg6805b64c659b" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="7" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(7);RemoveStatus(OBSERVER_OBSERVER,PORTENT_7);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_7" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_7:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(7, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="911d9701-5ffb-4bed-9dca-94581bd92ec8" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_8_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6e536965g08b5g8677gfaa0g0d94da24d644" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="8" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(8);RemoveStatus(OBSERVER_OBSERVER,PORTENT_8);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_8" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_8:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(8, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="8db7131d-8e39-47b2-ae76-b6f12b464df7" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_9_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h159119a7g332dge9f3gf4e5g34affd3713fb" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="9" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(9);RemoveStatus(OBSERVER_OBSERVER,PORTENT_9);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_9" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_9:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(9, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="a34ad26e-ed0e-4a24-903c-5606d55446b7" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_10_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h7e3b770ega4c7gca8bgc37cgf4f50329d8c1" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="10" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(10);RemoveStatus(OBSERVER_OBSERVER,PORTENT_10);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_10" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_10:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(10, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="80562747-cb59-4d24-b6e4-a668f19e2106" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_11_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h08b82ba8ga8efg8dbfg88aeg15ab9711374f" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="11" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(11);RemoveStatus(OBSERVER_OBSERVER,PORTENT_11);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_11" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_11:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(11, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="f63b0746-6301-4a53-b46a-64426584eaaf" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_12_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h9a0966e7g4d63g995cgd38fgd3a56e33adfa" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="12" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(12);RemoveStatus(OBSERVER_OBSERVER,PORTENT_12);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_12" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_12:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(12, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="ee6983de-8124-464e-abfc-438039371b7c" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_13_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h52de0881g364dg0d9dg0a56g3b9e107dddc2" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="13" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(13);RemoveStatus(OBSERVER_OBSERVER,PORTENT_13);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_13" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_13:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(13, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="bc69efa3-3cda-4b99-a3ce-e3c1a0d27b8d" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_14_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3171d8b1g80c8gdcd8g0491g252902f8a7ba" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="14" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(14);RemoveStatus(OBSERVER_OBSERVER,PORTENT_14);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_14" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_14:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(14, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="9b70a0ae-69fb-4beb-845f-e3c7590ddb42" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_15_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc8983aaagfa53g911agb3c0g5228561e4170" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="15" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(15);RemoveStatus(OBSERVER_OBSERVER,PORTENT_15);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_15" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_15:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(15, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="627a40e8-a1eb-4fac-b409-21b9c79d7a87" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_16_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0de5f94cg590bg1342g3270g473d7043c94a" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="16" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(16);RemoveStatus(OBSERVER_OBSERVER,PORTENT_16);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_16" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_16:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(16, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="e696e3b9-57c4-4c87-85d4-aaae1f7b689f" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_17_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4274adcag90a9gb120g3eefg7fae5a2d180e" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="17" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(17);RemoveStatus(OBSERVER_OBSERVER,PORTENT_17);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_17" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_17:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(17, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="688b5236-464e-48e9-9db7-abc4ac8ada5c" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_18_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h53710481ga1a3gffb7g12d0g3b4ddbd17b84" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="18" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(18);RemoveStatus(OBSERVER_OBSERVER,PORTENT_18);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_18" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_18:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(18, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="9234659f-d0fc-4392-88d0-43b539b2a730" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_19_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha8189124gca53g86b5gb2cfg0f3461f85ad2" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="19" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(19);RemoveStatus(OBSERVER_OBSERVER,PORTENT_19);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_19" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_19:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(19, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="bde7a2dc-e5d6-4a4c-9ffc-caae5818fcca" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_Portent_20_TOME" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="857ba3c5-086a-4010-a5ea-3893a0d03fed" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h74278aeeg91a9gc528g2e7fg8396f5dc53f2" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="20" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(20);RemoveStatus(OBSERVER_OBSERVER,PORTENT_20);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Portent_20" />
+        <field name="Cost" type="StringTableFieldDefinition" value="Interrupt_Portent_20:1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(20, context.Source))) and not AnyEntityIsItem() and HasStatus('Exploited',context.Target)" />
+      </fields>
+    </stat_object>
   </stat_objects>
 </stats>

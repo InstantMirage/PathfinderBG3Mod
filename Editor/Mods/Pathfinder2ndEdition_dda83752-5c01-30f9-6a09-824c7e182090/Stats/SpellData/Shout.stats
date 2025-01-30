@@ -661,7 +661,56 @@
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="None" enumeration_type_name="SpellFlagList" version="1" />
         <field name="Requirements" type="StringTableFieldDefinition" value="Combat" />
         <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('GiantRageStatus') " />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h43639e64g4b1bga2f6g5072g64f35412bfb6" version="1" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6d13cb1cgeb7fg3e36g6648g8bee5c4b85d8" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="0a466e50-11a5-42a1-9c15-a40e2ba72df6" />
+        <field name="Name" type="NameTableFieldDefinition" value="RenewedVigor" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(SELF,RenewedVigorTemp,100,10);IF(HasStatus('MAP_PENALTY_2ND') or HasStatus('MAP_PENALTY_3RD')):ApplyStatus(SELF,RenewedVigorTempBonus,100,10);" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Self()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Skill_Fighter_SecondWind" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha65a76d7gc94eg272dg6905g3b69f4db13ca" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h160e6497g43afgfe1eg2e6bgaaa6ed5f7e3a" version="1" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(SELF,RenewedVigorTemp,100,10)" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Action_Cast_SecondWind" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_SecondWind" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="9122eb08-93f1-4010-a275-f5ae3ec7c76e,,;,,;9fb11cca-02d4-4d2f-955f-2826c0553b17,,;5103d398-d8de-4aa4-9633-db2e1b7f6254,,;5301d674-b7da-47b6-b4cf-2802ba33a9e9,,;,,;86b3cf93-21fb-4a3d-bed9-97d0a567d084,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Healing" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="Requirements" type="StringTableFieldDefinition" value="Combat" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('SG_Rage')" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="bd833cb2-2d28-4533-bfdf-67e4f77dd10f" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="bc392fbd-4ca6-4066-954b-169eb0b963e0" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="28e169cc-6f7c-432f-9bb6-4da88ea6aa74" />
+        <field name="Name" type="NameTableFieldDefinition" value="FuriousSprint" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="e0fd05f4-0b0d-4663-beec-21d2b5de7928" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(FuriousSprintStatus,100,1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_FastMovement" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2bd8a63eg9f73g65d9g3022gb2e35d6a581f" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hfbf11643g7c72gbc27gb36cg5664cb2d4a5f" version="1" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(FuriousSprintStatus,100,1)" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2" />
+        <field name="SpellSoundMagnitude" type="EnumerationTableFieldDefinition" value="Big" enumeration_type_name="SpellSoundMagnitude" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="f3b09e57-b7f8-4a8f-89c0-a6b954b93d67" />
+        <field name="Name" type="NameTableFieldDefinition" value="FuriousSprintThree" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="28e169cc-6f7c-432f-9bb6-4da88ea6aa74" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(FuriousSprintBonusStatus,100,1)" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4eca4981gad83gd831g3f7eg13a004d783e9" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h8fc75189g43f4ge497g950eg89bb61f8e7e2" version="1" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(FuriousSprintBonusStatus,100,1)" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:3" />
       </fields>
     </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">
@@ -4003,7 +4052,191 @@
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="f4fd9018-9362-4196-ad25-60b7c40d57fb" />
-        <field name="Name" type="NameTableFieldDefinition" value="BespellStriks" />
+        <field name="Name" type="NameTableFieldDefinition" value="BespellStrikes" />
+      </fields>
+    </stat_object>
+    <stat_object color="#FFFF0000" is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="dae31fad-6349-4c23-b988-ef28ea7cfba6" />
+        <field name="Name" type="NameTableFieldDefinition" value="THAUMATURGE" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="ea2f4081-5903-4442-8f98-59993994e527" />
+        <field name="Name" type="NameTableFieldDefinition" value="RegaliaDamageAura" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="44385df5-2f16-4604-99c4-1b8ddb7843ff" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(StatusBonusDamage2,100,-1);IF(CharacterLevelGreaterThan(10)):ApplyStatus(StatusBonusDamage3,100,-1)" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h59272a07g2778gbe27g36f4g50854674b918" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h4a4bdc84gd9cagd7f0gead7g8b61699e3436" version="1" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(StatusBonusDamage2,100,-1);IF(CharacterLevelGreaterThan(10)):ApplyStatus(StatusBonusDamage3,100,-1)" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="Sheathing" type="EnumerationTableFieldDefinition" value="DontChange" enumeration_type_name="SpellSheathing" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="748298c1-8541-464e-a6cc-5dc3fa5d50d6" />
+        <field name="Name" type="NameTableFieldDefinition" value="IntensifyAmulet" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(AmuletImplementBonus,100,1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="TadpoleSuperPower_ReflectiveShell" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb93f9874ge2aag7dc5gcc8fg9c6a1fe36fe5" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h14e56a07gaf19g4ca7gabb1g589554c082ff" version="1" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="CrSpell_Prepare_Myrmidon_Air" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Generic_GeneralAction_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="CrSpell_Cast_Myrmidon_Air_ElementalWarp" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_Disengage" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="9fd22d7d-5d7a-470b-a939-810046915bed,,;,,;4222840e-85c4-41d4-89f3-cf525ab7a2ce,,;d58199b1-9bc5-4715-99d4-43a5b5c1ec16,,;2d19a206-bf18-4f4d-ba95-f83c5fc38fd7,,;,,;57db495b-2467-467b-a599-d7df2fa4d659,,;,,;,," />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="8f9043e2-4608-43c5-b78f-c4a1b91ea340" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="d822f332-8213-49a1-bc48-4668a89199ad" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="7efb3ce7-7955-4107-9ef5-c4879c410ab7" />
+        <field name="Name" type="NameTableFieldDefinition" value="IntensifyChalice" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(ChaliceIntenseStatus,100,1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_PrayerOfHealing" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd08b3e8ag25b1g5509g281cg9f6c7dd9f98e" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h02759b57g8856g2888g53cfg0769d04d468f" version="1" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="CrSpell_Prepare_Myrmidon_Air" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Generic_GeneralAction_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="CrSpell_Cast_Myrmidon_Air_ElementalWarp" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_Disengage" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="9fd22d7d-5d7a-470b-a939-810046915bed,,;,,;4222840e-85c4-41d4-89f3-cf525ab7a2ce,,;d58199b1-9bc5-4715-99d4-43a5b5c1ec16,,;2d19a206-bf18-4f4d-ba95-f83c5fc38fd7,,;,,;57db495b-2467-467b-a599-d7df2fa4d659,,;,,;,," />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="8f9043e2-4608-43c5-b78f-c4a1b91ea340" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="d822f332-8213-49a1-bc48-4668a89199ad" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="de8efb4b-a2e7-4583-b365-3ca1daab0661" />
+        <field name="Name" type="NameTableFieldDefinition" value="IntensifyMirror" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(AmuletImplementBonus,100,1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Illusion_DisguiseSelf" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5b52e905geec6g6a77g48d4gb3149f7c0e83" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hebed587cgf00bga809g2c65g80dbc580c1ca" version="1" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="CrSpell_Prepare_Myrmidon_Air" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Generic_GeneralAction_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="CrSpell_Cast_Myrmidon_Air_ElementalWarp" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_Disengage" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="9fd22d7d-5d7a-470b-a939-810046915bed,,;,,;4222840e-85c4-41d4-89f3-cf525ab7a2ce,,;d58199b1-9bc5-4715-99d4-43a5b5c1ec16,,;2d19a206-bf18-4f4d-ba95-f83c5fc38fd7,,;,,;57db495b-2467-467b-a599-d7df2fa4d659,,;,,;,," />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="8f9043e2-4608-43c5-b78f-c4a1b91ea340" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="d822f332-8213-49a1-bc48-4668a89199ad" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="686651f0-2f14-468d-88d8-4554b0433561" />
+        <field name="Name" type="NameTableFieldDefinition" value="IntensifyTome" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(PORTENT_TOME,100,1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Fighter_KnowYourEnemy" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0bfcca8dg1a8fgfe15ge9c9g60385c54a63d" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hbecf337eg7a58g94c3g9969g44197262457a" version="1" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="CrSpell_Prepare_Myrmidon_Air" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Generic_GeneralAction_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="CrSpell_Cast_Myrmidon_Air_ElementalWarp" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_Disengage" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="9fd22d7d-5d7a-470b-a939-810046915bed,,;,,;4222840e-85c4-41d4-89f3-cf525ab7a2ce,,;d58199b1-9bc5-4715-99d4-43a5b5c1ec16,,;2d19a206-bf18-4f4d-ba95-f83c5fc38fd7,,;,,;57db495b-2467-467b-a599-d7df2fa4d659,,;,,;,," />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="8f9043e2-4608-43c5-b78f-c4a1b91ea340" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="d822f332-8213-49a1-bc48-4668a89199ad" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="1100aa3c-7bca-45b8-964b-be000ce2a0d1" />
+        <field name="Name" type="NameTableFieldDefinition" value="IntensifyWand" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(WandIntenseStatus,100,1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Skill_Sorcerer_CreateSorceryPoints_1" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hbac6351cg3554g14e1ga437gc3ae38448f38" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h679cf409g4c4dg6b1ag28eeg510bdbee1108" version="1" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="CrSpell_Prepare_Myrmidon_Air" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Generic_GeneralAction_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="CrSpell_Cast_Myrmidon_Air_ElementalWarp" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_Disengage" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="9fd22d7d-5d7a-470b-a939-810046915bed,,;,,;4222840e-85c4-41d4-89f3-cf525ab7a2ce,,;d58199b1-9bc5-4715-99d4-43a5b5c1ec16,,;2d19a206-bf18-4f4d-ba95-f83c5fc38fd7,,;,,;57db495b-2467-467b-a599-d7df2fa4d659,,;,,;,," />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="8f9043e2-4608-43c5-b78f-c4a1b91ea340" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="d822f332-8213-49a1-bc48-4668a89199ad" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="944d64b9-c81f-45fa-bd74-157817683e9b" />
+        <field name="Name" type="NameTableFieldDefinition" value="IntensifyWeapon" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(WeaponImplementBonus,100,1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Transmutation_MagicWeapon" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h26bb7652gb6e4g00a6g35e3gde86756a03c9" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h9cabd202g40c2gf010g2f67g5a463e7c3a07" version="1" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="CrSpell_Prepare_Myrmidon_Air" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Generic_GeneralAction_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="CrSpell_Cast_Myrmidon_Air_ElementalWarp" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_Disengage" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="9fd22d7d-5d7a-470b-a939-810046915bed,,;,,;4222840e-85c4-41d4-89f3-cf525ab7a2ce,,;d58199b1-9bc5-4715-99d4-43a5b5c1ec16,,;2d19a206-bf18-4f4d-ba95-f83c5fc38fd7,,;,,;57db495b-2467-467b-a599-d7df2fa4d659,,;,,;,," />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="8f9043e2-4608-43c5-b78f-c4a1b91ea340" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="d822f332-8213-49a1-bc48-4668a89199ad" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="e5d2aa94-9f4c-4417-b742-29a89c0fb16f" />
+        <field name="Name" type="NameTableFieldDefinition" value="IntensifyRegalia" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(RegaliaImplementBonus,100,1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Paladin_DivineSense" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc444ed28g7851ge07eg2352g003e0a755c5b" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h74a753dbg36d7g20f6gd969g4dc15d027735" version="1" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="CrSpell_Prepare_Myrmidon_Air" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Generic_GeneralAction_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="CrSpell_Cast_Myrmidon_Air_ElementalWarp" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_Disengage" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="9fd22d7d-5d7a-470b-a939-810046915bed,,;,,;4222840e-85c4-41d4-89f3-cf525ab7a2ce,,;d58199b1-9bc5-4715-99d4-43a5b5c1ec16,,;2d19a206-bf18-4f4d-ba95-f83c5fc38fd7,,;,,;57db495b-2467-467b-a599-d7df2fa4d659,,;,,;,," />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="8f9043e2-4608-43c5-b78f-c4a1b91ea340" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="d822f332-8213-49a1-bc48-4668a89199ad" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="72c9c26b-507a-4bfb-b1c9-25bb51a3d9ab" />
+        <field name="Name" type="NameTableFieldDefinition" value="IntensifyBell" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(BellIntenseStatus,100,1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Paladin_DreadfulAspect" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0eb5dd3eg6574g5e17g2699g1e19589e2d7b" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h47be1468g8a6egd172g0f83g138fc170d828" version="1" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="CrSpell_Prepare_Myrmidon_Air" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Generic_GeneralAction_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="CrSpell_Cast_Myrmidon_Air_ElementalWarp" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_Disengage" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="InstrumentComponentPrepareSound" type="StringTableFieldDefinition" value="Instrument_Bard_BardicInspiration_Prepare" />
+        <field name="InstrumentComponentLoopingSound" type="StringTableFieldDefinition" value="Instrument_Bard_BardicInspiration_Loop" />
+        <field name="InstrumentComponentCastSound" type="StringTableFieldDefinition" value="Instrument_Bard_BardicInspiration_Cast" />
+        <field name="InstrumentComponentImpactSound" type="StringTableFieldDefinition" value="Instrument_Bard_BardicInspiration_Impact" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="9fd22d7d-5d7a-470b-a939-810046915bed,,;,,;4222840e-85c4-41d4-89f3-cf525ab7a2ce,,;d58199b1-9bc5-4715-99d4-43a5b5c1ec16,,;2d19a206-bf18-4f4d-ba95-f83c5fc38fd7,,;,,;57db495b-2467-467b-a599-d7df2fa4d659,,;,,;,," />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="8f9043e2-4608-43c5-b78f-c4a1b91ea340" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="d822f332-8213-49a1-bc48-4668a89199ad" />
       </fields>
     </stat_object>
   </stat_objects>
