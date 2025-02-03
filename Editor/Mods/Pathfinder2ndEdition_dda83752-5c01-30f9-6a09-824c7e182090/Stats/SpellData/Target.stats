@@ -6414,7 +6414,7 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="a607576f-27c2-45b2-bad5-491082e39221" />
         <field name="Name" type="NameTableFieldDefinition" value="LayOnHandsPathfinder" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="TARGET:RegainHitPoints(LevelMapValue(LayOnHandsHealing))" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="TARGET:RegainHitPoints(LevelMapValue(LayOnHandsHealing));IF(not Self()):ApplyStatus(DEVOTION_AC_BONUS,100,1)" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="1.5" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead() and not Tagged('UNDEAD') and not Tagged('CONSTRUCT')" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Paladin_LayOnHands_SmallHeal" />
@@ -6442,7 +6442,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="9eaf20ea-2c71-435e-8140-6b29f82c8a5b" />
         <field name="Name" type="NameTableFieldDefinition" value="LayOnHandsMercy" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="a607576f-27c2-45b2-bad5-491082e39221" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="TARGET:RegainHitPoints(LevelMapValue(LayOnHandsHealing));RemoveStatus(SG_Poisoned);RemoveStatus(SG_Disease);RemoveStatus(ASTARION_WEAK)" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="TARGET:RegainHitPoints(LevelMapValue(LayOnHandsHealing));IF(not Self()):ApplyStatus(DEVOTION_AC_BONUS,100,1);RemoveStatus(SG_Poisoned);RemoveStatus(SG_Disease);RemoveStatus(ASTARION_WEAK)" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Paladin_LayOnHands_Cure" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3a299119g9ae1g2923gfa58g7fe5cf6e0063" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf7c38fabg9913gdfb0g3af4g674dbe72878a" version="2" />
@@ -6455,7 +6455,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="TouchOfTheVoid" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="1.5" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Constitution, SourceSpellDC())" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(H1D6),Necrotic);ApplyStatus(StatusPenalty2AC,100,1)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(H1D6),Necrotic);ApplyStatus(DEVOTION_AC_PENALTY,100,1)" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(H1D6)/2,Necrotic)" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead() and not Tagged('UNDEAD') and not Tagged('CONSTRUCT')" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Necromancy_InflictWounds" />
@@ -6464,7 +6464,7 @@
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(H1D6)" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(H1D6))" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Constitution" />
-        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty2AC,100,1)" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(DEVOTION_AC_PENALTY,100,1)" />
         <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Necrotic_Gen_L1to3" />
         <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Necrotic_Gen_L1to3_Loop" />
         <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_Necrotic_InflictWounds_L1to3" />
@@ -6487,10 +6487,10 @@
         <field name="UUID" type="IdTableFieldDefinition" value="ada951eb-2c10-49e4-9406-4ff2d792c4d5" />
         <field name="Name" type="NameTableFieldDefinition" value="TouchOfTheVoidCruelty" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="68388416-0c72-43b0-bf59-f57aa9d9c54f" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(H1D6),Necrotic);ApplyStatus(StatusPenalty2AC,100,1);ApplyStatus(StatusPenaltyDamage1,100,10);ApplyStatus(StatusPenalty1Attack,100,10)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(H1D6),Necrotic);ApplyStatus(DEVOTION_AC_PENALTY,100,1);ApplyStatus(ENFEEBLED,100,10)" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h7401176cgf9beg2bd8g4209g8310fd784545" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h634905dbg0120g880bg915age59df6cf0df6" version="2" />
-        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty2AC,100,1);ApplyStatus(StatusPenaltyDamage1,100,10);ApplyStatus(StatusPenalty1Attack,100,10)" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(DEVOTION_AC_PENALTY,100,1);ApplyStatus(ENFEEBLED,100,10)" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;KiPoint:1" />
       </fields>
     </stat_object>
@@ -7238,13 +7238,13 @@
         <field name="Name" type="NameTableFieldDefinition" value="Overstuff" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="9" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Constitution, SourceSpellDC())" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty1Attack,100,-1);ApplyStatus(StatusPenalty1Saves,100,-1);ApplyStatus(StatusPenalty1AC,100,-1)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="ApplyStatus(SICKENED_OVERSTUFF,100,10)" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead() and not Tagged('UNDEAD') and not Tagged('CONSTRUCT')" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Eyebite_Sickened" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6c1629aag52d2g500dgc074g5d09a0c8217a" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h50993d7cg0a53g08c6g0f2fg7a21af33f9eb" version="1" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Constitution" />
-        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty1Attack,100,-1);ApplyStatus(StatusPenalty1Saves,100,-1);ApplyStatus(StatusPenalty1AC,100,-1)" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(SICKENED_OVERSTUFF,100,10)" />
         <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Debuff_EyeBiteSickened_L6to8" />
         <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Debuff_EyebiteSickened_L6to8" />
         <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Debuff_EyebiteSickened_L6to8" />
@@ -7267,11 +7267,12 @@
         <field name="Name" type="NameTableFieldDefinition" value="WakingNightmare" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="b9f14611-a107-42b8-ab27-0c5ac8cb93f5" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Wisdom, SourceSpellDC())" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty2Attack,100,2);ApplyStatus(StatusPenalty2Saves,100,2);ApplyStatus(StatusPenalty2AC,100,2)" />
-        <field name="SpellFail" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty1Attack,100,1);ApplyStatus(StatusPenalty1Saves,100,1);ApplyStatus(StatusPenalty1AC,100,1)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="ApplyStatus(FRIGHTENED,100,2)" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="ApplyStatus(FRIGHTENED,100,1)" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hefffb789g40d7g90deg51fdg7a0b2bc24b06" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h60bddd7cgbac3g0542gfce2ge73aee4fd52f" version="1" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Wisdom" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(FRIGHTENED,100,2)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -7284,6 +7285,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h491edcb9ga0e9g843ag340eg0f46029c3b94" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf5165c3bg2e7fg5eb4g4fdbgfab359791620" version="1" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D4Bonus)/2,Psychic);" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(d4Persistent_Mental,100,10)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -7673,11 +7675,11 @@
         <field name="Name" type="NameTableFieldDefinition" value="SlyDisarm" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="681e9ae8-5e47-4cb1-924d-3f4ce4ae8868" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="SkillCheck(Skill.Thievery,context.Target.GetPassiveSkill(Skill.Acrobatics))" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(IsCritical()):ApplyStatus(DISARM, 100, 1);ApplyStatus(CircumstancePenalty2Attack,100,1);ApplyStatus(OFF_BALANCED,100,1);IF(HasStatus('MAP_PENALTY_2ND', context.Source)):ApplyStatus(SELF,MAP_PENALTY_3RD,100,1);IF(not HasStatus('MAP_PENALTY_3RD', context.Source) and not HasStatus('MAP_PENALTY_2ND', context.Source)):ApplyStatus(SELF,MAP_PENALTY_2ND,100,1)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(IsCritical()):ApplyStatus(DISARM, 100, 1);ApplyStatus(HINDERED,100,1);ApplyStatus(FEINT_ONCE,100,1);IF(HasStatus('MAP_PENALTY_2ND', context.Source)):ApplyStatus(SELF,MAP_PENALTY_3RD,100,1);IF(not HasStatus('MAP_PENALTY_3RD', context.Source) and not HasStatus('MAP_PENALTY_2ND', context.Source)):ApplyStatus(SELF,MAP_PENALTY_2ND,100,1)" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf78885b4g863cg11e3ge05cgdc1b0a580cd2" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf91c2050gdc78g0b1bg3133gb9990d70ca7f" version="1" />
         <field name="ExtraDescription" type="TranslatedStringTableFieldDefinition" handle="h6df80d83g0065g2e01g84e3ga82c4a2c2293" version="1" />
-        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(DISARM, 100, 1);ApplyStatus(CircumstancePenalty2Attack,100,1);ApplyStatus(OFF_BALANCED,100,1)" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(FEINT_ONCE, 100, 1);ApplyStatus(HINDERED,100,1);ApplyStatus(OFF_BALANCED,100,1)" />
         <field name="SpellContainerID" type="StringTableFieldDefinition" value=";" />
       </fields>
     </stat_object>
@@ -7743,12 +7745,12 @@
         <field name="TargetFloor" type="StringTableFieldDefinition" value=".25" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="9" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Wisdom, SourceSpellDC()" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty1Attack,100,10);ApplyStatus(StatusPenalty1Saves,100,10);ApplyStatus(StatusPenalty1AC,100,10)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="ApplyStatus(SICKENED,100,10)" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Eyebite_Sickened" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0bac6edag008bga2e4gf503g96c6d81b94b8" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h22654e79gd67fg07c6g3e2eg796eac9a5563" version="1" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Wisdom" />
-        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty1Attack,100,10);ApplyStatus(StatusPenalty1Saves,100,10);ApplyStatus(StatusPenalty1AC,100,10)" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(SICKENED,100,10)" />
         <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Debuff_EyeBiteSickened_L6to8" />
         <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Debuff_EyebiteSickened_L6to8" />
         <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Debuff_EyebiteSickened_L6to8" />
@@ -7790,7 +7792,7 @@
         <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_Intent_Utility" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0b10a26fgf541gf9bag433fg04b307e1b4e6" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf3049071gb7aag96b9ge01eg7d0b96ecd708" version="1" />
-        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(StatusBonus1Attack,100,1);ApplyStatus(StatusBonus1Skills,100,1)" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(DIABOLIC_EDICT_BUFF,100,1)" />
         <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Debuff_EyeBiteSickened_L6to8" />
         <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Debuff_EyebiteSickened_L6to8" />
         <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Debuff_EyebiteSickened_L6to8" />
@@ -7805,6 +7807,7 @@
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="8c94e851-f437-485b-90d6-ec2478faa425" />
         <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="8f715ba5-e636-4320-95e2-39652be09ea0" />
         <field name="HitEffect" type="GuidObjectTableFieldDefinition" value="373e24b0-f0ec-4b5d-8333-3668d1516fdc" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(DIABOLIC_EDICT_BUFF,100,1)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -7868,16 +7871,16 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="550c747e-ff40-4360-954f-cea3c04b07da" />
         <field name="Name" type="NameTableFieldDefinition" value="AncestralMemoriesEnemy" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty1Saves,100,1)" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(ANCESTRAL_MEMORIES_DEBUFF_1,100,1)" />
         <field name="TargetCeiling" type="StringTableFieldDefinition" value="0" />
         <field name="TargetFloor" type="StringTableFieldDefinition" value=".25" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="18" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Enemy()" />
-        <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_Intent_Utility" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Divination_TrueStrike" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha1b93bd5gd866gc133g6fd8g05bec69d0fff" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hcf8e0e5fg16efg7743gf24eg0163e42b5139" version="1" />
         <field name="ExtraDescription" type="TranslatedStringTableFieldDefinition" handle="hc6d5dbc3g7896ge579gb9d9g30c91f404577" version="1" />
-        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty1Saves,100,1)" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(ANCESTRAL_MEMORIES_DEBUFF_1,100,1)" />
         <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Debuff_EyeBiteSickened_L6to8" />
         <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Debuff_EyebiteSickened_L6to8" />
         <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Debuff_EyebiteSickened_L6to8" />
@@ -8228,13 +8231,13 @@
         <field name="TargetRadius" type="StringTableFieldDefinition" value="9" />
         <field name="AreaRadius" type="IntegerTableFieldDefinition" value="0" />
         <field name="RequirementConditions" type="StringTableFieldDefinition" value="(not HasStatus('SG_RAGE') or HasPassive('RagingIntimidation') )" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(1d12H1d12),Lightning,Magical);ApplyStatus(StatusPenalty2DexteritySave,100,1);ApplyStatus(StatusPenalty2AC,100,1)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(1d12H1d12),Lightning,Magical);ApplyStatus(CLUMSY2,100,1)" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage((LevelMapValue(1d12H1d12))/2,Lightning,Magical)" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead()" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h63c3cbd2g8845gc374gcbefg887d552cc592" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5e2def39g04fcg91cfgd9c5gbb84e0fc9746" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(1d12H1d12),Lightning,Magical)" />
-        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty2DexteritySave,100,1);ApplyStatus(StatusPenalty2AC,100,1)" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(CLUMSY2,100,1)" />
         <field name="TooltipUpcastDescriptionParams" type="StringTableFieldDefinition" value="DealDamage(1d12,Lightning)" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;KiPoint:1" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasVerbalComponent;HasSomaticComponent;IsSpell;CanAreaDamageEvade" enumeration_type_name="SpellFlagList" version="1" />
@@ -8250,7 +8253,7 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="40b67e38-d7ce-423d-a048-5a98b68a6e2f" />
         <field name="Name" type="NameTableFieldDefinition" value="OngoingMisery" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="SetStatusDuration(OFF_BALANCED,1,Add);SetStatusDuration(FEINT_ROUND,1,Add);SetStatusDuration(Grappled,1,Add);SetStatusDuration(POISONED,1,Add);SetStatusDuration(BLINDED,1,Add);SetStatusDuration(CLUMSY,1,Add);SetStatusDuration(STUNNED1,1,Add);SetStatusDuration(STUNNED2,1,Add);SetStatusDuration(Stupefied1,1,Add);SetStatusDuration(Stupefied2,1,Add);SetStatusDuration(ENFEEBLED,1,Add);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="SetStatusDuration(OFF_BALANCED,1,Add);SetStatusDuration(FEINT_ROUND,1,Add);SetStatusDuration(Grappled,1,Add);SetStatusDuration(POISONED,1,Add);SetStatusDuration(BLINDED,1,Add);SetStatusDuration(CLUMSY,1,Add);SetStatusDuration(CLUMSY2,1,Add);SetStatusDuration(STUNNED1,1,Add);SetStatusDuration(STUNNED2,1,Add);SetStatusDuration(Stupefied1,1,Add);SetStatusDuration(Stupefied2,1,Add);SetStatusDuration(ENFEEBLED,1,Add);" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="36" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead() and HasStatus('FAMILIAR_AURA_STATUS') and OngoingMisery()" />
         <field name="AmountOfTargets" type="StringTableFieldDefinition" value="1" />

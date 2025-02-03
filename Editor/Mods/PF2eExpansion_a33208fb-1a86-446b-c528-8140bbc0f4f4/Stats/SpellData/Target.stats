@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <stats stat_object_definition_id="e988a674-28fe-49d2-a6ce-c5c1e0141f4c">
   <stat_objects>
-    <stat_object color="#FFFF0000" is_substat="false">
+    <stat_object color="#FFA52A2A" is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="2f85e635-dfbd-4c32-a973-6163d8688a53" />
         <field name="Name" type="NameTableFieldDefinition" value="THAUMATURGE" />
@@ -13,12 +13,13 @@
         <field name="Name" type="NameTableFieldDefinition" value="ExploitWeakness" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="c8358776-3d8a-4e37-b71b-7e3e627f3383" />
         <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasStatus('Exploited')):ApplyStatus(Exploited,100,-1)" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasStatus('Exploited',context.Target)):ApplyStatus(Exploited,100,-1)" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h8076ca22g8cfag69c2ga8f8g29524832b4e1" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h2bb6f450g9438gf0d8gbf1bg0576f09d604c" version="1" />
         <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(Exploited,100,-1)" />
         <field name="CycleConditions" type="StringTableFieldDefinition" value="Enemy() and not Dead()" />
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="MagicalNonDamage" enumeration_type_name="HitAnimationType" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="IsOffHandSlotEmpty() and not (HasShieldEquipped() or WieldingWeapon('Twohanded', false, false))" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -49,6 +50,7 @@
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="96a51ac8-2e7e-4718-bb62-dcfd18964a02" />
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="ce5a1256-d5c8-45b5-98fc-ee9a16e3673c" />
         <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="d16a93f4-ddb5-4175-9b3f-22eced19ff02" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="IsOffHandSlotEmpty() and not (HasShieldEquipped() or WieldingWeapon('Twohanded', false, false))" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -79,6 +81,7 @@
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="96a51ac8-2e7e-4718-bb62-dcfd18964a02" />
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="ce5a1256-d5c8-45b5-98fc-ee9a16e3673c" />
         <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="d16a93f4-ddb5-4175-9b3f-22eced19ff02" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="IsOffHandSlotEmpty() and not (HasShieldEquipped() or WieldingWeapon('Twohanded', false, false))" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -97,6 +100,7 @@
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
         <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IgnoreSilence" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="IsOffHandSlotEmpty() and not (HasShieldEquipped() or WieldingWeapon('Twohanded', false, false))" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -110,6 +114,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h83cea158g7511g4598gdef3g7a2b9b40c5d3" version="1" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="CannotTargetItems;CannotTargetCharacter;HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="IsOffHandSlotEmpty() and not (HasShieldEquipped() or WieldingWeapon('Twohanded', false, false))" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -125,6 +130,7 @@
         <field name="TooltipStatusApply" type="StringTableFieldDefinition" value=";" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasHighGroundRangeExtension;RangeIgnoreVerticalThreshold;HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="IsOffHandSlotEmpty() and not (HasShieldEquipped() or WieldingWeapon('Twohanded', false, false)) and not HasStatus('BENIGN_TRANSPORT_USED')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
