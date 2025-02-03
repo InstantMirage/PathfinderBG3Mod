@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="e988a674-28fe-49d2-a6ce-c5c1e0141f4c">
+  <stat_objects>
+    <stat_object color="#FFA52A2A" is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2f85e635-dfbd-4c32-a973-6163d8688a53" />
+        <field name="Name" type="NameTableFieldDefinition" value="THAUMATURGE" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="84dcbd62-2068-48cd-8957-ad31b67155f2" />
+        <field name="Name" type="NameTableFieldDefinition" value="ExploitWeakness" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="c8358776-3d8a-4e37-b71b-7e3e627f3383" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasStatus('Exploited',context.Target)):ApplyStatus(Exploited,100,-1)" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h8076ca22g8cfag69c2ga8f8g29524832b4e1" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h2bb6f450g9438gf0d8gbf1bg0576f09d604c" version="1" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(Exploited,100,-1)" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="Enemy() and not Dead()" />
+        <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="MagicalNonDamage" enumeration_type_name="HitAnimationType" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="IsOffHandSlotEmpty() and not (HasShieldEquipped() or WieldingWeapon('Twohanded', false, false))" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="06583884-5ba3-40f6-af5d-a9072e66a5c1" />
+        <field name="Name" type="NameTableFieldDefinition" value="ChaliceSip" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(ChaliceSipStatus,100,1);IF(HasStatus('ChaliceCritical')):ApplyStatus(ChaliceSipStatusAdept,100,1);IF(HasStatus('ChaliceIntenseStatus')):ApplyStatus(IntenseChalice,100,1)" />
+        <field name="TargetCeiling" type="StringTableFieldDefinition" value="0" />
+        <field name="TargetFloor" type="StringTableFieldDefinition" value=".25" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="1.5" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_CONS_Potion_Healing_A" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf4f130cbg415eg1b55g3954gd9e56d1997cb" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h608b50a7gbc5fgaa1ag353agb8a00afa8872" version="1" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(ChaliceSipStatus,100,1)" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Healing_CureWounds_L1to3" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Healing_CureWounds_L1to3" />
+        <field name="PreviewCursor" type="EnumerationTableFieldDefinition" value="Cast" enumeration_type_name="CursorMode" version="1" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="Ally() and not Dead()" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="414bbf02-2918-4f01-83fb-1ddc7a588d88,,;,,;454e3439-19f2-4c42-8773-e18cf4ee233a,,;ccdf11dc-08f7-4d7f-bca9-55cfcc8f94bd,,;0c5dcc83-fa78-41da-b6a5-440b5ea30936,,;,,;bea988a0-2ec5-40d8-a67e-ffbd7454bc53,,;4156d364-d2c0-4a01-908c-3552f78f434d,,;6f0a29b6-0ae8-4ebf-a1e4-8069c4a6ad16,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Healing" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="MagicalNonDamage" enumeration_type_name="HitAnimationType" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="96a51ac8-2e7e-4718-bb62-dcfd18964a02" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="ce5a1256-d5c8-45b5-98fc-ee9a16e3673c" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="d16a93f4-ddb5-4175-9b3f-22eced19ff02" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="IsOffHandSlotEmpty() and not (HasShieldEquipped() or WieldingWeapon('Twohanded', false, false))" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="c577b29c-3b05-4ed4-84b9-636e7076577a" />
+        <field name="Name" type="NameTableFieldDefinition" value="ChaliceDrain" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerShortRest" enumeration_type_name="CooldownType" version="1" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="RegainHitPoints(LevelMapValue(ChaliceDrain));IF(HasStatus('ChaliceCritical')):RegainHitPoints(LevelMapValue(CharacterLevel)*2);IF(HasStatus('ChaliceIntenseStatus')):RegainHitPoints(LevelMapValue(CharacterLevel))" />
+        <field name="TargetCeiling" type="StringTableFieldDefinition" value="0" />
+        <field name="TargetFloor" type="StringTableFieldDefinition" value=".25" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="1.5" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_CONS_Potion_Healing_A_Greater" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hdd8d03dagc8f0gc5d0gf555gedcaab0fe0e7" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf9512c78g49bdgf81bg8916g878593852f52" version="1" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="RegainHitPoints(LevelMapValue(ChaliceDrain))" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Healing_CureWounds_L1to3" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Healing_CureWounds_L1to3" />
+        <field name="PreviewCursor" type="EnumerationTableFieldDefinition" value="Cast" enumeration_type_name="CursorMode" version="1" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="Ally() and not Dead()" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="414bbf02-2918-4f01-83fb-1ddc7a588d88,,;,,;454e3439-19f2-4c42-8773-e18cf4ee233a,,;ccdf11dc-08f7-4d7f-bca9-55cfcc8f94bd,,;0c5dcc83-fa78-41da-b6a5-440b5ea30936,,;,,;bea988a0-2ec5-40d8-a67e-ffbd7454bc53,,;4156d364-d2c0-4a01-908c-3552f78f434d,,;6f0a29b6-0ae8-4ebf-a1e4-8069c4a6ad16,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Healing" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="MagicalNonDamage" enumeration_type_name="HitAnimationType" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="96a51ac8-2e7e-4718-bb62-dcfd18964a02" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="ce5a1256-d5c8-45b5-98fc-ee9a16e3673c" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="d16a93f4-ddb5-4175-9b3f-22eced19ff02" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="IsOffHandSlotEmpty() and not (HasShieldEquipped() or WieldingWeapon('Twohanded', false, false))" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2fff2d26-92bd-47cb-81de-19dd55533ac5" />
+        <field name="Name" type="NameTableFieldDefinition" value="LanternLight" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="5d692be6-cbe5-4475-8ddd-4aeaf2df710f" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HasPassive('LanternAdept')):ApplyStatus(SELF,SEE_INVISIBILITY,100,-1)" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="1.5" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="ApplyEquipmentStatus(MainHand,LanternLightStatus,100,-1);" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Self()" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf3b274a3g760eg38e0gefe0g5ccc12e5f4d2" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7ef6ef2eg88fagb982g5073gc43788f17922" version="1" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="Ally() and not Dead()" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
+        <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IgnoreSilence" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="IsOffHandSlotEmpty() and not (HasShieldEquipped() or WieldingWeapon('Twohanded', false, false))" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="f92d0481-3972-47b8-81f7-8862728b50cf" />
+        <field name="Name" type="NameTableFieldDefinition" value="MirrorClone" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="14b0950d-24c8-41c9-89b7-741f99c54473" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:Summon(b6fe1f81-ee97-4c7c-817a-1e3ec1c5b0ee, 1,,,,,);" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="4.5" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h77c4c1ddga7fbgfe9bg636age30fd69d9e19" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h83cea158g7511g4598gdef3g7a2b9b40c5d3" version="1" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="CannotTargetItems;CannotTargetCharacter;HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="IsOffHandSlotEmpty() and not (HasShieldEquipped() or WieldingWeapon('Twohanded', false, false))" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="bae14ffe-3967-40ca-afa1-880fa5dfb376" />
+        <field name="Name" type="NameTableFieldDefinition" value="MirrorSwap" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="c3571f68-51d4-4c07-8096-e7585dcae867" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:IF(CanStand('')):TeleportSource();IF(Ally()):SwapPlaces();" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="36" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="CanStand('') or Ally() and HasStatus('MirrorCloneStatus')" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h726d7604g8dcbg44c2g0d5cg67935cb0abfe" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h63e353f5gd62bga11dg671cgc1c280b4c23f" version="1" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value=";" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasHighGroundRangeExtension;RangeIgnoreVerticalThreshold;HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="IsOffHandSlotEmpty() and not (HasShieldEquipped() or WieldingWeapon('Twohanded', false, false)) and not HasStatus('BENIGN_TRANSPORT_USED')" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="4b68a0f0-4bc8-44e6-954f-a711470d27b2" />
+        <field name="Name" type="NameTableFieldDefinition" value="TomeRK" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="18" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="SkillCheck(Skill.Persuasion,context.Target.GetPassiveSkill(Skill.Perception))" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="ApplyStatus(SELF,CircumstanceBonus1AC,100,1)" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="not Self() and not Dead()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_PactOfTheTome" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he0b003f7gb16egd518g31b2g342613c3a7c9" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h6e304826gaa3dgb03cg2791ge29ffce75976" version="1" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(SELF,CircumstanceBonus1AC,100,1)" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Wizard_BenignTranspositionTeleport_L1to3" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Wizard_BenignTranspositionTeleport_L1to3" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="03114753-8d91-4c52-8207-728a67cdd59b,,;,,;f944ee6a-643c-4259-8bfa-2eb795ca111e,,;c675d68c-647f-42f7-8928-beb539eb39d0,,;8fcb1f19-a84b-486d-81fa-098aaf7cc9be,,;,,;c5bd6ce6-281c-4314-9f74-9f7bb2f4cf03,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Utility" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IgnoreSilence" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="MagicalNonDamage" enumeration_type_name="HitAnimationType" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="271665f4-5c3c-4bb4-933d-8a7daf8268b5" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="2e44371c-a637-4cab-a120-3088b3d83369" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="7537e8f0-1897-4a66-83fe-7f58e9dbd12e" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>
