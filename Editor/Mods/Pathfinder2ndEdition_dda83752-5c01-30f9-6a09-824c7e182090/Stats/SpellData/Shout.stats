@@ -69,6 +69,14 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="dcd4d4f8-2eee-4b42-9567-665acae672d8" />
+        <field name="Name" type="NameTableFieldDefinition" value="Dash_NPC" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="5ac5e427-06a1-4ae9-9910-f1d328eb1a4d" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="not Immobilized()" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="022d25e4-e17a-45bf-891e-30bbb0f002f8" />
         <field name="Name" type="NameTableFieldDefinition" value="Dash_BonusAction_NPC" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="5ac5e427-06a1-4ae9-9910-f1d328eb1a4d" />
@@ -85,7 +93,7 @@
         <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:IF( not HasStatus('DISENGAGE')):UseActionResource(Movement,100%,0,true);AI_IGNORE:RestoreResource(Movement,3,0);AI_IGNORE:IF(not Tagged('DOUBLE_STEP')):UseActionResource(Movement,1.5,0,true); AI_IGNORE:ApplyStatus(DISENGAGE,100,1);AI_ONLY:IF(HasStatus('FLANKED_AOO')):ApplyStatus(DISENGAGE,100,1);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hfa510585g605fg9622ga9a6g1174817faaa0" version="1" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IgnoreSilence;Stealth;Invisible;NoCameraMove" enumeration_type_name="SpellFlagList" version="1" />
-        <field name="RequirementConditions" type="StringTableFieldDefinition" value="not Immobilized() and not HasDifficultTerrainStatus()" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="not Immobilized() and not (HasStatus('SG_DifficultTerrain') and not HasPassive('FeatherStep'))" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -414,7 +422,7 @@
         <field name="CastSound" type="StringTableFieldDefinition" value="Action_Cast_Rage" />
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="None" enumeration_type_name="HitAnimationType" version="1" />
         <field name="SpellSoundMagnitude" type="EnumerationTableFieldDefinition" value="Big" enumeration_type_name="SpellSoundMagnitude" version="1" />
-        <field name="TooltipPermanentWarnings" type="StringTableFieldDefinition" value="11324c04-12f0-4c78-904b-fe50fa5ff314;f667e95d-4144-4c5f-8cb1-8a5995b33a43" />
+        <field name="TooltipPermanentWarnings" type="StringTableFieldDefinition" value="f667e95d-4144-4c5f-8cb1-8a5995b33a43" />
         <field name="Sheathing" type="EnumerationTableFieldDefinition" value="DontChange" enumeration_type_name="SpellSheathing" version="1" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(RageDamage)" />
       </fields>
@@ -447,8 +455,8 @@
         <field name="UUID" type="IdTableFieldDefinition" value="66857296-f832-47cd-8e36-31fd392991dc" />
         <field name="Name" type="NameTableFieldDefinition" value="AnimalRage" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="87c0b5f9-8dc4-45fd-a036-63bf1ed5d13d" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:ApplyStatus(RAGE,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(DISARMED,100,10);ApplyStatus(RageTempHp,100,10);IF(HasPassive('AcuteVision',context.Source)):ApplyStatus(DARKVISION,100,10)" />
-        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(RAGE,100,10);ApplyStatus(WeaponLock,100,10);ApplyStatus(RageTempHp,100,10)" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:ApplyStatus(RAGE_ANIMAL,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,-1)" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(RAGE,100,10);ApplyStatus(RageTempHp,100,10)" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5317f689g4163gf4e5gc429g787df8e89c52" version="1" />
       </fields>
     </stat_object>
@@ -460,7 +468,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hcd5e0170gc86bg0079g7b48g9e273c1b4476" version="1" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(FuryRageDamage)" />
         <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_FURY,100,10);ApplyStatus(RageTempHp,100,10)" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:ApplyStatus(RAGE_FURY,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(WeaponLock,100,-1);ApplyStatus(RageTempHp,100,10);IF(HasPassive('AcuteVision',context.Source)):ApplyStatus(DARKVISION,100,10)" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:ApplyStatus(RAGE_FURY,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,-1)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -468,7 +476,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="0ecae5ee-bb32-483a-a656-959de6a30ee3" />
         <field name="Name" type="NameTableFieldDefinition" value="BludgeoningDragonRage" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="66857296-f832-47cd-8e36-31fd392991dc" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_DRAGON,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,10);IF(HasPassive('AcuteVision',context.Source)):ApplyStatus(DARKVISION,100,10)" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_DRAGON,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,-1)" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h1c5bad6cg773ag6e96g840dg65fd0ec82b0f" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hcb5bbb3cg027cgb0ffg470cg37009af77484" version="1" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(DragonRage)" />
@@ -484,7 +492,7 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="0ecae5ee-bb32-483a-a656-959de6a30ee3" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h4f8885dag6763g0e64gbec0ga2808ed82603" version="1" />
         <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_DRAGON_POISON,100,-1);ApplyStatus(RageTempHp,100,-1)" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_DRAGON_POISON,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,10);IF(HasPassive('AcuteVision',context.Source)):ApplyStatus(DARKVISION,100,10)" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_DRAGON_POISON,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,-1)" />
         <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_BreathWeapon_Poison" />
         <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Prepare_Loop_BreathWeapon_Poison" />
       </fields>
@@ -496,7 +504,7 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="0ecae5ee-bb32-483a-a656-959de6a30ee3" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="he6288c4bg214egb24cg03d0g013229054828" version="1" />
         <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_DRAGON_FIRE,100,10);ApplyStatus(RageTempHp,100,10)" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_DRAGON_FIRE,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,10);IF(HasPassive('AcuteVision',context.Source)):ApplyStatus(DARKVISION,100,10)" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_DRAGON_FIRE,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,-1)" />
         <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_BreathWeapon_Fire" />
         <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Prepare_Loop_BreathWeapon_Fire" />
       </fields>
@@ -508,7 +516,7 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="0ecae5ee-bb32-483a-a656-959de6a30ee3" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h2db2e989g9ea8g3e57gc2bdg0c13d1e50f3f" version="1" />
         <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_DRAGON_FORCE,100,10);ApplyStatus(RageTempHp,100,10)" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_DRAGON_FORCE,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,10);IF(HasPassive('AcuteVision',context.Source)):ApplyStatus(DARKVISION,100,10)" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_DRAGON_FORCE,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,-1)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -518,7 +526,7 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="0ecae5ee-bb32-483a-a656-959de6a30ee3" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h96b52460g47f0gce08gfbbdg843d9d405d49" version="1" />
         <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_DRAGON_PSYCHIC,100,10);ApplyStatus(RageTempHp,100,10)" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_DRAGON_PSYCHIC,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,10);IF(HasPassive('AcuteVision',context.Source)):ApplyStatus(DARKVISION,100,10)" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_DRAGON_PSYCHIC,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,-1)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -528,7 +536,7 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="ff2fdbbc-a1cb-4df4-9775-6721d4347d05" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(GiantRageDamage)" />
         <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_GIANT,100,10);ApplyStatus(RageTempHp,100,10)" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:ApplyStatus(GiantRageStatus,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,10);IF(HasPassive('AcuteVision',context.Source)):ApplyStatus(DARKVISION,100,10)" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:ApplyStatus(GiantRageStatus,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,-1)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -536,7 +544,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="132e3878-391b-4e1e-967e-ec2fefcfb4b6" />
         <field name="Name" type="NameTableFieldDefinition" value="Rage_Frenzy" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="87c0b5f9-8dc4-45fd-a036-63bf1ed5d13d" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:ApplyStatus(RAGE_FRENZY,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1)" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:ApplyStatus(RAGE_FRENZY,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,-1)" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha83a8773g9f6bg361cg5527gf16852bf3541" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h1acebaefga488g50f7gbc2ag74d80bc1c344" version="1" />
         <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_FRENZY,100,10)" />
@@ -555,7 +563,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h74a1b864g4945gf8a3g6250ga50d47fa621a" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h13978518ga7bdg0180g127bg41f9f2f1d401" version="1" />
         <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_SPIRIT,100,10);ApplyStatus(RageTempHp,100,10)" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:ApplyStatus(FuryRage,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,10);IF(HasPassive('AcuteVision',context.Source)):ApplyStatus(DARKVISION,100,10)" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:ApplyStatus(FuryRage,100,10);ApplyStatus(RAGE_MUTE,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,-1)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -563,7 +571,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="a2f1afc0-ad7e-40d0-a159-9688cb197118" />
         <field name="Name" type="NameTableFieldDefinition" value="Rage_Totem_Bear" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="87c0b5f9-8dc4-45fd-a036-63bf1ed5d13d" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:ApplyStatus(RAGE_TOTEM_BEAR,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1)" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:ApplyStatus(RAGE_TOTEM_BEAR,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);ApplyStatus(RageTempHp,100,-1)" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0abbd419gd5cfg90bdg9407g1147e33da844" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hfef13bcag119fg3fbbg700bgfa0bcd9b0362" version="1" />
         <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_TOTEM_BEAR,100,10)" />
@@ -583,7 +591,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="Rage_Boar" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="87c0b5f9-8dc4-45fd-a036-63bf1ed5d13d" />
         <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerCombat" enumeration_type_name="CooldownType" version="1" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:ApplyStatus(RAGE_BOAR,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:ApplyStatus(RAGE_BOAR,100,10);AI_ONLY:IF(HasActionResource('ActionPoint', 1, 0, false)):ApplyStatus(AI_HELPER_RAGE,100,1)" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h1570f1fag6ab8gb7e1g4b87g9cec43ee0a78" version="1" />
         <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(RAGE_BOAR,100,10)" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
@@ -596,6 +604,14 @@
         <field name="ExtraDescription" type="TranslatedStringTableFieldDefinition" handle="hf8dbb6a7gc8a6ga76fg5d79g8f7e0fe6748c" version="1" />
         <field name="ExtraDescriptionParams" type="StringTableFieldDefinition" value="DealDamage(2,Slashing)" />
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="6770ca85-0dff-4e48-8136-c6d5a67f3717" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="7071c567-3987-4064-8417-21e33375aa4b" />
+        <field name="Name" type="NameTableFieldDefinition" value="Rage_Shared" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="87c0b5f9-8dc4-45fd-a036-63bf1ed5d13d" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:ApplyStatus(RAGE,100,-1);ApplyStatus(RageTempHp,100,-1)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -649,6 +665,7 @@
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="None" enumeration_type_name="SpellFlagList" version="1" />
         <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus(RageTempHp)" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hdb59976dg90e6gce10g9e2fg650985742e98" version="2" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Barbarian_UnrelentingFerocity" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -662,6 +679,7 @@
         <field name="Requirements" type="StringTableFieldDefinition" value="Combat" />
         <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('GiantRageStatus') " />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6d13cb1cgeb7fg3e36g6648g8bee5c4b85d8" version="1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="dd86aa43-8189-4d9f-9a5c-454b5fe4a197,,;d8b7f668-db2b-43b0-9707-5da2ed2cf27e,,;7521e279-1bb3-4105-b32d-8206234836a3,,;d172e037-7041-4352-9a20-5f4b185f9ef1,,;,,;,,;1715b877-4512-472e-9bd0-fd568a112e90,,;,,;,," />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -670,7 +688,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="RenewedVigor" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(SELF,RenewedVigorTemp,100,10);IF(HasStatus('MAP_PENALTY_2ND') or HasStatus('MAP_PENALTY_3RD')):ApplyStatus(SELF,RenewedVigorTempBonus,100,10);" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Self()" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Skill_Fighter_SecondWind" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Barbarian_UnrelentingFerocity" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha65a76d7gc94eg272dg6905g3b69f4db13ca" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h160e6497g43afgfe1eg2e6bgaaa6ed5f7e3a" version="1" />
         <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(SELF,RenewedVigorTemp,100,10)" />
@@ -678,7 +696,7 @@
         <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_SecondWind" />
         <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
-        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="9122eb08-93f1-4010-a275-f5ae3ec7c76e,,;,,;9fb11cca-02d4-4d2f-955f-2826c0553b17,,;5103d398-d8de-4aa4-9633-db2e1b7f6254,,;5301d674-b7da-47b6-b4cf-2802ba33a9e9,,;,,;86b3cf93-21fb-4a3d-bed9-97d0a567d084,,;,,;,," />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="22ddf59a-5e0a-41c1-840c-ae9ba5704e63,,;,,;f5044c37-da3a-4551-8f2c-2ad525b11929,,;c70ab5be-8718-44e2-95a1-525465c2b2d1,,;93317549-2754-4931-98ce-1d67f899318f,,;,,;9406f0da-ac4e-4d4a-b98f-798102dd300e,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Healing" enumeration_type_name="VerbalIntent" version="1" />
         <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
         <field name="Requirements" type="StringTableFieldDefinition" value="Combat" />
@@ -2141,8 +2159,8 @@
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Shield" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hdc2210f3g5ad2g2035ge649g52b5487959b1" version="1" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="1" />
-        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Buff_Gen_L1to3_01" />
-        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Prepare_Buff_Gen_L1to3_01_Loop" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Vocal_Component_Stop" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Vocal_Component_Stop" />
         <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Buff_BladeWard_L1to3" />
         <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Buff_BladeWard_L1to3" />
         <field name="RequirementConditions" type="StringTableFieldDefinition" value="not HasStatus('SHIELD_SPELL_BROKEN')" />

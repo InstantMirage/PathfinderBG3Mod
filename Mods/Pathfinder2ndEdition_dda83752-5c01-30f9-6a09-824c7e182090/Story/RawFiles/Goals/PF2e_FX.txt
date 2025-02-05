@@ -18,6 +18,8 @@ DB_AlwaysPrepare_AD("Target_FreeDemoralize",(DIALOGRESOURCE)GLO_SpellVocalCompon
 DB_AlwaysCast_AD("Target_FreeDemoralize",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Cast_6dafdccd-091d-c0f4-4543-1199bdcb46d6);
 DB_AlwaysCast_AD("Target_Demoralize",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Cast_6dafdccd-091d-c0f4-4543-1199bdcb46d6);
 
+DB_AlwaysCast_AD("Target_ShareRage",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Prepare_b523412d-1ea5-f3b0-ee9d-fa80cf72100a);
+
 DB_SendSpellToWildMagic_AD("Shout_DesperatePrayer","Shout_WildMagic_SorceryPoints");
 DB_SendSpellToWildMagic_AD("Rush_QiRush","Shout_WildMagic_Teleport");
 DB_SendSpellToWildMagic_AD("Shout_ArcaneTap","Shout_WildMagic_Teleport");
@@ -54,7 +56,7 @@ PROC_TryStartSpellVocalAD(_Dialog,_Player);
 //The Wild Magic AD can trigger dialog infrequently, with a set of cooldown rules.
 //For spells
 IF
-UsingSpell((CHARACTER)_Player,(STRING)_Spell,_,_,_)
+UsingSpellOnTarget((CHARACTER)_Player,(CHARACTER)_Target,(STRING)_Spell,_,_,_)
 AND
 DB_IsOrWasInParty(_Player)
 AND
