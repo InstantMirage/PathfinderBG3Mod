@@ -1409,7 +1409,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he5bb5fdfg2c5agb358gdaadgaf797e07c87c" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h6ec3cb58gf5f7g37aag10cbg723c9bdd1475" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_WildMagic_LightBolt" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_SpiritsWrath)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_SpiritsWrath,,,,Constitution)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1515,6 +1515,19 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="5add63b7-cf7d-40fc-822f-bbc7426f9911" />
+        <field name="Name" type="NameTableFieldDefinition" value="BardicLore" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h1dae471ag166dgc722g1c25g1941e42f67f4" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hcbd0a26agf038g7f68g388dg24dc01882729" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_BlessingsOfKnowledge" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnCombatStarted;OnCombatEnded;OnCreate" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="not Combat()" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Advantage(Ability,Intelligence);Advantage(Skill,Arcana);Advantage(Skill,History);Advantage(Skill,Investigation);Advantage(Skill,Nature);Advantage(Skill,Religion)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="3162dad3-c29a-44d6-a071-48069b31cfda" />
         <field name="Name" type="NameTableFieldDefinition" value="HymnOfHealing" />
       </fields>
@@ -1607,6 +1620,7 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="0310e985-10b6-4738-a3f8-4f8e5d925fd1" />
         <field name="Name" type="NameTableFieldDefinition" value="EclecticSkill" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="0d94da9b-85c3-4950-98a5-87532f10c851" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2820,7 +2834,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2bf7cf54gd112g1635g3604ge4caacfe7935" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h0f7d50e3g1dbcgba24g989dgfc29600c24de" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Ranger_RangersCompanion_Bear" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_PathfinderAnimal);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_PathfinderAnimal)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2866,6 +2880,8 @@
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Paladin_LayOnHands_Cure" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_LayOnHandsMercy)" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnCreate;OnLongRest" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasPassive('LayOnHands')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2877,6 +2893,8 @@
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Necromancy_Blight" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_TouchOfTheVoidCruelty)" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnCreate;OnLongRest" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasPassive('TouchOfTheVoid')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4364,6 +4382,8 @@
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="IsSpell() and not IsCantrip()" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(H1Plus1),Slashing,Magical);ApplyStatus(BloodMagicSelf,100,1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_ElementalAir_Whirlwind" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossSlashing);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_EldritchBlast);UnlockSpell(Target_Longstrider,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4376,6 +4396,8 @@
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="IsSpell() and not IsCantrip()" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(H1Plus1),Bludgeoning,Magical);ApplyStatus(BloodMagicSelf,100,1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_ElementalEarth_SeismicStrike" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossBludgeoning);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_NeedleDarts);UnlockSpell(Zone_Thunderwave,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4388,6 +4410,8 @@
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="IsSpell() and not IsCantrip()" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(H1Plus1),Fire,Magical);ApplyStatus(BloodMagicSelf,100,1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Fire" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossFire);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_FireBolt);UnlockSpell(Zone_BurningHands,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4400,6 +4424,8 @@
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="IsSpell() and not IsCantrip()" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(H1Plus1),Piercing,Magical);ApplyStatus(BloodMagicSelf,100,1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Physical" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossPiercing);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_ElectricArc);UnlockSpell(Target_ShockingGrasp,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4412,6 +4438,8 @@
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="IsSpell() and not IsCantrip()" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(H1Plus1),Bludgeoning,Magical);ApplyStatus(BloodMagicSelf,100,1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Monk_WaterWhip" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossBludgeoning);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_RayOfFrost);UnlockSpell(Projectile_IceKnife,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4424,6 +4452,8 @@
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="IsSpell() and not IsCantrip()" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(H1Plus1),Bludgeoning,Magical);ApplyStatus(BloodMagicSelf,100,1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Generic_Nature" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossBludgeoning);ActionResource(KiPoint,1,0);UnlockSpell(Target_ThornWhip);UnlockSpell(Target_Goodberry,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5135,8 +5165,17 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h62834638g9310gc1beg230bg90a4eee9faec" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h58eafd73g41b4g40ddg50d8g7582b8e5418d" version="1" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);UnlockSpell(Target_PathfinderAnimal);UnlockSpell(Target_HealCompanion);ProficiencyBonus(Skill,Athletics)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);UnlockSpell(Target_HealCompanion)" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Ranger_RangersCompanion_Bear" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="07ce955d-3a66-4bf9-a39d-601af8310e9e" />
+        <field name="Name" type="NameTableFieldDefinition" value="AnimalCompanionDruid" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="ad60c43a-50c9-41fe-ae69-93ca23aade27" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnCreate;OnLongRest" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasPassive('AnimalOrder')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5147,7 +5186,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h0d5cf5eag8aadga69egde7cg5ffaad929952" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Land_Desert" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);ProficiencyBonus(Skill,Acrobatics);UnlockSpell(Target_Wildfire)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);UnlockSpell(Target_Wildfire)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5157,8 +5196,17 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb717bbf4gf688g99a0g0913g06ec7cb377fb" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hda3a28aeg19ebgc3c2gf7a9g78d04e442951" version="1" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);ProficiencyBonus(Skill,Persuasion);UnlockSpell(Target_Cornucopia);UnlockSpell(Target_FindFamiliar_Ritual);UnlockSpell(Target_PactOfTheChain_Imp);UnlockSpell(Target_PactOfTheChain_Quasit)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);UnlockSpell(Target_Cornucopia)" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Generic_Nature" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="efa86cd8-aa8e-4ac1-9cdd-07dda64b3b31" />
+        <field name="Name" type="NameTableFieldDefinition" value="LeshyFamiliar" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnCreate;OnLongRest" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasPassive('LeafOrder')" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_FindFamiliar_Leshy)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5168,7 +5216,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h1adc0e54g8b18g7139g6a6bg45cf10da3dce" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha316cc8eg57f6g2d6agb737g5732f425ccb8" version="1" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);ProficiencyBonus(Skill,Medicine);UnlockSpell(Target_CrushingGround)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);UnlockSpell(Target_CrushingGround)" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Land_Mountain" />
       </fields>
     </stat_object>
@@ -5179,7 +5227,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hfd97c96fg0e38g21ddg6046gbd40850ec5ab" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h8dd2fac2g22d7ge60eg475cgfad806712541" version="1" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);ProficiencyBonus(Skill,Acrobatics);UnlockSpell(Target_TempestSurge)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);UnlockSpell(Target_TempestSurge)" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Conjuration_CallLightning" />
       </fields>
     </stat_object>
@@ -5190,7 +5238,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h50b19e67g2a0bg3077gc131g3287ecf0e43e" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h813efc76g29f6gd589g61e7gf8e3db362fff" version="1" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);ProficiencyBonus(Skill,Intimidation);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_WildShape_SaberTooth" />
       </fields>
     </stat_object>
@@ -5202,6 +5250,8 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf348e71dgddc9g3904g449ag173320a515f4" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_WildShape" />
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_WildShape);ActionResource(KiPoint,1,0)" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnCreate;OnLongRest" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasPassive('UntamedOrder')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5235,7 +5285,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="haf9a8ed3ge3c3g01ecgaf27g1588d7c5f920" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h1ff498a3g8a0eg3142g896bg0840be786e68" version="1" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);ProficiencyBonus(Skill,Medicine);UnlockSpell(Projectile_RisingSurf)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);UnlockSpell(Projectile_RisingSurf)" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Land_Coast" />
       </fields>
     </stat_object>
@@ -5353,7 +5403,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="df594d40-b4ec-4622-9785-9ff4ac0912a5" />
         <field name="Name" type="NameTableFieldDefinition" value="EvilEye" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb7bccd4bg49a5g7045g747fg8fd2d890c809" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_EvilEye);UnlockSpell(Projectile_RayOfEnfeeblement,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_EvilEye)" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Eyebite_Sickened" />
       </fields>
     </stat_object>
