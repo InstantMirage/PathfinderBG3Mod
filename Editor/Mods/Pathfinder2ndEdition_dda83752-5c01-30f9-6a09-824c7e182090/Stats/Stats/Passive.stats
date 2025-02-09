@@ -1536,54 +1536,81 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="8c2f8df0-e4fd-4702-b032-c30f653759e7" />
         <field name="Name" type="NameTableFieldDefinition" value="LingeringComposition" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h1ff17f28g145bgcfe4gd60ag3888c54f75a3" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h99a66ca3g49dfg2bfag0267geb0adc96b01a" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="15" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_BardicInspiration_AttackRollOrAbilityCheck" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);UnlockSpell(Shout_LingeringComposition)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="4c255689-e6f8-4be3-8ec7-105e35491b71" />
         <field name="Name" type="NameTableFieldDefinition" value="MartialPerformance" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd512c1c4g667fg62a9g9a3cg72c70c278d23" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha806af94g48fdge16bg908fg34ca4a786c63" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_BardicInspiration_Attack" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsWeaponAttack() or IsUnarmedAttack()" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(SELF,MARTIAL_PERFORM_AURA,100,1)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="a62878f2-12af-47a0-8bcd-7e43786349d0" />
         <field name="Name" type="NameTableFieldDefinition" value="VersatilePerformance" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h200f9cddg06b6g2f4cgfef0gc2444bb92745" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h2779895aga7e2gc6b1g32b4g6cecb4e5afa7" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_JackOfAllTrades" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_InfiltrationExpertise);UnlockSpell(Target_DemoralizePerformance)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="58b41551-1c9f-43b3-a3f1-7d7fcd9b758e" />
         <field name="Name" type="NameTableFieldDefinition" value="ZoophonicCommunication" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="df6cf877-47c7-4ff8-8b7b-d894066b160b" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="dd61b576-ac42-4e0a-a263-2cb3ed42402c" />
         <field name="Name" type="NameTableFieldDefinition" value="BestialSnarling" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnCreate;OnLongRest" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasPassive('ZoophonicCommunication')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="834cda96-e7f5-4a24-b742-89cab8914603" />
         <field name="Name" type="NameTableFieldDefinition" value="EsotericPolymath" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnCreate;OnLongRest" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasPassive('VersatilePerformance')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="55f7d399-5c0e-4c09-9b44-78c480b1877a" />
         <field name="Name" type="NameTableFieldDefinition" value="SongOfStrength" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnCreate;OnLongRest" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasPassive('MartialPerformance')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="26ba7264-afd4-4a2d-9742-ca7f219fd303" />
         <field name="Name" type="NameTableFieldDefinition" value="UpliftingOverture" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnCreate;OnLongRest" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasPassive('LingeringComposition')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="6aca47a3-a5b1-47ce-bc61-9753205b4604" />
         <field name="Name" type="NameTableFieldDefinition" value="CourageousAdvance" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnCreate;OnLongRest" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasPassive('MartialPerformance')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1614,6 +1641,8 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="46a29578-0229-4bf3-9a1f-96081897927a" />
         <field name="Name" type="NameTableFieldDefinition" value="Harmonize" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnCreate;OnLongRest" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasPassive('LingeringComposition')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1621,24 +1650,32 @@
         <field name="UUID" type="IdTableFieldDefinition" value="0310e985-10b6-4738-a3f8-4f8e5d925fd1" />
         <field name="Name" type="NameTableFieldDefinition" value="EclecticSkill" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="0d94da9b-85c3-4950-98a5-87532f10c851" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnCreate;OnLongRest" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasPassive('VersatilePerformance')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="638f6422-5f83-4de2-bd1c-2ed36145bf95" />
         <field name="Name" type="NameTableFieldDefinition" value="FortissimoComposition" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnCreate;OnLongRest" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasPassive('LingeringComposition')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="53d6cf2c-5708-456f-9bd4-6a595af24076" />
         <field name="Name" type="NameTableFieldDefinition" value="SongbirdsCall" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnCreate;OnLongRest" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasPassive('ZoophonicCommunication')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="d0051bcb-bdf9-4c34-b579-a546042e0949" />
         <field name="Name" type="NameTableFieldDefinition" value="CourageousAssault" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnCreate;OnLongRest" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasPassive('MartialPerformance')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5368,9 +5405,46 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2375b8d8-e7e9-49d7-95de-c685bcf4c1a9" />
+        <field name="Name" type="NameTableFieldDefinition" value="PatronsPuppet" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5cfdeb0dg29eag41cfg16efgda4f2b61f41c" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hfdf55ae8ge6bcgd254ga645g93926164d56d" version="1" />
+        <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1;TidesOfChaos:1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_DrorRagzlin_MakeSpidersFriendly" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_PatronsPuppet);ActionResource(KiPoint,1,0)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="a1d7156d-cec6-4bb8-a156-9c44d73707be" />
+        <field name="Name" type="NameTableFieldDefinition" value="PhaseFamiliar" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h03b75246ged39g980eg4516g26023a42d818" version="1" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ImprovedAbjuration" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hcf7eb1f5g7d43g0d48g751fg1eddc8ee1b3c" version="1" />
+        <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1;TidesOfChaos:1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(Interrupt_PhaseFamiliar);ActionResource(KiPoint,1,0)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="be4ca1a7-cd20-4bd3-960f-2f5be58594b7" />
         <field name="Name" type="NameTableFieldDefinition" value="StokeTheHeart" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hdd2064ebg8caag07f8gdd7bg6db61e94d587" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_DarkOnesBlessing" />
+        <field name="Owner" type="CommentTableFieldDefinition" value="Temp spell" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_StokeTheHeart)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="c96aaf82-132a-41be-9618-e2fec2f479db" />
+        <field name="Name" type="NameTableFieldDefinition" value="RestoredSpirit" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_DarkOnesBlessing" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasStatus('WITCH_HEX') and TurnBased()" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_RestoredSpirit)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5378,8 +5452,10 @@
         <field name="UUID" type="IdTableFieldDefinition" value="72ffc00c-d352-41b2-8d71-88080b238e47" />
         <field name="Name" type="NameTableFieldDefinition" value="ClingingIce" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h7705c566gc670g9cfegdf75ga6ccb01b6032" version="1" />
-        <field name="Owner" type="CommentTableFieldDefinition" value="Unlocks interrupt" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(Interrupt_FreezingRime)" />
+        <field name="Owner" type="CommentTableFieldDefinition" value="Interrupt" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(Interrupt_FreezingRime);UnlockSpell(Projectile_ClingingIce);IF(ConditionResult(false)):UnlockSpell(Target_FreezingRime)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_ElementalWater_WintersBreath" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5387,6 +5463,20 @@
         <field name="UUID" type="IdTableFieldDefinition" value="a274aee5-5fc5-4c5c-8151-50fc88e2229a" />
         <field name="Name" type="NameTableFieldDefinition" value="NudgeFate" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h392188a0g6fb6gbbbeg0e65geae11be1a7da" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_TidesOfChaos" />
+        <field name="Owner" type="CommentTableFieldDefinition" value="Temp spell" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_NudgeFate)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="8907c946-e21f-4832-b3bb-c09704660f39" />
+        <field name="Name" type="NameTableFieldDefinition" value="BalancedLuck" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_TidesOfChaos" />
+        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasStatus('WITCH_HEX') and TurnBased()" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_BalancedLuck)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5394,8 +5484,10 @@
         <field name="UUID" type="IdTableFieldDefinition" value="453ca78e-535d-4382-8e15-949986b3e436" />
         <field name="Name" type="NameTableFieldDefinition" value="ShroudOfNight" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hcadf029ag581fg6ca5gc8d9g6515f43fe077" version="1" />
-        <field name="Owner" type="CommentTableFieldDefinition" value="Unlocks interrupt" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(Interrupt_StalkingNight)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ShroudOfNight)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_Darkness" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted;ForceShowInCC" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="Owner" type="CommentTableFieldDefinition" value="Applies status" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5405,6 +5497,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb7bccd4bg49a5g7045g747fg8fd2d890c809" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_EvilEye)" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Eyebite_Sickened" />
+        <field name="Owner" type="CommentTableFieldDefinition" value="Temp spell" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5419,14 +5512,29 @@
         <field name="BoostConditions" type="StringTableFieldDefinition" value="HasStatus('WITCH_HEX') and TurnBased()" />
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_OngoingMisery);" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="Distance(4.5)" />
+        <field name="Owner" type="CommentTableFieldDefinition" value="Unlocks temp spell" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="2dbc7742-b496-409f-b985-66a025e9ebad" />
         <field name="Name" type="NameTableFieldDefinition" value="WildingWord" />
-        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted;ForceShowInCC" enumeration_type_name="PassiveFlags" version="1" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb19e12e3gbf68gafadg53cag7f3bae4a751c" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_WildingWord)" />
+        <field name="Owner" type="CommentTableFieldDefinition" value="Applies status" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_TheThirdEye_SeeInvisibility" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="994f63cb-e9a1-4294-a60d-040bb665f5b0" />
+        <field name="Name" type="NameTableFieldDefinition" value="DiscernSecrets" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf3c11657gdbb8gccedga840g61a8dd18da7a" version="1" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted;ForceShowInCC" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="Owner" type="CommentTableFieldDefinition" value="Applies status" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Banite_TacticalDiscipline" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_DiscernSecrets)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">

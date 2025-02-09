@@ -19,9 +19,15 @@ DB_FamiliarPassive("FortitudeExpert","FortitudeExpert");
 DB_FamiliarPassive("ReflexExpert","ReflexExpert");
 DB_FamiliarPassive("WillExpert","WillExpert");
 DB_FamiliarPassive("WitchFamiliar","Familiar_Tough");
+DB_FamiliarPassive("PhaseFamiliar","Ethereal");
 
 DB_InterruptUseSpellOnFamiliar("Interrupt_FreezingRime","Target_FreezingRime");
-DB_InterruptUseSpellOnFamiliar("Interrupt_StalkingNight","Target_StalkingNight");
+DB_HexStatus("EvilEye","FAMILIAR_AURA_EVIL",1.0);
+DB_HexStatus("NudgeFate","FAMILIAR_AURA",1.0);
+DB_HexStatus("StokeTheHeart","FAMILIAR_AURA",1.0);
+DB_HexStatus("ShroudOfNight","STALKING_NIGHT",1.0);
+DB_HexStatus("WildingWord","SEE_INVISIBILITY_SEEK",0.0);
+DB_HexStatus("DiscernSecrets","FLOWING_SCRIPT",1.0);
 
 DB_FollowUpAttack_Spell("Projectile_HuntedShot");
 DB_FollowUpAttack_Creature((CHARACTER)NULL_00000000-0000-0000-0000-000000000000,(GUIDSTRING)NULL_00000000-0000-0000-0000-000000000000);
@@ -256,8 +262,12 @@ IF
 StatusApplied((CHARACTER)_Summoner,"WITCH_HEX",_,_)
 AND
 DB_SummonFamiliar(_Summoner,(CHARACTER)_Familiar)
+AND
+DB_HexStatus((STRING)_Passive,(STRING)_Status,(REAL)_Duration)
+AND
+HasPassive(_Summoner,_Passive,1)
 THEN
-ApplyStatus(_Familiar,"FAMILIAR_AURA",1.0,1,_Summoner);
+ApplyStatus(_Familiar,_Status,_Duration,1,_Summoner);
 
 //Certain hex-enabled abilities affect all creatures near the familiar
 IF
