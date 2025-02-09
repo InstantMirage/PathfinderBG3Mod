@@ -795,9 +795,43 @@
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="MagicalNonDamage" enumeration_type_name="HitAnimationType" version="1" />
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="cc478d8f-d3eb-46dc-844c-203ae2ec7df5" />
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="6c5aecc7-c5a0-4fda-9f9b-24afe3e1f76a" />
-        <field name="HitEffect" type="GuidObjectTableFieldDefinition" value="b4d2ce64-af72-45a2-8146-6a9c3b71f1a6" />
         <field name="SpellSoundMagnitude" type="EnumerationTableFieldDefinition" value="Big" enumeration_type_name="SpellSoundMagnitude" version="1" />
         <field name="Sheathing" type="EnumerationTableFieldDefinition" value="Instrument" enumeration_type_name="SpellSheathing" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="da7231e5-305e-4f01-9e24-de4c4b4b9740" />
+        <field name="Name" type="NameTableFieldDefinition" value="LingeringComposition" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="1" />
+        <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Enchantment" enumeration_type_name="SpellSchool" version="1" />
+        <field name="ContainerSpells" type="StringTableFieldDefinition" value="Shout_CourageousAnthem_Lingering" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="SkillCheck(Skill.Performance,15)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_BardicInspiration_AttackRollOrAbilityCheck" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3dfe533dgaa4bg50f1g6ce2gcfbbd1759e56" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7fe7e61cgd67dgfc12gb5abg1487463db97a" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="15" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="850cd2f3-dde2-475d-b3a3-f35c47333523,,;,,;62819708-175d-4ad4-95d5-55757e18d981,,;2a6a403d-1b6f-41ea-9324-445761b2cbb3,,;ad775f69-0d9f-4215-bfc2-8e0ec7e32189,,;,,;6bfce8a0-80f1-47a8-97f4-34f4b8b6fe9e,,;,,;,," />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell;IsLinkedSpellContainer" enumeration_type_name="SpellFlagList" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="20c1ab77-870c-42ca-90c9-c66cc38d678f" />
+        <field name="Name" type="NameTableFieldDefinition" value="CourageousAnthem_Lingering" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="44385df5-2f16-4604-99c4-1b8ddb7843ff" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="LingeringComposition" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value=";" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="IF(Self()):(SkillCheck(Skill.Performance,15))" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="ApplyStatus(SELF,COURAGE_LINGER_AURA,100,3);IF(IsCritical()):ApplyStatus(SELF,COURAGE_LINGER_AURA,100,4)" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="ApplyStatus(SELF,COURAGE_LINGER_AURA,100,1)" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Self()" />
+        <field name="AoEConditions" type="StringTableFieldDefinition" value="not Enemy() and not Dead() and not Item()" />
+        <field name="HitCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasVerbalComponent;HasSomaticComponent;IsSpell;IsLinkedSpellContainer" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellPrepareCost" type="IntegerTableFieldDefinition" value="0" />
+        <field name="RootSpellID" type="StringTableFieldDefinition" value="LingeringComposition" />
       </fields>
     </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">
@@ -4047,12 +4081,6 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="101fd8dd-1c64-4d1e-b417-6cf222b80f36" />
-        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_0" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="ba6dd501-1bea-4509-b54c-bfccdebd7bfa" />
         <field name="Name" type="NameTableFieldDefinition" value="ArcaneTap" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="fdf204ae-9aa9-4e1b-b3f6-4905ee2f8f94" />
@@ -4071,6 +4099,24 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="f4fd9018-9362-4196-ad25-60b7c40d57fb" />
         <field name="Name" type="NameTableFieldDefinition" value="BespellStrikes" />
+      </fields>
+    </stat_object>
+    <stat_object color="#FFA52A2A" is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="c90e2a58-63ae-4040-9e81-a58a860542cf" />
+        <field name="Name" type="NameTableFieldDefinition" value="WITCH" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="f9f3ce25-157d-4d53-9ce1-af251a56a2a7" />
+        <field name="Name" type="NameTableFieldDefinition" value="SeeInvisibility_DiscernSecrets" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="47d091a0-0f19-4376-8409-e741beb74663" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(SEE_INVISIBILITY_SEEK,100,1)" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:0" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="5e57443f-284e-47b2-915e-5b6417db269c,,;,,;11d58cf1-7848-4f8d-ac88-6c68825bcd55,,;639c9022-afbd-437c-9396-1711e243c568,,;5bcdefbb-2194-46c2-ac77-0b2d8472a5f7,,;,,;5fdb66be-7506-411a-a7ea-c4783288aac8,,;,,;,," />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasSomaticComponent;IgnoreVisionBlock;IgnoreSilence;Temporary" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="d39761b2-330d-455b-9225-b54dedc8c1c6" />
       </fields>
     </stat_object>
   </stat_objects>

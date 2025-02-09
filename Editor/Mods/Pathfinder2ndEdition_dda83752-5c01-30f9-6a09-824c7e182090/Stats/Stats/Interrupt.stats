@@ -610,6 +610,26 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="5df344a3-e7a4-4429-be22-e50a68455cf3" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_PhaseFamiliar" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Nearby;Far" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0a9e165bg04e8gbe6cg5149g5ed080829951" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h450bb795g094ega24dg8459g8f8c5467c106" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="5" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ImprovedAbjuration" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPreDamage" enumeration_type_name="InterruptContext" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and SummonOwner(context.Target,context.Observer)" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(-5);ApplyStatus(OBSERVER_OBSERVER,WITCH_HEX,100,1)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1;KiPoint:1;TidesOfChaos:1;" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('WITCH_HEX')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="d690212e-a8c1-484b-87fc-7ace6acbe744" />
         <field name="Name" type="NameTableFieldDefinition" value="Interrupt_FreezingRime" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb6ee701cgc4c3g7c8ag0ee1gd1db09a81a66" version="1" />
@@ -629,9 +649,16 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="6028bb27-b60a-4bbf-b674-9c8d6bf09be6" />
-        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_StalkingNight" />
-        <field name="Using" type="BaseClassTableFieldDefinition" value="d690212e-a8c1-484b-87fc-7ace6acbe744" />
+        <field name="UUID" type="IdTableFieldDefinition" value="70ec2e92-1048-4509-a62e-0fab32c10c0c" />
+        <field name="Name" type="NameTableFieldDefinition" value="Interrupt_NudgeFate" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="c1c294e4-0896-4bf2-81cc-04c18ae14c53" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he0b9aadegb4eag6b07gdaeagaea2133f91af" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_GuidedStrike" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="not Dead(context.Observer) and ( (Self(context.Observer,context.Source) and not HasInterruptedSavingThrow() ) or (Self(context.Observer,context.Target) and HasInterruptedSavingThrow()) ) and not AnyEntityIsItem() and IsFlatValueInterruptInteresting(1, context.Source)" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(OBSERVER_OBSERVER,1);RemoveStatus(OBSERVER_OBSERVER,NUDGE_FATE);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_BARDIC_INSPIRATION_ATTACK,100,0)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:0" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="HasStatus('NUDGE_FATE')" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
