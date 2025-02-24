@@ -29,7 +29,7 @@
         <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
         <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
         <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and (IsRangedWeaponAttack() or IsRangedUnarmedAttack()) and IsFlatValueInterruptInteresting(4, context.Source) and not HasStatus('SG_Polymorph_BeastShape') and not AnyEntityIsItem()" />
-        <field name="Properties" type="StringTableFieldDefinition" value="IF(HasInterruptedAttack()):AdjustRoll(-4);" />
+        <field name="Properties" type="StringTableFieldDefinition" value="IF(HasInterruptedAttack()):AdjustRoll(-4);ApplyStatus(OBSERVER_TARGET,INTERRUPT_DEFLECT_MISSILES_HIT,100,1);RestoreResource(DeflectMissiles_Charge,1,0)" />
         <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
         <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
         <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
@@ -113,7 +113,7 @@
         <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnCastHit" enumeration_type_name="InterruptContext" version="1" />
         <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
         <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
-        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsAttackType(AttackType.RangedWeaponAttack) and not (IsCriticalMiss() or IsMiss()) and HasActionResource('DeflectMissiles_Charge', 1, 0, false, false, context.Observer) and not AnyEntityIsItem()" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsAttackType(AttackType.RangedWeaponAttack) and (IsCriticalMiss() or IsMiss()) and HasActionResource('DeflectMissiles_Charge', 1, 0, false, false, context.Observer) and not AnyEntityIsItem()" />
         <field name="Properties" type="StringTableFieldDefinition" value="UseSpell(SWAP,Projectile_Deflect_Missiles,true,true,true,c4598bdb-fc07-40dd-a62c-90cc138bd76f);UseActionResource(OBSERVER_OBSERVER,DeflectMissiles_Charge,1,0)" />
         <field name="Cost" type="StringTableFieldDefinition" value="KiPoint:1" />
         <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
@@ -789,6 +789,174 @@
         <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
         <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(Grappled,100,2);ApplyStatus(SELF,GRAPPLED_SOURCE,100,2);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="d6471549-ab21-41b5-ab35-8f5268c6a423" />
+        <field name="Name" type="NameTableFieldDefinition" value="PinningFireInterrupt" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2cfcde64ge970g281fg2dd2g001e07465d21" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h30a7f095g43f8gb985gd33agd62b72ad7e0a" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_HamstringShot" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnCastHit" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and SpellId('Projectile_MonasticArcherFlurry') and HasDamageEffectFlag(DamageFlags.Hit) and not IsKillingBlow() and not AnyEntityIsItem()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="ApplyStatus(ENSNARED,100,1)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(ENSNARED,100,1)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="d8daff4e-20fb-4259-8340-8d1117cc815e" />
+        <field name="Name" type="NameTableFieldDefinition" value="TangledForestGrab" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0c4b1bbbg20aagc54dgaedcg3ba2ca7b1c0a" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h0c058d6bg3da7g01bcgdab7gffdb4881a542" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Land_Forest" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnLeaveAttackRange" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and not Self(context.Observer, context.Target) and Enemy() and not (not Player(context.Source) and Tagged('AI_IGNORED_TARGET') and not AnyEntityIsItem() and HasStatus('TangledForestStanceStatus',context.Observer)" />
+        <field name="Roll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, 10 + context.Observer.ProficiencyBonus + GetModifier(context.Observer.Strength))" />
+        <field name="Success" type="StringTableFieldDefinition" value="ApplyStatus(ForestStoppedStatus,100,1)" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, 10 + context.Observer.ProficiencyBonus + GetModifier(context.Observer.Strength))" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(ForestStoppedStatus,100,1)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="f882d38b-156f-43fd-8714-0e7741d1b1e8" />
+        <field name="Name" type="NameTableFieldDefinition" value="PrevailingInterrupt" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="95b87443-8080-453f-b48c-ef9b8d9d1896" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf812ad01g06b5gbe3eg308dg60c4c0f6f609" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h06634798gae9fg65a1g3bc4gd6fd5db778ec" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Monk_PatientDefense" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsAttack() and not HasStatus('SG_Polymorph_BeastShape') and not AnyEntityIsItem() and (HasStatus('CraneStanceStatus') or HasStatus('DragonStanceStatus') or HasStatus('MonasticArcherStanceStatus') or HasStatus('MountainStanceStatus') or HasStatus('TigerStanceStatus') or HasStatus('WolfStanceStatus') or HasStatus('CobraStanceStatus') or HasStatus('ClingingShadowStanceStatus') or HasStatus('WildWindsStanceStatus'))" />
+        <field name="Properties" type="StringTableFieldDefinition" value="IF(HasInterruptedAttack()):AdjustRoll(-4);RemoveStatus('CraneStanceStatus');RemoveStatus('DragonStanceStatus');RemoveStatus('MonasticArcherStanceStatus');RemoveStatus('MountainStanceStatus');RemoveStatus('TigerStanceStatus');RemoveStatus('WolfStanceStatus');RemoveStatus('CobraStanceStatus');RemoveStatus('ClingingShadowStanceStatus');RemoveStatus('WildWindsStanceStatus')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="ace30d89-f11f-4f07-8528-0d2ac9f6da7b" />
+        <field name="Name" type="NameTableFieldDefinition" value="PrevailingInterruptSave" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="72adb0ed-cf5a-4fc7-8846-093008ddc7b4" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he0f0c611gd982g61a2g2fa9g382208f38ff5" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h0ce6c751g6207gb412ga325gf0830a293238" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Monk_PatientDefense" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="not Dead(context.Observer) and HasInterruptedSavingThrow() and Self(context.Observer,context.Target) and not AnyEntityIsItem() and IsFlatValueInterruptInteresting(4) and (HasStatus('CraneStanceStatus') or HasStatus('DragonStanceStatus') or HasStatus('MonasticArcherStanceStatus') or HasStatus('MountainStanceStatus') or HasStatus('TigerStanceStatus') or HasStatus('WolfStanceStatus') or HasStatus('CobraStanceStatus') or HasStatus('ClingingShadowStanceStatus') or HasStatus('WildWindsStanceStatus'))" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(OBSERVER_OBSERVER,4);RemoveStatus('CraneStanceStatus');RemoveStatus('DragonStanceStatus');RemoveStatus('MonasticArcherStanceStatus');RemoveStatus('MountainStanceStatus');RemoveStatus('TigerStanceStatus');RemoveStatus('WolfStanceStatus');RemoveStatus('CobraStanceStatus');RemoveStatus('ClingingShadowStanceStatus');RemoveStatus('WildWindsStanceStatus')" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="7836348f-249b-463a-9773-2e5ca95cba66" />
+        <field name="Name" type="NameTableFieldDefinition" value="DodgingRollInterrupt" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h97b52bd6g74b4gf59bgd445g55a6829db558" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h14660fcfg1d09ga331g60efg49280b581807" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_UncannyDodge" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="not Dead(context.Observer) and HasInterruptedSavingThrow() and Self(context.Observer,context.Target) and not AnyEntityIsItem()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="ApplyStatus(OBSERVER_OBSERVER,DodgingDamage,100,1)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="231597e9-425c-4a37-94b2-d09595f0194c" />
+        <field name="Name" type="NameTableFieldDefinition" value="DisperseAir" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="a848bcf0-aab2-44ab-8892-0b9b06583672" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2aa83bb5g9c09gf5b5gd2e6g3e3eb9886652" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7c3c3813gef90g52f5gfd50g67cead17ece4" version="1" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1;KiPoint:1;" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="61bab1f7-9a3f-4527-b14d-bceace0ba686" />
+        <field name="Name" type="NameTableFieldDefinition" value="FlameBarrier" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h912b97bag6f75g577aga178g9e464f192d1e" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hceb505acg1e8cg75b3g420agf9a5ee459f6f" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_FlameStrike" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPreDamage" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Nearby" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and IsDamageTypeFire()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(OBSERVER_TARGET,-15);" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1;KiPoint:1;" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="8d729d88-02e1-452a-9278-efd10475d6ea" />
+        <field name="Name" type="NameTableFieldDefinition" value="RetributivePain" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h33677906gaa0fg064bg5f7dg61c347b6da5c" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h860741d4gc534g7bd2g8136g24804105c799" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_HellishRebuke" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPreDamage" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Nearby" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer)" />
+        <field name="Roll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Constitution, SourceSpellDC())" />
+        <field name="Success" type="StringTableFieldDefinition" value="DealDamage(2*LevelMapValue(CharacterLevel),Psychic,Magical,,0,,true,false)" />
+        <field name="Failure" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(CharacterLevel),Psychic,Magical,,0,,true,false)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1;KiPoint:1;" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="4001cf8b-dd13-41fc-bc95-808d670c1d7e" />
+        <field name="Name" type="NameTableFieldDefinition" value="SurgingFocusIntterupt" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h267ebb8dg0ae0g1e23gc49cg3c6e8c825f90" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h66ce6fb2g3d62g826bg3fd4g6190a4d6708f" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_DivineIntervention_Attack" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnDeath" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Nearby" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Ally(context.Target,context.Observer) " />
+        <field name="Properties" type="StringTableFieldDefinition" value="RestoreResource(SELF,KiPoint,1,0)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerRest" enumeration_type_name="CooldownType" version="1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="810aa56c-63d5-456d-a03b-126fe847cdf6" />
+        <field name="Name" type="NameTableFieldDefinition" value="ZealousRushIntterupt" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he763dea9ge6fbg1223g5f15gfedbdb1ba630" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h1582a989g70ccg7cd1g4f38g4de5d7fa30d7" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Rush_New" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnCastHit" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsSpell()" />
+        <field name="Properties" type="StringTableFieldDefinition" value="IF(HasStatus('DASH_STACKED')):ApplyStatus(DASH_STACKED_2,100,1);IF(not HasStatus('DASH_STACKED_2') and HasStatus('DASH')):ApplyStatus(DASH_STACKED,100,1); AI_IGNORE:IF(not HasDashStatus() and (HasStatus('STRIDE') or HasStatus('DEBUG_RESET_MOVE')) ):ApplyStatus(DASH,100,1);AI_IGNORE:IF(not HasDashStatus() and not HasStatus('DEBUG_RESET_MOVE') ):ApplyStatus(STRIDE,100,1); AI_ONLY:IF(not HasStatus('DASH_STACKED_2') and not HasStatus('DASH_STACKED') and not HasStatus('DASH')):ApplyStatus(DASH,100,1)" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
       </fields>
     </stat_object>
   </stat_objects>
