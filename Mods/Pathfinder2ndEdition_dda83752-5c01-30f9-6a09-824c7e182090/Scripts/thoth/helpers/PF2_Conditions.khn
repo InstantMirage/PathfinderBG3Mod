@@ -148,7 +148,9 @@ function OffGuard(target,source)
 	local dreadstriker = Tagged('ROGUE_DREADSTRIKER',source) & HasStatus('SG_Frightened',target)
 	local naturesedge = HasPassive('NaturesEdge',source) & HasStatus('SG_DifficultTerrain',target)
 	
-	return Tagged('OFF_GUARD',target) | feint | (hidden & ~denyadvantage) | surpriseattack | dreadstriker | naturesedge
+	local result = Tagged('OFF_GUARD',target) | feint | (hidden & ~denyadvantage) | surpriseattack | dreadstriker | naturesedge
+	
+	return ConditionResult( result.Result , {ConditionError("OffGuard")})
 end
 
 function Flanking(exclusionStatus, distance, tag, hasShield, target, source)
@@ -265,8 +267,31 @@ end
 
 --Fighter
 
+function ClassDC(source)
+	source = source or context.Source
+	local base = 10 + source.ProficiencyBonus + math.max(GetModifier(source.Strength), GetModifier(source.Dexterity))
+	local expertise = 0
+	local stat_pen = 0
+	
+	if HasPassive('ClassDCExpert',source).Result then
+		expertise = 2
+	end
+	
+	if Tagged('STAT_PEN_2DC',source).Result then
+		stat_pen = 2
+	elseif Tagged('STAT_PEN_1DC',source).Result then
+		stat_pen = 1
+	end
+	
+	return base + expertise - stat_pen
+end
+
 function ExactingStrikeFX()
-    return (SpellId('Target_ExactingStrike') or SpellId('Projectile_ExactingStrike')) & HasStatus('MAP_2_ATTACKS',SELF)
+    return (SpellId('Target_ExactingStrike') | SpellId('Projectile_ExactingStrike')) & HasStatus('MAP_2_ATTACKS',SELF)
+end
+
+function Press()
+	return HasStatus('MAP_PENALTY_2ND') | HasStatus('MAP_PENALTY_3RD')
 end
 
 --Monk
@@ -300,12 +325,20 @@ function NonBowStrikeCheck()
 	return HasStringInSpellRoll('Melee') | HasStringInSpellRoll('UnarmedAttack') | HasStringInSpellRoll('ThrowAttack') 
 end
 
+function StanceSpell()
+	return SpellId('Shout_CraneStance') | SpellId('Shout_DragonStance') | SpellId('Shout_MountainStance') | SpellId('Shout_TigerStance') | SpellId('Shout_WolfStance') | SpellId('Shout_MonasticArcherStance') | SpellId('Shout_CobraStance') | SpellId('Shout_ClingingShadowsStance') | SpellId('Shout_IronbloodStance') | SpellId('Shout_TangledForestStance') | SpellId('Shout_WildWindsStance') | SpellId('Shout_PointBlankStance') | SpellId('Shout_RicochetStance') | SpellId('Shout_DuelingStance') | SpellId('Shout_ParagonsGuardStance')
+end
+
+function QiSpellsInitiate()
+	return HasPassive('InnerUpheaval') | HasPassive('QiRush')
+end
+
 --Ranger
 
 function HuntedPrey(target,source)
 	source = source or context.Source
 	target = target or context.Target
-	return HasStatus('HUNT_PREY',target,source)
+	return ConditionResult( HasStatus('HUNT_PREY',target,source).Result, {ConditionError("HuntedPrey")})
 end
 
 function HuntedPrey_WardensBoon(passive,target,source)
@@ -357,11 +390,26 @@ function IncredibleAnimal()
 	return (HasPassive('MatureAnimalCompanion',source) | HasPassive('LoyalWarhorse',source)) & (HasPassive('IncredibleCompanion',source) | HasPassive('ImposingDestrier',source))
 end
 
+function YourAnimalCompanion()
+	local result = HasPassive('HuntersMark_RangerCompanion',context.Target) & SummonOwner()
+	return ConditionResult(result.Result,{ConditionError("RangerCompanion")})
+end
+
+function WardenSpellsInitiate()
+	return HasPassive('GravityWeapon') | HasPassive('HealCompanion') | HasPassive('MagicHide')
+end
+
+function WardenSpellsAdvanced()
+	return HasPassive('AnimalFeature') | HasPassive('EnlargeCompanion') | HasPassive('SoothingMist')
+end
+
 --Rogue
 
 function CanPrecisionDamage(target)
     target = target or context.Target
-    return ~(Tagged('OOZE',target)|Tagged('SHADOW',target)|Tagged('GHOST',target)|Tagged('DISPLACER_BEAST',target)|Tagged('SCRYING_EYE',target)|HasPassive('Ethereal',target))
+	local result = ~(Tagged('OOZE',target)|Tagged('SHADOW',target)|Tagged('GHOST',target)|Tagged('DISPLACER_BEAST',target)|Tagged('SCRYING_EYE',target)|Tagged('GASEOUS_FORM',target)|HasPassive('Ethereal',target))
+	
+	return ConditionResult( result.Result,{ConditionError("PrecisionImmune")})
 end
 
 function SneakAttackWeapon(entity, weapon)
