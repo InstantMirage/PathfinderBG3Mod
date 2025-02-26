@@ -248,6 +248,22 @@ function RageSpell()
 	return SpellId('Shout_Rage') | SpellId('Shout_AnimalRage') | SpellId('Shout_FuryRage') | SpellId('Shout_BludgeoningDragonRage') | SpellId('Shout_PoisonDragonRage') | SpellId('Shout_FireDragonRage') | SpellId('Shout_ForceDragonRage') | SpellId('Shout_PsychicDragonRage') | SpellId('Shout_GiantRage') | SpellId('Shout_Rage_Frenzy') | SpellId('Shout_Rage_Totem_Bear') | SpellId('Shout_Rage_Boar')
 end
 
+--Bard
+
+function HasMartialExtendableComposition(source)
+	source = source or context.Source
+	return HasStatus('CourageousAnthem',source) | HasStatus('SongOfStrengthStatus',source) | HasStatus('RallyingAnthemDR',source)
+end
+
+function MartialLingeringComposition(source)
+	source = source or context.Source
+	return HasStatus('COURAGE_LINGER_AURA',source) | HasStatus('CourageForteAura2',source) | HasStatus('CourageForteAura3',source) | HasStatus('SongOfStrengthLingering',source) | HasStatus('StrengthForteAura2',source) | HasStatus('StrengthForteAura3',source) | HasStatus('RallyingLingering',source) | HasStatus('RallyingForteAura2',source) | HasStatus('RallyingForteAura3',source)
+end
+
+function EndMartialLingeringComposition()
+	return StatusId('COURAGE_LINGER_AURA') | StatusId('CourageForteAura2') | StatusId('CourageForteAura3') | StatusId('SongOfStrengthLingering') | StatusId('StrengthForteAura2') | StatusId('StrengthForteAura3') | StatusId('RallyingLingering') | StatusId('RallyingForteAura2') | StatusId('RallyingForteAura3')
+end
+
 --Champion
 
 function RetributiveStrikeRange(observer,source)
@@ -330,7 +346,7 @@ function StanceSpell()
 end
 
 function QiSpellsInitiate()
-	return HasPassive('InnerUpheaval') | HasPassive('QiRush')
+	return HasPassive('InnerUpheaval',context.Source) | HasPassive('QiRush',context.Source)
 end
 
 --Ranger
@@ -396,11 +412,11 @@ function YourAnimalCompanion()
 end
 
 function WardenSpellsInitiate()
-	return HasPassive('GravityWeapon') | HasPassive('HealCompanion') | HasPassive('MagicHide')
+	return HasPassive('GravityWeapon',context.Source) | HasPassive('HealCompanion',context.Source) | HasPassive('MagicHide',context.Source)
 end
 
 function WardenSpellsAdvanced()
-	return HasPassive('AnimalFeature') | HasPassive('EnlargeCompanion') | HasPassive('SoothingMist')
+	return HasPassive('AnimalFeature',context.Source) | HasPassive('EnlargeCompanion',context.Source) | HasPassive('SoothingMist',context.Source)
 end
 
 --Rogue
