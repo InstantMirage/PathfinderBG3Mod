@@ -115,9 +115,9 @@
         <field name="Level" type="IntegerTableFieldDefinition" value="0" />
         <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Evocation" enumeration_type_name="SpellSchool" version="1" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="9" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:DealDamage(LevelMapValue(D6Cantrip),Bludgeoning);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:DealDamage(LevelMapValue(D6Cantrip),Bludgeoning)" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="Attack(AttackType.RangedSpellAttack)" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="TARGET:IF(IsLightThrownObject(context.HitDescription.ThrownObject,false)):DealDamage(LevelMapValue(D6Cantrip),Bludgeoning);TARGET:IF(HasWeaponProperty(WeaponProperties.Thrown,context.HitDescription.ThrownObject)):DealDamage(LevelMapValue(D6Cantrip), ThrownWeaponDamageType);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="TARGET:IF(not HasWeaponProperty(WeaponProperties.Thrown,context.HitDescription.ThrownObject)):DealDamage(LevelMapValue(D6Cantrip),Bludgeoning,Magical); TARGET:IF(HasWeaponProperty(WeaponProperties.Thrown,context.HitDescription.ThrownObject)):DealDamage(LevelMapValue(D6Cantrip),ThrownWeaponDamageType,Magical);" />
         <field name="ThrowableSpellProperties" type="StringTableFieldDefinition" value=";" />
         <field name="ThrowableTargetConditions" type="StringTableFieldDefinition" value="not Grounded() and not IsItemDisabled() and not HasAttribute('InventoryBound') and ( (Item() and not HasWeightGreaterThan(5000)) or Dead()) and (not IsEquipped() or IsEquipmentSlot(EquipmentSlot.MeleeMainHand) or IsEquipmentSlot(EquipmentSlot.MeleeOffHand) or IsEquipmentSlot(EquipmentSlot.Boots))" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Transmutation_Levitate" />
@@ -131,6 +131,9 @@
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2" />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
         <field name="AreaRadius" type="IntegerTableFieldDefinition" value="9" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="InventorySelection;RangeIgnoreVerticalThreshold;IsHarmful;HasHighGroundRangeExtension;IgnoreVisionBlock;AddFallDamageOnLand;HasVerbalComponent;HasSomaticComponent;CombatLogSetSingleLineRoll;IsSpell;IsAttack" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="256f6bd9-1d6b-4d76-9e79-a4a3b5a367a9" />
+        <field name="HitEffect" type="GuidObjectTableFieldDefinition" value="50bedaff-dd03-43bf-a7aa-4b9bef9eeb4e" />
       </fields>
     </stat_object>
   </stat_objects>

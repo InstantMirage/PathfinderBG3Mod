@@ -20,6 +20,7 @@ DB_FamiliarPassive("ReflexExpert","ReflexExpert");
 DB_FamiliarPassive("WillExpert","WillExpert");
 DB_FamiliarPassive("WitchFamiliar","Familiar_Tough");
 DB_FamiliarPassive("PhaseFamiliar","Ethereal");
+DB_FamiliarPassive("ClingingIce","Familiar_Iceproof");
 
 DB_InterruptUseSpellOnFamiliar("Interrupt_FreezingRime","Target_FreezingRime");
 DB_HexStatus("EvilEye","FAMILIAR_AURA_EVIL",1.0);
@@ -34,6 +35,22 @@ DB_FollowUpAttack_Creature((CHARACTER)NULL_00000000-0000-0000-0000-000000000000,
 
 DB_FollowUpOffhand_Spell("Target_TwinFeint");
 DB_FollowUpOffhand_Spell("Target_TwinTakedownStrike");
+
+
+DB_CompositionAura("COURAGE_LINGER_AURA","CourageousAnthem");
+DB_CompositionAura("CourageForteAura2","CourageForte2");
+DB_CompositionAura("CourageForteAura3","CourageForte3");
+DB_CompositionAura("SongOfStrengthLingering","SongOfStrengthStatus");
+DB_CompositionAura("StrengthForteAura2","StrengthForte2");
+DB_CompositionAura("StrengthForteAura3","StrengthForte3");
+DB_CompositionAura("RallyingLingering","RallyingAnthemDR");
+DB_CompositionAura("RallyingForteAura2","RallyingForte2");
+DB_CompositionAura("RallyingForteAura3","RallyingForte3");
+DB_CompositionAura("TRIPLE_TIME_LINGERING","TRIPLE_TIME");
+
+DB_ActiveComposition((CHARACTER)NULL_00000000-0000-0000-0000-000000000000,(CHARACTER)NULL_00000000-0000-0000-0000-000000000000,"");
+DB_CurrentlyComposing((CHARACTER)NULL_00000000-0000-0000-0000-000000000000,"");
+DB_HarmonizeCurrentlyComposing((CHARACTER)NULL_00000000-0000-0000-0000-000000000000,"");
 KBSECTION
 //REGION Ranger-specific features
 
@@ -322,6 +339,227 @@ DB_FollowUpAttack_Creature(_Char,(GUIDSTRING)_Target)
 THEN
 ApplyStatus(_Target,"FOLLOW_UP_OFFHAND_TARGET",1.0,1,_Char);
 NOT DB_FollowUpAttack_Creature(_Char,_Target);
+
+//END_REGION
+
+//REGION Bard-specific features
+
+//REGION Track self status on bard
+
+//Add to slot on apply
+IF
+StatusApplied((CHARACTER)_Char,(STRING)_Status,(CHARACTER)_Bard,_)
+AND
+_Char == _Bard
+AND
+QRY_IsCompositionStatus(_Status)
+AND
+QRY_NonDuplicateComposition(_Bard,_Status)
+AND
+NOT QRY_UseHarmonizeSlot(_Bard,_Status)
+THEN
+NOT DB_CurrentlyComposing(_Bard,_Status);
+PROC_RemovePastCompositionOwner(_Bard,_Status);
+DB_CurrentlyComposing(_Bard,_Status);
+
+//Remove previous entries
+PROC
+PROC_RemovePastCompositionOwner((CHARACTER)_Bard,(STRING)_Status)
+AND
+DB_CurrentlyComposing(_Bard,(STRING)_OldStatus)
+AND
+_Status != _OldStatus
+THEN
+RemoveStatus(_Bard,_OldStatus,_Bard);
+NOT DB_CurrentlyComposing(_Bard,_OldStatus);
+PROC_RemoveAlliesFromComposition(_Bard,_OldStatus);
+
+//Remove from DB if not upgraded into a lingering composition
+IF
+StatusRemoved((CHARACTER)_Char,(STRING)_Status,_,_)
+AND
+DB_CurrentlyComposing(_Char,_Status)
+THEN
+NOT DB_CurrentlyComposing(_Char,_Status);
+
+//Remove non-aura statuses from allies
+PROC
+PROC_RemoveAlliesFromComposition((CHARACTER)_Bard,(STRING)_Status)
+AND
+DB_ActiveComposition(_Bard,(CHARACTER)_Ally,_Status)
+AND
+NOT QRY_IsCompositionUpgraded(_Bard,_Status)
+THEN
+RemoveStatus(_Ally,_Status,_Bard);
+
+//END_REGION
+
+//REGION Track harmonize
+
+IF
+StatusApplied((CHARACTER)_Char,(STRING)_Status,(CHARACTER)_Bard,_)
+AND
+_Char == _Bard
+AND
+QRY_IsCompositionStatus(_Status)
+AND
+QRY_NonDuplicateComposition(_Bard,_Status)
+AND
+QRY_UseHarmonizeSlot(_Bard,_Status)
+THEN
+NOT DB_HarmonizeCurrentlyComposing(_Bard,_Status);
+PROC_RemovePastHarmonizeOwner(_Bard,_Status);
+DB_HarmonizeCurrentlyComposing(_Bard,_Status);
+
+PROC
+PROC_RemovePastHarmonizeOwner((CHARACTER)_Bard,(STRING)_Status)
+AND
+DB_HarmonizeCurrentlyComposing(_Bard,(STRING)_OldStatus)
+AND
+_Status != _OldStatus
+THEN
+RemoveStatus(_Bard,_OldStatus,_Bard);
+NOT DB_HarmonizeCurrentlyComposing(_Bard,_OldStatus);
+PROC_RemoveAlliesFromComposition(_Bard,_OldStatus);
+
+IF
+StatusRemoved((CHARACTER)_Char,(STRING)_Status,_,_)
+AND
+DB_HarmonizeCurrentlyComposing(_Char,_Status)
+THEN
+NOT DB_HarmonizeCurrentlyComposing(_Char,_Status);
+
+//END_REGION
+
+//REGION Queries
+
+QRY
+QRY_IsCompositionStatus((STRING)_Status)
+AND
+DB_CompositionAura((STRING)_Aura,_Status)
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_IsCompositionStatus((STRING)_Aura)
+AND
+DB_CompositionAura(_Aura,(STRING)_Status)
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_IsCompositionStatus((STRING)_Status)
+AND
+_Status == "DIRGE_OF_DOOM"
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_IsCompositionUpgraded((CHARACTER)_Char,(STRING)_Status)
+AND
+DB_CompositionAura((STRING)_Aura,_Status)
+AND
+HasActiveStatus(_Char,_Aura,1)
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_NonDuplicateComposition((CHARACTER)_Char,(STRING)_Status)
+AND
+NOT DB_CurrentlyComposing(_Char,_Status)
+AND
+NOT DB_HarmonizeCurrentlyComposing(_Char,_Status)
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_UseHarmonizeSlot((CHARACTER)_Char,(STRING)_Status)
+AND
+HasActiveStatus(_Char,"HarmonizeStatus",1)
+AND
+QRY_HarmonizeEmptyOrUpgradable(_Char,_Status)
+AND
+NOT QRY_CompositionUpgradable(_Char,_Status)
+THEN
+DB_NOOP(1);
+
+//Harmonize is empty
+QRY
+QRY_HarmonizeEmptyOrUpgradable((CHARACTER)_Char,(STRING)_Status)
+AND
+NOT QRY_HarmonizeFull(_Char)
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_HarmonizeFull((CHARACTER)_Char)
+AND
+DB_HarmonizeCurrentlyComposing(_Char,(STRING)_OldStatus)
+AND
+_OldStatus != ""
+THEN
+DB_NOOP(1);
+
+//Harmonize can be given lingering status
+QRY
+QRY_HarmonizeEmptyOrUpgradable((CHARACTER)_Char,(STRING)_Aura)
+AND
+DB_CompositionAura(_Aura,(STRING)_Status)
+AND
+DB_HarmonizeCurrentlyComposing(_Char,_Status)
+THEN
+DB_NOOP(1);
+
+//Non-harmonize is full
+QRY
+QRY_HarmonizeEmptyOrUpgradable((CHARACTER)_Char,(STRING)_Status)
+AND
+DB_CurrentlyComposing(_Char,(STRING)_OldStatus)
+AND
+_OldStatus != ""
+THEN
+DB_NOOP(1);
+
+//Non-harmonize can be given lingering status
+QRY
+QRY_CompositionUpgradable((CHARACTER)_Char,(STRING)_Aura)
+AND
+DB_CompositionAura(_Aura,(STRING)_Status)
+AND
+DB_CurrentlyComposing(_Char,_Status)
+THEN
+DB_NOOP(1);
+
+//END_REGION
+
+//REGION Track non-aura statuses on others
+IF
+StatusApplied((CHARACTER)_Char,(STRING)_Status,(CHARACTER)_Bard,_)
+AND
+_Char != _Bard
+AND
+DB_CompositionAura((STRING)_Aura,_Status)
+AND
+NOT HasActiveStatus(_Bard,_Aura,1)
+AND
+NOT DB_ActiveComposition(_Bard,_Char,_Status)
+THEN
+DB_ActiveComposition(_Bard,_Char,_Status);
+
+//Remove from DB
+IF
+StatusRemoved((CHARACTER)_Char,(STRING)_Status,_,_)
+AND
+DB_ActiveComposition((CHARACTER)_Bard,_Char,_Status)
+THEN
+NOT DB_ActiveComposition(_Bard,_Char,_Status);
+//END_REGION
+
+//Counter performance is a composition
+IF
+ReactionInterruptUsed((CHARACTER)_Bard,"Interrupt_CounterPerformance", _)
+THEN
+PROC_RemovePastCompositionOwner(_Bard,"INTERRUPT_COUNTERPERFORMANCE");
 
 //END_REGION
 EXITSECTION
