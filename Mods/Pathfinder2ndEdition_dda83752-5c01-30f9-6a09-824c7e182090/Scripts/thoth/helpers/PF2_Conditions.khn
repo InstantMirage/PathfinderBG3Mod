@@ -302,6 +302,18 @@ function ClassDC(source)
 	return base + expertise - stat_pen
 end
 
+function ArmorCheck(value)
+	return ConditionResult(context.Source.Strength < value) & ~HasSpellFlag(SpellFlags.Attack)
+end
+
+function ArmorSpeed(value)
+	return ~(ConditionResult(context.Source.Strength >= value) | HasPassive('UnburdenedIron',context.Source))
+end
+
+function HeavyArmorSpeed(value)
+	return ~(ConditionResult(context.Source.Strength >= value) & HasPassive('UnburdenedIron',context.Source)) & ~ArmorMovementPenalty(value)
+end
+
 function ExactingStrikeFX()
     return (SpellId('Target_ExactingStrike') | SpellId('Projectile_ExactingStrike')) & HasStatus('MAP_2_ATTACKS',SELF)
 end
@@ -322,7 +334,12 @@ function MonkUnarmedStrike()
 end
 
 function MonasticWeaponry()
-	return ~WieldingWeapon('Twohanded', false, false, context.Source) & HasPassive('MonasticWeaponry',context.Source) & (SpellId('Target_MainHandAttack') | SpellId('Target_OffHandAttack'))
+	local source = context.Source
+	-- agile/finesse/simple
+	local mainhand = SpellId('Target_MainHandAttack') & (WieldingWeapon('Finesse', false, false, source) | WieldingWeapon('Light', false, false, source) | IsWeaponOfProficiencyGroup('SimpleWeapons', GetActiveWeapon(source,true)))
+	local offhand = SpellId('Target_OffHandAttack') & (WieldingWeapon('Finesse', true, false, source) | WieldingWeapon('Light', true, false, source) | IsWeaponOfProficiencyGroup('SimpleWeapons', GetActiveWeapon(source,false)))
+	
+	return ~WieldingWeapon('Twohanded', false, false, source) & HasPassive('MonasticWeaponry',source) & ( mainhand | offhand )
 end
 
 function MonasticArcher()
@@ -465,3 +482,8 @@ end
 function OngoingMisery()
 	return HasAnyStatus({'OFF_BALANCED','Grappled','FEINT_ROUND','POISONED','BLINDED','CLUMSY','CLUMSY2','STUNNED1','STUNNED2','Stupefied1','Stupefied2','ENFEEBLED'}, {}, {},context.Target)
 end
+
+function OwnerCanSustain(status)
+    local source = context.Source
+    return ConditionResult(GetStatusDuration(status, source) < 2,{ConditionError("SustainCooldown")})
+end  

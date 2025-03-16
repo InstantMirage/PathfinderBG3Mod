@@ -1968,7 +1968,7 @@
         <field name="StackId" type="StringTableFieldDefinition" value="CHAMPION_RADIUS" />
         <field name="StackType" type="EnumerationTableFieldDefinition" value="Ignore" enumeration_type_name="StatusStackType" version="1" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnCombatEnded" enumeration_type_name="StatusEvent" version="1" />
-        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="72ec4474-76b3-457d-93e2-3f05bf534118" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="ca600bf6-3845-44d5-a9dc-b327661babb8" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
@@ -1976,6 +1976,7 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="c8fe7081-f41d-4031-b15f-e4159202e95c" />
         <field name="Name" type="NameTableFieldDefinition" value="CHAMPION_AURA_STATUS" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2082,7 +2083,7 @@
         <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
         <field name="TickType" type="EnumerationTableFieldDefinition" value="StartTurn" enumeration_type_name="TickType" version="1" />
         <field name="OnRemoveFunctors" type="FunctorsTableFieldDefinition" value="IF( Combat() ):ApplyStatus(CHAMPION_AURA_VFX,100,-1)" />
-        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="6b409890-2bca-45ba-941d-012e8350f5d2" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="96f32072-e73f-4d99-8ac3-84b6c487a28e" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3874,7 +3875,7 @@
         <field name="AuraFlags" type="EnumerationListTableFieldDefinition" value="IgnoreItems;ShouldCheckLOS;AIIgnoreOnSelf" enumeration_type_name="AuraFlags" version="1" />
         <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;DisablePortraitIndicator;TickingWithSource" enumeration_type_name="StatusPropertyFlags" version="1" />
-        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="6ed67557-aa66-4641-8790-1cb9761b364f" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="ca600bf6-3845-44d5-a9dc-b327661babb8" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4321,7 +4322,14 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="e3a5cc31-1ea3-4b15-a397-19c8772b8e8b" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h9d9376c1gb0d2g485ag5a73gb80f191922c9" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h81bf67b6gd63bgafb8gadd9gbad1c74fb54e" version="1" />
-        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(2d10,Bludgeoning)" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(1d10,Bludgeoning)" />
+        <field name="AuraRadius" type="IntegerTableFieldDefinition" value="3" />
+        <field name="AuraStatuses" type="StringTableFieldDefinition" value="IF(not Tagged('INVISIBLE_HELPER') ):ApplyStatus(AnimatedAssault_Status);IF(IsCurrentTurnInCombat(GetOwner(context.Source)) or not Combat()):ApplyStatus(ANIMATED_ASSAULT)" />
+        <field name="TickType" type="EnumerationTableFieldDefinition" value="EndRound" enumeration_type_name="TickType" version="1" />
+        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="IF(not HasStatus('AnimatedAssault_Owner',GetOwner())):RemoveStatus(AnimatedAssault_Status_Aura)" />
+        <field name="OnRemoveFunctors" type="FunctorsTableFieldDefinition" value="Kill()" />
+        <field name="IsUnique" type="BoolTableFieldDefinition" value="True" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="6f3bcb93-405b-4294-8564-39283bd8f7c6" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4330,10 +4338,14 @@
         <field name="Name" type="NameTableFieldDefinition" value="AnimatedAssault_Status" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="ecd64fb7-6aaf-49f4-bc6e-9e1f50f4c732" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4136173ag3e4cga8d9g8058gad71832981c0" version="1" />
-        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(2d10,Bludgeoning)" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(1d10,Bludgeoning)" />
         <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(2d10,Bludgeoning)" />
-        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(2d10,Bludgeoning)" />
-        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(2d10,Bludgeoning)" />
+        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:DealDamage(2d10,Bludgeoning)" />
+        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:DealDamage(2d10,Bludgeoning)" />
+        <field name="StillAnimationType" type="EnumerationTableFieldDefinition" value="Blinded" enumeration_type_name="StatusAnimationType" version="1" />
+        <field name="StillAnimationPriority" type="EnumerationTableFieldDefinition" value="Blinded" enumeration_type_name="StillAnimPriority" version="1" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="a0f74dff-7074-45aa-a4d2-a131d7f328f5" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="2" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4341,6 +4353,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="c7b0aca5-5c1c-4112-8b47-7dcf9b6aada8" />
         <field name="Name" type="NameTableFieldDefinition" value="AnimatedAssault_Status_Aura_Rank4" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="5cdefd5a-7823-4a9f-b4fd-2d694067acf1" />
+        <field name="AuraStatuses" type="StringTableFieldDefinition" value="IF(not Tagged('INVISIBLE_HELPER')):ApplyStatus(AnimatedAssault_Status_Aura_Rank4);IF(IsCurrentTurnInCombat(GetOwner(context.Source)) or not Combat()):ApplyStatus(ANIMATED_ASSAULT)" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(2d10,Bludgeoning)" />
+        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="IF(not HasStatus('AnimatedAssault_Owner_Rank4',GetOwner())):RemoveStatus(AnimatedAssault_Status_Aura_Rank4)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4349,8 +4364,10 @@
         <field name="Name" type="NameTableFieldDefinition" value="AnimatedAssault_Status_Rank4" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="8549317b-d5e3-4087-983d-24f5089d2395" />
         <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(3d10,Bludgeoning)" />
-        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(3d10,Bludgeoning)" />
-        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(3d10,Bludgeoning)" />
+        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:DealDamage(3d10,Bludgeoning);" />
+        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:DealDamage(3d10,Bludgeoning)" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(2d10,Bludgeoning)" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="4" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4358,6 +4375,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="7b440585-a42f-42b9-b25e-e9e5c1897fed" />
         <field name="Name" type="NameTableFieldDefinition" value="AnimatedAssault_Status_Aura_Rank6" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="5cdefd5a-7823-4a9f-b4fd-2d694067acf1" />
+        <field name="AuraStatuses" type="StringTableFieldDefinition" value="IF(not Tagged('INVISIBLE_HELPER')):ApplyStatus(AnimatedAssault_Status_Aura_Rank6);IF(IsCurrentTurnInCombat(GetOwner(context.Source)) or not Combat()):ApplyStatus(ANIMATED_ASSAULT)" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(3d10,Bludgeoning)" />
+        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="IF(not HasStatus('AnimatedAssault_Owner_Rank6',GetOwner())):RemoveStatus(AnimatedAssault_Status_Aura_Rank6)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4366,8 +4386,51 @@
         <field name="Name" type="NameTableFieldDefinition" value="AnimatedAssault_Status_Rank6" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="8549317b-d5e3-4087-983d-24f5089d2395" />
         <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(4d10,Bludgeoning)" />
-        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(4d10,Bludgeoning)" />
-        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(4d10,Bludgeoning)" />
+        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:DealDamage(4d10,Bludgeoning)" />
+        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:DealDamage(4d10,Bludgeoning)" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(3d10,Bludgeoning)" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="6" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="0291bfa3-1647-4e68-9aff-575d92aabdaf" />
+        <field name="Name" type="NameTableFieldDefinition" value="AnimatedAssault_Owner" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hee37d609gfdb3g2dbdg58c8gfce8fb4dc0e3" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hc29d062cg9320gc648g5a9fg4b7ec4299094" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Conjuration_CloudOfDaggers" />
+        <field name="StackId" type="StringTableFieldDefinition" value="ANIMATED_ASSAULT_OWNER" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_AnimatedAssault_Sustain)" />
+        <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="7398b0a6-9d11-4819-b7ef-172498fdae24" />
+        <field name="Name" type="NameTableFieldDefinition" value="AnimatedAssault_Owner_Rank4" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="0291bfa3-1647-4e68-9aff-575d92aabdaf" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_AnimatedAssault_Sustain_4)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="be0e6f8b-ba11-4504-84cb-0e75c0dfa639" />
+        <field name="Name" type="NameTableFieldDefinition" value="AnimatedAssault_Owner_Rank6" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="0291bfa3-1647-4e68-9aff-575d92aabdaf" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_AnimatedAssault_Sustain_6)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="3f2789b8-f2b5-44fb-89fe-234e7bbbd947" />
+        <field name="Name" type="NameTableFieldDefinition" value="ANIMATED_ASSAULT" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="ae492789-4d8f-420f-9656-6292bf5c9009" />
+        <field name="Name" type="NameTableFieldDefinition" value="HELPFUL_STEPS" />
       </fields>
     </stat_object>
   </stat_objects>
