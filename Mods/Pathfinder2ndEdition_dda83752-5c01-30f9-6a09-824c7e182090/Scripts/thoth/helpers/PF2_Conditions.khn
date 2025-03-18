@@ -5,10 +5,11 @@ local __util = require 'larian.util'
 
 --Returns if it is currently possible to Stride, if not, movement will be cleared
 function AutoStride()
+	local canMove = ~Immobilized() | HasStatus('SG_Prone')
 	local hasActions = HasActionResource('ActionPoint', 1 , 0, false, false) or HasStatus('HASTE_ATTACK')
 	local automaticStride = ~HasStatus('MANUAL_STRIDE')
 	
-	return ~Immobilized() & hasActions & automaticStride
+	return canMove & hasActions & automaticStride
 end
 
 -- Can~Step into Difficult Terrain
@@ -26,7 +27,7 @@ function HasDashStatus(entity)
 end
 
 function StrideCostSpellCheck()
-	return SpellCategoryIs(SpellCategory.Dash) | HasUseCosts('Movement',true) | HasUseCosts('Stride',true)
+	return SpellCategoryIs(SpellCategory.Dash) | HasUseCosts('Movement',true) | (HasUseCosts('Stride',true) & ~SpellTypeIs(SpellType.Rush))
 end
 
 function HasteSpellCheck()
@@ -38,7 +39,7 @@ function OpportunityAttackCritRoll(source,source_pos,observer,observer_pos)
 	
 	local attacktype = AttackType.MeleeUnarmedAttack
 	
-	if WieldingWeapon('Melee', false, true, context.Observer) and not HasStatus('DISARMED',OBSERVER_OBSERVER).Result then
+	if WieldingWeapon('Melee', false, true, context.Observer).Result and not HasStatus('DISARMED',OBSERVER_OBSERVER).Result then
 		attacktype = AttackType.MeleeWeaponAttack
 	end
 	
@@ -302,6 +303,21 @@ function ClassDC(source)
 	return base + expertise - stat_pen
 end
 
+function ArmorCheck(value)
+	if ~context.Source then return ConditionResult(false) end
+	return ConditionResult(context.Source.Strength < value) & ~HasSpellFlag(SpellFlags.Attack)
+end
+
+function ArmorSpeed(value)
+	if ~context.Source then return ConditionResult(false) end
+	return ~(ConditionResult(context.Source.Strength >= value) | HasPassive('UnburdenedIron',context.Source))
+end
+
+function HeavyArmorSpeed(value)
+	if ~context.Source then return ConditionResult(false) end
+	return ~(ConditionResult(context.Source.Strength >= value) & HasPassive('UnburdenedIron',context.Source)) & ~ArmorMovementPenalty(value)
+end
+
 function ExactingStrikeFX()
     return (SpellId('Target_ExactingStrike') | SpellId('Projectile_ExactingStrike')) & HasStatus('MAP_2_ATTACKS',SELF)
 end
@@ -318,11 +334,16 @@ function IsMonkUnarmedSpell()
 end
 
 function MonkUnarmedStrike()
-	return SpellId('Target_UnarmedAttack') | SpellId('Target_CraneWing') | SpellId('Target_TigerClaw') | SpellId('Target_CobraFang') | SpellId('Target_FallingStone') | SpellId('Target_DragonStance') | SpellId('Target_WolfJaw')
+	return SpellId('Target_UnarmedAttack') | SpellId('Target_IronFist') | SpellId('Target_CraneWing') | SpellId('Target_TigerClaw') | SpellId('Target_CobraFang') | SpellId('Target_FallingStone') | SpellId('Target_DragonStance') | SpellId('Target_WolfJaw')
 end
 
 function MonasticWeaponry()
-	return ~WieldingWeapon('Twohanded', false, false, context.Source) & HasPassive('MonasticWeaponry',context.Source) & (SpellId('Target_MainHandAttack') | SpellId('Target_OffHandAttack'))
+	local source = context.Source
+	-- agile/finesse/simple
+	local mainhand = SpellId('Target_MainHandAttack') & (WieldingWeapon('Finesse', false, false, source) | WieldingWeapon('Light', false, false, source) | IsWeaponOfProficiencyGroup('SimpleWeapons', GetActiveWeapon(source,true)) )
+	local offhand = SpellId('Target_OffHandAttack') & (WieldingWeapon('Finesse', true, false, source) | WieldingWeapon('Light', true, false, source) | IsWeaponOfProficiencyGroup('SimpleWeapons', GetActiveWeapon(source,false)) )
+	
+	return ~WieldingWeapon('Twohanded', false, false, source) & HasPassive('MonasticWeaponry',source) & ( mainhand | offhand )
 end
 
 function MonasticArcher()
@@ -346,7 +367,7 @@ function StanceSpell()
 end
 
 function QiSpellsInitiate()
-	return HasPassive('InnerUpheaval',context.Source) | HasPassive('QiRush',context.Source)
+	return (HasPassive('InnerUpheaval',context.Source) | HasPassive('QiRush',context.Source))
 end
 
 --Ranger
@@ -412,11 +433,11 @@ function YourAnimalCompanion()
 end
 
 function WardenSpellsInitiate()
-	return HasPassive('GravityWeapon',context.Source) | HasPassive('HealCompanion',context.Source) | HasPassive('MagicHide',context.Source)
+	return (HasPassive('GravityWeapon',context.Source) | HasPassive('HealCompanion',context.Source) | HasPassive('MagicHide',context.Source))
 end
 
 function WardenSpellsAdvanced()
-	return HasPassive('AnimalFeature',context.Source) | HasPassive('EnlargeCompanion',context.Source) | HasPassive('SoothingMist',context.Source)
+	return (HasPassive('AnimalFeature',context.Source) | HasPassive('EnlargeCompanion',context.Source) | HasPassive('SoothingMist',context.Source))
 end
 
 --Rogue
@@ -464,4 +485,39 @@ end
 
 function OngoingMisery()
 	return HasAnyStatus({'OFF_BALANCED','Grappled','FEINT_ROUND','POISONED','BLINDED','CLUMSY','CLUMSY2','STUNNED1','STUNNED2','Stupefied1','Stupefied2','ENFEEBLED'}, {}, {},context.Target)
+end
+
+function OwnerCanSustain(status)
+    local source = context.Source
+    return ConditionResult(GetStatusDuration(status, source) < 2,{ConditionError("SustainCooldown")})
+end
+
+--Incap - treats DC as 10 higher
+
+function IncapDC(dc,target,source)
+    target = target or context.Target
+    source = source or context.Source
+	dc = dc or SourceSpellDC(10,source)
+	
+	if target.Level > source.Level then
+		dc = dc - 10
+	end
+	return dc
+end
+
+function IncapSpellSlotDC(dc,target,source)
+    target = target or context.Target
+    source = source or context.Source
+	dc = dc or SourceSpellDC(10,source)
+	
+	if target.Level > 2*context.HitDescription.SpellPowerLevel then
+		dc = dc - 10
+	end
+	return dc
+end
+
+function IncapClassDC(target,source)
+    target = target or context.Target
+    source = source or context.Source
+	return IncapDC(ClassDC(source),target,source)
 end

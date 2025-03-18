@@ -14,5 +14,42 @@
         <field name="Boosts" type="StringTableFieldDefinition" value="ActionResourceBlock(ActionPoint);ActionResourceBlock(Movement)" />
       </fields>
     </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="0743cbde-7b6c-442f-8f04-678c962a8ff2" />
+        <field name="Name" type="NameTableFieldDefinition" value="SLEEPING" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="5c7b15bd-fae8-4612-b432-ca4e76d1cfe8" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="AbilityFailedSavingThrow(Strength);AbilityFailedSavingThrow(Dexterity);Tag(OFF_GUARD);DetectDisturbancesBlock(true);SightRangeOverride(0)" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="TotalDamageDoneGreaterThan(0) or HasStatus('SG_Prone') or IsStatusEvent(StatusEvent.OnHeal)" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnDamage;OnStatusApplied;OnHeal" enumeration_type_name="StatusEvent" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="568e6522-8eea-4024-a71b-5022aefc519b" />
+        <field name="Name" type="NameTableFieldDefinition" value="SLEEP" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="3e043fcd-bcd0-4962-bd61-04aa9acd4955" />
+        <field name="AnimationStart" type="ShortNameTableFieldDefinition" value="b554aad5-6f39-4406-b248-e82084d01b1f" />
+        <field name="AnimationLoop" type="ShortNameTableFieldDefinition" value="06cff5ab-1705-403a-b20f-d5c9defbece5" />
+        <field name="AnimationEnd" type="ShortNameTableFieldDefinition" value="9cb533e9-dbc1-45d4-b5f9-3f2e30a3670f" />
+        <field name="TickType" type="EnumerationTableFieldDefinition" value="StartTurn" enumeration_type_name="TickType" version="1" />
+        <field name="TooltipSave" type="StringTableFieldDefinition" value="Wisdom" />
+        <field name="UseLyingPickingState" type="EnumerationTableFieldDefinition" value="No" enumeration_type_name="YesNo" version="1" />
+        <field name="OnTickRoll" type="RollConditionsTableFieldDefinition" value="SkillCheck(Skill.Perception, SourceSpellDC())" />
+        <field name="OnTickSuccess" type="FunctorsTableFieldDefinition" value="RemoveStatus(SG_Sleeping)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="c417e34a-b745-4dfc-acab-02977f46c9f2" />
+        <field name="Name" type="NameTableFieldDefinition" value="SLEEP_DEEP" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="6e732ff9-b27d-4385-a1cf-217db19b7159" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h618b939eg9695g2b7bgd468g36a913fc040f" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="AbilityFailedSavingThrow(Strength);AbilityFailedSavingThrow(Dexterity);Tag(OFF_GUARD);DetectDisturbancesBlock(true);SightRangeOverride(0)" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="TotalDamageDoneGreaterThan(0) or IsStatusEvent(StatusEvent.OnHeal)" />
+        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="BreakConcentration();DisarmWeapon()" />
+        <field name="OnRemoveFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(PRONE,100,2)" />
+      </fields>
+    </stat_object>
   </stat_objects>
 </stats>
