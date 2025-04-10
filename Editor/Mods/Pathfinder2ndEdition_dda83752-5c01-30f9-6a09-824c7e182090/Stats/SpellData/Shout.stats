@@ -991,19 +991,20 @@
         <field name="Name" type="NameTableFieldDefinition" value="BestialSnarling" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="4e257ed2-856d-4ef4-9045-08c349d26886" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(SnarlingImmune,100,100)" />
-        <field name="AreaRadius" type="IntegerTableFieldDefinition" value="2" />
+        <field name="AreaRadius" type="IntegerTableFieldDefinition" value="36" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="SkillCheck(Skill.Performance,context.Target.GetPassiveSkill(Skill.Perception))" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="ApplyStatus(FRIGHTENED,100,1);IF(Tagged('BEAST')):ApplyStatus(FRIGHTENED,100,2)" />
-        <field name="TargetConditions" type="StringTableFieldDefinition" value="not HasStatus('SnarlingImmune',context.Target,context.Source) and Character() and not Ally()" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="not HasStatus('SnarlingImmune',context.Target,context.Source) and Character() and not Ally() and (AdjacentToBeastMinion() or not DistanceToTargetGreaterThan(2))" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_FearOfWolves_Shadowheart" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd10468c5g7870g4c30g90c6g87e4bae49c40" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hc591a7f3gaf8cg7139g914fg375f8c8b69cf" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hc591a7f3gaf8cg7139g914fg375f8c8b69cf" version="2" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1;BardicInspiration:1" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsHarmful;HasVerbalComponent" enumeration_type_name="SpellFlagList" version="1" />
         <field name="SpellSoundMagnitude" type="EnumerationTableFieldDefinition" value="Big" enumeration_type_name="SpellSoundMagnitude" version="1" />
         <field name="Sheathing" type="EnumerationTableFieldDefinition" value="Instrument" enumeration_type_name="SpellSheathing" version="1" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="9313094a-bae2-454f-9701-f920d0e8e98d,,;,,;6bac9e6f-c3c6-489f-8d39-2df012b3e40b,,;aec7ed45-2dec-4ee6-b5dc-6403a87a1aad,,;808fdfab-2e6c-472e-b3c4-19ce4a719d9d,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="425a1829-ba28-427f-a0e3-933ae51ac471" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_RangerDebuff_L1to3_01" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4845,7 +4846,7 @@
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="93413a4c-be52-4b5c-8b86-60ac22eb6572" />
-        <field name="Name" type="NameTableFieldDefinition" value="ConcordantChoir_3Action_Rank1" />
+        <field name="Name" type="NameTableFieldDefinition" value="ConcordantChoir_3Action_1" />
         <field name="Level" type="IntegerTableFieldDefinition" value="1" />
         <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_ConcordantChoir_Base" />
         <field name="AreaRadius" type="IntegerTableFieldDefinition" value="9" />
@@ -4853,31 +4854,34 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(2d4,Thunder,Magical);IF(IsCritical()):DealDamage(2d4,Thunder,Magical)" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not IsCritical()):DealDamage((2d4)/2,Thunder,Magical);" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="not Self()" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Illusion_Silence" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Thunder" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb8cb4994g2e7fg192cg0840g7e640c42e53f" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h58118d31g5cc2g8664ge381gfba5fc543d84" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(2d4,Thunder,Magical)" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Constitution" />
         <field name="TooltipOnSave" type="StringTableFieldDefinition" value="961753f4-c345-4bc4-b408-1d5b87a5ab0c" />
-        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Control_CommandHalt_L1to3" />
-        <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Control_CommandHalt_L1to3" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_Thunder_Thunderwave_L1to3_01" />
         <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:1" />
-        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="554a18f7-952e-494a-b301-7702a85d4bc9,,;,,;3e441d3f-11f9-432d-877c-c0ba4d92c74a,,;8b7ae969-2a04-4720-9685-3bde54c18ffe,,;22dfbbf4-f417-4c84-b39e-2039315961e6,,;,,;5bfbe9f9-4fc3-4f26-b112-43d404db6a89,,;,,;,," />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;5e7e63e1-0e69-46e7-ade7-fe3dadcc9184,,;e9ad50df-e7f1-43a0-b782-4c08f92b0f5a,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasVerbalComponent;HasSomaticComponent;IsSpell" enumeration_type_name="SpellFlagList" version="1" />
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="MagicalDamage_External" enumeration_type_name="HitAnimationType" version="1" />
         <field name="PowerLevel" type="IntegerTableFieldDefinition" value="1" />
-        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="17f11731-a1c7-4653-a15b-6c7f871574b3" />
-        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="28a8039d-9df1-4210-8137-f396dd23614e" />
-        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="6b316222-955e-4539-87eb-a098db22c98b" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="2af907e1-127c-4c83-a117-af18f211c59d" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="ee3c85ae-0078-4223-9345-c2594535d1f2" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="154802bd-3dae-4bdc-9889-4addfdc0ca57" />
         <field name="DamageType" type="EnumerationTableFieldDefinition" value="Thunder" enumeration_type_name="Damage Type" version="1" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Thunder_Gen_L1to3" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Loop_Damage_Thunder_Gen_L1to3" />
+        <field name="PositionEffect" type="GuidObjectTableFieldDefinition" value="326e77b8-3951-4507-b42a-838533b274e2" />
+        <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Evocation" enumeration_type_name="SpellSchool" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="f4cc1eee-618d-48e1-848e-914c0bba2bc9" />
-        <field name="Name" type="NameTableFieldDefinition" value="ConcordantChoir_3Action_Rank2" />
+        <field name="Name" type="NameTableFieldDefinition" value="ConcordantChoir_3Action_2" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="93413a4c-be52-4b5c-8b86-60ac22eb6572" />
         <field name="Level" type="IntegerTableFieldDefinition" value="2" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(4d4,Thunder,Magical);IF(IsCritical()):DealDamage(4d4,Thunder,Magical)" />
@@ -4905,7 +4909,7 @@
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="11c6994f-3c50-43a2-bfaf-ebb606da6fc0" />
-        <field name="Name" type="NameTableFieldDefinition" value="ConcordantChoir_3Action_Rank4" />
+        <field name="Name" type="NameTableFieldDefinition" value="ConcordantChoir_3Action_4" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="93413a4c-be52-4b5c-8b86-60ac22eb6572" />
         <field name="Level" type="IntegerTableFieldDefinition" value="4" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(8d4,Thunder,Magical);IF(IsCritical()):DealDamage(8d4,Thunder,Magical)" />
@@ -4919,7 +4923,7 @@
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="8740e026-1527-4780-bf08-42fe7028338a" />
-        <field name="Name" type="NameTableFieldDefinition" value="ConcordantChoir_3Action_Rank5" />
+        <field name="Name" type="NameTableFieldDefinition" value="ConcordantChoir_3Action_5" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="93413a4c-be52-4b5c-8b86-60ac22eb6572" />
         <field name="Level" type="IntegerTableFieldDefinition" value="5" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(10d4,Thunder,Magical);IF(IsCritical()):DealDamage(10d4,Thunder,Magical)" />
@@ -4933,7 +4937,7 @@
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="94b472f8-1bc7-4d8e-a783-a8d9871f0a95" />
-        <field name="Name" type="NameTableFieldDefinition" value="ConcordantChoir_3Action_Rank6" />
+        <field name="Name" type="NameTableFieldDefinition" value="ConcordantChoir_3Action_6" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="93413a4c-be52-4b5c-8b86-60ac22eb6572" />
         <field name="Level" type="IntegerTableFieldDefinition" value="6" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(12d4,Thunder,Magical);IF(IsCritical()):DealDamage(12d4,Thunder,Magical)" />

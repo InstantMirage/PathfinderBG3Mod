@@ -265,6 +265,31 @@ function EndMartialLingeringComposition()
 	return StatusId('COURAGE_LINGER_AURA') | StatusId('CourageForteAura2') | StatusId('CourageForteAura3') | StatusId('SongOfStrengthLingering') | StatusId('StrengthForteAura2') | StatusId('StrengthForteAura3') | StatusId('RallyingLingering') | StatusId('RallyingForteAura2') | StatusId('RallyingForteAura3')
 end
 
+function AdjacentToBeastMinion()
+    local distance = 2
+    local target = context.Target
+    local source = context.Source
+
+    local errorTrue = {ConditionError("HasAllyWithinRange", {ConditionErrorData.MakeFromNumber(distance, EErrorDataType.Distance)})}
+    local errorFalse = {ConditionError("HasNotAllyWithinRange", {ConditionErrorData.MakeFromNumber(distance, EErrorDataType.Distance)})}
+
+    local allies = GetAlliesWithinRange(distance, target, source)
+    if allies ~= nil then
+        for _, entity in ipairs(allies.Allies) do
+
+			-- must be a beast summoned by the caster
+            local isSummon = (GetSummoner(entity) == source)
+            local hasTag = Tagged('BEAST', entity)
+
+            if isSummon and hasTag.Result then
+                return ConditionResult(true, errorFalse, errorTrue)
+            end
+        end
+    end
+
+    return ConditionResult(false, errorFalse, errorTrue)
+end
+
 --Champion
 
 function RetributiveStrikeRange(observer,source)

@@ -20,6 +20,17 @@ DB_AlwaysCast_AD("Target_FreeDemoralize",(DIALOGRESOURCE)GLO_SpellVocalComponent
 DB_AlwaysCast_AD("Target_Demoralize",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Cast_6dafdccd-091d-c0f4-4543-1199bdcb46d6);
 DB_AlwaysCast_AD("Target_DemoralizePerformance",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Cast_6dafdccd-091d-c0f4-4543-1199bdcb46d6);
 
+DB_AlwaysPrepare_AD("Target_BlisteringInvective_Rank2",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Prepare_b523412d-1ea5-f3b0-ee9d-fa80cf72100a);
+DB_AlwaysCast_AD("Target_BlisteringInvective_Rank2",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Cast_6dafdccd-091d-c0f4-4543-1199bdcb46d6);
+DB_AlwaysPrepare_AD("Target_BlisteringInvective_Rank3",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Prepare_b523412d-1ea5-f3b0-ee9d-fa80cf72100a);
+DB_AlwaysCast_AD("Target_BlisteringInvective_Rank3",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Cast_6dafdccd-091d-c0f4-4543-1199bdcb46d6);
+DB_AlwaysPrepare_AD("Target_BlisteringInvective_Rank4",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Prepare_b523412d-1ea5-f3b0-ee9d-fa80cf72100a);
+DB_AlwaysCast_AD("Target_BlisteringInvective_Rank4",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Cast_6dafdccd-091d-c0f4-4543-1199bdcb46d6);
+DB_AlwaysPrepare_AD("Target_BlisteringInvective_Rank5",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Prepare_b523412d-1ea5-f3b0-ee9d-fa80cf72100a);
+DB_AlwaysCast_AD("Target_BlisteringInvective_Rank5",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Cast_6dafdccd-091d-c0f4-4543-1199bdcb46d6);
+DB_AlwaysPrepare_AD("Target_BlisteringInvective_Rank6",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Prepare_b523412d-1ea5-f3b0-ee9d-fa80cf72100a);
+DB_AlwaysCast_AD("Target_BlisteringInvective_Rank6",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Cast_6dafdccd-091d-c0f4-4543-1199bdcb46d6);
+
 DB_AlwaysCast_AD("Target_ShareRage",(DIALOGRESOURCE)GLO_SpellVocalComponent_ViciousMockery_Prepare_b523412d-1ea5-f3b0-ee9d-fa80cf72100a);
 
 DB_SendSpellToWildMagic_AD("Shout_DesperatePrayer","Shout_WildMagic_SorceryPoints");
@@ -30,6 +41,21 @@ DB_SendSpellToWildMagic_AD("CourageousAssault_Strike","Shout_WildMagic_Enchant")
 
 DB_SendStatusToWildMagic_AD("SHIELD_SPELL_BROKEN","Shout_WildMagic_TurnMagic");
 DB_SendStatusToWildMagic_AD("INTERRUPT_BARDIC_INSPIRATION_ATTACK","Shout_WildMagic_Enchant");
+
+DB_HarmAOESpells("Shout_HarmingFont_ThreeAction");
+DB_HarmAOESpells("Shout_HarmThreeAction_Rank_1");
+DB_HarmAOESpells("Shout_HarmThreeAction_Rank_2");
+DB_HarmAOESpells("Shout_HarmThreeAction_Rank_3");
+DB_HarmAOESpells("Shout_HarmThreeAction_Rank_4");
+DB_HarmAOESpells("Shout_HarmThreeAction_Rank_5");
+DB_HarmAOESpells("Shout_HarmThreeAction_Rank_6");
+DB_HarmAOESpells("Zone_DirectedChannelHarmFont");
+DB_HarmAOESpells("Zone_DirectedHarm1");
+DB_HarmAOESpells("Zone_DirectedHarm2");
+DB_HarmAOESpells("Zone_DirectedHarm3");
+DB_HarmAOESpells("Zone_DirectedHarm4");
+DB_HarmAOESpells("Zone_DirectedHarm5");
+DB_HarmAOESpells("Zone_DirectedHarm6");
 KBSECTION
 //REGION Voice barks
 
@@ -78,7 +104,18 @@ THEN
 PROC_WildMagic_TryAD(_Player,_AsSpell);
 
 //ReactionInterruptUsed((CHARACTER)_Player,_Interrupt, _)
-//To do: use Shout_WildMagic_Heal dialog for casting Harm with void healing
+
+//Void healing with Harm
+IF
+UsingSpell((CHARACTER)_Player,(STRING)_Spell,_,_,_)
+AND
+DB_IsOrWasInParty(_Player)
+AND
+IsTagged(_Player,(TAG)UNDEAD_33c625aa-6982-4c27-4f90-70e4a92940b1,1)
+AND
+DB_HarmAOESpells(_Spell)
+THEN
+PROC_WildMagic_TryAD(_Player,"Shout_WildMagic_Heal");
 
 //END_REGION
 EXITSECTION
