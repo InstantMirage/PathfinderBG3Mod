@@ -762,6 +762,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h527b8bbdgc061gb0d8g2d22g3120893c5b7f" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpellVariant(StrideCostSpellCheck(), ModifyTooltipDescription(), ModifyUseCosts(Add,ActionPoint,1,0))" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="StackId" type="StringTableFieldDefinition" value="MOVE_READY" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -775,7 +776,7 @@
         <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_IGNORE:ApplyStatus(STRIDE,100,1); AI_IGNORE:IF( not HasStatus('HASTE_ATTACK') ):UseActionResource(ActionPoint, 1); AI_IGNORE:IF( HasStatus('HASTE_ATTACK') ):UseActionResource(BonusActionPoint, 1);AI_IGNORE:RemoveStatus(HASTE_ATTACK);AI_IGNORE:RemoveStatus(HASTE_ATTACK_EMERGENCY);" />
         <field name="ApplyEffect" type="GuidObjectTableFieldDefinition" value="806a170b-c567-4481-bb56-56871d8aaf5f" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h949fb654g7918gdb83g6bd2g04ea7a72811a" version="1" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h949fb654g7918gdb83g6bd2g04ea7a72811a" version="2" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1051,7 +1052,6 @@
         <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:ApplyStatus(CircumstancePenalty2Attack,100,1)" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="9d0c4b8e-4d02-4828-8bf0-b9953f97c4cd" />
         <field name="Boosts" type="StringTableFieldDefinition" value="Tag(CIRC_PEN_2ATTACK)" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h112772bdg3010gc7cfgdb6dg29bd8bb0348b" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1404,7 +1404,6 @@
         <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="IF(not Combat(context.Source)):RemoveStatus(SG_Rage)" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="UnavailableInActiveRoll" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="DynamicAnimationTag" type="GuidObjectTableFieldDefinition" value="b6aa23c3-c96d-42d5-8ffa-8d441d18faa7" />
-        <field name="TooltipPermanentWarnings" type="StringTableFieldDefinition" value="5b0c1209-0e18-49a0-bec6-df484d977300" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1467,7 +1466,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="RAGE_FURY" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="855fb809-8a50-44a1-98fc-911b67ed0f33" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(FuryRageDamage)" />
-        <field name="Passives" type="StringTableFieldDefinition" value="FuryRageBoosts;Rage_Attack;Rage_Damaged;Rage_NoHeavyArmour_VFX" />
+        <field name="Passives" type="StringTableFieldDefinition" value="FuryRageBoosts" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="f4a46a83-330f-4725-afdb-da710283d888" />
         <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);Attribute(ForceMainhandAlternativeEquipBones);IF(SpellId('Target_FuriousFinish')):CharacterWeaponDamage(RAGE_FURY.Duration);" />
       </fields>
@@ -1487,7 +1486,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="3efbe526-935d-4dd6-b000-77e2d4871621" />
         <field name="Name" type="NameTableFieldDefinition" value="RAGE_SPIRIT" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="5ddd5aab-f78f-4105-82af-67a78c79e44f" />
-        <field name="Passives" type="StringTableFieldDefinition" value="SpiritRageBoosts;Rage_Attack;Rage_Damaged;Rage_NoHeavyArmour_VFX" />
+        <field name="Passives" type="StringTableFieldDefinition" value="SpiritRageBoosts" />
         <field name="ApplyEffect" type="GuidObjectTableFieldDefinition" value="d8ea7a73-027c-4472-b638-2b939d384900" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="30fd26c7-1a1e-4328-9a9a-38c0f55be597" />
         <field name="Boosts" type="StringTableFieldDefinition" value="Tag(VFX_RAGE);Attribute(ForceMainhandAlternativeEquipBones);IF(SpellId('Target_FuriousFinish')):CharacterWeaponDamage(RAGE_SPIRIT.Duration);" />
@@ -1517,7 +1516,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="dae4133a-8046-4ce8-ab6e-a74e89b0f37d" />
         <field name="Name" type="NameTableFieldDefinition" value="RageTempHp" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="b2e93fcb-6b73-4d36-99db-95877cd658d5" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h80931f66gff40g6ef7g0c81g2fa9440d3918" version="1" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h80931f66gff40g6ef7g0c81g2fa9440d3918" version="2" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="2+ConstitutionModifier" />
         <field name="Boosts" type="StringTableFieldDefinition" value="TemporaryHP(2+ConstitutionModifier)" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnDamage;OnCombatEnded;OnStatusRemoved" enumeration_type_name="StatusEvent" version="1" />
@@ -1580,7 +1579,7 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="1ae3ceb3-123c-4ca8-99e6-2fb7f7305978" />
         <field name="Name" type="NameTableFieldDefinition" value="RenewedVigorTemp" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h378ef27cg0b0bg748agda18g9c6e3cf1dea8" version="1" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h378ef27cg0b0bg748agda18g9c6e3cf1dea8" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="statIcons_MAG_TemporaryHP" />
         <field name="StackId" type="StringTableFieldDefinition" value="TEMPORARY_HP" />
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="10" />
@@ -1632,10 +1631,12 @@
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="55873eaa-a9e4-49fa-b30d-21264dbab049" />
-        <field name="Name" type="NameTableFieldDefinition" value="MightyRageStatus" />
+        <field name="Name" type="NameTableFieldDefinition" value="MightyRage" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnAttack" enumeration_type_name="StatusEvent" version="1" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h34546ca6g269agb9b3gef42gc20b39c6668f" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h34546ca6g269agb9b3gef42gc20b39c6668f" version="2" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd0668a04g1fcag44e4gd62egd2d122f701cc" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_RelentlessRage" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1645,6 +1646,45 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="edfc1b15-79f6-47cf-bd4f-ef9719cb9fe0" />
         <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="RemoveStatus(SNEAKING);RemoveStatus(SLEEP);RemoveStatus(SLEEPING);Force(1.5);RemoveStatus(SG_Sleeping);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h580e5fe3gf318gf5edg848agcc5fe40a84e3" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="663bf12f-7007-4a3a-aab2-85c1748fc253" />
+        <field name="Name" type="NameTableFieldDefinition" value="RAGING_RESIST_BLD" />
+        <field name="Owner" type="CommentTableFieldDefinition" value="Input stack status" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h7250de31g6320g3a8dg5b97g1f626b956bdb" version="1" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not HasStatus('SG_Rage')" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnStatusRemoved" enumeration_type_name="StatusEvent" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;DisablePortraitIndicator;FreezeDuration" enumeration_type_name="StatusPropertyFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="5f7f4734-b4d0-49ff-9f3b-9bf0e065f416" />
+        <field name="Name" type="NameTableFieldDefinition" value="RAGING_RESIST_SLA" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="663bf12f-7007-4a3a-aab2-85c1748fc253" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="326e05c3-665d-4937-a07e-276358fca6d4" />
+        <field name="Name" type="NameTableFieldDefinition" value="RAGING_RESIST_PRC" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="663bf12f-7007-4a3a-aab2-85c1748fc253" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="56188d02-3c5b-4804-9deb-0b2b381e3c2e" />
+        <field name="Name" type="NameTableFieldDefinition" value="RAGING_RESIST_FIR" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="663bf12f-7007-4a3a-aab2-85c1748fc253" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="96375401-d081-4464-9cf9-5d574edec6a7" />
+        <field name="Name" type="NameTableFieldDefinition" value="RAGING_RESIST_NEC" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="663bf12f-7007-4a3a-aab2-85c1748fc253" />
       </fields>
     </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">
@@ -3331,6 +3371,18 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h492b3e24g6449g06f7gefdag3e95cf6dec21" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hc409954bg236dg6cb1g6dcfg6eca38c1ddc1" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="IgnoreLeaveAttackRange();ActionResource(Movement,15,0);IF(HasPassive('Mobile_DashAcrossDifficultTerrain', context.Source)):StatusImmunity(DIFFICULT_TERRAIN);IF(HasPassive('Mobile_DashAcrossDifficultTerrain', context.Source)):StatusImmunity(DIFFICULT_TERRAIN_MUD);IF(HasPassive('Mobile_DashAcrossDifficultTerrain', context.Source)):StatusImmunity(DIFFICULT_TERRAIN_VINES)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="dbe3924f-f1b9-4df9-94ee-3c81aa7dfc60" />
+        <field name="Name" type="NameTableFieldDefinition" value="TACTICAL_ENTRY" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="a091efc6-119b-469d-bd80-a54771175ec2" />
+        <field name="StackId" type="StringTableFieldDefinition" value="MOVE_READY" />
+        <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IgnoreLeaveAttackRange()" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnAttack;OnSpellCast" enumeration_type_name="StatusEvent" version="1" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="a9fea626-0c13-4cea-a947-954f7084dbf7" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5455,6 +5507,7 @@
         <field name="TickType" type="EnumerationTableFieldDefinition" value="StartTurn" enumeration_type_name="TickType" version="1" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnTurn" enumeration_type_name="StatusEvent" version="1" />
         <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:ApplyStatus(AI_HELPER_MAGEARMOR)" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="TickingWithSource" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5466,7 +5519,7 @@
         <field name="StackId" type="StringTableFieldDefinition" value="ALL_RESIST_OUTPUT" />
         <field name="Boosts" type="StringTableFieldDefinition" value="DamageReduction(All,Flat,ALL_RESIST_OUTPUT.Duration)" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="None" enumeration_type_name="StatusEvent" version="1" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="FreezeDuration" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="FreezeDuration;DisableOverhead;DisableCombatlog" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5487,7 +5540,7 @@
         <field name="StackId" type="StringTableFieldDefinition" value="ALL_RESIST_OUTPUT" />
         <field name="Boosts" type="StringTableFieldDefinition" value="DamageTakenBonus(ALL_WEAK_OUTPUT.Duration)" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="None" enumeration_type_name="StatusEvent" version="1" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="FreezeDuration" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="FreezeDuration;DisableOverhead;DisableCombatlog" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5496,7 +5549,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="BLD_RESIST_INPUT" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="abaa1066-3bd7-40c2-a00e-439b78a6e935" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he0330b6dga41ag99c0gfe71g284349c62a85" version="1" />
-        <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Physical" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_MagicItem_BludgeonTheWeak" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5504,7 +5557,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="0fbe4e03-daff-4fea-abf6-63af4dd41ad8" />
         <field name="Name" type="NameTableFieldDefinition" value="BLD_RESIST_OUTPUT" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="5955b4be-e0a3-4cdf-bf42-83fb55e5aa24" />
-        <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Physical" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_MagicItem_BludgeonTheWeak" />
         <field name="StackId" type="StringTableFieldDefinition" value="BLD_RESIST_OUTPUT" />
         <field name="Boosts" type="StringTableFieldDefinition" value="DamageReduction(Bludgeoning,Flat,BLD_RESIST_OUTPUT.Duration)" />
       </fields>
@@ -5515,7 +5568,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="BLD_WEAK_INPUT" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="840f8ce5-ce5e-4482-991e-6351115450ee" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2ac7ba3dg7503g87e3g274ag0911068ab01c" version="1" />
-        <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Physical" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_MagicItem_BludgeonTheWeak" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5523,7 +5576,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="1f6ccd08-9114-4301-aa27-482e8cd927e0" />
         <field name="Name" type="NameTableFieldDefinition" value="BLD_WEAK_OUTPUT" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="15631fba-f1f8-4481-ba6d-f101488f59b2" />
-        <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Physical" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_MagicItem_BludgeonTheWeak" />
         <field name="StackId" type="StringTableFieldDefinition" value="BLD_RESIST_OUTPUT" />
         <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsDamageTypeBludgeoning()):DamageTakenBonus(BLD_WEAK_OUTPUT.Duration,Bludgeoning,false)" />
       </fields>
@@ -5534,7 +5587,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="SLA_RESIST_INPUT" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="abaa1066-3bd7-40c2-a00e-439b78a6e935" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h640a3e7ag105agdcacg076bg27225948566a" version="1" />
-        <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Physical" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_MagicItem_SlashTheWeak" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5542,7 +5595,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="4c08d8cb-c016-4121-9109-eac9349358f5" />
         <field name="Name" type="NameTableFieldDefinition" value="SLA_RESIST_OUTPUT" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="5955b4be-e0a3-4cdf-bf42-83fb55e5aa24" />
-        <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Physical" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_MagicItem_SlashTheWeak" />
         <field name="StackId" type="StringTableFieldDefinition" value="SLA_RESIST_OUTPUT" />
         <field name="Boosts" type="StringTableFieldDefinition" value="DamageReduction(Slashing,Flat,SLA_RESIST_OUTPUT.Duration)" />
       </fields>
@@ -5553,7 +5606,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="SLA_WEAK_INPUT" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="840f8ce5-ce5e-4482-991e-6351115450ee" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hffd5c6f6ged45g5180g9f4cgd2c49ec530eb" version="1" />
-        <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Physical" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_MagicItem_SlashTheWeak" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5561,7 +5614,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="8e8290e7-be9c-472c-a18d-39dbda4350a7" />
         <field name="Name" type="NameTableFieldDefinition" value="SLA_WEAK_OUTPUT" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="15631fba-f1f8-4481-ba6d-f101488f59b2" />
-        <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Physical" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_MagicItem_SlashTheWeak" />
         <field name="StackId" type="StringTableFieldDefinition" value="SLA_RESIST_OUTPUT" />
         <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsDamageTypeSlashing()):DamageTakenBonus(SLA_WEAK_OUTPUT.Duration,Slashing,false)" />
       </fields>
@@ -5572,7 +5625,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="PRC_RESIST_INPUT" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="abaa1066-3bd7-40c2-a00e-439b78a6e935" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h077ec519g012bga3b7gb8a6g6af033748434" version="1" />
-        <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Physical" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_MagicItem_PierceTheWeak" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5580,7 +5633,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="2a4f4cb3-c8ad-4458-8929-47dd82f347ca" />
         <field name="Name" type="NameTableFieldDefinition" value="PRC_RESIST_OUTPUT" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="5955b4be-e0a3-4cdf-bf42-83fb55e5aa24" />
-        <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Physical" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_MagicItem_PierceTheWeak" />
         <field name="StackId" type="StringTableFieldDefinition" value="PRC_RESIST_OUTPUT" />
         <field name="Boosts" type="StringTableFieldDefinition" value="DamageReduction(Piercing,Flat,PRC_RESIST_OUTPUT.Duration)" />
       </fields>
@@ -5591,7 +5644,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="PRC_WEAK_INPUT" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="840f8ce5-ce5e-4482-991e-6351115450ee" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hfcc86eecg811ega9a1gedecga4d93d1c390b" version="1" />
-        <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Physical" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_MagicItem_PierceTheWeak" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5599,7 +5652,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="229ab349-c5db-4912-b797-32ca404ed0d8" />
         <field name="Name" type="NameTableFieldDefinition" value="PRC_WEAK_OUTPUT" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="15631fba-f1f8-4481-ba6d-f101488f59b2" />
-        <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Physical" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_MagicItem_PierceTheWeak" />
         <field name="StackId" type="StringTableFieldDefinition" value="PRC_WEAK_OUTPUT" />
         <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsDamageTypePiercing()):DamageTakenBonus(PRC_WEAK_OUTPUT.Duration,Piercing,false)" />
       </fields>
@@ -5990,6 +6043,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="BLADE_WARD" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="9f896acd-ca6f-4554-a39a-1a5a360a2bc3" />
         <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+        <field name="Owner" type="CommentTableFieldDefinition" value="These statuses are either scripted input statuses or give a passive (if it can only be obtained by a monster)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5997,7 +6051,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="db5a5c8d-ea55-4d8c-bb22-14c7d57f1804" />
         <field name="Name" type="NameTableFieldDefinition" value="CHILLED" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="908846b1-38f2-47aa-b213-3665db5f0fc5" />
-        <field name="Boosts" type="StringTableFieldDefinition" value=";Resistance(Cold, Vulnerable)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6005,7 +6059,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="d5076ecd-5633-4838-8508-cba79dad6866" />
         <field name="Name" type="NameTableFieldDefinition" value="WET" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="986b9c68-6251-4e2e-8d8f-80ea2a08f20f" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="StatusImmunity(SG_Burning);StatusImmunity(WILD_MAGIC_BURNING);Resistance(Lightning, Vulnerable);Resistance(Cold, Vulnerable)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="StatusImmunity(SG_Burning);StatusImmunity(WILD_MAGIC_BURNING)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6117,6 +6171,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="46791fb6-d1d0-4525-aa72-40bc24e90c0a" />
         <field name="Name" type="NameTableFieldDefinition" value="DIGESTIVE_SAP" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="88f42d01-0645-4216-b704-1891f783b84f" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6264,6 +6319,447 @@
         <field name="UUID" type="IdTableFieldDefinition" value="fd6f64b3-ee0b-43a4-b719-a90d67ffa949" />
         <field name="Name" type="NameTableFieldDefinition" value="HAG_MASKOFREGRET" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="36860ec4-8f3d-4c3e-9331-b4ff22eb0f5c" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="affd7626-d56f-4961-ab49-550c7d529a47" />
+        <field name="Name" type="NameTableFieldDefinition" value="SHA_NECROMANCER_UNDEADWARD" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="823352af-b175-4197-a9ac-8a7bc42b4148" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+        <field name="Passives" type="StringTableFieldDefinition" value="BldResist_5;SlaResist_5;PrcResist_5" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="1a63b63e-a993-4d58-b58c-03d1e9cd9d75" />
+        <field name="Name" type="NameTableFieldDefinition" value="SHA_SKELETON_WITHERING_MARK" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="559f44c9-f31e-4308-80fb-316142a6c5f9" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="StatusImmunity(NEC_RESIST_OUTPUT)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="3c4f5132-8973-4985-9c59-5cb96f4fdb26" />
+        <field name="Name" type="NameTableFieldDefinition" value="HAV_SELUNEOINTMENT" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="71028878-86b2-4014-b3ac-e68e446709b3" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(ACT2_SELUNEOINTMENTAPPLIED)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="569b1c4d-3c08-4847-b3c7-c16049fec2b7" />
+        <field name="Name" type="NameTableFieldDefinition" value="TWN_DISTILLERY_RESISTANCE_ACID" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="fa83c05a-8e39-4438-a2f9-28a0ec04a385" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="9c37cd96-1204-47b9-b95f-2d67bb38b350" />
+        <field name="Name" type="NameTableFieldDefinition" value="TWN_DISTILLERY_RESISTANCE_COLD" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="06129161-c237-4116-bac8-509b20c178f6" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="d8b9721b-63ce-4714-9151-ca8de269634c" />
+        <field name="Name" type="NameTableFieldDefinition" value="TWN_DISTILLERY_RESISTANCE_FIRE" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="83cac205-4105-40f1-894d-2653fe2034e9" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="194d9cbc-7eb6-4e38-bfaa-4f105259b887" />
+        <field name="Name" type="NameTableFieldDefinition" value="TWN_DISTILLERY_RESISTANCE_LIGHTNING" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="cf48d898-50ea-4cb8-86ac-ec7c011a4023" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="65f2a6ad-c23e-4e13-8d2e-c1cc44cae74e" />
+        <field name="Name" type="NameTableFieldDefinition" value="TWN_DISTILLERY_RESISTANCE_POISON" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="a8821a29-9ccd-4057-a717-0e6fdb98df48" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="9e0b16d6-1efd-47df-9760-404b9b837a20" />
+        <field name="Name" type="NameTableFieldDefinition" value="SHA_NECROMANCER_FLESH_BERSERK" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="ba782ee3-9673-46ec-a928-aad960b62467" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="AiArchetypeOverride(madness,99);Advantage(Ability, Strength); Advantage(SavingThrow, Strength); DamageBonus(1d8)" />
+        <field name="Passives" type="StringTableFieldDefinition" value="BldResist_10;SlaResist_10;PrcResist_10" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="689d118e-025f-48c0-ad35-d7cfbf1eb085" />
+        <field name="Name" type="NameTableFieldDefinition" value="MOO_KETHERIC_APOSTLEFORM_HARDCORE" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="c889fba5-8cf7-40e8-bb82-6c20e39c0adb" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IncreaseMaxHP(50%);Ability(Charisma, 2);" />
+        <field name="Passives" type="StringTableFieldDefinition" value="SlaResist_10;PrcResist_10;ConsumeTheFaithful_Hardcore;ARM_MagicalPlate_2_Passive" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="584af75a-64cd-46cf-b70a-04bbb27e7be9" />
+        <field name="Name" type="NameTableFieldDefinition" value="SHA_ALTAR_BUFF" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="dfd0cff9-19cb-4530-8fcb-1c1076bd8f0d" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="eb52efa0-6c03-4720-a1bb-a06462e07d57" />
+        <field name="Name" type="NameTableFieldDefinition" value="COL_MYRKULITE_BLESSING" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="a775bba2-391a-4627-86c1-ae3f1dbb655f" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="TemporaryHP(10);CharacterWeaponDamage(1d4, Necrotic)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="545e789e-6168-4358-973f-954b8dde5738" />
+        <field name="Name" type="NameTableFieldDefinition" value="CRE_MINDSTEAL_LINK_TARGET" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="afd9688a-a354-4f64-83dd-e45195952b04" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(OFF_GUARD)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="0d5872ed-92c2-4e62-951c-0ed252583618" />
+        <field name="Name" type="NameTableFieldDefinition" value="CRE_HATCHERY_GAS_NEGATIVE" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="1dd76525-efb2-45f3-bd09-26a7d5bac71f" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="d0ae72ea-d055-4c64-b417-b7f022de3c41" />
+        <field name="Name" type="NameTableFieldDefinition" value="CRE_HATCHERY_GAS_POSITIVE" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="331e2315-2c2a-4394-9e2e-00a74dffbdca" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="71f37d87-b523-42ef-815f-7ba8ffa607b5" />
+        <field name="Name" type="NameTableFieldDefinition" value="COL_RESONANCESTONE_BUFF" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="bb4e4ecd-dfcb-470b-93cb-0232021804df" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Advantage(Ability, Strength);Advantage(Ability, Constitution);Advantage(Ability, Dexterity);Tag(STAT_PEN_2WILL)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="ccc11a41-75fc-4a94-9312-d15302ee283e" />
+        <field name="Name" type="NameTableFieldDefinition" value="LOW_HOUSEOFHOPE_FIRE" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="1f113af2-a992-4c09-8bd6-4fca3b904ded" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="1346c5c2-8f08-4a98-8c38-f313fb8882ba" />
+        <field name="Name" type="NameTableFieldDefinition" value="LOW_RISENSKELETON_MYRKULVEIL" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="346fce6c-daba-4bad-9421-c1d14a518f46" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+        <field name="Passives" type="StringTableFieldDefinition" value="GhostResist_5" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="ed669e76-eff3-4ac0-a238-cdaa58e9f6e7" />
+        <field name="Name" type="NameTableFieldDefinition" value="LOW_RISENSKELETON_UNDEAD_PRESENCE" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="60778d6a-02b1-4b11-b03b-00c4d5ff2140" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+        <field name="Passives" type="StringTableFieldDefinition" value="BldResist_5;SlaResist_5;PrcResist_5" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="3d897a02-82f1-4cdc-a7bc-c308dd1259f7" />
+        <field name="Name" type="NameTableFieldDefinition" value="LOW_RAMAZITHSTOWER_NIGHTSONG_BLESSING" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="4c92cd4f-9892-4eda-83e4-c19da85d9baa" />
+        <field name="Passives" type="StringTableFieldDefinition" value="CldResist_5;FirResist_5;LgtResist_5" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="301bf562-4cf1-451d-ae54-8a6fe192b0bc" />
+        <field name="Name" type="NameTableFieldDefinition" value="INT_ORPHEUS_PROTECTION_AURA" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="d099f326-9226-4f2c-ac30-e09f67061dc0" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="RollBonus(SavingThrow,3,Intelligence);RollBonus(SavingThrow,3,Wisdom);RollBonus(SavingThrow,3,Charisma);" />
+        <field name="Passives" type="StringTableFieldDefinition" value="PsyResist_5" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="bec02909-4636-4a55-9d37-08d04beae530" />
+        <field name="Name" type="NameTableFieldDefinition" value="INT_ORPHEUS_PROTECTION" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="62b4886b-e91a-4358-8e91-ae95ddda53c0" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="RollBonus(SavingThrow,3,Intelligence);RollBonus(SavingThrow,3,Wisdom);RollBonus(SavingThrow,3,Charisma);" />
+        <field name="Passives" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2ff1915c-7e2b-4287-9034-549ade2c751c" />
+        <field name="Name" type="NameTableFieldDefinition" value="END_BOOOALALLY_BUFF" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="05e5d797-9de6-4a5a-ba97-da71fa03d5b0" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+        <field name="Passives" type="StringTableFieldDefinition" value="BldResist_10;SlaResist_10;PrcResist_10;END_ServantOfBoooal" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="4f94616a-6a9c-4121-9f33-bf0d9d7d1f66" />
+        <field name="Name" type="NameTableFieldDefinition" value="GLO_CAZADOR_HARDCORE" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="c0af5984-e318-4227-8180-0198696c6313" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Ability(Dexterity, 2); IncreaseMaxHP(20%); Resistance(Slashing, ImmuneToNonMagical); Resistance(Piercing, ImmuneToNonMagical); Resistance(Bludgeoning, ImmuneToNonMagical); " />
+        <field name="Passives" type="StringTableFieldDefinition" value="BldResist_10;SlaResist_10;PrcResist_10" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="c9c21f2b-67bc-4e0c-853f-c71c4ed00c71" />
+        <field name="Name" type="NameTableFieldDefinition" value="UND_BULETTE_HARDCORE" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="a3003c93-1f08-4090-9b5e-5384e4b33673" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Resistance(Slashing,ResistantToNonMagical);Resistance(Piercing,ResistantToNonMagical);Resistance(Bludgeoning,ResistantToNonMagical)" />
+        <field name="Passives" type="StringTableFieldDefinition" value="AciResist_10;" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2ae29a17-26f5-490b-8eeb-feebccfd5080" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_LEGENDARY_CHROMATIC_ATTUNEMENT_COLD" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="f2c20d77-f1cb-48f4-b363-472360bf861c" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(SpellDamageTypeIs(DamageType.Cold)):DamageBonus(ProficiencyBonus, Cold, false);UnlockSpell(Zone_MAG_Legendary_Chromatic_ConeOfCold);UnlockSpell(Target_MAG_Legendary_Chromatic_IceStorm)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="bbea4a71-c7a6-4d8d-853e-ccd5ca12aae2" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_LEGENDARY_CHROMATIC_ATTUNEMENT_LIGHTNING" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="5b89e949-832b-49d9-ba8c-ab9def3820cf" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(SpellDamageTypeIs(DamageType.Lightning)):DamageBonus(ProficiencyBonus, Lightning, false);UnlockSpell(Projectile_MAG_Legendary_Chromatic_ChainLightning);UnlockSpell(Zone_MAG_Legendary_Chromatic_LightningBolt)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="ef3bb65b-32d4-45c8-b454-b6f1d6bf6a62" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_LEGENDARY_CHROMATIC_ATTUNEMENT_FIRE" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="54ce576a-bb26-4e73-bbe1-ee23ae63b7da" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(SpellDamageTypeIs(DamageType.Fire)):DamageBonus(ProficiencyBonus, Fire, false);UnlockSpell(Projectile_MAG_Legendary_Chromatic_Fireball);UnlockSpell(Wall_MAG_Legendary_Chromatic_WallOfFire)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="bca97f38-5b39-4fb1-ab17-349c7fca6040" />
+        <field name="Name" type="NameTableFieldDefinition" value="WYR_POTENTDRINK_DETECT_THOUGHTS" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="3d92d7b3-a9ae-4d17-a859-83f067bcae0e" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(DETECTTHOUGHTS)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="bc7c8722-a296-423f-9a43-21ce84be520e" />
+        <field name="Name" type="NameTableFieldDefinition" value="WYR_GORTASH_SHIELD_DEBUFF" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="2dde7ac2-2d1a-4f76-926e-83c171b6a0fd" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="386ceb6b-3cfb-44b0-b271-eb27034bfbcd" />
+        <field name="Name" type="NameTableFieldDefinition" value="WYR_GORTASH_SHIELD_BUFF_TACTICIAN" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="294d71c2-ada1-4570-bcdc-50715f892476" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(BonusActionPoint,1,0); ActionResource(Movement,3,0);  Resistance(Fire, Immune); Resistance(Cold, Resistant); Resistance(Thunder, Immune)" />
+        <field name="Passives" type="StringTableFieldDefinition" value="BldResist_10;SlaResist_10;PrcResist_10;CldResist_10;LgtResist_10;PoiResist_10;RadResist_10;NecResist_10" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="380c5512-132a-42c9-a9db-3517aecc18fb" />
+        <field name="Name" type="NameTableFieldDefinition" value="WYR_GORTASH_SHIELD_BUFF" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="998ef974-0d9a-4a88-850b-a15c76a9744d" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(BonusActionPoint,1,0); ActionResource(Movement,3,0); Resistance(Fire, Immune); Resistance(Thunder, Immune)" />
+        <field name="Passives" type="StringTableFieldDefinition" value="BldResist_5;SlaResist_5;PrcResist_5;CldResist_5;LgtResist_5;PoiResist_5;RadResist_5;NecResist_5" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="82232d5c-36c8-47f7-b382-2ba61e5990e0" />
+        <field name="Name" type="NameTableFieldDefinition" value="POTION_OF_THE_GIANT" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="0aeeb4a6-1f18-4dc2-bca5-2ab328a48824" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Advantage(Ability, Strength); Advantage(SavingThrow, Strength);CharacterWeaponDamage(1d4);ObjectSize(+1);ScaleMultiplier(1.33);CharacterUnarmedDamage(1d4)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="be3cf7b1-81da-4e12-b649-03e496190138" />
+        <field name="Name" type="NameTableFieldDefinition" value="POTION_OF_BRAVERY" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="9c9ca5fb-d5dc-46d3-b8d1-5137d3c30f76" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="StatusImmunity(SG_Frightened);TemporaryHP(0+MaxHP);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="e2c8481b-ce51-4efd-a61d-67a549cee854" />
+        <field name="Name" type="NameTableFieldDefinition" value="WATER_LAYER_PROTECTION" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="7c524016-4e66-4901-9ee5-16e65df665c7" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="AC(2);RollBonus(SavingThrow, 2);StatusImmunity(BURNING)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="35615478-97bf-46e3-bcc8-fd1f92848fc7" />
+        <field name="Name" type="NameTableFieldDefinition" value="WYR_ALIORAMUS_MATINGPHEROMONES" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="fd518f56-c5b9-4b94-ae8b-fc31228d44db" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="StatusImmunity(SG_Frightened);StatusImmunity(SG_Charmed);DamageBonus(5)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="75bf954a-ae69-4fe3-aed0-2ec2fddb659b" />
+        <field name="Name" type="NameTableFieldDefinition" value="AURA_OF_MURDER_BUFF" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="46c93657-b7e6-4168-a045-cdd60298775b" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="8c00a2c7-0f3b-4852-9170-9b97cdb1ed59" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_MYRKULITES_UNDEAD_PRESENCE_BUFF" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="8da23ba9-49e3-42e5-97e0-62b00decc07e" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="a0681955-9714-4d46-92a6-43c7d7acc4db" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_POISON_POISON_LETHALITY" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="a76c36c5-e8f3-488f-a296-4ceb36c5ace2" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="9dd60e83-e7a2-4f3d-b0b0-94c0bf843c23" />
+        <field name="Name" type="NameTableFieldDefinition" value="MOO_BLOODPOTION_DRAGONBORN_POISON" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="b9a38c35-def0-43e0-bb0f-aeef70a401f6" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="b3186ba7-7da5-41b5-87d1-90a340d82794" />
+        <field name="Name" type="NameTableFieldDefinition" value="MOO_BLOODPOTION_DRAGONBORN_ACID" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="917227bb-ac4d-4a23-8643-27463c1ee3d8" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="4fb81556-cd07-468c-883a-e38bc034436f" />
+        <field name="Name" type="NameTableFieldDefinition" value="MOO_BLOODPOTION_DRAGONBORN_LIGHTNING" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="c7e631a0-eec8-471d-aac3-d0a898bd7fdd" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="0fbe9fb8-1539-472b-a667-3e77ab305d17" />
+        <field name="Name" type="NameTableFieldDefinition" value="MOO_BLOODPOTION_DRAGONBORN_ICE" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="ba0a0d48-d13b-4e51-9781-11af603253ed" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="cde4f167-e419-48b5-877a-b896aa697e6a" />
+        <field name="Name" type="NameTableFieldDefinition" value="MOO_BLOODPOTION_DRAGONBORN_FIRE" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="6c82a9a3-60ea-452e-a9b4-139b9a2804f6" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="f2cd25ea-0de3-4268-bcad-c1c5cff27bb1" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_GISH_PIERCING_VULNERABILITY" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="b955bb05-1ccd-463a-988d-fa33e35a67e8" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="ec827c37-0177-4488-a03a-9463eca296ba" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_GISH_SLASHING_VULNERABILITY" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="5dbfcede-91a8-4bd2-b734-a855eb00139b" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="1188c0fe-3396-48be-b523-ff41180964c5" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_ZHENTARIM_DEMONSPIRIT" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="d1fc4a5c-6a03-4209-8b2a-ae1048f2480a" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+        <field name="Passives" type="StringTableFieldDefinition" value="GhostResist_5" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="bc48b6ea-84b3-459c-b1c6-26df0067c16c" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_GISH_BLUDGEONING_VULNERABILITY" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="c9f4a9a5-d46b-4a76-8e7f-26e832083fe6" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="6c3912da-8b9a-4f30-a229-0cfe538a3140" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_LEGENDARY_CHROMATIC_ATTUNEMENT_THUNDER" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="96e8947d-ee4c-4cbf-a710-ac7e9d7a0f57" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(SpellDamageTypeIs(DamageType.Thunder)):DamageBonus(ProficiencyBonus, Thunder, false);UnlockSpell(Target_MAG_Legendary_Chromatic_Shatter);UnlockSpell(Shout_MAG_Legendary_Chromatic_DestructiveWave)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="4a45361d-38f2-4558-b0e6-c7e77c816bc0" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_LEGENDARY_CHROMATIC_ATTUNEMENT_POISON" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="4417bf92-5ff1-44a7-81ea-b0e16200bec9" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(SpellDamageTypeIs(DamageType.Poison)):DamageBonus(ProficiencyBonus, Poison, false);UnlockSpell(Target_MAG_Legendary_Chromatic_CloudKill);UnlockSpell(Projectile_MAG_Legendary_Chromatic_RayOfSickness)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="a6361761-0dbd-4e18-9381-061e9f333fe8" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_LEGENDARY_CHROMATIC_ATTUNEMENT_ACID" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="b892c65c-f2d6-405c-a638-bd441894702d" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(SpellDamageTypeIs(DamageType.Acid)):DamageBonus(ProficiencyBonus, Acid, false);UnlockSpell(Target_MAG_Legendary_Chromatic_HungerOfHadar);UnlockSpell(Projectile_MAG_Legendary_Chromatic_MelfAcidArrow)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="545bd094-5eab-4970-9d74-52c745fb5423" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_CONSTRUCT_MODE" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="7c40cab3-485c-4c8f-87e7-e50347b8449d" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(CONSTRUCT);Tag(STAT_BON_2ATTACK);UnlockSpell(Shout_MAG_Dismiss_CircuitryInterface)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="3722311a-5db6-4974-9662-994e45ae3fb6" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_BLADE_WARD" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="d57bafcc-50b8-40aa-b3bf-8cd6718233e1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="0d3070be-e9c6-4273-809b-c05836209801" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_MONK_MOUNTAIN_BLADE_WARD" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="281480ec-7797-4920-a5cf-f5d5efa3eeec" />
+        <field name="Boosts" type="StringTableFieldDefinition" value=";" />
       </fields>
     </stat_object>
   </stat_objects>

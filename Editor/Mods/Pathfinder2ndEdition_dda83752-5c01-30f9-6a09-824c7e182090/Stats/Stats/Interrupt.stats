@@ -65,7 +65,7 @@
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(Shield_Sturdy)" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ShieldMaster_Block" />
         <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsAttack() and IsHit();" />
-        <field name="Properties" type="StringTableFieldDefinition" value="IF(not HasPassive('BlessedShield',context.Source)):AdjustRoll(-LevelMapValue(Shield_Sturdy));IF(HasPassive('BlessedShield',context.Source)):AdjustRoll(-LevelMapValue(Shield_Sturdy)-3);" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(-LevelMapValue(Shield_Sturdy)); IF(HasPassive('BlessedShield',context.Observer)):AdjustRoll(-3); IF(HasStatus('EmblazonShieldStatus',context.Observer)):AdjustRoll(-1);" />
         <field name="EnableCondition" type="StringTableFieldDefinition" value="HasStatus('RAISE_SHIELD') or HasStatus('RAISE_SHIELD_SPIRIT') or HasStatus('ParagonShield')" />
       </fields>
     </stat_object>
@@ -991,7 +991,7 @@
         <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll" enumeration_type_name="InterruptContext" version="1" />
         <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Nearby" enumeration_type_name="InterruptContextScope" version="1" />
         <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
-        <field name="Conditions" type="StringTableFieldDefinition" value="not HasStatus('InspiredStrategemImmune') and IsAbleToReact(context.Observer) and not Self(context.Target,context.Observer) and Ally() and IsAttack();" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="not HasStatus('InspiredStrategemImmune') and IsAbleToReact(context.Observer) and not Self(context.Target,context.Observer) and Ally() and IsAttack()" />
         <field name="Properties" type="StringTableFieldDefinition" value="SetAdvantage();ApplyStatus('InspiredStrategemImmune',100,-1)" />
         <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
         <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />

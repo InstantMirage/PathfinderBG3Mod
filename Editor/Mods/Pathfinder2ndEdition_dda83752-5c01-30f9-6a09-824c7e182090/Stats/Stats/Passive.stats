@@ -861,7 +861,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hff5a5a1cgd66eg9dfbg3efeg8bbbe112a4b6" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h6ba2029eg991egb4c2g0104g835397ac5cb0" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_FeralInstinct" />
-        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted;OncePerCombat" enumeration_type_name="PassiveFlags" version="1" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnCombatStarted" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(FREE_RAGE,100,1)" />
         <field name="Conditions" type="StringTableFieldDefinition" value="(HasPassive('InvulnerableRager') or not HasHeavyArmor(context.Source)) and not (HasStatus('ENCUMBERED_LIGHT') or HasStatus('ENCUMBERED_HEAVY') or HasStatus('ENCUMBERED_MAX'))" />
@@ -1128,6 +1128,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2884aca9g0fb5g8779g7511g8c3efa9f7873" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Barbarian_Rage" />
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_AnimalRage)" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="983ce52d-4af6-4e0d-940c-d807f332b85f" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1137,9 +1138,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3575a711g8387ge4efgce9egaf2cbc717f67" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hebfdfaa9gbeeaged7bg276ag92b9c9fd1197" version="1" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="IsHidden;DisplayBoostInTooltip" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsAttackType(AttackType.MeleeWeaponAttack)): CharacterWeaponDamage(LevelMapValue(RageDamage));IF(IsAttackType(AttackType.MeleeOffHandWeaponAttack)):CharacterWeaponDamage(LevelMapValue(RageDamage));CharacterUnarmedDamage(LevelMapValue(RageDamage));FallDamageMultiplier(0.5)" />
-        <field name="BoostConditions" type="StringTableFieldDefinition" value="Combat()&#xD;&#xA;" />
-        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnEquip;OnCreate" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(RageDamage));CharacterUnarmedDamage(LevelMapValue(RageDamage));IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(RageDamage));IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(RageDamage));FallDamageMultiplier(0.5)" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="SpellId('Target_Thrash')" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(RageDamage));IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(RageDamage))" />
@@ -1150,8 +1149,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="1b885be6-d5e9-4e25-9710-e5d1a50bdd18" />
         <field name="Name" type="NameTableFieldDefinition" value="DragonRageBoost" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="8af84c51-35e2-42e9-8443-eb2ae781c822" />
-        <field name="BoostConditions" type="StringTableFieldDefinition" value="Combat()&#xD;&#xA;" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsAttackType(AttackType.MeleeWeaponAttack)): CharacterWeaponDamage(LevelMapValue(DragonRage),Bludgeoning);IF(IsAttackType(AttackType.MeleeOffHandWeaponAttack)):CharacterWeaponDamage(LevelMapValue(DragonRage),Bludgeoning);CharacterUnarmedDamage(LevelMapValue(DragonRage),Bludgeoning);FallDamageMultiplier(0.5)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Bludgeoning);CharacterUnarmedDamage(LevelMapValue(DragonRage),Bludgeoning);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Bludgeoning);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Bludgeoning);FallDamageMultiplier(0.5)" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(DragonRage));IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(DragonRage))" />
       </fields>
     </stat_object>
@@ -1160,7 +1158,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="10d4bcd6-a3b7-4883-84ee-d5ac9b7dd495" />
         <field name="Name" type="NameTableFieldDefinition" value="PoisonDragonRageBoost" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1b885be6-d5e9-4e25-9710-e5d1a50bdd18" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsAttackType(AttackType.MeleeWeaponAttack)): CharacterWeaponDamage(LevelMapValue(DragonRage),Poison);EntityThrowDamage(2);IF(IsAttackType(AttackType.MeleeOffHandWeaponAttack)):CharacterWeaponDamage(LevelMapValue(DragonRage),Poison);CharacterUnarmedDamage(LevelMapValue(DragonRage),Poison);FallDamageMultiplier(0.5)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Poison);CharacterUnarmedDamage(LevelMapValue(DragonRage),Poison);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Poison);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Poison);FallDamageMultiplier(0.5)" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
       </fields>
     </stat_object>
@@ -1169,7 +1167,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="2bd3ca67-8b43-47d1-acad-7ade01b03f70" />
         <field name="Name" type="NameTableFieldDefinition" value="FireDragonRageBoost" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1b885be6-d5e9-4e25-9710-e5d1a50bdd18" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsAttackType(AttackType.MeleeWeaponAttack)): CharacterWeaponDamage(LevelMapValue(DragonRage),Fire);EntityThrowDamage(2);IF(IsAttackType(AttackType.MeleeOffHandWeaponAttack)):CharacterWeaponDamage(LevelMapValue(DragonRage),Fire);CharacterUnarmedDamage(LevelMapValue(DragonRage),Fire);FallDamageMultiplier(0.5)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Fire);CharacterUnarmedDamage(LevelMapValue(DragonRage),Fire);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Fire);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Fire);FallDamageMultiplier(0.5)" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
       </fields>
     </stat_object>
@@ -1178,7 +1176,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="de295232-90f1-4411-a463-faf740863eff" />
         <field name="Name" type="NameTableFieldDefinition" value="ForceDragonRageBoost" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1b885be6-d5e9-4e25-9710-e5d1a50bdd18" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsAttackType(AttackType.MeleeWeaponAttack)): CharacterWeaponDamage(LevelMapValue(DragonRage),Force);EntityThrowDamage(2);IF(IsAttackType(AttackType.MeleeOffHandWeaponAttack)):CharacterWeaponDamage(LevelMapValue(DragonRage),Force);CharacterUnarmedDamage(LevelMapValue(DragonRage),Force);FallDamageMultiplier(0.5)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Force);CharacterUnarmedDamage(LevelMapValue(DragonRage),Force);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Force);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Force);FallDamageMultiplier(0.5)" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
       </fields>
     </stat_object>
@@ -1187,7 +1185,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="910d8e23-682d-4ab4-a8e5-365be48ab938" />
         <field name="Name" type="NameTableFieldDefinition" value="PsychicDragonRageBoost" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1b885be6-d5e9-4e25-9710-e5d1a50bdd18" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsAttackType(AttackType.MeleeWeaponAttack)): CharacterWeaponDamage(LevelMapValue(DragonRage),Psychic);EntityThrowDamage(2);IF(IsAttackType(AttackType.MeleeOffHandWeaponAttack)):CharacterWeaponDamage(LevelMapValue(DragonRage),Psychic);CharacterUnarmedDamage(LevelMapValue(DragonRage),Psychic);FallDamageMultiplier(0.5)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Psychic);CharacterUnarmedDamage(LevelMapValue(DragonRage),Psychic);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Psychic);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Psychic);FallDamageMultiplier(0.5)" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="SpellId('Target_Thrash')" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(FuryRageDamage));IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(FuryRageDamage));" />
@@ -1198,8 +1196,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="e7d50d0c-b16d-44cb-9233-75332c6b1907" />
         <field name="Name" type="NameTableFieldDefinition" value="GiantRageBoosts" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="820668c6-5bc5-4277-91cd-4a136d885abc" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsAttackType(AttackType.MeleeWeaponAttack)): CharacterWeaponDamage(LevelMapValue(GiantRageDamage));EntityThrowDamage(2);IF(IsAttackType(AttackType.MeleeOffHandWeaponAttack)):CharacterWeaponDamage(LevelMapValue(GiantRageDamage));CharacterUnarmedDamage(LevelMapValue(GiantRageDamage));FallDamageMultiplier(0.5)" />
-        <field name="BoostConditions" type="StringTableFieldDefinition" value="Combat()&#xD;&#xA;" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(GiantRageDamage));CharacterUnarmedDamage(LevelMapValue(GiantRageDamage));IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(GiantRageDamage));IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(GiantRageDamage));FallDamageMultiplier(0.5)" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(GiantRageDamage));IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(GiantRageDamage))" />
       </fields>
     </stat_object>
@@ -1208,8 +1205,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="f1ab7cea-7f75-4cdc-bd98-f2e72e0002cb" />
         <field name="Name" type="NameTableFieldDefinition" value="SpiritRageBoosts" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="820668c6-5bc5-4277-91cd-4a136d885abc" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsAttackType(AttackType.MeleeWeaponAttack)): CharacterWeaponDamage(LevelMapValue(FuryRageDamage),Force);EntityThrowDamage(2);IF(IsAttackType(AttackType.MeleeOffHandWeaponAttack)):CharacterWeaponDamage(LevelMapValue(FuryRageDamage),Force);CharacterUnarmedDamage(LevelMapValue(FuryRageDamage),Force);FallDamageMultiplier(0.5)" />
-        <field name="BoostConditions" type="StringTableFieldDefinition" value="Combat()&#xD;&#xA;" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(FuryRageDamage),Radiant);CharacterUnarmedDamage(LevelMapValue(FuryRageDamage),Radiant);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(FuryRageDamage),Radiant);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(FuryRageDamage),Radiant);FallDamageMultiplier(0.5)" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(FuryRageDamage));" />
       </fields>
     </stat_object>
@@ -1219,8 +1215,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="FuryRageBoosts" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="8af84c51-35e2-42e9-8443-eb2ae781c822" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h4788832ag55d3g3541g2142g732b643758b3" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsAttackType(AttackType.MeleeWeaponAttack)): CharacterWeaponDamage(LevelMapValue(FuryRageDamage));EntityThrowDamage(2);IF(IsAttackType(AttackType.MeleeOffHandWeaponAttack)):CharacterWeaponDamage(LevelMapValue(FuryRageDamage));CharacterUnarmedDamage(LevelMapValue(FuryRageDamage));FallDamageMultiplier(0.5)" />
-        <field name="BoostConditions" type="StringTableFieldDefinition" value="Combat()&#xD;&#xA;" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(FuryRageDamage));CharacterUnarmedDamage(LevelMapValue(FuryRageDamage));IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(FuryRageDamage));IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(FuryRageDamage));FallDamageMultiplier(0.5)" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="SpellId('Target_Thrash')" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(FuryRageDamage));IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(FuryRageDamage));" />
@@ -1524,7 +1519,7 @@
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Transmutation_Enlarge" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnCast" enumeration_type_name="StatsFunctorContext" version="1" />
-        <field name="Conditions" type="StringTableFieldDefinition" value="SpellID('Shout_GiantsStature')" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="SpellId('Shout_GiantsStature')" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(SELF,EnlargeStack,100,10)" />
       </fields>
     </stat_object>
@@ -1545,10 +1540,10 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2da1ec56g695ag898bgca95g0e73aff15fb2" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h444c4e39g3d65g4c81g16b7gdf97c59fe665" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_RelentlessRage" />
-        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted;OncePerCombat" enumeration_type_name="PassiveFlags" version="1" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnCast" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="RageSpell()" />
-        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(SELF,MightRageStatus,100,1)" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(SELF,MightyRage,100,1)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1559,9 +1554,9 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="he403c84fg096dgf6b3g80d4ge05dfb0328bb" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Abjuration_Stoneskin" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="BoostConditions" type="StringTableFieldDefinition" value="HasStatus('SG_Rage')" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="DamageReduction(Slashing,Flat,3+ConstitutionModifier)" />
-        <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnCast" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="RageSpell()" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(SELF,RAGING_RESIST_SLA,100,ConstitutionModifier+3)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1570,7 +1565,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="RagingResistancePiercing" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="fd42a1b8-ba90-4db8-9efe-7ec8f8dc2bf5" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h8399d764g3fd6g164egd9dbga87d4006946f" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="DamageReduction(Piercing,Flat,3+ConstitutionModifier)" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(SELF,RAGING_RESIST_PRC,100,ConstitutionModifier+3)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1579,7 +1574,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="RagingResistanceFire" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="fd42a1b8-ba90-4db8-9efe-7ec8f8dc2bf5" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he1052f22g5c3fg2fa8gfb73g5d62a3eda808" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="DamageReduction(Fire,Flat,3+ConstitutionModifier)" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(SELF,RAGING_RESIST_PRC,100,ConstitutionModifier+3)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1588,7 +1583,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="RagingResistanceBludgeoning" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="fd42a1b8-ba90-4db8-9efe-7ec8f8dc2bf5" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6b28fe77g04e3g5cf4g866dg7564d99426d9" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="DamageReduction(Bludgeoning,Flat,3+ConstitutionModifier)" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(SELF,RAGING_RESIST_BLD,100,ConstitutionModifier+3)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1597,7 +1592,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="RagingResistanceNecrotic" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="fd42a1b8-ba90-4db8-9efe-7ec8f8dc2bf5" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h65756813gddcbg4543gecebga2151c87cb80" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="DamageReduction(Necrotic,Flat,3+ConstitutionModifier)" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(SELF,RAGING_RESIST_NEC,100,ConstitutionModifier+3)" />
       </fields>
     </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">
@@ -4543,6 +4538,10 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha472319dg3314g5fe3g1c0cg2762a96f944b" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h54091b84ged6eg8c27gcb77g24d6713b0571" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_ShadowStrike" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted;OncePerCombat" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnCombatStarted" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="HasStatus('SNEAKING')" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(TACTICAL_ENTRY,100,1)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5161,7 +5160,7 @@
         <field name="Conditions" type="StringTableFieldDefinition" value="IsSpell() and not IsCantrip()" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(H1Plus1),Bludgeoning,Magical);ApplyStatus(BloodMagicSelf,100,1)" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_ElementalEarth_SeismicStrike" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossBludgeoning);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_NeedleDarts);UnlockSpell(Zone_Thunderwave,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossBludgeoning);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_ScatterScree);UnlockSpell(Zone_Shockwave,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5189,7 +5188,7 @@
         <field name="Conditions" type="StringTableFieldDefinition" value="IsSpell() and not IsCantrip()" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(H1Plus1),Piercing,Magical);ApplyStatus(BloodMagicSelf,100,1)" />
         <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Physical" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossPiercing);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_ElectricArc);UnlockSpell(Target_ShockingGrasp,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossPiercing);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_ElectricArc);UnlockSpell(Target_Thunderstrike_Rank1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
