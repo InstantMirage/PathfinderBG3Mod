@@ -1599,6 +1599,7 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="00582be0-c89e-4be0-b31a-6607236ee9cd" />
         <field name="Name" type="NameTableFieldDefinition" value="BARD" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(BardicInspiration,1,0)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6132,6 +6133,7 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="5a5523c8-1310-41ca-bb52-2ef4ebf59dc6" />
         <field name="Name" type="NameTableFieldDefinition" value="WITCH" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(TidesOfChaos,1,0)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6178,7 +6180,7 @@
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="OncePerTurn;IsHidden" enumeration_type_name="PassiveFlags" version="1" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnCast" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="HasUseCosts('TidesOfChaos', true)" />
-        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(WITCH_HEX,100,1);" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(WITCH_HEX,100,1)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6234,6 +6236,9 @@
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(Interrupt_FreezingRime);UnlockSpell(Projectile_ClingingIce);IF(ConditionResult(false)):UnlockSpell(Target_FreezingRime)" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_ElementalWater_WintersBreath" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="StatusId('WITCH_HEX')" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(WITCH_HEX_TECHNICAL,100,1)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6387,9 +6392,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="bedeecf6-505b-46ca-8ead-01d767dad912" />
         <field name="Name" type="NameTableFieldDefinition" value="LessonOfElements" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc22f2a5ag84a8g3666g2ba5g62dd642c784d" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h438e40f3ga25bg5340gd6f2gbc4a11eca278" version="2" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h438e40f3ga25bg5340gd6f2gbc4a11eca278" version="3" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_AbsorbElements" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Zone_BurningHands,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Zone_GustOfWind_Pathfinder,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Projectile_HydraulicPush_1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Zone_PummelingRubble_1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);ActionResource(KiPoint,1,0)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalBetrayal_Container);UnlockSpell(Zone_BurningHands,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Zone_GustOfWind_Pathfinder,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Projectile_HydraulicPush_1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Zone_PummelingRubble_1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);ActionResource(KiPoint,1,0)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">

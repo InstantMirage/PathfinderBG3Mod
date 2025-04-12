@@ -36,11 +36,12 @@ DB_AlwaysCast_AD("Target_ShareRage",(DIALOGRESOURCE)GLO_SpellVocalComponent_Vici
 DB_SendSpellToWildMagic_AD("Shout_DesperatePrayer","Shout_WildMagic_SorceryPoints");
 DB_SendSpellToWildMagic_AD("Rush_QiRush","Shout_WildMagic_Teleport");
 DB_SendSpellToWildMagic_AD("Shout_ArcaneTap","Shout_WildMagic_Teleport");
-DB_SendSpellToWildMagic_AD("Target_Critspec_Axe_Spell","Shout_WildMagic_Enchant");
-DB_SendSpellToWildMagic_AD("CourageousAssault_Strike","Shout_WildMagic_Enchant");
+DB_SendSpellToWildMagic_AD("Target_CourageousAssault_Strike","Shout_WildMagic_Enchant");
 
 DB_SendStatusToWildMagic_AD("SHIELD_SPELL_BROKEN","Shout_WildMagic_TurnMagic");
 DB_SendStatusToWildMagic_AD("INTERRUPT_BARDIC_INSPIRATION_ATTACK","Shout_WildMagic_Enchant");
+DB_SendStatusToWildMagic_AD("CRITSPEC_AXE_UNLOCK","Shout_WildMagic_Enchant");
+DB_SendStatusToWildMagic_AD("CRITSPEC_POLE_UNLOCK","Shout_WildMagic_Swap");
 
 DB_HarmAOESpells("Shout_HarmingFont_ThreeAction");
 DB_HarmAOESpells("Shout_HarmThreeAction_Rank_1");
@@ -111,7 +112,7 @@ UsingSpell((CHARACTER)_Player,(STRING)_Spell,_,_,_)
 AND
 DB_IsOrWasInParty(_Player)
 AND
-IsTagged(_Player,(TAG)UNDEAD_33c625aa-6982-4c27-4f90-70e4a92940b1,1)
+IsTagged(_Player,(TAG)UNDEAD_33c625aa-6982-4c27-904f-e47029a9b140,1)
 AND
 DB_HarmAOESpells(_Spell)
 THEN

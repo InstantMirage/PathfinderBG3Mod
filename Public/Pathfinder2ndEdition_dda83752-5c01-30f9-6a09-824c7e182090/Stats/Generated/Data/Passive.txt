@@ -1120,6 +1120,7 @@ data "StatsFunctors" "ApplyStatus(SELF,RAGING_RESIST_NEC,100,ConstitutionModifie
 
 new entry "BARD"
 type "PassiveData"
+data "Boosts" "ActionResource(BardicInspiration,1,0)"
 
 new entry "BardSpellcasting"
 type "PassiveData"
@@ -4401,6 +4402,7 @@ data "Boosts" "StatusImmunity(SG_DifficultTerrain)"
 
 new entry "WITCH"
 type "PassiveData"
+data "Boosts" "ActionResource(TidesOfChaos,1,0)"
 
 new entry "WitchFamiliar"
 type "PassiveData"
@@ -4432,7 +4434,7 @@ type "PassiveData"
 data "Properties" "OncePerTurn;IsHidden"
 data "StatsFunctorContext" "OnCast"
 data "Conditions" "HasUseCosts('TidesOfChaos', true)"
-data "StatsFunctors" "ApplyStatus(WITCH_HEX,100,1);"
+data "StatsFunctors" "ApplyStatus(WITCH_HEX,100,1)"
 
 new entry "PatronsPuppet"
 type "PassiveData"
@@ -4471,6 +4473,9 @@ data "DisplayName" "h7705c566gc670g9cfegdf75ga6ccb01b6032;1"
 data "Icon" "Action_Monster_ElementalWater_WintersBreath"
 data "Properties" "Highlighted"
 data "Boosts" "UnlockInterrupt(Interrupt_FreezingRime);UnlockSpell(Projectile_ClingingIce);IF(ConditionResult(false)):UnlockSpell(Target_FreezingRime)"
+data "StatsFunctorContext" "OnStatusApplied"
+data "Conditions" "StatusId('WITCH_HEX')"
+data "StatsFunctors" "ApplyStatus(WITCH_HEX_TECHNICAL,100,1)"
 
 new entry "NudgeFate"
 type "PassiveData"
@@ -4573,9 +4578,9 @@ data "Boosts" "UnlockSpell(Target_BloodWard_Base);UnlockSpell(Target_MysticArmor
 new entry "LessonOfElements"
 type "PassiveData"
 data "DisplayName" "hc22f2a5ag84a8g3666g2ba5g62dd642c784d;1"
-data "Description" "h438e40f3ga25bg5340gd6f2gbc4a11eca278;2"
+data "Description" "h438e40f3ga25bg5340gd6f2gbc4a11eca278;3"
 data "Icon" "PassiveFeature_AbsorbElements"
-data "Boosts" "UnlockSpell(Zone_BurningHands,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Zone_GustOfWind_Pathfinder,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Projectile_HydraulicPush_1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Zone_PummelingRubble_1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);ActionResource(KiPoint,1,0)"
+data "Boosts" "UnlockSpell(Target_ElementalBetrayal_Container);UnlockSpell(Zone_BurningHands,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Zone_GustOfWind_Pathfinder,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Projectile_HydraulicPush_1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Zone_PummelingRubble_1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);ActionResource(KiPoint,1,0)"
 
 new entry "LessonOfVengeance"
 type "PassiveData"
