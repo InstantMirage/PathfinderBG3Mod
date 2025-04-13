@@ -253,16 +253,45 @@ end
 
 function HasMartialExtendableComposition(source)
 	source = source or context.Source
-	return HasStatus('CourageousAnthem',source) | HasStatus('SongOfStrengthStatus',source) | HasStatus('RallyingAnthemDR',source)
+	return HasAnyStatus({'CourageousAnthem','SongOfStrengthStatus','RallyingAnthemStatus'},{},{},source)
 end
 
 function MartialLingeringComposition(source)
 	source = source or context.Source
-	return HasStatus('COURAGE_LINGER_AURA',source) | HasStatus('CourageForteAura2',source) | HasStatus('CourageForteAura3',source) | HasStatus('SongOfStrengthLingering',source) | HasStatus('StrengthForteAura2',source) | HasStatus('StrengthForteAura3',source) | HasStatus('RallyingLingering',source) | HasStatus('RallyingForteAura2',source) | HasStatus('RallyingForteAura3',source)
+	return HasAnyStatus({'COURAGE_LINGER_AURA','CourageForteAura2','CourageForteAura3','SongOfStrengthLingering','StrengthForteAura2','StrengthForteAura3','RallyingLingering','RallyingForteAura2','RallyingForteAura3'},{},{},source)
 end
 
 function EndMartialLingeringComposition()
 	return StatusId('COURAGE_LINGER_AURA') | StatusId('CourageForteAura2') | StatusId('CourageForteAura3') | StatusId('SongOfStrengthLingering') | StatusId('StrengthForteAura2') | StatusId('StrengthForteAura3') | StatusId('RallyingLingering') | StatusId('RallyingForteAura2') | StatusId('RallyingForteAura3')
+end
+
+function EndRallyingAnthemDR()
+	return HasAnyStatus({},{},{'RallyingAnthemStatus','RallyingLingering','RallyingForteAura2','RallyingForte2','RallyingForteAura3','RallyingForte3'},context.Source)
+end
+
+function AdjacentToBeastMinion()
+    local distance = 2
+    local target = context.Target
+    local source = context.Source
+
+    local errorTrue = {ConditionError("HasAllyWithinRange", {ConditionErrorData.MakeFromNumber(distance, EErrorDataType.Distance)})}
+    local errorFalse = {ConditionError("HasNotAllyWithinRange", {ConditionErrorData.MakeFromNumber(distance, EErrorDataType.Distance)})}
+
+    local allies = GetAlliesWithinRange(distance, target, source)
+    if allies ~= nil then
+        for _, entity in ipairs(allies.Allies) do
+
+			-- must be a beast summoned by the caster
+            local isSummon = (GetSummoner(entity) == source)
+            local hasTag = Tagged('BEAST', entity)
+
+            if isSummon and hasTag.Result then
+                return ConditionResult(true, errorFalse, errorTrue)
+            end
+        end
+    end
+
+    return ConditionResult(false, errorFalse, errorTrue)
 end
 
 --Champion
@@ -271,13 +300,13 @@ function RetributiveStrikeRange(observer,source)
 	observer = observer or context.Observer
 	source = source or context.Source
 	
-	local reach_nimble = WieldingWeapon('Reach', false, false, observer) & ~DistanceToGreaterThan(observer, source, 4.5)
+	local reach_nimble = WieldingWeapon('Reach', false, false, observer) & ~DistanceToGreaterThan(observer, source, 5)
 	local ranged = WieldingWeapon('Ammunition', false, false, observer)
-	local melee_nimble = ~WieldingWeapon('Ammunition', false, false, observer) & ~DistanceToGreaterThan(observer, source, 3)
+	local melee_nimble = ~WieldingWeapon('Ammunition', false, false, observer) & ~DistanceToGreaterThan(observer, source, 3.5)
 	local nimble_reprisal = (ranged|reach_nimble|melee_nimble) & HasPassive('NimbleReprisal',observer)
 	
-	local reach = WieldingWeapon('Reach', false, false, observer) & ~DistanceToGreaterThan(observer, source, 3)	
-	local melee = ~WieldingWeapon('Ammunition', false, false, observer) & ~DistanceToGreaterThan(observer, source, 1.5)
+	local reach = WieldingWeapon('Reach', false, false, observer) & ~DistanceToGreaterThan(observer, source, 3.5)	
+	local melee = ~WieldingWeapon('Ammunition', false, false, observer) & ~DistanceToGreaterThan(observer, source, 2)
 
 	return nimble_reprisal | reach | melee
 end
@@ -490,6 +519,12 @@ end
 function OwnerCanSustain(status)
     local source = context.Source
     return ConditionResult(GetStatusDuration(status, source) < 2,{ConditionError("SustainCooldown")})
+end
+
+function CanSustainTarget(status)
+    local source = context.Source
+    local target = context.Target
+	return HasStatus(status,target,source) & ConditionResult(GetStatusDuration(status) < 2,{ConditionError("SustainCooldown")})
 end
 
 --Incap - treats DC as 10 higher

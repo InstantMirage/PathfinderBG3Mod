@@ -65,7 +65,7 @@
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(Shield_Sturdy)" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ShieldMaster_Block" />
         <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsAttack() and IsHit();" />
-        <field name="Properties" type="StringTableFieldDefinition" value="IF(not HasPassive('BlessedShield',context.Source)):AdjustRoll(-LevelMapValue(Shield_Sturdy));IF(HasPassive('BlessedShield',context.Source)):AdjustRoll(-LevelMapValue(Shield_Sturdy)-3);" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(-LevelMapValue(Shield_Sturdy)); IF(HasPassive('BlessedShield',context.Observer)):AdjustRoll(-3); IF(HasStatus('EmblazonShieldStatus',context.Observer)):AdjustRoll(-1);" />
         <field name="EnableCondition" type="StringTableFieldDefinition" value="HasStatus('RAISE_SHIELD') or HasStatus('RAISE_SHIELD_SPIRIT') or HasStatus('ParagonShield')" />
       </fields>
     </stat_object>
@@ -203,7 +203,7 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="f92318d8-df5e-4638-9acf-d0251afc609c" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he2de21b2gb80fgf7b5g5181gfe97d04493dc" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hed0936e4ga2c1g4f1dgf3e0g94b4462fcd67" version="2" />
-        <field name="Properties" type="StringTableFieldDefinition" value="DealDamage(OBSERVER_SOURCE,LevelMapValue(IronCommandDamage), Force);DealDamage(LevelMapValue(IronCommandDamage),Force)" />
+        <field name="Properties" type="StringTableFieldDefinition" value="DealDamage(OBSERVER_SOURCE,LevelMapValue(IronCommandDamage),Necrotic);DealDamage(LevelMapValue(IronCommandDamage),Necrotic)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -300,7 +300,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h8c7ae051gedcdgf7fcg141dgba6603c89cd1" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h80410f33g989bg7a32g173cgbde178e57270" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ProjectedWard" />
-        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(OBSERVER_TARGET,-(LevelMapValue(ProtectorsSacrifice)));DealDamage(OBSERVER_OBSERVER,LevelMapValue(ProtectorsSacrifice),Force)" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(OBSERVER_TARGET,-(LevelMapValue(ProtectorsSacrifice)));DealDamage(OBSERVER_OBSERVER,LevelMapValue(ProtectorsSacrifice),Necrotic,,,,,true,true,,true)" />
         <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1;KiPoint:1" />
       </fields>
     </stat_object>
@@ -642,7 +642,7 @@
         <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied" enumeration_type_name="InterruptContext" version="1" />
         <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
         <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
-        <field name="Conditions" type="StringTableFieldDefinition" value="HasStatus('WITCH_HEX') and not HasStatus('WITCH_HEX_TECHNICAL') and Self(context.Observer,context.Target);" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="HasStatus('WITCH_HEX_TECHNICAL',context.Observer,context.Target) and Self(context.Observer,context.Target)" />
         <field name="Stack" type="StringTableFieldDefinition" value="Focused" />
         <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
         <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
@@ -991,7 +991,7 @@
         <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll" enumeration_type_name="InterruptContext" version="1" />
         <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Nearby" enumeration_type_name="InterruptContextScope" version="1" />
         <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
-        <field name="Conditions" type="StringTableFieldDefinition" value="not HasStatus('InspiredStrategemImmune') and IsAbleToReact(context.Observer) and not Self(context.Target,context.Observer) and Ally() and IsAttack();" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="not HasStatus('InspiredStrategemImmune') and IsAbleToReact(context.Observer) and not Self(context.Target,context.Observer) and Ally() and IsAttack()" />
         <field name="Properties" type="StringTableFieldDefinition" value="SetAdvantage();ApplyStatus('InspiredStrategemImmune',100,-1)" />
         <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
         <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
