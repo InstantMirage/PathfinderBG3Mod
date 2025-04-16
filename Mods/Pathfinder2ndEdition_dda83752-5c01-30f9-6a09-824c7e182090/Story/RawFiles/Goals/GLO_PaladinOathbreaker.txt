@@ -112,9 +112,7 @@ PROC_GLO_PaladinOathbreaker_MightBreakOath((CHARACTER)_Culprit, (STRING)_CrimeTy
 AND
 QRY_GLO_PaladinOathBreaker_IsValidVictim(_Victim)
 AND
-NOT QRY_GLO_PaladinOathBreaker_BlockBreakingOath(_Victim) // Custom reasons in which a victim would not break an oath
-AND
-NOT QRY_GLO_PaladinOathBreaker_BlockBreakingOath(_Culprit)
+NOT QRY_GLO_PaladinOathBreaker_BlockBreakingOath(_Victim, _Culprit) // Custom reasons in which a victim would not break an oath
 AND
 NOT QRY_GLO_PaladinOathbreaker_IsOathbreaker(_Culprit)
 AND
@@ -148,7 +146,7 @@ THEN
 DB_NOOP(1);
 
 QRY
-QRY_GLO_PaladinOathBreaker_BlockBreakingOath((CHARACTER)_Char)
+QRY_GLO_PaladinOathBreaker_BlockBreakingOath((CHARACTER)_Victim, (CHARACTER)_Culprit)
 AND
 0 == 1
 THEN
@@ -480,7 +478,7 @@ DB_NOOP(1);
 QRY
 QRY_GLO_PaladinOathbreaker_IsOathbreaker((CHARACTER)_Char)
 AND
-IsTagged(_Char, (TAG)PALADIN_BLOCK_OATHBREAK_b5825091-f2ed-4657-8d86-c0d020c358a0,1) //PF2e: change from (TAG)OATHBREAKER_c7bdcdf2-15e7-456e-adf1-21dda3172e18
+IsTagged(_Char, (TAG)PALADIN_BLOCK_OATHBREAK_b5825091-f2ed-4657-8d86-c0d020c358a0, 1) //PF2e: change from (TAG)OATHBREAKER_c7bdcdf2-15e7-456e-adf1-21dda3172e18
 THEN
 DB_NOOP(1);
 
@@ -557,7 +555,7 @@ DB_Players(_Player)
 AND
 IsControlled(_Player, 1)
 AND
-IsTagged(_Player, (TAG)OATHBREAKER_c7bdcdf2-15e7-456e-adf1-21dda3172e18, 1)
+IsTagged(_Player, (TAG)PALADIN_BLOCK_OATHBREAK_b5825091-f2ed-4657-8d86-c0d020c358a0, 1) //PF2e: change from (TAG)OATHBREAKER_c7bdcdf2-15e7-456e-adf1-21dda3172e18
 THEN
 PROC_GLO_PaladinOathbreaker_RedemptionObtained(_Player);
 
