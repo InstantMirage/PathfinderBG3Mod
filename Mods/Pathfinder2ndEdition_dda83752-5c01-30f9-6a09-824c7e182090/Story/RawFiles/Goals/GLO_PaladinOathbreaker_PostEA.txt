@@ -11,6 +11,9 @@ DB_GLO_PaladinOathbreaker_EvilTags((TAG)KOBOLD_f68151f2-58ee-42e6-98ad-7d858c4a0
 
 //PF2e: Force oathbreaker tag to lock respec for champions that break their oath in play
 DB_GLO_PaladinOathbreaker_SubclassTags((TAG)PALADIN_6d85ab2d-5c23-498c-a61e-98f05a00177a, (TAG)OATHBREAKER_c7bdcdf2-15e7-456e-adf1-21dda3172e18);
+
+//PF2e: Force oathbreaker tag to lock respec for champions that break their oath in play
+DB_GLO_PaladinOathbreaker_SubclassTags((TAG)PALADIN_6d85ab2d-5c23-498c-a61e-98f05a00177a, (TAG)OATHBREAKER_c7bdcdf2-15e7-456e-adf1-21dda3172e18);
 KBSECTION
 //Palading of vengeance post-EA
 IF
@@ -77,16 +80,6 @@ AND
 NOT HasPassive(_Player,"LiberationCause",1)
 THEN
 SetFlag(GLO_PaladinOathbreaker_Event_VengeanceBrokeOath_1510bcc9-e974-4789-b1fa-4612f92f30a1, _Player);
-
-//PF2e: break oath for Justice cause
-PROC
-PROC_DEN_CapturedGoblin_TryBreakOath((CHARACTER)_Player)
-AND
-DB_Players(_Player)
-AND
-HasPassive(_Player,"JusticeCause",1)
-THEN
-SetFlag(GLO_PaladinOathbreaker_Event_DevotionBrokeOath_fd2e1a9a-bca6-482e-8b42-2f1c16aaefee, _Player);
 //END_REGION
 
 //REGION PF2e: Oathbreaker tag when outside of camp
