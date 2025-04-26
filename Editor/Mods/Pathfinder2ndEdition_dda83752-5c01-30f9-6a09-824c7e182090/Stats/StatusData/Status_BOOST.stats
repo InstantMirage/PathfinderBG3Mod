@@ -577,6 +577,15 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="50dbfb75-3d7c-4f4e-b96f-09e25474d241" />
+        <field name="Name" type="NameTableFieldDefinition" value="StatusBonus2Skills" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="631576a2-fe88-4754-aacb-ba91ebcb571e" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha0c90730gae75g176bgab75g72f0c07293a0" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="RollBonus(SkillCheck,2);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="a778174f-4ea1-4ded-a0f9-cce79d844cd7" />
         <field name="Name" type="NameTableFieldDefinition" value="ITEMS" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h29375789g6410g0574gb887g9ff0b1423473" version="1" />
@@ -1127,13 +1136,21 @@
         <field name="StackId" type="StringTableFieldDefinition" value="SICKENED" />
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="1" />
         <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(ActionPoint,-1,0);ConsumeItemBlock();Tag(STAT_PEN_1ATTACK);Tag(STAT_PEN_1AC);Tag(STAT_PEN_1DC);Tag(STAT_PEN_1SAVES)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ConsumeItemBlock();Tag(STAT_PEN_1ATTACK);Tag(STAT_PEN_1AC);Tag(STAT_PEN_1DC);Tag(STAT_PEN_1SAVES);" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnCombatEnded" enumeration_type_name="StatusEvent" version="1" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="BringIntoCombat;InitiateCombat" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="OnTickRoll" type="RollConditionsTableFieldDefinition" value="SavingThrow(Ability.Constitution, CalculateSpellDC(context.PreferredCastingAbility, GetSummoner(context.Source)))" />
         <field name="OnTickSuccess" type="FunctorsTableFieldDefinition" value="RemoveStatus(SICKENED)" />
         <field name="StatusGroups" type="EnumerationListTableFieldDefinition" value="SG_Poisoned;SG_Disease" enumeration_type_name="StatusGroupFlags" version="1" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="ceeda0ca-0739-4588-a449-d024389f0c2a" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="0938c8e3-13d0-4e77-ae39-0713fcb0b44b" />
+        <field name="Name" type="NameTableFieldDefinition" value="SICKENED_2" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="c7753ee2-b09d-470c-82f5-eb7a991ec80c" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ConsumeItemBlock();Tag(STAT_PEN_2ATTACK);Tag(STAT_PEN_2AC);Tag(STAT_PEN_2DC);Tag(STAT_PEN_2SAVES);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4719,6 +4736,101 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="3371a297-f9e8-478d-a22c-d1f0c30ba003" />
+        <field name="Name" type="NameTableFieldDefinition" value="RustCloudAura_Rank4" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="a7ee0c02-2a9b-4dbe-9ca2-20965031bfd2" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h1af42145g8447ge97cgd13ag4fc4dcba81c0" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h8fa2078eg1a78gead0g7a05g065931851cc9" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Conjuration_FogCloud" />
+        <field name="StackId" type="StringTableFieldDefinition" value="RustCloud_Aura_Stack" />
+        <field name="AuraRadius" type="IntegerTableFieldDefinition" value="6" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="f9a4f3e7-eee0-4d3f-a76f-eb6e83ff1ba8" />
+        <field name="Name" type="NameTableFieldDefinition" value="RustCloudAura_Rank6" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="3371a297-f9e8-478d-a22c-d1f0c30ba003" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h537c4f25g7dfcgce92g5131ga36cdaf0e496" version="1" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="6" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="62c576fb-f6e7-4890-b935-dd0243cee95e" />
+        <field name="Name" type="NameTableFieldDefinition" value="RustCloudDamage_Rank4" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="380823f7-f9e7-4ba8-86a4-6bbb389a5cd1" />
+        <field name="StackId" type="StringTableFieldDefinition" value="RustCloud_Damage_Stack" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(5d10,Slashing)" />
+        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:DealDamage(5d10,Slashing)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="5703199f-056c-4baa-9da0-69f466a61a19" />
+        <field name="Name" type="NameTableFieldDefinition" value="RustCloudDamage_Rank6" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="62c576fb-f6e7-4890-b935-dd0243cee95e" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="6" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(6d10,Slashing)" />
+        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:DealDamage(6d10,Slashing)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="a7ee0c02-2a9b-4dbe-9ca2-20965031bfd2" />
+        <field name="Name" type="NameTableFieldDefinition" value="PetalStorm_Aura_Rank4" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3f90f5bdg68fag0398gac51g07d055049a02" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h999dd1bfgb118gfc39g99c1g880181523ff2" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Conjuration_CloudOfDaggers" />
+        <field name="SoundLoop" type="StringTableFieldDefinition" value="Spell_Status_CloudOfDaggers_ST" />
+        <field name="SoundStop" type="StringTableFieldDefinition" value="Spell_Status_CloudOfDaggers_ST_Stop" />
+        <field name="StackId" type="StringTableFieldDefinition" value="PetalStorm_Aura_Stack" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="4" />
+        <field name="AuraRadius" type="IntegerTableFieldDefinition" value="5" />
+        <field name="AuraStatuses" type="StringTableFieldDefinition" value="IF(not Tagged('INVISIBLE_HELPER') ):ApplyStatus(PetalStorm_Damage_Rank4);" />
+        <field name="TickType" type="EnumerationTableFieldDefinition" value="StartTurn" enumeration_type_name="TickType" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="InitiateCombat;BringIntoCombat" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="OnRemoveFunctors" type="FunctorsTableFieldDefinition" value="Unsummon()" />
+        <field name="IsUnique" type="BoolTableFieldDefinition" value="True" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="6f3bcb93-405b-4294-8564-39283bd8f7c6" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2fbb447a-4a53-4cda-9d61-e4e8f9367238" />
+        <field name="Name" type="NameTableFieldDefinition" value="PetalStorm_Aura_Rank6" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="a7ee0c02-2a9b-4dbe-9ca2-20965031bfd2" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="6" />
+        <field name="AuraStatuses" type="StringTableFieldDefinition" value="IF(not Tagged('INVISIBLE_HELPER') ):ApplyStatus(PetalStorm_Damage_Rank6);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="380823f7-f9e7-4ba8-86a4-6bbb389a5cd1" />
+        <field name="Name" type="NameTableFieldDefinition" value="PetalStorm_Damage_Rank4" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha12b9cc8g2ec9g037ag04c8g3820cd7aa1a3" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h99bf2420g7cc4ge758g3ec3gc09df1397d5b" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Conjuration_CloudOfDaggers" />
+        <field name="StackId" type="StringTableFieldDefinition" value="PetalStorm_Damage_Stack" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="4" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(2d10,Slashing)" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="InitiateCombat;BringIntoCombat" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:DealDamage(2d10,Slashing)" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="a0f74dff-7074-45aa-a4d2-a131d7f328f5" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="733dace6-3cb3-424a-9991-5d6018e5fe54" />
+        <field name="Name" type="NameTableFieldDefinition" value="PetalStorm_Damage_Rank6" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="380823f7-f9e7-4ba8-86a4-6bbb389a5cd1" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="6" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(3d10,Slashing)" />
+        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="AI_ONLY:DealDamage(3d10,Slashing)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="5cdefd5a-7823-4a9f-b4fd-2d694067acf1" />
         <field name="Name" type="NameTableFieldDefinition" value="AnimatedAssault_Status_Aura" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="e3a5cc31-1ea3-4b15-a397-19c8772b8e8b" />
@@ -5186,6 +5298,20 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="c327c9e4-2bdc-40ad-b2bc-20ca8468641e" />
+        <field name="Name" type="NameTableFieldDefinition" value="HypnotizeAura" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h73eb2246g6c65g0dcbg8b34gfacc76b1fa3e" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h68aa0cdfgf5ccgc2f5g33e8gbaf882cc14e1" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Status_Charmed" />
+        <field name="StackId" type="StringTableFieldDefinition" value="Dazzled" />
+        <field name="AuraRadius" type="IntegerTableFieldDefinition" value="3" />
+        <field name="AuraStatuses" type="StringTableFieldDefinition" value="ApplyStatus(Status_Charmed)" />
+        <field name="OnRemoveFunctors" type="FunctorsTableFieldDefinition" value="Unsummon()" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="d37fab67-6932-44c4-995e-f051d7027fc5" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="60829bb3-78b0-4cb3-afd2-bb7210747f6d" />
         <field name="Name" type="NameTableFieldDefinition" value="AshCloudAura_Rank2" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="5cdefd5a-7823-4a9f-b4fd-2d694067acf1" />
@@ -5307,6 +5433,8 @@
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(DazzledReaction)" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf6d090d3g1aadg01degdc1fg378361a86767" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hbad4ebddgae09gbc4fgd3b8g0bd495ad1029" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Status_Charmed" />
+        <field name="StackId" type="StringTableFieldDefinition" value="Dazzled" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5356,7 +5484,7 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="d0245635-d86d-42bc-998a-a6de5a023b40" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="22" />
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="11" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="TemporaryHP(22" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="TemporaryHP(22);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5453,6 +5581,27 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h6aef1bbbgb9c9gb2ebg623cg979716c0c2d2" version="1" />
         <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(12d6,Poison)" />
         <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(12d6,Poison)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="6e4da6b2-cfb7-43e0-a841-26cf876b3e9b" />
+        <field name="Name" type="NameTableFieldDefinition" value="NoxiousMetalsPersistent_Rank3" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="cb32da89-abab-41a2-a556-3bfdeac9b5ca" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hfce3ee22ge868g5e18gd3b4gf3c72bd3b53c" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h3cc3117fga96fgade8g90fdg27461337354f" version="1" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(1d4,Poison)" />
+        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(1d4,Poison)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="0e439521-ca68-4848-b68b-956f999ed12b" />
+        <field name="Name" type="NameTableFieldDefinition" value="PersistentPoisonDamage_1" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="6e4da6b2-cfb7-43e0-a841-26cf876b3e9b" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h54ab5b36g57cbgd22ag4a10g50ffc09b1f49" version="1" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(1,Poison)" />
+        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(1,Poison)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6899,6 +7048,288 @@
         <field name="Name" type="NameTableFieldDefinition" value="MAG_MONK_MOUNTAIN_BLADE_WARD" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="281480ec-7797-4920-a5cf-f5d5efa3eeec" />
         <field name="Boosts" type="StringTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="4c7c3c7e-e458-4f6e-86b8-7868b4bd6b40" />
+        <field name="Name" type="NameTableFieldDefinition" value="EarthbindStatus" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd0dee550g7b97gc5d4g7d4agfa33aa4afe59" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h80dec058g281eg00fega749ga5447c997625" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Abjuration_PlanarBinding" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="734e3e5f-aeb4-4e8d-9249-f234ecdfd1a2" />
+        <field name="Name" type="NameTableFieldDefinition" value="RouseSkeletonsStatus_Rank3" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h18ef7564g933cgaacegd4a8gf32be0736227" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h03f20a96ga69cg8805g9f9dge44a7f54d95b" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_RouseSkeletons_Rank3_Recast);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="26d24d85-f469-4b83-b5ee-862ee0d851c2" />
+        <field name="Name" type="NameTableFieldDefinition" value="RouseSkeletonsStatus_Rank5" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="734e3e5f-aeb4-4e8d-9249-f234ecdfd1a2" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_RouseSkeletons_Rank5_Recast);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="8b466ba4-644a-4068-9eaf-e45ee4c7787d" />
+        <field name="Name" type="NameTableFieldDefinition" value="STINKING_CLOUD" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3aca1e7ag2e8bgb29age3dcg7cbc88f41ca0" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h6214122agd27ag0ad4gf3d5g8f61fc53ef03" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Conjuration_StinkingCloud" />
+        <field name="StackId" type="StringTableFieldDefinition" value="STINKING_CLOUD" />
+        <field name="StillAnimationType" type="EnumerationTableFieldDefinition" value="Suffocating" enumeration_type_name="StatusAnimationType" version="1" />
+        <field name="StillAnimationPriority" type="EnumerationTableFieldDefinition" value="Suffocating" enumeration_type_name="StillAnimPriority" version="1" />
+        <field name="StatusGroups" type="EnumerationListTableFieldDefinition" value="SG_Poisoned" enumeration_type_name="StatusGroupFlags" version="1" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="ceeda0ca-0739-4588-a449-d024389f0c2a" />
+        <field name="TickType" type="EnumerationTableFieldDefinition" value="EndRound" enumeration_type_name="TickType" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="BringIntoCombat;InitiateCombat" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="AuraRadius" type="IntegerTableFieldDefinition" value="6" />
+        <field name="OnRemoveFunctors" type="FunctorsTableFieldDefinition" value="Unsummon()" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="74ae1f66-0b86-4608-bc9a-616331c282f1" />
+        <field name="Name" type="NameTableFieldDefinition" value="SLEET_STORM" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h12a6dc2fg811cgcb37g8edeg24546c437d07" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Conjuration_SleetStorm" />
+        <field name="StackId" type="StringTableFieldDefinition" value="SLEET_STORM_AURA" />
+        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="CreateExplosion(Projectile_SleetStorm_WaterFrozen)" />
+        <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value="CreateExplosion(Projectile_SleetStorm_WaterFrozen)" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h13180d36g55d6gdb17g4064g9dbddd1ff0eb" version="1" />
+        <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="TickingWithSource" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="SoundLoop" type="StringTableFieldDefinition" value="Spell_Position_Control_SleetStorm_L1to3" />
+        <field name="SoundStop" type="StringTableFieldDefinition" value="Spell_Position_Control_SleetStorm_L1to3_Stop" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="82051f2a-a4cf-4374-a5a4-9d11a251dbed" />
+        <field name="Name" type="NameTableFieldDefinition" value="VineRecast_Rank4" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h38bd97fag0b4fg3cd4g1785g53240119ef98" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5509b635g157cgbd61g011bg394459373716" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Conjuration_GraspingVine" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_MurderousVine_Rank4_Recast);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="3313dd5b-d42c-4bc4-8977-4be3f1a1bbed" />
+        <field name="Name" type="NameTableFieldDefinition" value="VineRecast_Rank6" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="82051f2a-a4cf-4374-a5a4-9d11a251dbed" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h2b62cc71gd227g1291g3235g379d189df794" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_MurderousVine_Rank6_Recast);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="c03e7091-362e-454e-a2b2-79e3a273cb2a" />
+        <field name="Name" type="NameTableFieldDefinition" value="SanguineMistRecast_Rank4" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha50b86a9g7f68g9292g2e83g3487eeeda674" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7728d715g650cga1e2g1900g96b4868444c2" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Necromancy_Contagion_FilthFever" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_SanguineMist_Rank4_Recast);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="511f082a-3c1d-45ca-8a21-9b90ac86c646" />
+        <field name="Name" type="NameTableFieldDefinition" value="SanguineMistRecast_Rank5" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="c03e7091-362e-454e-a2b2-79e3a273cb2a" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5db0889cgee6dg97e9gc883ge1b79b56f9a8" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_SanguineMist_Rank5_Recast);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="6e1e277e-f298-44d8-a3e8-a447d329bbf5" />
+        <field name="Name" type="NameTableFieldDefinition" value="SanguineMistRecast_Rank6" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="c03e7091-362e-454e-a2b2-79e3a273cb2a" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h6c211afeg0392g682fgd8f9g188e25d005f8" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_SanguineMist_Rank6_Recast);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2755456e-a67a-4a20-becb-2859de46a318" />
+        <field name="Name" type="NameTableFieldDefinition" value="SnakeFangStatus" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="9e9d4050-0736-4e89-9490-2ecfc8fe2f36" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf5079e6cg27a1gd02aga46dg99e32125d696" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h73e183fbge44agdea9g854cgeadc182930c5" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="AttackSpellOverride(Target_SnakeFangsAttack, Target_MainHandAttack);AttackSpellOverride(Target_SnakeFangsAttack, Target_UnarmedAttack);" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value=";" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="b55edd34-dec2-4699-ac54-c1e9041b1fc7" />
+        <field name="Name" type="NameTableFieldDefinition" value="WALLOFFIRE" />
+        <field name="StackId" type="StringTableFieldDefinition" value="WALLOFFIRE" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="1" />
+        <field name="AuraRadius" type="IntegerTableFieldDefinition" value="2" />
+        <field name="AuraStatuses" type="StringTableFieldDefinition" value="IF(not Dead() and not (HasPassive('SculptSpells', context.Source) and Ally())):ApplyStatus(WALLOFFIRE_AURA,100,1)" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(4d6,Fire)" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h36c9082dg4da7g8173g35f0g8f0024f6b1f0" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h93ef6170ge87cgff6fg6c25g33733d1b902a" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="Distance(3);DealDamage(4d6,Fire)" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="b5b3c933-801e-461e-8d55-eb2790d4962b" />
+        <field name="SoundLoop" type="StringTableFieldDefinition" value="Spell_Impact_Damage_WallOfFire_L4to5_Loop" />
+        <field name="SoundStop" type="StringTableFieldDefinition" value="Spell_End_Loop_Damage_WallOfFire_L4to5" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_WallOfFire" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;DisablePortraitIndicator;InitiateCombat;BringIntoCombat" enumeration_type_name="StatusPropertyFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="893087ed-e78d-440e-938d-c3313770a994" />
+        <field name="Name" type="NameTableFieldDefinition" value="WALLOFFIRE_5" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="b55edd34-dec2-4699-ac54-c1e9041b1fc7" />
+        <field name="AuraStatuses" type="StringTableFieldDefinition" value="IF(not Dead() and not (HasPassive('SculptSpells', context.Source) and Ally())):ApplyStatus(WALLOFFIRE_AURA_5,100,1)" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(5d6,Fire)" />
+        <field name="StackId" type="StringTableFieldDefinition" value="WALLOFFIRE_5" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="Distance(3);DealDamage(5d6,Fire)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="8a3d8e1a-ae53-4d22-b41d-30f163144407" />
+        <field name="Name" type="NameTableFieldDefinition" value="WALLOFFIRE_6" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="b55edd34-dec2-4699-ac54-c1e9041b1fc7" />
+        <field name="AuraStatuses" type="StringTableFieldDefinition" value="IF(not Dead() and not (HasPassive('SculptSpells', context.Source) and Ally())):ApplyStatus(WALLOFFIRE_AURA_6,100,1)" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(6d6,Fire)" />
+        <field name="StackId" type="StringTableFieldDefinition" value="WALLOFFIRE_6" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="Distance(3);DealDamage(6d6,Fire)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="b93285e4-1d1b-4760-a63d-985c67a7a81c" />
+        <field name="Name" type="NameTableFieldDefinition" value="WALLOFFIRE_AURA" />
+        <field name="StackId" type="StringTableFieldDefinition" value="WALLOFFIRE" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="0" />
+        <field name="OnApplySuccess" type="FunctorsTableFieldDefinition" value="IF(not HasStatus('WALLOFFIRE_DAMAGE_RECEIVED')):DealDamage(4d6,Fire,Magical);IF(not HasStatus('WALLOFFIRE_DAMAGE_RECEIVED')):ApplyStatus(WALLOFFIRE_DAMAGE_RECEIVED,100,1)" />
+        <field name="OnTickSuccess" type="FunctorsTableFieldDefinition" value="IF(not HasStatus('WALLOFFIRE_DAMAGE_RECEIVED') or StatusDurationLessThan(context.Source, 'WALLOFFIRE_DAMAGE_RECEIVED', 0.1)):DealDamage(4d6,Fire,Magical);ApplyStatus(WALLOFFIRE_DAMAGE_RECEIVED,100,1)" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha47661e0g4802gb98cgdac3ga47c8ebfc7a2" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h201ba604g4461gf1f7g675dgeba19aae9d55" version="1" />
+        <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="Distance(3);DealDamage(4d6,Fire)" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(4d6,Fire)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Fire" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog" enumeration_type_name="StatusPropertyFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="eef2d951-9e7f-4383-b31f-228722f63961" />
+        <field name="Name" type="NameTableFieldDefinition" value="WALLOFFIRE_AURA_5" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="b93285e4-1d1b-4760-a63d-985c67a7a81c" />
+        <field name="OnApplySuccess" type="FunctorsTableFieldDefinition" value="IF(not HasStatus('WALLOFFIRE_DAMAGE_RECEIVED_5')):DealDamage(5d6,Fire,Magical);IF(not HasStatus('WALLOFFIRE_DAMAGE_RECEIVED_5')):ApplyStatus(WALLOFFIRE_DAMAGE_RECEIVED_5,100,1)" />
+        <field name="OnTickSuccess" type="FunctorsTableFieldDefinition" value="IF(not HasStatus('WALLOFFIRE_DAMAGE_RECEIVED_5') or StatusDurationLessThan(context.Source, 'WALLOFFIRE_DAMAGE_RECEIVED_5', 0.1)):DealDamage(5d6,Fire,Magical);ApplyStatus(WALLOFFIRE_DAMAGE_RECEIVED_5,100,1)" />
+        <field name="StackId" type="StringTableFieldDefinition" value="WALLOFFIRE_5" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="Distance(3);DealDamage(5d6,Fire)" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(5d6,Fire)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="5170322f-b5cb-4272-bddd-586b7c4a6e14" />
+        <field name="Name" type="NameTableFieldDefinition" value="WALLOFFIRE_AURA_6" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="b93285e4-1d1b-4760-a63d-985c67a7a81c" />
+        <field name="OnApplySuccess" type="FunctorsTableFieldDefinition" value="IF(not HasStatus('WALLOFFIRE_DAMAGE_RECEIVED_6')):DealDamage(6d6,Fire,Magical);IF(not HasStatus('WALLOFFIRE_DAMAGE_RECEIVED_6')):ApplyStatus(WALLOFFIRE_DAMAGE_RECEIVED_6,100,1)" />
+        <field name="OnTickSuccess" type="FunctorsTableFieldDefinition" value="IF(not HasStatus('WALLOFFIRE_DAMAGE_RECEIVED_6') or StatusDurationLessThan(context.Source, 'WALLOFFIRE_DAMAGE_RECEIVED_6', 0.1)):DealDamage(6d6,Fire,Magical);ApplyStatus(WALLOFFIRE_DAMAGE_RECEIVED_6,100,1)" />
+        <field name="StackId" type="StringTableFieldDefinition" value="WALLOFFIRE_6" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="Distance(3);DealDamage(6d6,Fire)" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(6d6,Fire)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="0719b6b1-593a-4ab8-ab89-7ac7a496f4ec" />
+        <field name="Name" type="NameTableFieldDefinition" value="WALLOFFIRE_DAMAGE_RECEIVED" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h24b544c6g9f24gcd62ge45cg223c3f6105d1" version="1" />
+        <field name="StackId" type="StringTableFieldDefinition" value="WALLOFFIRE_DAMAGE_RECEIVED" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_WallOfFire" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="6bedb403-999a-4562-b05f-499a7925eb49" />
+        <field name="Name" type="NameTableFieldDefinition" value="WALLOFFIRE_DAMAGE_RECEIVED_5" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="0719b6b1-593a-4ab8-ab89-7ac7a496f4ec" />
+        <field name="StackId" type="StringTableFieldDefinition" value="WALLOFFIRE_DAMAGE_RECEIVED_5" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="39717919-b25c-4411-8f51-d7ab44bbdcaa" />
+        <field name="Name" type="NameTableFieldDefinition" value="WALLOFFIRE_DAMAGE_RECEIVED_6" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="0719b6b1-593a-4ab8-ab89-7ac7a496f4ec" />
+        <field name="StackId" type="StringTableFieldDefinition" value="WALLOFFIRE_DAMAGE_RECEIVED_6" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="79e94c4e-4bc9-42a1-a31f-6dd5ef2aa6e9" />
+        <field name="Name" type="NameTableFieldDefinition" value="VoidWhispers_Rank4" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd5c4c398g6fa8gcfbcgf8e8ga1a4f976315b" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hb73ed80bg1859gbd0fg63c0gbdccc46072b1" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Status_Poisoned" />
+        <field name="StackId" type="StringTableFieldDefinition" value="PersistentVoid" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="4" />
+        <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="RollDieAgainstDC(DiceType.d20,15)" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnTurn" enumeration_type_name="StatusEvent" version="1" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(4d8,Necrotic)" />
+        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(4d8,Necrotic)" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="InitiateCombat" enumeration_type_name="StatusPropertyFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="04159e8b-b119-4af3-af1e-eda102a5fcb2" />
+        <field name="Name" type="NameTableFieldDefinition" value="VoidWhispers_Rank6" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="79e94c4e-4bc9-42a1-a31f-6dd5ef2aa6e9" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h1dc83bc2g7005g68dag32e6g027dfe1c3fdb" version="1" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="6" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(6d8,Necrotic)" />
+        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(6d8,Necrotic)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="d93f75f8-d705-47ef-bd71-58113327ee55" />
+        <field name="Name" type="NameTableFieldDefinition" value="VoidWhispers_Rank4_Half" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="79e94c4e-4bc9-42a1-a31f-6dd5ef2aa6e9" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h76951ff2ge84cga26ag088egf3f37612624e" version="1" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(2d8,Necrotic)" />
+        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(2d8,Necrotic)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="abf7dd68-d521-447d-bd87-a701c7106f16" />
+        <field name="Name" type="NameTableFieldDefinition" value="VoidWhispers_Rank6_Half" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="79e94c4e-4bc9-42a1-a31f-6dd5ef2aa6e9" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hdd0eb500g4ae4gefc9gbb01gd66690c6aca7" version="1" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="6" />
+        <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(3d8,Necrotic)" />
+        <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(3d8,Necrotic)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="841aa3b4-6ec8-4ca8-8719-1a39880cbb1b" />
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_0" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="cb32da89-abab-41a2-a556-3bfdeac9b5ca" />
       </fields>
     </stat_object>
   </stat_objects>
