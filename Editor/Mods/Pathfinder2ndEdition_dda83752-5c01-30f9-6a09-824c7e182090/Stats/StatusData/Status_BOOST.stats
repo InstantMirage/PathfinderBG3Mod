@@ -1395,6 +1395,7 @@
         <field name="StackId" type="StringTableFieldDefinition" value="RAGE" />
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpellVariant(RageSpell(),ModifyIconGlow(),ModifyUseCosts(Replace,ActionPoint,0,0,ActionPoint))" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="BringIntoCombat;DisableOverhead;DisableCombatlog" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3270,7 +3271,7 @@
         <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(MOON_WAX)" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableCombatlog" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="IsUnique" type="BoolTableFieldDefinition" value="False" />
-        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="c15c513d-b7df-43c9-b35d-b3e73b5c51b7" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="e8a922ff-bc6a-4ae2-9238-5596f12aa654" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3282,7 +3283,7 @@
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveAction_WardingFlare" />
         <field name="Boosts" type="StringTableFieldDefinition" value="GameplayLight(3,false,0.1); Tag(STAT_BON_1ATTACK);Tag(STAT_BON_3DAMAGE)" />
         <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(MOON_FULL)" />
-        <field name="ApplyEffect" type="GuidObjectTableFieldDefinition" value="fd5e8a72-f196-4b43-8d1c-27d4d1850ba1" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="326dcd92-d609-4a82-93cb-4023f914fecd" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3294,7 +3295,7 @@
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Generic_Light" />
         <field name="Boosts" type="StringTableFieldDefinition" value="GameplayLight(3,false,0.1); Tag(STAT_BON_1ATTACK);Tag(STAT_BON_1AC);Tag(STAT_BON_1SAVES);DamageBonus(4)" />
         <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(MOON_WANE)" />
-        <field name="ApplyEffect" type="GuidObjectTableFieldDefinition" value="dd02e9e1-8ab7-4da0-9097-26fd886c06d4" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="efc1e71f-bf3c-4053-99ef-dc9475cdcfb8" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3306,7 +3307,7 @@
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_WardingFlare" />
         <field name="Boosts" type="StringTableFieldDefinition" value="GameplayLight(3,false,0.1); Tag(STAT_BON_1AC);Tag(STAT_BON_1SAVES)" />
         <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(MOON_NEW)" />
-        <field name="ApplyEffect" type="GuidObjectTableFieldDefinition" value="fd5e8a72-f196-4b43-8d1c-27d4d1850ba1" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="0b3c44c7-36e1-4d26-849b-e42ec3ea22cf" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3608,6 +3609,12 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd716c8c9ge92fg1133gae2ag8fc13ed4eee9" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_InescapableDestruction" />
         <field name="Passives" type="StringTableFieldDefinition" value="UndeathsBlessingFullPassive" />
+        <field name="StackId" type="StringTableFieldDefinition" value="UNDEATHS_BLESSING" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="2" />
+        <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(UNDEAD);" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="1eed3d7d-964a-4364-a075-d4242555ae6c" />
+        <field name="DynamicAnimationTag" type="GuidObjectTableFieldDefinition" value="f9448523-02e4-4117-b437-b1761e39f487" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3618,6 +3625,10 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h474308f6g5ff5g3e48g2f1fg1f3818e4442a" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_InescapableDestruction" />
         <field name="Passives" type="StringTableFieldDefinition" value="UndeathsBlessingHalfPassive" />
+        <field name="StackId" type="StringTableFieldDefinition" value="UNDEATHS_BLESSING" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="1" />
+        <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
+        <field name="DynamicAnimationTag" type="GuidObjectTableFieldDefinition" value="f9448523-02e4-4117-b437-b1761e39f487" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3867,6 +3878,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h54bc0b36g151eg7f11gae7cg616bde98eb71" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hde9c7da4g74a0g13e3g6b71g2364dd6b072f" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Conjuration_FindFamiliar_Raven" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="4b8eb1bc-10c4-42a8-998a-fb20306ec19f" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3930,6 +3942,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h68bda358g74c4g5039gee5egc3d44127f77d" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_HaloOfSpores" />
         <field name="Passives" type="StringTableFieldDefinition" value="WarningStripesPassive" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="def8ec00-fff3-4f5b-adba-607729c88938" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4394,7 +4407,7 @@
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(2*context.Source.LevelMapValue(H1Plus1),Psychic)" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="TickingWithSource;BringIntoCombat" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="IsUnique" type="BoolTableFieldDefinition" value="True" />
-        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="c58a99b4-7a8e-4a52-82e6-d58ea005cd71" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="690fe99a-37db-4cc9-b99c-6a1d9cdd12d8" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4457,6 +4470,8 @@
         <field name="OnApplyRoll" type="RollConditionsTableFieldDefinition" value="not SavingThrow(Ability.Wisdom, 16)" />
         <field name="OnApplySuccess" type="FunctorsTableFieldDefinition" value="DealDamage(2,Psychic,Magical)" />
         <field name="OnApplyFail" type="FunctorsTableFieldDefinition" value="DealDamage(1,Psychic,Magical)" />
+        <field name="SoundStart" type="StringTableFieldDefinition" value="Misc_Status_MaskOfRegret_Damage_Enter" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="5a65f978-75a3-4f26-ae17-8c3ce9f73664" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4971,7 +4986,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd4fe4dd7g2176g662ag6b47g4c2c44a56143" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5fbe8b42g646cg42a1g05b8gb0dede1b51e6" version="1" />
         <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
-        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="b066badc-492a-43b0-8df1-8370865fc039" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="d3e2a61a-97f5-4f8c-8251-e1e3d734bb66" />
         <field name="Boosts" type="StringTableFieldDefinition" value="Tag(STAT_BON_2WILL)" />
       </fields>
     </stat_object>
@@ -5592,6 +5607,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h3cc3117fga96fgade8g90fdg27461337354f" version="1" />
         <field name="TooltipDamage" type="StringTableFieldDefinition" value="DealDamage(1d4,Poison)" />
         <field name="TickFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(1d4,Poison)" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="606c9c50-83b7-4faf-9c59-f1f3199734c8" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
