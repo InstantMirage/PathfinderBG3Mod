@@ -2799,7 +2799,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h258b5b00g9684gcee6g1ccegaabee4e83f97" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf9a477c9ga1fdgfed8gd02fgcf6bdbc84d99" version="2" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="MonkWeaponAttackOverride();CharacterUnarmedDamage(-DexterityModifier)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="MonkWeaponAttackOverride();CharacterUnarmedDamage(StrengthModifier);CharacterUnarmedDamage(-DexterityModifier);" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_MartialArts_DextrousUnarmedAttacks" />
         <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnStatusApply;OnStatusRemove;OnEquip;OnShortRest;OnCreate;OnLongRest;OnInventoryChanged" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="BoostConditions" type="StringTableFieldDefinition" value="IsDexterityGreaterThanStrength()" />
@@ -6553,7 +6553,26 @@
         <field name="Name" type="NameTableFieldDefinition" value="WitchBroom" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hee674006g7d68gd5fegc140g4aaf65cb1e99" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h65dd6826g3841gf6f6gb5beg68dfb7a9a4e0" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_Fly_Spell)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_Fly_WitchBroom);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="85e44cdf-7acd-4fb2-820e-af940fba0d41" />
+        <field name="Name" type="NameTableFieldDefinition" value="StoneSkinReducer" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="IsHidden" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamaged;OnDamagedPrevented" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsPhysicalDamage();" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="SetStatusDuration(STONESKIN,-1,Add);SetStatusDuration(STONESKIN_6,-1,Add)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="bbe59b45-7206-43bf-a027-94a5678ddea0" />
+        <field name="Name" type="NameTableFieldDefinition" value="SandFormReducer" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="85e44cdf-7acd-4fb2-820e-af940fba0d41" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsDamageTypeSlashing() or IsDamageTypePiercing();" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="SetStatusDuration(SANDFORM,-1,Add);SetStatusDuration(SANDFORM_5,-1,Add)" />
       </fields>
     </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">

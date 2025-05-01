@@ -211,25 +211,16 @@ function CalculateMAP()
 end
 
 function AgileMAP()
-	return HasWeaponProperty(WeaponProperties.Light, context.AttackWeapon) or IsMeleeUnarmedAttack()
+	return HasWeaponProperty(WeaponProperties.Light, context.AttackWeapon) or AgileUnarmedSpell()
 end
 
--- Interrupt CritThreshold
-
-function CritThresholdSuccess()
-    local notCrit = context.InterruptedRoll.NaturalRoll < 20 & context.InterruptedRoll.NaturalRoll > 1
-	local critDC = context.InterruptedRoll.Difficulty + 10
-    local exceededBy10 = context.InterruptedRoll.Total >= critDC
-
-    return ConditionResult(notCrit & exceededBy10)
-end
-
-function CritThresholdFail()
-    local notCrit = context.InterruptedRoll.NaturalRoll < 20 & context.InterruptedRoll.NaturalRoll > 1
-	local critTotal = context.InterruptedRoll.Total + 10
-    local failedBy10 = critTotal <= context.InterruptedRoll.Difficulty
-
-    return ConditionResult(notCrit & failedBy10)
+function AgileUnarmedSpell()
+	local standard = SpellId('Target_UnarmedAttack') | SpellId('Target_IronFist')
+	local animal_instinct = SpellId('Target_AnimalSecondarySlashing') | SpellId('Target_AnimalSecondaryFrog')
+	local monk = SpellId('Target_CraneWing') | SpellId('Target_TigerClaw') | SpellId('Target_CobraFang') | SpellId('Target_WolfJaw') | SpellId('Target_ClingingShadowStance') | SpellId('Target_IronSweep') | SpellId('Target_WindCrash')
+	local witch = SpellId('Target_EldritchNails') | SpellId('Target_LivingHair') | SpellId('Target_SympatheticStrike_Nails') | SpellId('Target_SympatheticStrike_Hair')
+	
+	return standard | animal_instinct | monk | witch
 end
 
 -- Weapons
@@ -430,7 +421,7 @@ function IsMonkUnarmedSpell()
 end
 
 function MonkUnarmedStrike()
-	return SpellId('Target_UnarmedAttack') | SpellId('Target_IronFist') | SpellId('Target_CraneWing') | SpellId('Target_TigerClaw') | SpellId('Target_CobraFang') | SpellId('Target_FallingStone') | SpellId('Target_DragonStance') | SpellId('Target_WolfJaw')
+	return SpellId('Target_UnarmedAttack') | SpellId('Target_IronFist') | SpellId('Target_CraneWing') | SpellId('Target_TigerClaw') | SpellId('Target_CobraFang') | SpellId('Target_FallingStone') | SpellId('Target_DragonStance') | SpellId('Target_WolfJaw') | SpellId('Target_ClingingShadowStance') | SpellId('Target_IronSweep') | SpellId('Target_LashingBranch') | SpellId('Target_WindCrash')
 end
 
 function MonasticWeaponry()
@@ -594,6 +585,10 @@ function CanSustainTarget(status)
 	return HasStatus(status,target,source) & ConditionResult(GetStatusDuration(status) < 2,{ConditionError("SustainCooldown")})
 end
 
+function PoltergeistSustainSpell()
+	return SpellId('Target_PerniciousPoltergeist_Rank4_Recast') | SpellId('Target_PerniciousPoltergeist_Rank4_Recast_Negative') | SpellId('Shout_Poltergeist_Sustain_Force') | SpellId('Shout_Poltergeist_Sustain_Fear') | SpellId('Target_PerniciousPoltergeist_Rank6_Recast') | SpellId('Target_PerniciousPoltergeist_Rank6_Recast_Negative') | SpellId('Shout_Poltergeist_Sustain_Force_6') | SpellId('Shout_Poltergeist_Sustain_Fear_6')
+end
+
 --Incap - treats DC as 10 higher
 
 function IncapDC(dc,target,source)
@@ -622,6 +617,24 @@ function IncapClassDC(target,source)
     target = target or context.Target
     source = source or context.Source
 	return IncapDC(ClassDC(source),target,source)
+end
+
+-- Crit threshold interrupt
+
+function CritThresholdSuccess()
+    local notCrit = context.InterruptedRoll.NaturalRoll < 20 & context.InterruptedRoll.NaturalRoll > 1
+	local critDC = context.InterruptedRoll.Difficulty + 10
+    local exceededBy10 = context.InterruptedRoll.Total >= critDC
+
+    return ConditionResult(notCrit & exceededBy10)
+end
+
+function CritThresholdFail()
+    local notCrit = context.InterruptedRoll.NaturalRoll < 20 & context.InterruptedRoll.NaturalRoll > 1
+	local critTotal = context.InterruptedRoll.Total + 10
+    local failedBy10 = critTotal <= context.InterruptedRoll.Difficulty
+
+    return ConditionResult(notCrit & failedBy10)
 end
 
 -- Critical hits for non-attack spells
