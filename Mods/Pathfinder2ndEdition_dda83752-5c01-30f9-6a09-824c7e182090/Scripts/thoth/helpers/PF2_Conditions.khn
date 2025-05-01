@@ -139,7 +139,7 @@ function OffGuard(target,source)
     target = target or context.Target
     source = source or context.Source
 	
-	local feint = IsMeleeAttack() & (HasStatus('FEINT_ROUND',target,source) | HasStatus('FEINT_ONCE',target,source))
+local feint = IsMeleeAttack() & HasAnyStatus({'FEINT_ROUND','FEINT_ONCE'},{},{},target,source)
 	local hidden = HasStatus('SG_Invisible',source) | HasStatus('SNEAKING',source)
 	--You aren't off-guard to hidden, undetected, or flanking creatures of your level or lower
 	local denyadvantage = Tagged('ROGUE_DENYADVANTAGE',target) & (target.Level >= source.Level)
@@ -211,25 +211,16 @@ function CalculateMAP()
 end
 
 function AgileMAP()
-	return HasWeaponProperty(WeaponProperties.Light, context.AttackWeapon) or IsMeleeUnarmedAttack()
+	return HasWeaponProperty(WeaponProperties.Light, context.AttackWeapon) or AgileUnarmedSpell()
 end
 
--- Interrupt CritThreshold
-
-function CritThresholdSuccess()
-    local notCrit = context.InterruptedRoll.NaturalRoll < 20 & context.InterruptedRoll.NaturalRoll > 1
-	local critDC = context.InterruptedRoll.Difficulty + 10
-    local exceededBy10 = context.InterruptedRoll.Total >= critDC
-
-    return ConditionResult(notCrit & exceededBy10)
-end
-
-function CritThresholdFail()
-    local notCrit = context.InterruptedRoll.NaturalRoll < 20 & context.InterruptedRoll.NaturalRoll > 1
-	local critTotal = context.InterruptedRoll.Total + 10
-    local failedBy10 = critTotal <= context.InterruptedRoll.Difficulty
-
-    return ConditionResult(notCrit & failedBy10)
+function AgileUnarmedSpell()
+	local standard = SpellId('Target_UnarmedAttack') | SpellId('Target_IronFist')
+	local animal_instinct = SpellId('Target_AnimalSecondarySlashing') | SpellId('Target_AnimalSecondaryFrog')
+	local monk = SpellId('Target_CraneWing') | SpellId('Target_TigerClaw') | SpellId('Target_CobraFang') | SpellId('Target_WolfJaw') | SpellId('Target_ClingingShadowStance') | SpellId('Target_IronSweep') | SpellId('Target_WindCrash')
+	local witch = SpellId('Target_EldritchNails') | SpellId('Target_LivingHair') | SpellId('Target_SympatheticStrike_Nails') | SpellId('Target_SympatheticStrike_Hair')
+	
+	return standard | animal_instinct | monk | witch
 end
 
 -- Weapons
@@ -311,6 +302,73 @@ function RetributiveStrikeRange(observer,source)
 	return nimble_reprisal | reach | melee
 end
 
+--Cleric
+
+function CastDownSpellCheck()
+	local harm_font = SpellId('Target_HarmingFont') | SpellId('Target_HarmingFont1Action') | SpellId('Target_HarmingFont2Action')
+	
+	local heal_font = SpellId('Target_HealingFont') | SpellId('Target_HealingFont1Action') |SpellId('Target_HealingFont2Action')
+	
+	local harm_slot = SpellId('Target_HarmBase1') |IsSpellChildOrVariantFromContext('Target_Harm_One_Action_Rank_1') |IsSpellChildOrVariantFromContext('Target_Harm_Two_Action_Rank_1')
+	
+	local heal_slot = SpellId('Target_HealBase1') | IsSpellChildOrVariantFromContext('Target_HealOneAction_Rank_1') | IsSpellChildOrVariantFromContext('Target_HealOneAction_Rank_1')
+	
+	local smite = SpellId('Target_ChannelSmiteBase') | SpellId('Target_ChannelSmiteHarmFont') | IsSpellChildOrVariantFromContext('Target_ChannelSmiteHarm_1') | SpellId('Target_ChannelSmiteHealFont') | IsSpellChildOrVariantFromContext('Target_ChannelSmiteHeal_1')
+	
+	return harm_font | harm_slot | heal_font | heal_slot | smite
+	--|IsSpellChildOrVariantFromContext('Zone_DirectedChannel_Heal_Base')
+end
+
+function HealLive(size)
+	local source = context.Source
+	local target = context.Target
+	if size == 10 then
+		return HasPassive('HealingHands',source) & ~Tagged('UNDEAD',target)
+	else
+		return ~HasPassive('HealingHands',source) & ~Tagged('UNDEAD',target)
+	end
+end
+
+function HealVoid(size)
+	local source = context.Source
+	local target = context.Target
+	if size == 10 then
+		return HasPassive('HealingHands',source) & Tagged('UNDEAD',target)
+	else
+		return ~HasPassive('HealingHands',source) & Tagged('UNDEAD',target)
+	end
+end
+
+function AngelicHalo()
+	local target = context.Target
+	return ~Tagged('UNDEAD',target) & HasStatus('AngelicHaloStatus',target)
+end
+
+function HarmLive(size)
+	local source = context.Source
+	local target = context.Target
+	if size == 10 then
+		return HasPassive('HarmingHands',source) & ~Tagged('UNDEAD',target)
+	else
+		return ~HasPassive('HarmingHands',source) & ~Tagged('UNDEAD',target)
+	end
+end
+
+function HarmVoid(size)
+	local source = context.Source
+	local target = context.Target
+	if size == 10 then
+		return HasPassive('HarmingHands',source) & Tagged('UNDEAD',target)
+	else
+		return ~HasPassive('HarmingHands',source) & Tagged('UNDEAD',target)
+	end
+end
+
+function SapLife()
+	return HasPassive('SapLife',source)
+end
+
+
 --Fighter
 
 function ClassDC(source)
@@ -363,7 +421,7 @@ function IsMonkUnarmedSpell()
 end
 
 function MonkUnarmedStrike()
-	return SpellId('Target_UnarmedAttack') | SpellId('Target_IronFist') | SpellId('Target_CraneWing') | SpellId('Target_TigerClaw') | SpellId('Target_CobraFang') | SpellId('Target_FallingStone') | SpellId('Target_DragonStance') | SpellId('Target_WolfJaw')
+	return SpellId('Target_UnarmedAttack') | SpellId('Target_IronFist') | SpellId('Target_CraneWing') | SpellId('Target_TigerClaw') | SpellId('Target_CobraFang') | SpellId('Target_FallingStone') | SpellId('Target_DragonStance') | SpellId('Target_WolfJaw') | SpellId('Target_ClingingShadowStance') | SpellId('Target_IronSweep') | SpellId('Target_LashingBranch') | SpellId('Target_WindCrash')
 end
 
 function MonasticWeaponry()
@@ -527,6 +585,10 @@ function CanSustainTarget(status)
 	return HasStatus(status,target,source) & ConditionResult(GetStatusDuration(status) < 2,{ConditionError("SustainCooldown")})
 end
 
+function PoltergeistSustainSpell()
+	return SpellId('Target_PerniciousPoltergeist_Rank4_Recast') | SpellId('Target_PerniciousPoltergeist_Rank4_Recast_Negative') | SpellId('Shout_Poltergeist_Sustain_Force') | SpellId('Shout_Poltergeist_Sustain_Fear') | SpellId('Target_PerniciousPoltergeist_Rank6_Recast') | SpellId('Target_PerniciousPoltergeist_Rank6_Recast_Negative') | SpellId('Shout_Poltergeist_Sustain_Force_6') | SpellId('Shout_Poltergeist_Sustain_Fear_6')
+end
+
 --Incap - treats DC as 10 higher
 
 function IncapDC(dc,target,source)
@@ -555,4 +617,55 @@ function IncapClassDC(target,source)
     target = target or context.Target
     source = source or context.Source
 	return IncapDC(ClassDC(source),target,source)
+end
+
+-- Crit threshold interrupt
+
+function CritThresholdSuccess()
+    local notCrit = context.InterruptedRoll.NaturalRoll < 20 & context.InterruptedRoll.NaturalRoll > 1
+	local critDC = context.InterruptedRoll.Difficulty + 10
+    local exceededBy10 = context.InterruptedRoll.Total >= critDC
+
+    return ConditionResult(notCrit & exceededBy10)
+end
+
+function CritThresholdFail()
+    local notCrit = context.InterruptedRoll.NaturalRoll < 20 & context.InterruptedRoll.NaturalRoll > 1
+	local critTotal = context.InterruptedRoll.Total + 10
+    local failedBy10 = critTotal <= context.InterruptedRoll.Difficulty
+
+    return ConditionResult(notCrit & failedBy10)
+end
+
+-- Critical hits for non-attack spells
+
+function SaveCrit(threshold)
+    local total, difficulty = LastConditionRollValues(ConditionRollType.ConditionSavingThrow)
+    local thresholdtotal = 10 + total
+    if difficulty >= thresholdtotal then
+        return ConditionResult(difficulty > total)
+    end
+    return ConditionResult(false)
+end
+
+function SaveCritMiss(threshold)
+    local total, difficulty = LastConditionRollValues(ConditionRollType.ConditionSavingThrow)
+    local thresholdtotal = total - 10
+    if difficulty < thresholdtotal then
+        return ConditionResult(difficulty < total)
+    end
+    return ConditionResult(false)
+end
+
+function LastConditionRollValues(conditionRollType)
+    try
+        conditionRoll = context.HitDescription.GetLastConditionRoll(conditionRollType)
+    catch e then
+        if ls.CheckType(e, ls.error.UnsupportedAttributeType) or ls.CheckType(e, ls.error.NotFound) then
+            return ConditionResult(false)
+        else
+            return ConditionResult(false)
+        end
+    end
+    return conditionRoll.Total, conditionRoll.Difficulty
 end

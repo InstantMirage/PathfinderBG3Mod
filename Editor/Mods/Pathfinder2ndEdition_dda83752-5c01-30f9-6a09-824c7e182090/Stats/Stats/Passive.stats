@@ -1611,6 +1611,7 @@
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnCast" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="HasUseCosts('BardicInspiration', true)" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(BARD_COMPOSING)" />
+        <field name="DynamicAnimationTag" type="GuidObjectTableFieldDefinition" value="8047cf29-2c79-4f12-a4bf-d965a023be63" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2798,7 +2799,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h258b5b00g9684gcee6g1ccegaabee4e83f97" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf9a477c9ga1fdgfed8gd02fgcf6bdbc84d99" version="2" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="MonkWeaponAttackOverride();CharacterUnarmedDamage(-DexterityModifier)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="MonkWeaponAttackOverride();CharacterUnarmedDamage(StrengthModifier);CharacterUnarmedDamage(-DexterityModifier);" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_MartialArts_DextrousUnarmedAttacks" />
         <field name="BoostContext" type="EnumerationListTableFieldDefinition" value="OnStatusApply;OnStatusRemove;OnEquip;OnShortRest;OnCreate;OnLongRest;OnInventoryChanged" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="BoostConditions" type="StringTableFieldDefinition" value="IsDexterityGreaterThanStrength()" />
@@ -3494,8 +3495,8 @@
         <field name="Name" type="NameTableFieldDefinition" value="ChannelSmite" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2fbe7ddbg5ce0gef3fg3476ga5ed22907331" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf6da6f65g7a22gb259g527bgec028af9af12" version="1" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_SearingSmite" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ChannelSmiteBase,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Target_ChannelSmiteHealBase,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Target_ChannelSmiteHarmFont);UnlockSpell(Target_ChannelSmiteHealFont);" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_DivineStrike_Melee" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ChannelSmiteBase,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3505,7 +3506,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3959ab2ag5decg34fdgc874g66bef4bc246c" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha0a7f9b5gb703g6b57g7b9dg85b2293f8c69" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ImprovedFlare" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Zone_DirectedChannel_Heal_Base,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Zone_DirectedChannel_Harm_Base,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Zone_DirectedChannel_Heal_Base,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3536,7 +3537,14 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h9cba9bfeg2255ge3e4gc432ga91c940c7128" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hbec81ff8g78b3g5736g021ag819160be667e" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Enchantment_CommandGrovel" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_CastDown)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpellVariant(CastDownSpellCheck(),ModifyUseCosts(Add,ActionPoint,1,0),ModifyIconGlow());" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="c527f419-61b6-4f76-92d0-6103c29d07b7" />
+        <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="ActionPoint:1" />
+        <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="CastDownSpellCheck();" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(PRONE,100,1)" />
+        <field name="ToggleOnEffect" type="StringTableFieldDefinition" value="VFX_Spells_Cast_Sorcerer_Metamagic_Heightened_HeadFX_01:Dummy_HeadFX" />
+        <field name="ToggleOffContext" type="EnumerationListTableFieldDefinition" value="OnCastResolved" enumeration_type_name="StatsFunctorContext" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4285,7 +4293,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="SneakAttackPassive" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he2c2e69ag0aaeg63edg29b4g91f4e3a178b2" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_SneakAttack_Melee" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF( SneakAttackWeapon() and (OffGuard() or (IsMeleeAttack() and HasAllyWithinRange('SG_Incapacitated',1.5))) and CanPrecisionDamage() ):DamageBonus(LevelMapValue(SneakAttack)); IF(not HasPassive('Ruffian',context.Source)):UnlockSpell(Target_SneakAttack); IF(HasPassive('Ruffian',context.Source)):UnlockSpell(Target_SneakAttack_Ruffian); UnlockSpell(Projectile_SneakAttack)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF( SneakAttackWeapon() and (OffGuard() or (IsMeleeAttack() and HasAllyWithinRange('SG_Incapacitated',1.5))) and CanPrecisionDamage() ):DamageBonus(LevelMapValue(SneakAttack));IF(not HasPassive('Ruffian',context.Source)):UnlockSpell(Target_SneakAttack);IF(HasPassive('Ruffian',context.Source)):UnlockSpell(Target_SneakAttack_Ruffian);UnlockSpell(Projectile_SneakAttack);" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted;ForceShowInCC" enumeration_type_name="PassiveFlags" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="he1e6e36cgfc7bg96a7g6f9eg9778615a951c" version="1" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(SneakAttack)" />
@@ -5375,6 +5383,7 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="cf324821-b3bd-431b-bc22-85c34cbf2244" />
         <field name="Name" type="NameTableFieldDefinition" value="WIZARD" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpellVariant(FreecastCheck(),ModifyUseCosts(Replace,SpellSlotsGroup,0,-1,SpellSlotsGroup),ModifyUseCosts(Replace,KiPoint,0,0,KiPoint),ModifyUseCosts(Replace,BardicInspiration,0,0,BardicInspiration),ModifyUseCosts(Replace,ChannelDivinity,0,0,ChannelDivinity),ModifyUseCosts(Replace,TidesOfChaos,0,0,TidesOfChaos));" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6544,7 +6553,26 @@
         <field name="Name" type="NameTableFieldDefinition" value="WitchBroom" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hee674006g7d68gd5fegc140g4aaf65cb1e99" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h65dd6826g3841gf6f6gb5beg68dfb7a9a4e0" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_Fly_Spell)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_Fly_WitchBroom);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="85e44cdf-7acd-4fb2-820e-af940fba0d41" />
+        <field name="Name" type="NameTableFieldDefinition" value="StoneSkinReducer" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="IsHidden" enumeration_type_name="PassiveFlags" version="1" />
+        <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamaged;OnDamagedPrevented" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsPhysicalDamage();" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="SetStatusDuration(STONESKIN,-1,Add);SetStatusDuration(STONESKIN_6,-1,Add)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="bbe59b45-7206-43bf-a027-94a5678ddea0" />
+        <field name="Name" type="NameTableFieldDefinition" value="SandFormReducer" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="85e44cdf-7acd-4fb2-820e-af940fba0d41" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsDamageTypeSlashing() or IsDamageTypePiercing();" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="SetStatusDuration(SANDFORM,-1,Add);SetStatusDuration(SANDFORM_5,-1,Add)" />
       </fields>
     </stat_object>
     <stat_object color="#FFA52A2A" is_substat="false">
