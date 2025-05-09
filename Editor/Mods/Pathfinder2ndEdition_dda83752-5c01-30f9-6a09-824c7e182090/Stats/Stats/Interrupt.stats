@@ -302,7 +302,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h8c7ae051gedcdgf7fcg141dgba6603c89cd1" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h80410f33g989bg7a32g173cgbde178e57270" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ProjectedWard" />
-        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(OBSERVER_TARGET,-(LevelMapValue(ProtectorsSacrifice)));DealDamage(OBSERVER_OBSERVER,LevelMapValue(ProtectorsSacrifice),Necrotic,,,,,true,true,,true)" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(OBSERVER_TARGET,-(LevelMapValue(ProtectorsSacrifice)));DealDamage(OBSERVER_OBSERVER,(LevelMapValue(ProtectorsSacrifice)),Necrotic,,,,,true,true,,true);" />
         <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1;KiPoint:1" />
       </fields>
     </stat_object>
@@ -1074,6 +1074,99 @@
         <field name="Roll" type="StringTableFieldDefinition" value="RollDieAgainstDC(DiceType.d20,5)" />
         <field name="Success" type="StringTableFieldDefinition" value="IF(HasInterruptedAttack()):AdjustRoll(-400);IF(HasInterruptedSavingThrow()):AdjustRoll(OBSERVER_OBSERVER,400)" />
         <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="cb00e185-c296-4b74-83cb-fff3c764d686" />
+        <field name="Name" type="NameTableFieldDefinition" value="CallOnAncientBloodInterrupt" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="72adb0ed-cf5a-4fc7-8846-093008ddc7b4" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h12923a14gf164g7862gffafg1f95df4d0248" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h1dced594gda35gdb67g3056g08dfcddc4654" version="2" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="not Dead(context.Observer) and HasInterruptedSavingThrow() and Self(context.Observer,context.Target) and not AnyEntityIsItem() and and IsSpell() IsFlatValueInterruptInteresting(1);" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(OBSERVER_OBSERVER,1);ApplyStatus(CircumstanceBonus1Saves,100,1);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="86822d33-29f6-43f9-910a-61be4fc94a5c" />
+        <field name="Name" type="NameTableFieldDefinition" value="OrcSuperstitionInterrupt" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="cb00e185-c296-4b74-83cb-fff3c764d686" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha264cecaga5b2gf095g4b5bg365cbb486786" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hde22fb67g01b1gdde7g910dg270611f8e187" version="1" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(OBSERVER_OBSERVER,1);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="340017f7-a72d-4398-8743-ad2d3b3fd437" />
+        <field name="Name" type="NameTableFieldDefinition" value="HalflingLuck_Save" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h573be0ccgb692ga46bg16afg9aaf200dee06" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h6b4d43d1g9341g3ecbgb8aag6ff526b29955" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Halfling_Lucky" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Observer,context.Target) and HasInterruptedSavingThrow() and IsRerollInterruptInteresting();" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetAdvantage();" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerRest" enumeration_type_name="CooldownType" version="1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="f8b56ad4-655f-422d-b8ff-ece3b597bcf9" />
+        <field name="Name" type="NameTableFieldDefinition" value="HalflingLuck_Skill" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h18f0bc43geae9gfa88g39e8g0307a115c66f" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5f5d6efag7064g097bg0aa3g457f5e2d765e" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Halfling_Lucky" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Observer,context.Target) and IsSkillChecked() and IsRerollInterruptInteresting();" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetAdvantage();" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerRest" enumeration_type_name="CooldownType" version="1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="1ba3e1b8-021c-46c9-a599-c9ae2335049c" />
+        <field name="Name" type="NameTableFieldDefinition" value="EnergyAbsorption" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4d351b07g0aa1gf55dgb10dg6a625e6acec8" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_FlameStrike" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPreDamage" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and (IsDamageTypeFire() or IsDamageTypeAcid() or IsDamageTypeCold() or IsDamageTypeLightning());" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(-15);" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1;KiPoint:1;" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="13de94d0-a0e3-475e-a267-7fd814fb4a8b" />
+        <field name="Name" type="NameTableFieldDefinition" value="DeflectingWave" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hed486d6bgf70ag470dg1683g6ed9f189f157" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hfbc884f3gc5ddgd86bgf184g3cca940ff840" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_FlameStrike" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPreDamage" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and (IsDamageTypeFire() or IsDamageTypeAcid() or IsDamageTypeSlashing() or IsDamageTypeBludgeoning());" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(-(LevelMapValue(CharacterLevel));IF(IsDamageTypeFire()):AdjustRoll(-(LevelMapValue(CharacterLevel));IF(IsDamageTypeAcid()):AdjustRoll(-(LevelMapValue(CharacterLevel));" />
+        <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise') and HasStatus('ChannelElementsStatus_Water');" />
         <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
       </fields>
     </stat_object>
