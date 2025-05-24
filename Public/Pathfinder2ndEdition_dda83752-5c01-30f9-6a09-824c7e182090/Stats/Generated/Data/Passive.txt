@@ -85,7 +85,7 @@ type "PassiveData"
 data "DisplayName" "h8dc4ab6eg2401gdb8fgfe89g9f26fb9fda22;1"
 data "Description" "h394df0e6g9729g8d59gbcdcg6a82876cdf2e;1"
 data "Icon" "PassiveFeature_Skilled"
-data "Boosts" "AddProficiencyToAC(); Ability(Strength,1); Ability(Dexterity,1); Ability(Constitution,1); Ability(Intelligence,1); Ability(Wisdom,1); Ability(Charisma,1);"
+data "Boosts" "AddProficiencyToAC();Ability(Strength,1);Ability(Dexterity,1);Ability(Constitution,1);Ability(Intelligence,1);Ability(Wisdom,1);Ability(Charisma,1);TwoWeaponFighting();DualWielding(true);DualWielding(false);"
 
 new entry "SkillActions"
 type "PassiveData"
@@ -3639,59 +3639,17 @@ data "Properties" "Highlighted"
 
 new entry "SplitShot"
 type "PassiveData"
-data "Properties" "Highlighted"
+data "DisplayName" "hc230b071gecf3ga4ddg89e2g15ac9b40e3e4;1"
+data "Description" "h60331aeeg9bd6g359dg6f40gce1ae54a60dd;1"
+data "Properties" "MetaMagic;IsToggled;ToggledDefaultAddToHotbar"
+data "Boosts" "UnlockSpellVariant(SpellAttackCheck(), ModifyNumberOfTargets(AdditiveBase,1), ModifyUseCosts(Add,ActionPoint,1,0), ModifyIconGlow(), ModifyTooltipDescription());"
 
-new entry "AberrantWhispers"
+new entry "AdvancedBloodline"
 type "PassiveData"
-data "Properties" "Highlighted"
-
-new entry "AngelicWings"
-type "PassiveData"
-data "Properties" "Highlighted"
-
-new entry "SwampOfSloth"
-type "PassiveData"
-data "Properties" "Highlighted"
-
-new entry "EmbraceThePit"
-type "PassiveData"
-data "Properties" "Highlighted"
-
-new entry "DragonBreathArcane"
-type "PassiveData"
-data "Properties" "Highlighted"
-
-new entry "DragonBreathDivine"
-type "PassiveData"
-data "Properties" "Highlighted"
-
-new entry "DragonBreathOccult"
-type "PassiveData"
-data "Properties" "Highlighted"
-
-new entry "DragonBreathPrimal"
-type "PassiveData"
-data "Properties" "Highlighted"
-
-new entry "ElementalMotion"
-type "PassiveData"
-data "Properties" "Highlighted"
-
-new entry "FeyDisappearance"
-type "PassiveData"
-data "Properties" "Highlighted"
-
-new entry "HorrificVisage"
-type "PassiveData"
-data "Properties" "Highlighted"
-
-new entry "ExtendBloodMagic"
-type "PassiveData"
-data "Properties" "Highlighted"
-
-new entry "AdvancedDrainLife"
-type "PassiveData"
-data "Properties" "Highlighted"
+data "DisplayName" "hbc108c4bgd14egc156gf4efg87ed4677e51e;1"
+data "Description" "h3a38c548gff0cg3382g3b79g05de3fd64a3d;1"
+data "Boosts" "ActionResource(KiPoint,1,0);IF(HasPassive('DiabolicBloodline',context.Source)):UnlockSpell(Shout_AberrantWhispers_Container);IF(HasPassive('AngelicBloodline',context.Source)):UnlockSpell(Shout_AngelicWings);IF(HasPassive('DemonicBloodline',context.Source)):UnlockSpell(Target_SwampOfSloth_Container);IF(HasPassive('DiabolicBloodline',context.Source)):UnlockSpell(Shout_EmbraceThePit);IF(HasPassive('ArcaneDragonBloodline',context.Source)):UnlockSpell(Zone_SorcererBreath_Arcane);IF(HasPassive('DivineDragonBloodline',context.Source)):UnlockSpell(Zone_SorcererBreath_Divine);IF(HasPassive('OccultDragonBloodline',context.Source)):UnlockSpell(Zone_SorcererBreath_Occult);IF(HasPassive('PrimalDragonBloodline',context.Source)):UnlockSpell(Zone_SorcererBreath_Primal);IF(HasPassive('FeyBloodline',context.Source)):UnlockSpell(Shout_FeyDisappearance);IF(HasPassive('HagBloodline',context.Source)):UnlockSpell(Shout_HorrificVisage);IF(HasPassive('UndeadBloodline',context.Source)):UnlockSpell(Target_DrainLife);"
+data "StatsFunctorContext" "OnCreate"
 
 new entry "DivertingVortex"
 type "PassiveData"
@@ -3909,55 +3867,89 @@ new entry "ProtectiveWards"
 type "PassiveData"
 data "DisplayName" "hf0b11339g5727g80f1g1814g5ebfc0afbee1;1"
 data "Description" "ha73c668agae76g683bgbfa0g17038f0cb135;1"
-data "Boosts" "ActionResource(KiPoint,1,0)"
+data "Boosts" "ActionResource(KiPoint,1,0);UnlockSpell(Target_ProtectiveWards_Create);"
 
 new entry "ForceBolt"
 type "PassiveData"
 data "DisplayName" "ha0382789g3c52g01adg0a0egc003e3d340dd;1"
 data "Description" "hd619cafbg5fcbga2efg84f8gbd1c63def570;1"
-data "Boosts" "ActionResource(KiPoint,1,0)"
+data "Boosts" "ActionResource(KiPoint,1,0);UnlockSpell(Projectile_ForceBoltFocus);"
 
 new entry "Earthworks"
 type "PassiveData"
 data "DisplayName" "he67b0c8dg7735ga886g53cegde14478499cb;1"
 data "Description" "h7b314042gf3degc674g9328g23a09deeea96;1"
-data "Boosts" "ActionResource(KiPoint,1,0)"
+data "Boosts" "ActionResource(KiPoint,1,0);UnlockSpell(Target_Earthworks_Container);"
 
 new entry "CharmingPush"
 type "PassiveData"
 data "DisplayName" "haa56f16fg8e3cg2ad4g8e19g139cc2d0cf0d;1"
 data "Description" "hd8209174g549ag7097g32bage82301d4264f;1"
-data "Boosts" "ActionResource(KiPoint,1,0)"
+data "Boosts" "ActionResource(KiPoint,1,0);UnlockSpell(Target_CharmingPush);"
 
 new entry "ScrambleBody"
 type "PassiveData"
 data "DisplayName" "h71c3bfbcg3e02ge98ag9630g64b7d21accf6;1"
 data "Description" "ha1fc1d33g871bg3159gb4b3g39accd9919c7;1"
-data "Boosts" "ActionResource(KiPoint,1,0)"
+data "Boosts" "ActionResource(KiPoint,1,0);UnlockSpell(Target_ScrambleBody);"
 
 new entry "FortifySummoning"
 type "PassiveData"
 data "DisplayName" "h64ca2f7ag970cg448eg67dbgeb513343c038;1"
 data "Description" "h60e9bde3gde56gb967gcdacgd587defa71a7;1"
-data "Boosts" "ActionResource(KiPoint,1,0)"
+data "Boosts" "ActionResource(KiPoint,1,0);UnlockSpell(Target_FortifySummoning);"
 
 new entry "HandApprentice"
 type "PassiveData"
 data "DisplayName" "ha6de720agf800g2299g684fg127fee9ab4d8;1"
 data "Description" "hce52647fg33f7gfc82g7493gd4f35e3a8fa0;1"
-data "Boosts" "ActionResource(KiPoint,1,0)"
+data "Boosts" "ActionResource(KiPoint,1,0);UnlockSpell(Projectile_HandApprentice);"
 
 new entry "EnergyAblation"
 type "PassiveData"
+data "DisplayName" "hb09de544g1c00g6989g75f7gd1f29dc25d67;1"
+data "Description" "h9d6743d7g3c5fg38c7gda2cg842e046866e4;1"
+data "Properties" "MetaMagic;ToggledDefaultAddToHotbar;IsToggled"
+data "Boosts" "UnlockSpellVariant(HasUseCosts('ActionPoint') and IsSpell(),ModifyUseCosts(Add,ActionPoint,1,0),ModifyIconGlow());"
+data "StatsFunctorContext" "OnCast"
+data "Conditions" "IsSpell();"
+data "StatsFunctors" "IF(SpellDamageTypeIs(DamageType.Acid) and IsCantrip()):ApplyStatus(ACI_RESIST_INPUT,100,LevelMapValue(H1Plus1));
+IF(SpellDamageTypeIs(DamageType.Acid) and not IsCantrip()):ApplyStatus(ACI_RESIST_INPUT,100,SpellPowerLevel);
+IF(SpellDamageTypeIs(DamageType.Cold) and IsCantrip()):ApplyStatus(CLD_RESIST_INPUT,100,LevelMapValue(H1Plus1));
+IF(SpellDamageTypeIs(DamageType.Cold) and not IsCantrip()):ApplyStatus(CLD_RESIST_INPUT,100,SpellPowerLevel);
+IF(SpellDamageTypeIs(DamageType.Fire) and IsCantrip()):ApplyStatus(FIR_RESIST_INPUT,100,LevelMapValue(H1Plus1));
+IF(SpellDamageTypeIs(DamageType.Fire) and not IsCantrip()):ApplyStatus(FIR_RESIST_INPUT,100,SpellPowerLevel);
+IF(SpellDamageTypeIs(DamageType.Force) and IsCantrip()):ApplyStatus(FOR_RESIST_INPUT,100,LevelMapValue(H1Plus1));
+IF(SpellDamageTypeIs(DamageType.Force) and not IsCantrip()):ApplyStatus(FOR_RESIST_INPUT,100,SpellPowerLevel);
+IF(SpellDamageTypeIs(DamageType.Lightning) and IsCantrip()):ApplyStatus(LGT_RESIST_INPUT,100,LevelMapValue(H1Plus1));
+IF(SpellDamageTypeIs(DamageType.Lightning) and not IsCantrip()):ApplyStatus(LGT_RESIST_INPUT,100,SpellPowerLevel);
+IF(SpellDamageTypeIs(DamageType.Necrotic) and IsCantrip()):ApplyStatus(NEC_RESIST_INPUT,100,LevelMapValue(H1Plus1));
+IF(SpellDamageTypeIs(DamageType.Necrotic) and not IsCantrip()):ApplyStatus(NEC_RESIST_INPUT,100,SpellPowerLevel);
+IF(SpellDamageTypeIs(DamageType.Radiant) and IsCantrip()):ApplyStatus(RAD_RESIST_INPUT,100,LevelMapValue(H1Plus1));
+IF(SpellDamageTypeIs(DamageType.Radiant) and not IsCantrip()):ApplyStatus(RAD_RESIST_INPUT,100,SpellPowerLevel);
+IF(SpellDamageTypeIs(DamageType.Thunder) and IsCantrip()):ApplyStatus(THN_RESIST_INPUT,100,LevelMapValue(H1Plus1));
+IF(SpellDamageTypeIs(DamageType.Thunder) and not IsCantrip()):ApplyStatus(THN_RESIST_INPUT,100,SpellPowerLevel);"
 
 new entry "NonlethalSpell"
 type "PassiveData"
+data "DisplayName" "ha50a4402gc8b0gba52g00bcg3228f648974a;1"
+data "Description" "hdccee717g01bbg3310g1ed6g105b450d1a9c;1"
+data "Properties" "MetaMagic;ToggledDefaultAddToHotbar;IsToggled"
+data "Boosts" "UnlockSpellVariant(HasUseCosts('ActionPoint') and IsSpell(),ModifyUseCosts(Add,ActionPoint,1,0),ModifyIconGlow());IF(Character() and not Self() and not Summon() and not HasAnyTags({'UNDEAD', 'CONSTRUCT', 'CREATURE_SPORE_SERVANT'}) and not HasAnyStatus({'SG_Polymorph','HAG_DISGUISE','HAG_DISGUISE_PIG','HAG_DISGUISE_SHEEP'}) and not IsImmuneToStatus('KNOCKED_OUT') and IsSpell()):NonLethal();"
 
 new entry "SpellProtectionArray"
 type "PassiveData"
+data "DisplayName" "h7a798fa8gd4acg9f46g364egb1d86bcd98b9;1"
+data "Description" "hce3e911dg0539g4aa8g111bg9bcf26ed53a0;1"
+data "Icon" "Spell_Abjuration_GlyphOfWarding_ExplosiveRunes_Acid"
+data "Boosts" "UnlockSpell(Target_SpellProtectionArray_Create);"
 
 new entry "AdvancedSchoolSpellStuff"
 type "PassiveData"
+data "DisplayName" "ha16624ceg9242g3e40gd354g218e610c2893;1"
+data "Description" "hb786e229g86e6gd28cg135bge137fc62a2d8;2"
+data "Boosts" "ActionResource(KiPoint,1,0);IF(HasPassive('ProtectiveWards',context.Source)):UnlockSpell(Shout_RuneOfObservation);IF(HasPassive('ForceBolt',context.Source)):UnlockSpell(EnergyAbsorptionInterrupt);IF(HasPassive('Earthworks',context.Source)):UnlockSpell(Shout_CommunityRestoration);IF(HasPassive('CharmingPush',context.Source)):UnlockSpell(Shout_InvisibilityCloak);IF(HasPassive('ScrambleBody',context.Source)):UnlockSpell(Shout_ShiftingFormContainer);IF(HasPassive('FortifySummoning',context.Source)):UnlockSpell(Shout_SpiralOfHorrors);IF(HasPassive('HandApprentice',context.Source)):UnlockSpell(InterdisciplinaryIncantationInterrupt);"
+data "StatsFunctorContext" "OnCreate"
 
 new entry "ScrollAdept"
 type "PassiveData"
@@ -3974,6 +3966,19 @@ using "DesperatePrayer"
 data "DisplayName" "hc1f72e74gc8f1g1c4bg4cdage3e612429d8e;1"
 data "Description" "h28e8a400g2fcag908ega20bg466e00084810;1"
 data "Boosts" "UnlockSpell(Shout_LinkedFocus);"
+
+new entry "QuickenedCasting"
+type "PassiveData"
+data "DisplayName" "h843097aag58a5g3238g2ac2g6602b428bb5e;1"
+data "Description" "h15ed112fge5f7gb669g5736ge281dc9fdee4;1"
+data "Properties" "MetaMagic;ToggledDefaultAddToHotbar;IsToggled;OncePerLongRest"
+data "Boosts" "UnlockSpellVariant(QuickenedSpellCheck(),ModifyUseCosts(Add,SorceryPoint,1,0),ModifyUseCosts(Replace,ActionPoint,1,0,ActionPoint));"
+
+new entry "BondConservation"
+type "PassiveData"
+data "DisplayName" "ha1a96416g5ab6g6ffagc81ege443adefcc3d;1"
+data "Description" "hd6bcd00bg94deg9633g30c1g524cf2df5a8b;1"
+data "Boosts" "UnlockSpell(Shout_BondConservation_Container);"
 
 new entry "RANGER"
 type "PassiveData"
@@ -5464,4 +5469,162 @@ using "ScalyHide"
 data "DisplayName" "h3da7691cg209eg0e6fg955eg9ce72c5d5acf;1"
 data "Description" "haf04ab79g7d11gdaebg68cbg2d4cb7caa7eb;1"
 data "Boosts" "ACOverrideFormula(14,true,Dexterity);"
+
+new entry "KINETICIST"
+type "PassiveData"
+
+new entry "ChannelElements"
+type "PassiveData"
+data "DisplayName" "h4e7fd7e7g58acg8545gf519g0455bb6988be;1"
+data "Description" "h3f49016dgd813g7dcbg9171gaed92e3a7622;1"
+data "Boosts" "UnlockSpell(Shout_ChannelElements);"
+
+new entry "DismissElements"
+type "PassiveData"
+data "DisplayName" "h29016f7agfec3g859bga042g98cb91587e2d;1"
+data "Description" "hc9822ba1gfa44gdad8g244fg66bf18061363;1"
+data "Boosts" "UnlockSpell(Shout_DismissElements);"
+
+new entry "AirGate"
+type "PassiveData"
+data "DisplayName" "h14bc3ef3g2253gf42cgd022g9d48334e9b9d;1"
+
+new entry "EarthGate"
+type "PassiveData"
+data "DisplayName" "h4039f1d6g81bbg8c37g4a10gdc5b5e9bca0f;1"
+
+new entry "FireGate"
+type "PassiveData"
+data "DisplayName" "h08674c64gf428g76cdgf571g537b3f8f9c18;1"
+
+new entry "WaterGate"
+type "PassiveData"
+data "DisplayName" "h3856ca3ag8414g306dg03eag33197802be17;1"
+
+new entry "WoodGate"
+type "PassiveData"
+data "DisplayName" "hacd77325g0962gf488g9840gfed160235611;1"
+
+new entry "MetalGate"
+type "PassiveData"
+data "DisplayName" "h9165c241g14e5g5f6ag4f7eg9937d8f32186;1"
+
+new entry "FireJunction"
+type "PassiveData"
+
+new entry "EternalTorch"
+type "PassiveData"
+data "DisplayName" "h6535a333g1884g1449gd57bg7365ff82245a;1"
+data "Properties" "Highlighted"
+
+new entry "FreshProduce"
+type "PassiveData"
+data "DisplayName" "hecff3a57g59dcg0e88gdbbdgb2e7b61bdbc0;1"
+data "Properties" "Highlighted"
+
+new entry "OceansBalm"
+type "PassiveData"
+data "DisplayName" "he012ae15g2756ga72cg34a0gbf7457d28323;1"
+data "Properties" "Highlighted"
+
+new entry "ScorchingColumn"
+type "PassiveData"
+data "DisplayName" "hfb7c0b73g101ag8fadg1cf7gf25f503d493d;1"
+data "Properties" "Highlighted"
+
+new entry "SteppingStones"
+type "PassiveData"
+data "DisplayName" "h3cfa43aeg2ba1ge599g0c77g14aaab16ed90;1"
+data "Properties" "Highlighted"
+
+new entry "Tremor"
+type "PassiveData"
+data "DisplayName" "h2d6eab94g1176gca8bga7b2g305e3691a272;1"
+data "Properties" "Highlighted"
+
+new entry "WintersClutch"
+type "PassiveData"
+data "DisplayName" "h893e167egdbe2g5816g5689g39414f4767d9;1"
+data "Properties" "Highlighted"
+
+new entry "AirCushion"
+type "PassiveData"
+data "DisplayName" "he8323f8dg4c36g38b6g4bb3g36aff86db98f;1"
+data "Properties" "Highlighted"
+
+new entry "ArmorInEarth"
+type "PassiveData"
+data "DisplayName" "h051201ddgcaadgba75gb964g06aac61fa3e8;1"
+data "Properties" "Highlighted"
+
+new entry "GeologicalAttunment"
+type "PassiveData"
+data "DisplayName" "hfc51c2c8gfa8dg7635g56fegd1abd4a1abe9;1"
+data "Properties" "Highlighted"
+
+new entry "HardwoodArmor"
+type "PassiveData"
+data "DisplayName" "h7e2af441g690dg20degb6ccg8ef0d6e6c399;1"
+data "Properties" "Highlighted"
+
+new entry "MetalCarapace"
+type "PassiveData"
+data "DisplayName" "h07d62e03g9e2agad1dg40e1g186282f3682d;1"
+data "Properties" "Highlighted"
+
+new entry "AerialBoomerang"
+type "PassiveData"
+data "DisplayName" "hc9d63786g948bgd159gf334gd334ca1e043a;1"
+data "Properties" "Highlighted"
+
+new entry "FlyingFlame"
+type "PassiveData"
+data "DisplayName" "h1ab06905g9006g2932g2715gf2cc1fa67694;1"
+data "Properties" "Highlighted"
+
+new entry "HailOfSplinters"
+type "PassiveData"
+data "DisplayName" "hf81197a0gfe2ag0515gc24ag0cac131b2a34;1"
+data "Properties" "Highlighted"
+
+new entry "Shardstrike"
+type "PassiveData"
+data "DisplayName" "h61e08bc1gd3a6g3a8dg6fe5g37aba8056e49;1"
+data "Properties" "Highlighted"
+
+new entry "TidalHands"
+type "PassiveData"
+data "DisplayName" "h9cba5963gdb06g88ccg0e0cg8aaada1c6e8a;1"
+data "Properties" "Highlighted"
+
+new entry "BurningJet"
+type "PassiveData"
+data "DisplayName" "h7f3c7932g6e9agfcddgb511g86ffd58948b0;1"
+data "Properties" "Highlighted"
+
+new entry "MagneticPinions"
+type "PassiveData"
+data "DisplayName" "hbbbcb789g45fegc210gef22g18b62a9b8f4b;1"
+data "Properties" "Highlighted"
+
+new entry "DeflectingWave"
+type "PassiveData"
+data "DisplayName" "hb489758eg80fbgd5cfgf64dg9b2003e1a075;1"
+data "Properties" "Highlighted"
+
+new entry "VersatileBlasts"
+type "PassiveData"
+data "DisplayName" "h94cdeb62ge94agf201g9a35gfae2369b0e14;1"
+data "Description" "h964d54cagbc20g6b4agcbb3g13c0ca9194e3;1"
+data "Properties" "Highlighted"
+
+new entry "WeaponInfusion"
+type "PassiveData"
+data "DisplayName" "he3656e40g7722g4cb0gc6c6g26820b9a8b96;1"
+data "Properties" "Highlighted"
+
+new entry "FourWinds"
+type "PassiveData"
+data "DisplayName" "h2eff9129g8652geea4g58cfg81352101db32;1"
+data "Properties" "Highlighted"
 

@@ -1727,7 +1727,7 @@
         <field name="SurfaceGrowInterval" type="IntegerTableFieldDefinition" value="10" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value=" not SavingThrow(Ability.Dexterity, CalculateSpellDC(Ability.Constitution, context.Source))" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(BreathWeapon), Acid,Magical)" />
-        <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(BreathWeapon)/2, Acid,Magical)" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage(LevelMapValue(BreathWeapon)/2, Acid,Magical);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h54f092d2gd303g9ee7gb8e3gc5474c8918e1" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h96c05c36g6ae7gd800g8affg0d534cfde4b6" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(BreathWeapon),Acid)" />
@@ -1759,7 +1759,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="BreathWeapon_Cold" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1a0c453c-c96d-4d36-880d-4775cd7cf93b" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(BreathWeapon),Cold,Magical)" />
-        <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(BreathWeapon)/2, Cold,Magical)" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage(LevelMapValue(BreathWeapon)/2, Cold,Magical);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3bc90762g8907g9638ga8b7gbc6603865000" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(BreathWeapon),Cold)" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Dexterity" />
@@ -1785,7 +1785,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="BreathWeapon_Fire_Cone" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1a0c453c-c96d-4d36-880d-4775cd7cf93b" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(BreathWeapon),Fire,Magical)" />
-        <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(BreathWeapon)/2, Fire,Magical)" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage(LevelMapValue(BreathWeapon)/2, Fire,Magical);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3e4df292g53abg200age32ag797667c43499" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(BreathWeapon),Fire)" />
         <field name="Shape" type="StringTableFieldDefinition" value="Cone" />
@@ -1822,7 +1822,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="BreathWeapon_Lightning" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1a0c453c-c96d-4d36-880d-4775cd7cf93b" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(BreathWeapon),Lightning,Magical)" />
-        <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(BreathWeapon)/2, Lightning,Magical)" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage(LevelMapValue(BreathWeapon)/2, Lightning,Magical);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h892ad00cg1040gc2e7g14a5gb9e8cab77fec" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(BreathWeapon),Lightning)" />
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="f3b75f38-8529-4da8-a3be-935d75ba3525" />
@@ -1845,7 +1845,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="BreathWeapon_Poison" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1a0c453c-c96d-4d36-880d-4775cd7cf93b" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(BreathWeapon),Poison,Magical)" />
-        <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(BreathWeapon)/2, Poison,Magical)" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage(LevelMapValue(BreathWeapon)/2, Poison,Magical);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0b93e084ga619gbd27g1df3g7033e53f9e7c" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(BreathWeapon),Poison)" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Constitution" />
@@ -1866,6 +1866,151 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="d23198f2-6eba-4482-b943-f835c77586c3" />
+        <field name="Name" type="NameTableFieldDefinition" value="SorcererBreath_Arcane" />
+        <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Evocation" enumeration_type_name="SpellSchool" version="1" />
+        <field name="SurfaceType" type="EnumerationTableFieldDefinition" value="Sentinel" enumeration_type_name="Surface Type" version="1" />
+        <field name="SurfaceLifetime" type="IntegerTableFieldDefinition" value="0" />
+        <field name="SurfaceGrowStep" type="IntegerTableFieldDefinition" value="5" />
+        <field name="SurfaceGrowInterval" type="IntegerTableFieldDefinition" value="10" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC())" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(SorcererDragonBreath),Force,Magical);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage(LevelMapValue(SorcererDragonBreath)/2,Force,Magical);" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_Thunderwave" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3d2c64a5gf55dgd520g1212gc940406899dc" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h96e20584ged0bgf449g9eccg30c28526df0c" version="1" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(SorcererDragonBreath),Force);" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Dexterity" />
+        <field name="TooltipOnSave" type="StringTableFieldDefinition" value="961753f4-c345-4bc4-b408-1d5b87a5ab0c" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_BreathWeapon_Fire" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Loop_Damage_BreathWeapon_Fire" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_BreathWeapon_Fire" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="Shape" type="StringTableFieldDefinition" value="Cone" />
+        <field name="Range" type="IntegerTableFieldDefinition" value="9" />
+        <field name="Angle" type="IntegerTableFieldDefinition" value="60" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="Enemy() and not Dead()" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;KiPoint:1;" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="ce0aa392-7d13-45a2-8a59-e6786830265d,,;,,;bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11;af7ebc22-2ad5-4a39-ad4f-4e93e45f88c1,,;4354d3c1-ffc2-4da2-9840-d8c5f0932cbf,,;,,;c6951776-8830-4d97-9286-35899fe08d0b,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="CanAreaDamageEvade;IsSpell;HasVerbalComponent;HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="a6389f1d-b548-41f0-b236-62172c1dab04" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="855a50f5-6ef5-4a32-a8e1-a83273176c9a" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="53412dd1-8066-4860-a2ae-b27e77bfdab5" />
+        <field name="DamageType" type="EnumerationTableFieldDefinition" value="Force" enumeration_type_name="Damage Type" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2cbcafb3-ec18-4f1b-aa23-046daf620e4d" />
+        <field name="Name" type="NameTableFieldDefinition" value="SorcererBreath_Divine" />
+        <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Evocation" enumeration_type_name="SpellSchool" version="1" />
+        <field name="SurfaceType" type="EnumerationTableFieldDefinition" value="Sentinel" enumeration_type_name="Surface Type" version="1" />
+        <field name="SurfaceLifetime" type="IntegerTableFieldDefinition" value="0" />
+        <field name="SurfaceGrowStep" type="IntegerTableFieldDefinition" value="5" />
+        <field name="SurfaceGrowInterval" type="IntegerTableFieldDefinition" value="10" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC())" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(SorcererDragonBreath),Radiant,Magical);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage(LevelMapValue(SorcererDragonBreath)/2,Radiant,Magical);" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_GustOfWind" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h1a9dff83g985cgd48egc045gdca2f1f0c79d" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha07a796cg21bbg9ebagfbcfgf76d22da89c2" version="1" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(SorcererDragonBreath),Radiant);" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Dexterity" />
+        <field name="TooltipOnSave" type="StringTableFieldDefinition" value="961753f4-c345-4bc4-b408-1d5b87a5ab0c" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_BreathWeapon_Fire" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Loop_Damage_BreathWeapon_Fire" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_BreathWeapon_Fire" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="Shape" type="StringTableFieldDefinition" value="Cone" />
+        <field name="Range" type="IntegerTableFieldDefinition" value="9" />
+        <field name="Angle" type="IntegerTableFieldDefinition" value="60" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="Enemy() and not Dead()" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;KiPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="ce0aa392-7d13-45a2-8a59-e6786830265d,,;,,;bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11;af7ebc22-2ad5-4a39-ad4f-4e93e45f88c1,,;4354d3c1-ffc2-4da2-9840-d8c5f0932cbf,,;,,;c6951776-8830-4d97-9286-35899fe08d0b,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="CanAreaDamageEvade;IsSpell;HasVerbalComponent;HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="a6389f1d-b548-41f0-b236-62172c1dab04" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="855a50f5-6ef5-4a32-a8e1-a83273176c9a" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="53412dd1-8066-4860-a2ae-b27e77bfdab5" />
+        <field name="DamageType" type="EnumerationTableFieldDefinition" value="Radiant" enumeration_type_name="Damage Type" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="97f91a46-6a69-454c-b80f-7c3b569b8a58" />
+        <field name="Name" type="NameTableFieldDefinition" value="SorcererBreath_Occult" />
+        <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Evocation" enumeration_type_name="SpellSchool" version="1" />
+        <field name="SurfaceType" type="EnumerationTableFieldDefinition" value="Sentinel" enumeration_type_name="Surface Type" version="1" />
+        <field name="SurfaceLifetime" type="IntegerTableFieldDefinition" value="0" />
+        <field name="SurfaceGrowStep" type="IntegerTableFieldDefinition" value="5" />
+        <field name="SurfaceGrowInterval" type="IntegerTableFieldDefinition" value="10" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC())" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(SorcererDragonBreath),Psychic,Magical);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage(LevelMapValue(SorcererDragonBreath)/2,Psychic,Magical);" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ConeOfCold" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd984d8a4g79c4g5d37gad2cg3b4148a12a00" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hff03f93age65dgd40eg7a10g109bb75413e0" version="1" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(SorcererDragonBreath),Psychic);" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Dexterity" />
+        <field name="TooltipOnSave" type="StringTableFieldDefinition" value="961753f4-c345-4bc4-b408-1d5b87a5ab0c" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_BreathWeapon_Fire" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Loop_Damage_BreathWeapon_Fire" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_BreathWeapon_Fire" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="Shape" type="StringTableFieldDefinition" value="Cone" />
+        <field name="Range" type="IntegerTableFieldDefinition" value="9" />
+        <field name="Angle" type="IntegerTableFieldDefinition" value="60" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="Enemy() and not Dead()" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;KiPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="ce0aa392-7d13-45a2-8a59-e6786830265d,,;,,;bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11;af7ebc22-2ad5-4a39-ad4f-4e93e45f88c1,,;4354d3c1-ffc2-4da2-9840-d8c5f0932cbf,,;,,;c6951776-8830-4d97-9286-35899fe08d0b,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="CanAreaDamageEvade;IsSpell;HasVerbalComponent;HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="a6389f1d-b548-41f0-b236-62172c1dab04" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="855a50f5-6ef5-4a32-a8e1-a83273176c9a" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="53412dd1-8066-4860-a2ae-b27e77bfdab5" />
+        <field name="DamageType" type="EnumerationTableFieldDefinition" value="Psychic" enumeration_type_name="Damage Type" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="401302c7-c93e-4e4c-87be-97cd68191f25" />
+        <field name="Name" type="NameTableFieldDefinition" value="SorcererBreath_Primal" />
+        <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Evocation" enumeration_type_name="SpellSchool" version="1" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:SurfaceChange(Ignite);GROUND:SurfaceChange(Melt);TARGET:IF(Item()):ApplyStatus(BURNING,100,2)" />
+        <field name="SurfaceType" type="EnumerationTableFieldDefinition" value="Sentinel" enumeration_type_name="Surface Type" version="1" />
+        <field name="SurfaceLifetime" type="IntegerTableFieldDefinition" value="0" />
+        <field name="SurfaceGrowStep" type="IntegerTableFieldDefinition" value="5" />
+        <field name="SurfaceGrowInterval" type="IntegerTableFieldDefinition" value="10" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC())" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(SorcererDragonBreath),Fire,Magical);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage(LevelMapValue(SorcererDragonBreath)/2,Fire,Magical);" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Dragonborn_BreathWeapon_FireCone" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h8ffa84fcgc2cdgec3ag15aeg19b2e96487a6" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h56935d46gaaeeg36f3g5fccg8c952979e543" version="1" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(SorcererDragonBreath),Fire);" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Dexterity" />
+        <field name="TooltipOnSave" type="StringTableFieldDefinition" value="961753f4-c345-4bc4-b408-1d5b87a5ab0c" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_BreathWeapon_Fire" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Loop_Damage_BreathWeapon_Fire" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_BreathWeapon_Fire" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="Shape" type="StringTableFieldDefinition" value="Cone" />
+        <field name="Range" type="IntegerTableFieldDefinition" value="9" />
+        <field name="Angle" type="IntegerTableFieldDefinition" value="60" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="Enemy() and not Dead()" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;KiPoint:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="ce0aa392-7d13-45a2-8a59-e6786830265d,,;,,;bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11;af7ebc22-2ad5-4a39-ad4f-4e93e45f88c1,,;4354d3c1-ffc2-4da2-9840-d8c5f0932cbf,,;,,;c6951776-8830-4d97-9286-35899fe08d0b,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="CanAreaDamageEvade;IsSpell;HasVerbalComponent;HasSomaticComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="a6389f1d-b548-41f0-b236-62172c1dab04" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="855a50f5-6ef5-4a32-a8e1-a83273176c9a" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="53412dd1-8066-4860-a2ae-b27e77bfdab5" />
+        <field name="DamageType" type="EnumerationTableFieldDefinition" value="Fire" enumeration_type_name="Damage Type" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="8ceed4da-459d-4c8a-9bce-6d46d82666f2" />
         <field name="Name" type="NameTableFieldDefinition" value="BlazingFissure_Rank5" />
         <field name="Level" type="IntegerTableFieldDefinition" value="5" />
@@ -1877,7 +2022,7 @@
         <field name="SurfaceGrowInterval" type="IntegerTableFieldDefinition" value="10" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC())" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(4d6,Bludgeoning,Magical);DealDamage(6d6,Fire,Magical);ApplyStatus(PRONE,100,1);" />
-        <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage((4d6)/2,Bludgeoning,Magical);DealDamage((6d6)/2,Fire,Magical);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage((4d6)/2,Bludgeoning,Magical);IF(not SaveCritMiss()):DealDamage((6d6)/2,Fire,Magical);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Dragonborn_BreathWeapon_FireLine" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf1208390g0de7g1715gda68gcd670d957bda" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hc5f8539bg994dga1c5g1537gb87c15cb222d" version="1" />
@@ -1890,9 +2035,9 @@
         <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Loop_Damage_BreathWeapon_Fire" />
         <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_BreathWeapon_Fire" />
         <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
-        <field name="Shape" type="StringTableFieldDefinition" value="Cone" />
+        <field name="Shape" type="StringTableFieldDefinition" value="Square" />
         <field name="Range" type="IntegerTableFieldDefinition" value="36" />
-        <field name="Base" type="IntegerTableFieldDefinition" value="0" />
+        <field name="Base" type="IntegerTableFieldDefinition" value="2" />
         <field name="CycleConditions" type="StringTableFieldDefinition" value="Enemy() and not Dead()" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:5;" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="ce0aa392-7d13-45a2-8a59-e6786830265d,,;,,;bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11;af7ebc22-2ad5-4a39-ad4f-4e93e45f88c1,,;4354d3c1-ffc2-4da2-9840-d8c5f0932cbf,,;,,;c6951776-8830-4d97-9286-35899fe08d0b,,;,,;,," />
@@ -1918,7 +2063,7 @@
         <field name="SurfaceGrowInterval" type="IntegerTableFieldDefinition" value="10" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC())" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(5d6,Bludgeoning,Magical);DealDamage(7d6,Fire,Magical);ApplyStatus(PRONE,100,1);" />
-        <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage((5d6)/2,Bludgeoning,Magical);DealDamage((7d6)/2,Fire,Magical);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage((5d6)/2,Bludgeoning,Magical);IF(not SaveCritMiss()):DealDamage((7d6)/2,Fire,Magical);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Dragonborn_BreathWeapon_FireLine" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hab3bdbcbg97cdgda8eg9d5eg8948f951c575" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h84fb7b47g4216gdaa1g5cb6ge567034468a0" version="1" />
@@ -1931,9 +2076,9 @@
         <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Loop_Damage_BreathWeapon_Fire" />
         <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_BreathWeapon_Fire" />
         <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
-        <field name="Shape" type="StringTableFieldDefinition" value="Cone" />
+        <field name="Shape" type="StringTableFieldDefinition" value="Square" />
         <field name="Range" type="IntegerTableFieldDefinition" value="36" />
-        <field name="Base" type="IntegerTableFieldDefinition" value="0" />
+        <field name="Base" type="IntegerTableFieldDefinition" value="2" />
         <field name="CycleConditions" type="StringTableFieldDefinition" value="Enemy() and not Dead()" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:6;" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="ce0aa392-7d13-45a2-8a59-e6786830265d,,;,,;bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11;af7ebc22-2ad5-4a39-ad4f-4e93e45f88c1,,;4354d3c1-ffc2-4da2-9840-d8c5f0932cbf,,;,,;c6951776-8830-4d97-9286-35899fe08d0b,,;,,;,," />
@@ -3103,6 +3248,65 @@
         <field name="PowerLevel" type="IntegerTableFieldDefinition" value="6" />
       </fields>
     </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="d0b12a32-1550-4075-8bb1-ead92fb5b847" />
+        <field name="Name" type="NameTableFieldDefinition" value="CastIntoTime_Rank6" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="6" />
+        <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Evocation" enumeration_type_name="SpellSchool" version="1" />
+        <field name="SurfaceType" type="EnumerationTableFieldDefinition" value="Sentinel" enumeration_type_name="Surface Type" version="1" />
+        <field name="SurfaceLifetime" type="IntegerTableFieldDefinition" value="0" />
+        <field name="SurfaceGrowStep" type="IntegerTableFieldDefinition" value="5" />
+        <field name="SurfaceGrowInterval" type="IntegerTableFieldDefinition" value="10" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Constitution, SourceSpellDC())" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(5d8,Psychic,Magical);DealDamage(5d6,Bludgeoning,Magical);ApplyStatus(SICKENED,100,-1);ApplyStatus(BANISHED,100,1);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SpellCritMiss()):DealDamage((5d8)/2,Psychic,Magical);IF(not SpellCritMiss()):DealDamage((5d6)/2,Bludgeoning,Magical);IF(not SpellCritMiss()):ApplyStatus(BANISHED,100,1);" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd324e274g6a09g673bg42a5gb934f2cd5198" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h4dd17783g9774ga19dgb376ge7890b9f6da1" version="1" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(5d8,Psychic);DealDamage(5d6,Bludgeoning)" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Constitution" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="Shape" type="StringTableFieldDefinition" value="Cone" />
+        <field name="Range" type="IntegerTableFieldDefinition" value="5" />
+        <field name="Angle" type="IntegerTableFieldDefinition" value="60" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:6;" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="ce0aa392-7d13-45a2-8a59-e6786830265d,,;,,;bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11;af7ebc22-2ad5-4a39-ad4f-4e93e45f88c1,,;4354d3c1-ffc2-4da2-9840-d8c5f0932cbf,,;,,;c6951776-8830-4d97-9286-35899fe08d0b,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasVerbalComponent;HasSomaticComponent;IsHarmful;IsSpell" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ConeOfCold" />
+        <field name="PowerLevel" type="IntegerTableFieldDefinition" value="6" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="cf4f1c9a-24a2-4ce8-bb9d-dbe25c151839" />
+        <field name="Name" type="NameTableFieldDefinition" value="VampiricExsanguination" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="6" />
+        <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Necromancy" enumeration_type_name="SpellSchool" version="1" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(VampiricExTemp,100,10);" />
+        <field name="SurfaceType" type="EnumerationTableFieldDefinition" value="Sentinel" enumeration_type_name="Surface Type" version="1" />
+        <field name="SurfaceLifetime" type="IntegerTableFieldDefinition" value="0" />
+        <field name="SurfaceGrowStep" type="IntegerTableFieldDefinition" value="5" />
+        <field name="SurfaceGrowInterval" type="IntegerTableFieldDefinition" value="10" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Constitution, SourceSpellDC())" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(12d6,Necrotic,Magical);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SpellCritMiss()):DealDamage((12d6)/2,Necrotic,Magical);" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ConeOfCold" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h84c432ddg3094g2806gd90bgec3e52e1f954" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h3bb76db6g96c2gec1cg41d7gf4fa358db199" version="1" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(12d6,Necrotic)" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Constitution" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="Shape" type="StringTableFieldDefinition" value="Cone" />
+        <field name="Range" type="IntegerTableFieldDefinition" value="9" />
+        <field name="Angle" type="IntegerTableFieldDefinition" value="60" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:6;" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;5e7e63e1-0e69-46e7-ade7-fe3dadcc9184,,;e9ad50df-e7f1-43a0-b782-4c08f92b0f5a,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasVerbalComponent;HasSomaticComponent;IsHarmful;IsSpell" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="PowerLevel" type="IntegerTableFieldDefinition" value="6" />
+      </fields>
+    </stat_object>
     <stat_object color="#FF0000FF" is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="53516192-85be-43fe-ab73-80ec61ea5b5b" />
@@ -3145,7 +3349,6 @@
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="554a18f7-952e-494a-b301-7702a85d4bc9,,;,,;d30d2b40-c45a-45bd-94d7-9b2baaf0f77b,,;a601b33c-5320-455d-b4d4-74d6dc35b757,,;22dfbbf4-f417-4c84-b39e-2039315961e6,,;,,;5bfbe9f9-4fc3-4f26-b112-43d404db6a89,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
-        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatus_Air');" />
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="2af907e1-127c-4c83-a117-af18f211c59d" />
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="f0fc3adc-db50-4a8d-bd30-904902cbefbd" />
         <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="766d4d52-d6a1-4efd-b37b-bd1496718e49" />
@@ -3196,7 +3399,6 @@
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="ce0aa392-7d13-45a2-8a59-e6786830265d,,;,,;bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11,bd10df60-20c2-4711-a1b0-cef708fa0f11;af7ebc22-2ad5-4a39-ad4f-4e93e45f88c1,,;4354d3c1-ffc2-4da2-9840-d8c5f0932cbf,,;,,;c6951776-8830-4d97-9286-35899fe08d0b,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
-        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatus_Fire');" />
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="a6389f1d-b548-41f0-b236-62172c1dab04" />
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="bfe351bd-a007-4302-bb7a-9d2e98ecb3b6" />
         <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="53412dd1-8066-4860-a2ae-b27e77bfdab5" />
@@ -3208,7 +3410,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="a8122fae-49ed-4551-99f6-627cff0c927e" />
         <field name="Name" type="NameTableFieldDefinition" value="HailOfSplinters" />
         <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Evocation" enumeration_type_name="SpellSchool" version="1" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="RemoveStatus(SELF,'ChannelElementsStatus_Air');RemoveStatus(SELF,'ChannelElementsStatus_Earth');RemoveStatus(SELF,'ChannelElementsStatus_Fire');RemoveStatus(SELF,'ChannelElementsStatus_Water');RemoveStatus(SELF,'ChannelElementsStatus_Metal');RemoveStatus(SELF,'ChannelElementsStatus_Wood');" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="RemoveStatus(ChannelElementsStatusAir);RemoveStatus(ChannelElementsStatusEarth);RemoveStatus(ChannelElementsStatusFire);RemoveStatus(ChannelElementsStatusWater);RemoveStatus(ChannelElementsStatusMetal);RemoveStatus(ChannelElementsStatusWood);RemoveStatus(ChannelingStatus);RemoveStatus(EternalTorchStatus);RemoveStatus(FreshProduceStatus);RemoveStatus(OceansBalmStatus);RemoveStatus(ScorchingColumnStatus);RemoveStatus(SteppingStonesStatus);RemoveStatus(TremorStatus);RemoveStatus(WintersClutchStatus);RemoveStatus(AirCushionStatus);RemoveStatus(ArmorInEarthUnlockStatus);RemoveStatus(GeologicalAttunementUnlockStatus);RemoveStatusHardwoodArmorUnlockStatus);RemoveStatus(MetalCarapaceUnlockStatus);RemoveStatus(AerialBoomerangUnlockStatus);RemoveStatus(FlyingFlameStatus);RemoveStatus(HailOfSplintersStatus);RemoveStatus(ShardstrikeStatus);RemoveStatus(TidalHandsStatus);RemoveStatus(BurningJetStatus);RemoveStatus(MagneticPinionsStatus);RemoveStatus(DeflectingWaveStatus);RemoveStatus(FourWindsUnlockStatus);" />
         <field name="SurfaceType" type="EnumerationTableFieldDefinition" value="Sentinel" enumeration_type_name="Surface Type" version="1" />
         <field name="SurfaceLifetime" type="IntegerTableFieldDefinition" value="0" />
         <field name="SurfaceGrowStep" type="IntegerTableFieldDefinition" value="5" />
@@ -3239,7 +3441,6 @@
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="cc6063ad-e800-4e2d-baee-6620dae744ca,,;,,;f3fc78bb-d32c-4109-a723-7aec2888ea94,,;a37738d7-2fc0-41ba-af60-59b03395db54,,;a0a15c9e-0cbc-4086-90ff-a932c3027a98,,;,,;c7afcdc2-f42d-4aa7-b400-9794ba1ec84b,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
-        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatus_Wood');" />
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="e7fdb514-cb60-45da-8f4f-ed1fa5ea7436" />
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="352cd7c1-9c40-41fe-94bf-57f094f0fe83" />
         <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="f76bd260-d059-4c93-8b69-3983a0e65fb9" />
@@ -3265,10 +3466,9 @@
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Dexterity" />
         <field name="TooltipOnSave" type="StringTableFieldDefinition" value="961753f4-c345-4bc4-b408-1d5b87a5ab0c" />
         <field name="TooltipUpcastDescription" type="GuidObjectTableFieldDefinition" value="66388a6f-44dd-4c9f-a9e7-910c50e70755" />
-        <field name="PrepareSound" type="StringTableFieldDefinition" value="Action_Prepare_Druid_SpreadingSpores" />
-        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Action_Loop_Druid_SpreadingSpores" />
-        <field name="CastSound" type="StringTableFieldDefinition" value="Action_Cast_Druid_SpreadingSpores" />
-        <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_Druid_SpreadingSpores" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Thunder_Gen_L1to3" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Loop_Damage_Thunder_Gen_L1to3" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_Thunder_Thunderwave_L1to3_01" />
         <field name="PreviewCursor" type="EnumerationTableFieldDefinition" value="Cast" enumeration_type_name="CursorMode" version="1" />
         <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
         <field name="Shape" type="StringTableFieldDefinition" value="Cone" />
@@ -3277,12 +3477,11 @@
         <field name="Angle" type="IntegerTableFieldDefinition" value="60" />
         <field name="CycleConditions" type="StringTableFieldDefinition" value="Enemy() and not Dead()" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
-        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="cc6063ad-e800-4e2d-baee-6620dae744ca,,;,,;f3fc78bb-d32c-4109-a723-7aec2888ea94,,;a37738d7-2fc0-41ba-af60-59b03395db54,,;a0a15c9e-0cbc-4086-90ff-a932c3027a98,,;,,;c7afcdc2-f42d-4aa7-b400-9794ba1ec84b,,;,,;,," />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;09ae2f11-f5b4-42f5-ae16-687a5b57d500,,;10caea0e-c949-4d91-8ab7-3b50019dd054,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
-        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatus_Metal');" />
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="c76d5e53-0c60-49fd-9664-0ff3bf21e76b" />
-        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="e3f14922-4855-4287-9a09-0b4e95cc76a7" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="908ed6d0-9bbc-4979-9f91-59652b5586d6" />
         <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="fcd2026b-2cac-4eb3-a0f2-cbbb54dd248c" />
         <field name="DamageType" type="EnumerationTableFieldDefinition" value="Piercing" enumeration_type_name="Damage Type" version="1" />
       </fields>
@@ -3306,10 +3505,10 @@
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Dexterity" />
         <field name="TooltipOnSave" type="StringTableFieldDefinition" value="961753f4-c345-4bc4-b408-1d5b87a5ab0c" />
         <field name="TooltipUpcastDescription" type="GuidObjectTableFieldDefinition" value="66388a6f-44dd-4c9f-a9e7-910c50e70755" />
-        <field name="PrepareSound" type="StringTableFieldDefinition" value="Action_Prepare_Druid_SpreadingSpores" />
-        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Action_Loop_Druid_SpreadingSpores" />
-        <field name="CastSound" type="StringTableFieldDefinition" value="Action_Cast_Druid_SpreadingSpores" />
-        <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_Druid_SpreadingSpores" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_LightningBolt_L5" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Loop_Damage_LightningBolt_L5" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_LightningBolt_L5" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Damage_LightningBolt_L5" />
         <field name="PreviewCursor" type="EnumerationTableFieldDefinition" value="Cast" enumeration_type_name="CursorMode" version="1" />
         <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
         <field name="Shape" type="StringTableFieldDefinition" value="Square" />
@@ -3318,14 +3517,15 @@
         <field name="Base" type="IntegerTableFieldDefinition" value="2" />
         <field name="CycleConditions" type="StringTableFieldDefinition" value="Enemy() and not Dead()" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
-        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="cc6063ad-e800-4e2d-baee-6620dae744ca,,;,,;f3fc78bb-d32c-4109-a723-7aec2888ea94,,;a37738d7-2fc0-41ba-af60-59b03395db54,,;a0a15c9e-0cbc-4086-90ff-a932c3027a98,,;,,;c7afcdc2-f42d-4aa7-b400-9794ba1ec84b,,;,,;,," />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;cd5e5d4a-38e1-4d4d-b346-3fbc1e4c3c90,,;141f48d9-9615-496a-8737-9240f0dba60d,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
-        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatus_Metal');" />
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="c76d5e53-0c60-49fd-9664-0ff3bf21e76b" />
-        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="e3f14922-4855-4287-9a09-0b4e95cc76a7" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="a6aab94c-e0b5-4cbe-81cb-53ff6b1a662a" />
         <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="fcd2026b-2cac-4eb3-a0f2-cbbb54dd248c" />
         <field name="DamageType" type="EnumerationTableFieldDefinition" value="Piercing" enumeration_type_name="Damage Type" version="1" />
+        <field name="HitEffect" type="GuidObjectTableFieldDefinition" value="f2ca2970-0882-412b-9c84-033ac7160ed7" />
+        <field name="BeamEffect" type="GuidObjectTableFieldDefinition" value="6a1dbffa-77da-4362-bcad-a035db12aeec" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3341,7 +3541,6 @@
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
         <field name="SpellPrepareCost" type="IntegerTableFieldDefinition" value="0" />
-        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatus_Water');" />
         <field name="DamageType" type="EnumerationTableFieldDefinition" value="Bludgeoning" enumeration_type_name="Damage Type" version="1" />
       </fields>
     </stat_object>
