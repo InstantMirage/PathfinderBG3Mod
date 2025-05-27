@@ -1262,7 +1262,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="BURNING" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="b285885e-32d0-4b35-8d54-6c95a8ad2bbb" />
         <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
-        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="(not HasPassive('FlameOrder') and RollDieAgainstDC(DiceType.d20,15) or (HasPassive('FlameOrder')) and RollDieAgainstDC(DiceType.d20,10))" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="(not HasPassive('FlameOrder') and not Item() and RollDieAgainstDC(DiceType.d20,15) or (HasPassive('FlameOrder')) and not Item() and RollDieAgainstDC(DiceType.d20,10))" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnTurn" enumeration_type_name="StatusEvent" version="1" />
         <field name="OnApplyFunctors" type="FunctorsTableFieldDefinition" value=";" />
       </fields>
@@ -3310,60 +3310,69 @@
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="81a80cef-1f1e-44a2-9c58-b41d8417f746" />
-        <field name="Name" type="NameTableFieldDefinition" value="RestorativeStikeHit1" />
+        <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrikeHit1" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h1eb9fb5dge600g04begcb40g5c0406ea63e6" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hc901aa3fg2f04gae1bg5075g5d69b924f62b" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Transmutation_MagicWeapon" />
-        <field name="StackId" type="StringTableFieldDefinition" value="RestorativeStikeHit" />
+        <field name="StackId" type="StringTableFieldDefinition" value="RestorativeStrikeHit" />
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="0" />
         <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(RestorativeStrikeHeal1)" />
-        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnSpellCast;OnAttack;OnMove" enumeration_type_name="StatusEvent" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_RestorativeStrikeHeal1);" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnMove" enumeration_type_name="StatusEvent" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="5436fa81-6078-4612-ab5a-1b8a7566f867" />
-        <field name="Name" type="NameTableFieldDefinition" value="RestorativeStikeHit2" />
+        <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrikeHit2" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="81a80cef-1f1e-44a2-9c58-b41d8417f746" />
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(RestorativeStrikeHeal2)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_RestorativeStrikeHeal2);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="37119adc-c739-4ad1-b327-77d850b3fbff" />
-        <field name="Name" type="NameTableFieldDefinition" value="RestorativeStikeHit3" />
+        <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrikeHit3" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="81a80cef-1f1e-44a2-9c58-b41d8417f746" />
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="2" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(RestorativeStrikeHeal3)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_RestorativeStrikeHeal3);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="b6704450-c604-4b0f-a2ec-a31697b6268a" />
-        <field name="Name" type="NameTableFieldDefinition" value="RestorativeStikeHit4" />
+        <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrikeHit4" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="81a80cef-1f1e-44a2-9c58-b41d8417f746" />
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="3" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(RestorativeStrikeHeal4)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_RestorativeStrikeHeal4);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="11fb8d2b-4a36-4140-9666-9670381534cb" />
-        <field name="Name" type="NameTableFieldDefinition" value="RestorativeStikeHit5" />
+        <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrikeHit5" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="81a80cef-1f1e-44a2-9c58-b41d8417f746" />
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="4" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(RestorativeStrikeHeal5)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_RestorativeStrikeHeal5);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="bc8b80b8-3451-44c4-af6b-1e7dde91060a" />
-        <field name="Name" type="NameTableFieldDefinition" value="RestorativeStikeHit6" />
+        <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrikeHit6" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="81a80cef-1f1e-44a2-9c58-b41d8417f746" />
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="5" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(RestorativeStrikeHeal6)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_RestorativeStrikeHeal6);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="1af7beb1-2d9c-496e-ac71-3e5834a3daf0" />
+        <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrikeHeal_FontStatus" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="81a80cef-1f1e-44a2-9c58-b41d8417f746" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="10" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_RestorativeStrikeHeal_Font);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -8319,7 +8328,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="ChannelElementsStatusAir" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he0edcaa7g6876g7203g8dc0g9a4c4d72760d" version="1" />
         <field name="StackId" type="StringTableFieldDefinition" value="ChannelElements_Air" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Air_Electric);UnlockSpell(Projectile_ElementalBlast_Air_Electric_2Action);UnlockSpell(Projectile_ElementalBlast_Air_Slashing);UnlockSpell(Projectile_ElementalBlast_Air_Slashing_2Action);UnlockSpell(Target_ElementalBlast_Air_Electric);UnlockSpell(Target_ElementalBlast_Air_Electric_2Action);UnlockSpell(Target_ElementalBlast_Air_Slashing);UnlockSpell(Target_ElementalBlast_Air_Slashing_2Action);IF(HasPassive('VersatileBlasts)):UnlockSpell(Projectile_ElementalBlast_Air_Cold);IF(HasPassive('VersatileBlasts)):UnlockSpell(Projectile_ElementalBlast_Air_Cold_2Action);IF(HasPassive('VersatileBlasts)):UnlockSpell(Target_ElementalBlast_Air_Cold);IF(HasPassive('VersatileBlasts)):UnlockSpell(Target_ElementalBlast_Air_Cold_2Action);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Air_Electric);UnlockSpell(Projectile_ElementalBlast_Air_Electric_2Action);UnlockSpell(Projectile_ElementalBlast_Air_Slashing);UnlockSpell(Projectile_ElementalBlast_Air_Slashing_2Action);UnlockSpell(Target_ElementalBlast_Air_Electric);UnlockSpell(Target_ElementalBlast_Air_Electric_2Action);UnlockSpell(Target_ElementalBlast_Air_Slashing);UnlockSpell(Target_ElementalBlast_Air_Slashing_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Air_Cold);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Air_Cold_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Air_Cold);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Air_Cold_2Action);" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="ca600bf6-3845-44d5-a9dc-b327661babb8" />
       </fields>
@@ -8330,7 +8339,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="ChannelElementsStatusEarth" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h73311cc9gf84agf92ag3100ga2dd7ede9c97" version="1" />
         <field name="StackId" type="StringTableFieldDefinition" value="ChannelElements_Earth" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Earth_Bludgeoning);UnlockSpell(Projectile_ElementalBlast_Earth_Bludgeoning_2Action);UnlockSpell(Projectile_ElementalBlast_Earth_Piercing);UnlockSpell(Projectile_ElementalBlast_Earth_Piercing_2Action);UnlockSpell(Target_ElementalBlast_Earth_Bludgeoning);UnlockSpell(Target_ElementalBlast_Earth_Bludgeoning_2Action);UnlockSpell(Target_ElementalBlast_Earth_Piercing);UnlockSpell(Target_ElementalBlast_Earth_Piercing_2Action);IF(HasPassive('VersatileBlasts)):UnlockSpell(Projectile_ElementalBlast_Earth_Poison);IF(HasPassive('VersatileBlasts)):UnlockSpell(Projectile_ElementalBlast_Earth_Poison_2Action);IF(HasPassive('VersatileBlasts)):UnlockSpell(Target_ElementalBlast_Earth_Poison);IF(HasPassive('VersatileBlasts)):UnlockSpell(Target_ElementalBlast_Earth_Poison_2Action);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Earth_Bludgeoning);UnlockSpell(Projectile_ElementalBlast_Earth_Bludgeoning_2Action);UnlockSpell(Projectile_ElementalBlast_Earth_Piercing);UnlockSpell(Projectile_ElementalBlast_Earth_Piercing_2Action);UnlockSpell(Target_ElementalBlast_Earth_Bludgeoning);UnlockSpell(Target_ElementalBlast_Earth_Bludgeoning_2Action);UnlockSpell(Target_ElementalBlast_Earth_Piercing);UnlockSpell(Target_ElementalBlast_Earth_Piercing_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Earth_Poison);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Earth_Poison_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Earth_Poison);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Earth_Poison_2Action);" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="ca600bf6-3845-44d5-a9dc-b327661babb8" />
       </fields>
@@ -8341,7 +8350,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="ChannelElementsStatusFire" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h051f9bbdg9004ga148gadc8gf85612ea0155" version="1" />
         <field name="StackId" type="StringTableFieldDefinition" value="ChannelElements_Fire" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Fire_Fire);UnlockSpell(Projectile_ElementalBlast_Fire_Fire_2Action);UnlockSpell(Target_ElementalBlast_Fire_Fire);UnlockSpell(Target_ElementalBlast_Fire_Fire_2Action);IF(HasPassive('VersatileBlasts)):UnlockSpell(Projectile_ElementalBlast_Fire_Cold);IF(HasPassive('VersatileBlasts)):UnlockSpell(Projectile_ElementalBlast_Fire_Cold_2Action);IF(HasPassive('VersatileBlasts)):UnlockSpell(Target_ElementalBlast_Fire_Cold);IF(HasPassive('VersatileBlasts)):UnlockSpell(Target_ElementalBlast_Fire_Cold_2Action);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Fire_Fire);UnlockSpell(Projectile_ElementalBlast_Fire_Fire_2Action);UnlockSpell(Target_ElementalBlast_Fire_Fire);UnlockSpell(Target_ElementalBlast_Fire_Fire_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Fire_Cold);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Fire_Cold_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Fire_Cold);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Fire_Cold_2Action);" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="ca600bf6-3845-44d5-a9dc-b327661babb8" />
       </fields>
@@ -8352,7 +8361,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="ChannelElementsStatusWater" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6b70efefg6519g08bbg7006g8b6346f1dc18" version="1" />
         <field name="StackId" type="StringTableFieldDefinition" value="ChannelElements_Water" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Water_Bludgeoning);UnlockSpell(Projectile_ElementalBlast_Water_Cold);UnlockSpell(Projectile_ElementalBlast_Water_Bludgeoning_2Action);UnlockSpell(Projectile_ElementalBlast_Water_Cold_2Action);UnlockSpell(Target_ElementalBlast_Water_Bludgeoning);UnlockSpell(Target_ElementalBlast_Water_Cold);UnlockSpell(Target_ElementalBlast_Water_Bludgeoning_2Action);UnlockSpell(Target_ElementalBlast_Water_Cold_2Action);IF(HasPassive('VersatileBlasts)):UnlockSpell(Projectile_ElementalBlast_Water_Acid);IF(HasPassive('VersatileBlasts)):UnlockSpell(Projectile_ElementalBlast_Water_Acid_2Action);IF(HasPassive('VersatileBlasts)):UnlockSpell(Target_ElementalBlast_Water_Acid);IF(HasPassive('VersatileBlasts)):UnlockSpell(Target_ElementalBlast_Water_Acid_2Action);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Water_Bludgeoning);UnlockSpell(Projectile_ElementalBlast_Water_Cold);UnlockSpell(Projectile_ElementalBlast_Water_Bludgeoning_2Action);UnlockSpell(Projectile_ElementalBlast_Water_Cold_2Action);UnlockSpell(Target_ElementalBlast_Water_Bludgeoning);UnlockSpell(Target_ElementalBlast_Water_Cold);UnlockSpell(Target_ElementalBlast_Water_Bludgeoning_2Action);UnlockSpell(Target_ElementalBlast_Water_Cold_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Water_Acid);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Water_Acid_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Water_Acid);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Water_Acid_2Action);" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="ca600bf6-3845-44d5-a9dc-b327661babb8" />
       </fields>
@@ -8363,7 +8372,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="ChannelElementsStatusWood" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h73c1a212gd74fg9829g39cbgdaeeb0af7db3" version="1" />
         <field name="StackId" type="StringTableFieldDefinition" value="ChannelElements_Water" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Wood_Bludgeoning);UnlockSpell(Projectile_ElementalBlast_Wood_Vitality);UnlockSpell(Projectile_ElementalBlast_Wood_Bludgeoning_2Action);UnlockSpell(Projectile_ElementalBlast_Wood_Vitality_2Action);UnlockSpell(Target_ElementalBlast_Wood_Bludgeoning);UnlockSpell(Target_ElementalBlast_Wood_Vitality);UnlockSpell(Target_ElementalBlast_Wood_Bludgeoning_2Action);UnlockSpell(Target_ElementalBlast_Wood_Vitality_2Action);IF(HasPassive('VersatileBlasts)):UnlockSpell(Projectile_ElementalBlast_Wood_Poison);IF(HasPassive('VersatileBlasts)):UnlockSpell(Projectile_ElementalBlast_Wood_Poison_2Action);IF(HasPassive('VersatileBlasts)):UnlockSpell(Target_ElementalBlast_Wood_Poison);IF(HasPassive('VersatileBlasts)):UnlockSpell(Target_ElementalBlast_Wood_Poison_2Action);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Wood_Bludgeoning);UnlockSpell(Projectile_ElementalBlast_Wood_Vitality);UnlockSpell(Projectile_ElementalBlast_Wood_Bludgeoning_2Action);UnlockSpell(Projectile_ElementalBlast_Wood_Vitality_2Action);UnlockSpell(Target_ElementalBlast_Wood_Bludgeoning);UnlockSpell(Target_ElementalBlast_Wood_Vitality);UnlockSpell(Target_ElementalBlast_Wood_Bludgeoning_2Action);UnlockSpell(Target_ElementalBlast_Wood_Vitality_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Wood_Poison);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Wood_Poison_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Wood_Poison);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Wood_Poison_2Action);" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="ca600bf6-3845-44d5-a9dc-b327661babb8" />
       </fields>
@@ -8374,7 +8383,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="ChannelElementsStatusMetal" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h33c27d37gb204g501ag3976g001f59b112ba" version="1" />
         <field name="StackId" type="StringTableFieldDefinition" value="ChannelElements_Metal" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Metal_Piercing);UnlockSpell(Projectile_ElementalBlast_Metal_Slashing);UnlockSpell(Projectile_ElementalBlast_Metal_Piercing_2Action);UnlockSpell(Projectile_ElementalBlast_Metal_Slashing_2Action);UnlockSpell(Target_ElementalBlast_Metal_Piercing);UnlockSpell(Target_ElementalBlast_Metal_Slashing);UnlockSpell(Target_ElementalBlast_Metal_Piercing_2Action);UnlockSpell(Target_ElementalBlast_Metal_Slashing_2Action);IF(HasPassive('VersatileBlasts)):UnlockSpell(Projectile_ElementalBlast_Metal_Lightning);IF(HasPassive('VersatileBlasts)):UnlockSpell(Projectile_ElementalBlast_Metal_Lightning_2Action);IF(HasPassive('VersatileBlasts)):UnlockSpell(Target_ElementalBlast_Metal_Lightning);IF(HasPassive('VersatileBlasts)):UnlockSpell(Target_ElementalBlast_Metal_Lightning_2Action);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Metal_Piercing);UnlockSpell(Projectile_ElementalBlast_Metal_Slashing);UnlockSpell(Projectile_ElementalBlast_Metal_Piercing_2Action);UnlockSpell(Projectile_ElementalBlast_Metal_Slashing_2Action);UnlockSpell(Target_ElementalBlast_Metal_Piercing);UnlockSpell(Target_ElementalBlast_Metal_Slashing);UnlockSpell(Target_ElementalBlast_Metal_Piercing_2Action);UnlockSpell(Target_ElementalBlast_Metal_Slashing_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Metal_Lightning);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Metal_Lightning_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Metal_Lightning);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Metal_Lightning_2Action);" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="ca600bf6-3845-44d5-a9dc-b327661babb8" />
       </fields>
@@ -8410,7 +8419,7 @@
         <field name="StackId" type="StringTableFieldDefinition" value="KineticistArmor" />
         <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="IF(not CharacterLevelGreaterThan(2)):ACOverrideFormula(15,true,Dexterity);IF(CharacterLevelGreaterThan(2)):ACOverrideFormula(16,true,Dexterity);" />
-        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="WearingArmor(context.Source) or not HasStatus('ChannelElementsStatus_Earth');" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="WearingArmor(context.Source)" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnEquip;OnStatusRemoved" enumeration_type_name="StatusEvent" version="1" />
       </fields>
     </stat_object>
@@ -8422,7 +8431,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h0f932a68g742dge526g3844ge675280524c5" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Generic_Darkness" />
         <field name="Boosts" type="StringTableFieldDefinition" value="Tag(BLINDSIGHT);StatusImmunity(SG_Blinded)" />
-        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not HasStatus('ChannelElementsStatus_Earth');" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not HasStatus('ChannelElementsStatusEarth');" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnStatusRemoved" enumeration_type_name="StatusEvent" version="1" />
       </fields>
     </stat_object>
@@ -8457,7 +8466,7 @@
         <field name="StackId" type="StringTableFieldDefinition" value="KineticistArmor" />
         <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="ACOverrideFormula(13,true,Dexterity);" />
-        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="WearingArmor(context.Source) or not HasStatus('ChannelElementsStatus_Wood');" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="WearingArmor(context.Source)" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnEquip;OnStatusRemoved" enumeration_type_name="StatusEvent" version="1" />
       </fields>
     </stat_object>
@@ -8470,7 +8479,7 @@
         <field name="StackId" type="StringTableFieldDefinition" value="KineticistArmor" />
         <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="ACOverrideFormula(13,true,Dexterity);" />
-        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="WearingArmor(context.Source) or not HasStatus('ChannelElementsStatus_Metal');" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="WearingArmor(context.Source)" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnEquip;OnStatusRemoved" enumeration_type_name="StatusEvent" version="1" />
       </fields>
     </stat_object>

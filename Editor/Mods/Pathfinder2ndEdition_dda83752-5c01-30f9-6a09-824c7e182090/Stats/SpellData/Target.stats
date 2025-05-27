@@ -2312,6 +2312,7 @@
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_CureWounds" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(HealVoid(8)):DealDamage(1d8,Radiant,Magical);IF(HealVoid(10)):DealDamage(1d10,Radiant,Magical);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HealVoid(8) and not SaveCritMiss()):DealDamage((1d8)/2,Radiant,Magical);IF(HealVoid(10) and not SaveCritMiss()):DealDamage((1d10)/2,Radiant,Magical);" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not Tagged('UNDEAD') or (Tagged('UNDEAD') and not SavingThrow(Ability.Constitution, SourceSpellDC()))" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2323,7 +2324,7 @@
         <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_HealBase1" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HealLive(8)):RegainHitPoints(1d8+8);IF(HealLive(10)):RegainHitPoints(1d10+8);IF(AngelicHalo()):RegainHitPoints(2);" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="9" />
-        <field name="SpellRoll" type="StringTableFieldDefinition" value="IF(Tagged('UNDEAD')):(not SavingThrow(Ability.Constitution, SourceSpellDC()))" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not Tagged('UNDEAD') or (Tagged('UNDEAD') and not SavingThrow(Ability.Constitution, SourceSpellDC()))" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(HealVoid(8)):DealDamage(1d8,Radiant,Magical);IF(HealVoid(10)):DealDamage(1d10,Radiant,Magical);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HealVoid(8) and not SaveCritMiss()):DealDamage((1d8)/2,Radiant,Magical);IF(HealVoid(10) and not SaveCritMiss()):DealDamage((1d10)/2,Radiant,Magical);" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead() and (Enemy() and Tagged('UNDEAD')) or ((Ally() or Self()) and not Tagged('UNDEAD')) and not Tagged('CONSTRUCT');" />
@@ -2374,7 +2375,7 @@
         <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_HealBase1" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HealLive(8)):RegainHitPoints(2d8+16);IF(HealLive(10)):RegainHitPoints(2d10+16);IF(AngelicHalo()):RegainHitPoints(4);" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="9" />
-        <field name="SpellRoll" type="StringTableFieldDefinition" value="IF(Tagged('UNDEAD')):(not SavingThrow(Ability.Constitution, SourceSpellDC()))" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not Tagged('UNDEAD') or (Tagged('UNDEAD') and not SavingThrow(Ability.Constitution, SourceSpellDC()))" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(HealVoid(8)):DealDamage(2d8,Radiant,Magical);IF(HealVoid(10)):DealDamage(2d10,Radiant,Magical);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HealVoid(8) and not SaveCritMiss()):DealDamage((2d8)/2,Radiant,Magical);IF(HealVoid(10) and not SaveCritMiss()):DealDamage((2d10)/2,Radiant,Magical);" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead() and (Enemy() and Tagged('UNDEAD')) or ((Ally() or Self()) and not Tagged('UNDEAD')) and not Tagged('CONSTRUCT');" />
@@ -2425,7 +2426,7 @@
         <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_HealBase1" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HealLive(8)):RegainHitPoints(3d8+24);IF(HealLive(10)):RegainHitPoints(3d10+24);IF(AngelicHalo()):RegainHitPoints(6);" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="9" />
-        <field name="SpellRoll" type="StringTableFieldDefinition" value="IF(Tagged('UNDEAD')):(not SavingThrow(Ability.Constitution, SourceSpellDC()))" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not Tagged('UNDEAD') or (Tagged('UNDEAD') and not SavingThrow(Ability.Constitution, SourceSpellDC()))" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(HealVoid(8)):DealDamage(3d8,Radiant,Magical);IF(HealVoid(10)):DealDamage(3d10,Radiant,Magical);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HealVoid(8) and not SaveCritMiss()):DealDamage((3d8)/2,Radiant,Magical);IF(HealVoid(10) and not SaveCritMiss()):DealDamage((3d10)/2,Radiant,Magical);" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead() and (Enemy() and Tagged('UNDEAD')) or ((Ally() or Self()) and not Tagged('UNDEAD')) and not Tagged('CONSTRUCT');" />
@@ -2555,6 +2556,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h275b63e7gf38egb2ebg69bcg29431eb7a628" version="1" />
         <field name="TooltipUpcastDescriptionParams" type="StringTableFieldDefinition" value="1d8" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Necromancy_Harm" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="Tagged('UNDEAD') or (not Tagged('UNDEAD') and not SavingThrow(Ability.Constitution, SourceSpellDC()))" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2574,6 +2576,7 @@
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HarmVoid(8)):RegainHitPoints(1d8,Undead);IF(HarmVoid(10)):RegainHitPoints(1d10,Undead);IF(SapLife()):RegainHitPoints(SELF,1,Undead);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Necromancy_Harm" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HarmLive(8) and not SaveCritMiss()):DealDamage((1d8)/2,Necrotic,Magical);IF(HarmLive(10) and not SaveCritMiss()):DealDamage((1d10)/2,Necrotic,Magical);" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="Tagged('UNDEAD') or (not Tagged('UNDEAD') and not SavingThrow(Ability.Constitution, SourceSpellDC()))" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2585,7 +2588,7 @@
         <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_HarmBase1" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HarmVoid(8)):RegainHitPoints(1d8+8,Undead);IF(HarmVoid(10)):RegainHitPoints(1d10+8,Undead);IF(SapLife()):RegainHitPoints(SELF,1,Undead);" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="9" />
-        <field name="SpellRoll" type="StringTableFieldDefinition" value="IF(not Tagged('UNDEAD')):(not SavingThrow(Ability.Constitution, SourceSpellDC()))" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="Tagged('UNDEAD') or (not Tagged('UNDEAD') and not SavingThrow(Ability.Constitution, SourceSpellDC()))" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(HarmLive(8)):DealDamage(1d8,Necrotic,Magical);IF(HarmLive(10)):DealDamage(1d10,Necrotic,Magical);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HarmLive(8) and not SaveCritMiss()):DealDamage((1d8)/2,Necrotic,Magical);IF(HarmLive(10) and not SaveCritMiss()):DealDamage((1d10)/2,Necrotic,Magical);" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead() and (Enemy() and not Tagged('UNDEAD')) or ((Ally() or Self()) and Tagged('UNDEAD')) and not Tagged('CONSTRUCT');" />
@@ -2639,7 +2642,7 @@
         <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_HarmBase1" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HarmVoid(8)):RegainHitPoints(2d8+16,Undead);IF(HarmVoid(10)):RegainHitPoints(2d10+16,Undead);IF(SapLife()):RegainHitPoints(SELF,2,Undead);" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="9" />
-        <field name="SpellRoll" type="StringTableFieldDefinition" value="IF(not Tagged('UNDEAD')):(not SavingThrow(Ability.Constitution, SourceSpellDC()))" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="Tagged('UNDEAD') or (not Tagged('UNDEAD') and not SavingThrow(Ability.Constitution, SourceSpellDC()))" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(HarmLive(8)):DealDamage(2d8,Necrotic,Magical);IF(HarmLive(10)):DealDamage(2d10,Necrotic,Magical);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HarmLive(8) and not SaveCritMiss()):DealDamage((2d8)/2,Necrotic,Magical);IF(HarmLive(10) and not SaveCritMiss()):DealDamage((2d10)/2,Necrotic,Magical);" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead() and (Enemy() and not Tagged('UNDEAD')) or ((Ally() or Self()) and Tagged('UNDEAD')) and not Tagged('CONSTRUCT');" />
@@ -2694,7 +2697,7 @@
         <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_HarmBase1" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HarmVoid(8)):RegainHitPoints(3d8+24,Undead);IF(HarmVoid(10)):RegainHitPoints(3d10+24,Undead);IF(SapLife()):RegainHitPoints(SELF,3,Undead);" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="9" />
-        <field name="SpellRoll" type="StringTableFieldDefinition" value="IF(not Tagged('UNDEAD')):(not SavingThrow(Ability.Constitution, SourceSpellDC()))" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="Tagged('UNDEAD') or (not Tagged('UNDEAD') and not SavingThrow(Ability.Constitution, SourceSpellDC()))" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(HarmLive(8)):DealDamage(3d8,Necrotic,Magical);IF(HarmLive(10)):DealDamage(3d10,Necrotic,Magical);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HarmLive(8) and not SaveCritMiss()):DealDamage((3d8)/2,Necrotic,Magical);IF(HarmLive(10) and not SaveCritMiss()):DealDamage((3d10)/2,Necrotic,Magical);" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead() and (Enemy() and not Tagged('UNDEAD')) or ((Ally() or Self()) and Tagged('UNDEAD')) and not Tagged('CONSTRUCT');" />
@@ -7602,6 +7605,7 @@
         <field name="Level" type="IntegerTableFieldDefinition" value="1" />
         <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Necromancy" enumeration_type_name="SpellSchool" version="1" />
         <field name="SpellPrepareCost" type="IntegerTableFieldDefinition" value="1" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="IF(not Tagged('UNDEAD')):(not SavingThrow(Ability.Constitution, SourceSpellDC()))" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -7905,10 +7909,10 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="1a07184a-11f6-4c8f-bd21-8a3c2644d345" />
         <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrikeBase" />
-        <field name="ContainerSpells" type="StringTableFieldDefinition" value="Target_RestorativeStrike_1;" />
+        <field name="ContainerSpells" type="StringTableFieldDefinition" value="Target_RestorativeStrike_1;Target_RestorativeStrike_2;Target_RestorativeStrike_3;Target_RestorativeStrike_4;Target_RestorativeStrike_5;Target_RestorativeStrike_6;" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="MeleeMainWeaponRange" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="Attack(AttackType.MeleeWeaponAttack)" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);ApplyStatus(SELF,RestorativeStikeHit,100,1)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);ApplyStatus(SELF,RestorativeStrikeHit1,100,1);" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead()" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_PotentSpellcasting" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6b50fc88g9604g9990gae23ge733d932b644" version="1" />
@@ -7940,8 +7944,9 @@
         <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrike_1" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1a07184a-11f6-4c8f-bd21-8a3c2644d345" />
         <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_RestorativeStrikeBase" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,1d8,Undead);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,1d10,Undead);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,1d8,Guaranteed);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,1d10,Guaranteed);" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsHarmful;IsLinkedSpellContainer;IsSpell;HasVerbalComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);ApplyStatus(SELF,RestorativeStrikeHit1,100,1);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -7950,8 +7955,9 @@
         <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrike_2" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1a07184a-11f6-4c8f-bd21-8a3c2644d345" />
         <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_RestorativeStrikeBase" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,2d8,Undead);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,2d10,Undead);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,2d8,Guaranteed);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,2d10,Guaranteed);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:2" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);ApplyStatus(SELF,RestorativeStrikeHit2,100,1);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -7960,8 +7966,9 @@
         <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrike_3" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1a07184a-11f6-4c8f-bd21-8a3c2644d345" />
         <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_RestorativeStrikeBase" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,3d8,Undead);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,3d10,Undead);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,3d8,Guaranteed);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,3d10,Guaranteed);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:3" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);ApplyStatus(SELF,RestorativeStrikeHit3,100,1);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -7970,8 +7977,9 @@
         <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrike_4" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1a07184a-11f6-4c8f-bd21-8a3c2644d345" />
         <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_RestorativeStrikeBase" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,4d8,Undead);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,4d10,Undead);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,4d8,Guaranteed);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,4d10,Guaranteed);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:4" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);ApplyStatus(SELF,RestorativeStrikeHit4,100,1);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -7980,8 +7988,9 @@
         <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrike_5" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1a07184a-11f6-4c8f-bd21-8a3c2644d345" />
         <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_RestorativeStrikeBase" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,5d8,Undead);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,5d10,Undead);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,5d8,Guaranteed);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,5d10,Guaranteed);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:5" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);ApplyStatus(SELF,RestorativeStrikeHit5,100,1);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -7990,15 +7999,49 @@
         <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrike_6" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1a07184a-11f6-4c8f-bd21-8a3c2644d345" />
         <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_RestorativeStrikeBase" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,6d8,Undead);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,6d10,Undead);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,6d8,Guaranteed);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,6d10,Guaranteed);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:6" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);ApplyStatus(SELF,RestorativeStrikeHit6,100,1);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="47ad606d-786b-4765-81c6-b651675176d3" />
+        <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrike_Font" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(SELF,RestorativeStrikeHeal_FontStatus,100,1);IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,LevelMapValue(H1D8),Guaranteed);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(SELF,(LevelMapValue(H1D10)0,Guaranteed);" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="MeleeMainWeaponRange" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="Attack(AttackType.MeleeWeaponAttack)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);ApplyStatus(SELF,RestorativeStrikeHeal_FontStatus,100,1);" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_PotentSpellcasting" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h39de931bgb003geb95gc9e1g224e65b06b14" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hc7b96496g3380g0430g5e3bge34e361d00b4" version="1" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="MeleeWeaponAttack" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_Radiant_DivineSmite_L1to3" />
+        <field name="TargetSound" type="StringTableFieldDefinition" value="Spell_Impact_Damage_Radiant_DivineSmite_L1to3" />
+        <field name="VocalComponentSound" type="StringTableFieldDefinition" value="Vocal_Component_HealingHPMass" />
+        <field name="PreviewCursor" type="EnumerationTableFieldDefinition" value="Melee" enumeration_type_name="CursorMode" version="1" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="Character() and Enemy() and not Dead()" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;ChannelDivinity:1" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="71369b20-18f1-4d33-89ad-a99b10f0444c,,;48beee2b-7124-4fa1-b820-dab4d89198d4,,;bcecc5ce-e7c9-4391-b4b6-5f93872ba2e6,,;9add032c-e500-4e88-a2ea-ef6c905bd656,,;3b9da8d4-3eff-43bd-9eaa-1c13fba0045e,,;d9feef5a-3726-4e23-95e5-6ec295efdc96,,;0b07883a-08b8-43b6-ac18-84dc9e84ff50,,;,,;,," />
+        <field name="DualWieldingSpellAnimation" type="CastAnimationsTableFieldDefinition" value="79f8640c-612a-4b13-aac7-bdc1b90458c2,,;655f5d8e-39c7-45b4-8a36-fdd3358a448c,,;c07a9d83-9a39-464a-b281-15c67c528ffb,,;32c33123-7962-4d95-b497-532b1a897e85,,;7f20e242-be7c-4fd1-a2bd-5715b2adca03,,;7465f7f7-67ea-41f2-8dd4-3c97f1089a54,,;0b07883a-08b8-43b6-ac18-84dc9e84ff50,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsHarmful;IsSpell;HasVerbalComponent" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="PhysicalDamage" enumeration_type_name="HitAnimationType" version="1" />
+        <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="88532675-7be6-4a54-b750-90e6a8f2c012" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="bced542c-867a-46e2-a2aa-e652db749c61" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="3a1161a5-ecfe-40f1-ac2a-c75a5e4d147e" />
+        <field name="Sheathing" type="EnumerationTableFieldDefinition" value="Melee" enumeration_type_name="SpellSheathing" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="b6be150d-c018-4ef5-840c-edda9906b05e" />
         <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrikeHeal1" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(1d8,Undead);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(1d10,Undead);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(1d8,Guaranteed);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(1d10,Guaranteed);RemoveStatus(SELF,RestorativeStrikeHit1);" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="3" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead() and not Tagged('UNDEAD') and not Tagged('CONSTRUCT')" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_PotentSpellcasting" />
@@ -8026,7 +8069,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="2d1990b7-59fe-4f6f-95d6-582fcf4ed4b9" />
         <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrikeHeal2" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="b6be150d-c018-4ef5-840c-edda9906b05e" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(2d8,Undead);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(2d10,Undead);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(2d8,Guaranteed);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(2d10,Guaranteed);RemoveStatus(SELF,RestorativeStrikeHit2);" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="RegainHitPoints(2D8)" />
       </fields>
     </stat_object>
@@ -8035,7 +8078,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="d71b69ef-7a88-4c73-a60e-a3ee46c3f621" />
         <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrikeHeal3" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="b6be150d-c018-4ef5-840c-edda9906b05e" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(3d8,Undead);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(3d10,Undead);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(3d8,Guaranteed);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(3d10,Guaranteed);RemoveStatus(SELF,RestorativeStrikeHit3);" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="RegainHitPoints(3D8)" />
       </fields>
     </stat_object>
@@ -8044,7 +8087,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="45bc3283-6780-432b-a121-c7e2cafc4f4b" />
         <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrikeHeal4" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="b6be150d-c018-4ef5-840c-edda9906b05e" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(4d8,Undead);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(4d10,Undead);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(4d8,Guaranteed);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(4d10,Guaranteed);RemoveStatus(SELF,RestorativeStrikeHit4);" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="RegainHitPoints(4D8)" />
       </fields>
     </stat_object>
@@ -8053,7 +8096,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="26de0a3c-8223-4b4e-9cc5-98d867c19802" />
         <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrikeHeal5" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="b6be150d-c018-4ef5-840c-edda9906b05e" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(5d8,Undead);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(5d10,Undead);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(5d8,Guaranteed);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(5d10,Guaranteed);RemoveStatus(SELF,RestorativeStrikeHit5);" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="RegainHitPoints(5D8)" />
       </fields>
     </stat_object>
@@ -8062,8 +8105,16 @@
         <field name="UUID" type="IdTableFieldDefinition" value="2975767b-946b-45b7-b5f9-4c28a5199598" />
         <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrikeHeal6" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="b6be150d-c018-4ef5-840c-edda9906b05e" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(6d8,Undead);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(6d10,Undead);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(not HasPassive('HealingHands',context.Source)):RegainHitPoints(6d8,Guaranteed);IF(HasPassive('HealingHands',context.Source)):RegainHitPoints(6d10,Guaranteed);RemoveStatus(SELF,RestorativeStrikeHit6);" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="RegainHitPoints(6D8)" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="cec11d12-f5b6-4c6b-9816-4cd9a4603d19" />
+        <field name="Name" type="NameTableFieldDefinition" value="RestorativeStrikeHeal_Font" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="b6be150d-c018-4ef5-840c-edda9906b05e" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HealLive(8)):RegainHitPoints(LevelMapValue(H1D8));IF(HealLive(10)):RegainHitPoints(LevelMapValue(H1D10));IF(AngelicHalo()):RegainHitPoints(2*LevelMapValue(H1Plus1));RemoveStatus(SELF,RestorativeStrikeHeal_FontStatus);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -19450,7 +19501,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="e1b34c88-6cb2-4988-b0da-9c2b971988fb" />
         <field name="Name" type="NameTableFieldDefinition" value="ScorchingColumn" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="ff736f9d-3563-4d2f-a343-16a3cf33230c" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:SurfaceChange(Ignite);RemoveStatus(ChannelElementsStatusAir);RemoveStatus(ChannelElementsStatusEarth);RemoveStatus(ChannelElementsStatusFire);RemoveStatus(ChannelElementsStatusWater);RemoveStatus(ChannelElementsStatusMetal);RemoveStatus(ChannelElementsStatusWood);RemoveStatus(ChannelingStatus);RemoveStatus(EternalTorchStatus);RemoveStatus(FreshProduceStatus);RemoveStatus(OceansBalmStatus);RemoveStatus(ScorchingColumnStatus);RemoveStatus(SteppingStonesStatus);RemoveStatus(TremorStatus);RemoveStatus(WintersClutchStatus);RemoveStatus(AirCushionStatus);RemoveStatus(ArmorInEarthUnlockStatus);RemoveStatus(GeologicalAttunementUnlockStatus);RemoveStatusHardwoodArmorUnlockStatus);RemoveStatus(MetalCarapaceUnlockStatus);RemoveStatus(AerialBoomerangUnlockStatus);RemoveStatus(FlyingFlameStatus);RemoveStatus(HailOfSplintersStatus);RemoveStatus(ShardstrikeStatus);RemoveStatus(TidalHandsStatus);RemoveStatus(BurningJetStatus);RemoveStatus(MagneticPinionsStatus);RemoveStatus(DeflectingWaveStatus);RemoveStatus(FourWindsUnlockStatus);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:SurfaceChange(Ignite);RemoveStatus(ChannelElementsStatusAir);RemoveStatus(ChannelElementsStatusEarth);RemoveStatus(ChannelElementsStatusFire);RemoveStatus(ChannelElementsStatusWater);RemoveStatus(ChannelElementsStatusMetal);RemoveStatus(ChannelElementsStatusWood);RemoveStatus(ChannelingStatus);RemoveStatus(EternalTorchStatus);RemoveStatus(FreshProduceStatus);RemoveStatus(OceansBalmStatus);RemoveStatus(ScorchingColumnStatus);RemoveStatus(SteppingStonesStatus);RemoveStatus(TremorStatus);RemoveStatus(WintersClutchStatus);RemoveStatus(AirCushionStatus);RemoveStatus(ArmorInEarthUnlockStatus);RemoveStatus(GeologicalAttunementUnlockStatus);RemoveStatus(HardwoodArmorUnlockStatus);RemoveStatus(MetalCarapaceUnlockStatus);RemoveStatus(AerialBoomerangUnlockStatus);RemoveStatus(FlyingFlameStatus);RemoveStatus(HailOfSplintersStatus);RemoveStatus(ShardstrikeStatus);RemoveStatus(TidalHandsStatus);RemoveStatus(BurningJetStatus);RemoveStatus(MagneticPinionsStatus);RemoveStatus(DeflectingWaveStatus);RemoveStatus(FourWindsUnlockStatus);" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(ScorchingColumnDamage),Fire,Magical);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(ScorchingColumnDamage)/2,Fire,Magical);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hbbb329b7g80d3g62f3gad5dgd1db58a36abb" version="1" />
@@ -19481,7 +19532,7 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="d970034d-48bd-4dd3-ba8b-84d38a4e1b07" />
         <field name="Name" type="NameTableFieldDefinition" value="Tremor" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:CreateSurface(3,1,Mud);RemoveStatus(ChannelElementsStatusAir);RemoveStatus(ChannelElementsStatusEarth);RemoveStatus(ChannelElementsStatusFire);RemoveStatus(ChannelElementsStatusWater);RemoveStatus(ChannelElementsStatusMetal);RemoveStatus(ChannelElementsStatusWood);RemoveStatus(ChannelingStatus);RemoveStatus(EternalTorchStatus);RemoveStatus(FreshProduceStatus);RemoveStatus(OceansBalmStatus);RemoveStatus(ScorchingColumnStatus);RemoveStatus(SteppingStonesStatus);RemoveStatus(TremorStatus);RemoveStatus(WintersClutchStatus);RemoveStatus(AirCushionStatus);RemoveStatus(ArmorInEarthUnlockStatus);RemoveStatus(GeologicalAttunementUnlockStatus);RemoveStatusHardwoodArmorUnlockStatus);RemoveStatus(MetalCarapaceUnlockStatus);RemoveStatus(AerialBoomerangUnlockStatus);RemoveStatus(FlyingFlameStatus);RemoveStatus(HailOfSplintersStatus);RemoveStatus(ShardstrikeStatus);RemoveStatus(TidalHandsStatus);RemoveStatus(BurningJetStatus);RemoveStatus(MagneticPinionsStatus);RemoveStatus(DeflectingWaveStatus);RemoveStatus(FourWindsUnlockStatus);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:CreateSurface(3,1,Mud);RemoveStatus(ChannelElementsStatusAir);RemoveStatus(ChannelElementsStatusEarth);RemoveStatus(ChannelElementsStatusFire);RemoveStatus(ChannelElementsStatusWater);RemoveStatus(ChannelElementsStatusMetal);RemoveStatus(ChannelElementsStatusWood);RemoveStatus(ChannelingStatus);RemoveStatus(EternalTorchStatus);RemoveStatus(FreshProduceStatus);RemoveStatus(OceansBalmStatus);RemoveStatus(ScorchingColumnStatus);RemoveStatus(SteppingStonesStatus);RemoveStatus(TremorStatus);RemoveStatus(WintersClutchStatus);RemoveStatus(AirCushionStatus);RemoveStatus(ArmorInEarthUnlockStatus);RemoveStatus(GeologicalAttunementUnlockStatus);RemoveStatus(HardwoodArmorUnlockStatus);RemoveStatus(MetalCarapaceUnlockStatus);RemoveStatus(AerialBoomerangUnlockStatus);RemoveStatus(FlyingFlameStatus);RemoveStatus(HailOfSplintersStatus);RemoveStatus(ShardstrikeStatus);RemoveStatus(TidalHandsStatus);RemoveStatus(BurningJetStatus);RemoveStatus(MagneticPinionsStatus);RemoveStatus(DeflectingWaveStatus);RemoveStatus(FourWindsUnlockStatus);" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="9" />
         <field name="AreaRadius" type="IntegerTableFieldDefinition" value="3" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Constitution, SourceSpellDC())" />

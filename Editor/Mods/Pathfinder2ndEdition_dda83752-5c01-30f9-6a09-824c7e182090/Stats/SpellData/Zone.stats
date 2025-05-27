@@ -3188,7 +3188,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="2c12902f-5555-409d-b45b-79da9f091ebf" />
         <field name="Name" type="NameTableFieldDefinition" value="ShadowBlast_Force_Rank6_Line" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="a33e6297-b2dd-4b5b-a629-97a14fd024a6" />
-        <field name="Level" type="IntegerTableFieldDefinition" value="6" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="3" />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(7d8,Force,Magical);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage((7d8)/2,Force,Magical);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:6;" />
@@ -3319,7 +3319,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="39a7fe31-9e1d-4748-bf77-6ec3380ee069" />
         <field name="Name" type="NameTableFieldDefinition" value="AerialBoomerang" />
         <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Evocation" enumeration_type_name="SpellSchool" version="1" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(BoomerangRecast,100,1);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(SELF,BoomerangRecast,100,1);" />
         <field name="SurfaceType" type="EnumerationTableFieldDefinition" value="Sentinel" enumeration_type_name="Surface Type" version="1" />
         <field name="SurfaceLifetime" type="IntegerTableFieldDefinition" value="0" />
         <field name="SurfaceGrowStep" type="IntegerTableFieldDefinition" value="5" />
@@ -3359,11 +3359,42 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="c8aeeafe-2ca9-44c1-bbbc-7dfcc99bb777" />
         <field name="Name" type="NameTableFieldDefinition" value="AerialBoomerang_Recast" />
-        <field name="Using" type="BaseClassTableFieldDefinition" value="39a7fe31-9e1d-4748-bf77-6ec3380ee069" />
         <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hbb391a13g7be4g8d85gd30agc3fdeb8471b1" version="1" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1;" />
         <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Evocation" enumeration_type_name="SpellSchool" version="1" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="RemoveStatus(BoomerangRecast);" />
+        <field name="SurfaceType" type="EnumerationTableFieldDefinition" value="Sentinel" enumeration_type_name="Surface Type" version="1" />
+        <field name="SurfaceLifetime" type="IntegerTableFieldDefinition" value="0" />
+        <field name="SurfaceGrowStep" type="IntegerTableFieldDefinition" value="5" />
+        <field name="SurfaceGrowInterval" type="IntegerTableFieldDefinition" value="10" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC())" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D4AoeCantrip),Slashing,Magical);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D4AoeCantrip)/2,Slashing,Magical);" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_GustOfWind" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hae33208dge345g6088g24f7g91c707d4b705" version="1" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D4AoeCantrip),Slashing);" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Dexterity" />
+        <field name="TooltipOnSave" type="StringTableFieldDefinition" value="f762efbb-f8f1-493e-b248-2de1567b4bd2" />
+        <field name="TooltipUpcastDescription" type="GuidObjectTableFieldDefinition" value="66388a6f-44dd-4c9f-a9e7-910c50e70755" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Thunder_Gen_L1to3" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Loop_Damage_Thunder_Gen_L1to3" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Control_GustOfWind_L1to3" />
+        <field name="VocalComponentSound" type="StringTableFieldDefinition" value="Vocal_Component_Wind" />
+        <field name="PreviewCursor" type="EnumerationTableFieldDefinition" value="Cast" enumeration_type_name="CursorMode" version="1" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="Shape" type="StringTableFieldDefinition" value="Square" />
+        <field name="FrontOffset" type="IntegerTableFieldDefinition" value="1" />
+        <field name="Range" type="IntegerTableFieldDefinition" value="18" />
+        <field name="Base" type="IntegerTableFieldDefinition" value="2" />
+        <field name="CycleConditions" type="StringTableFieldDefinition" value="Enemy() and not Dead()" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="554a18f7-952e-494a-b301-7702a85d4bc9,,;,,;d30d2b40-c45a-45bd-94d7-9b2baaf0f77b,,;a601b33c-5320-455d-b4d4-74d6dc35b757,,;22dfbbf4-f417-4c84-b39e-2039315961e6,,;,,;5bfbe9f9-4fc3-4f26-b112-43d404db6a89,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="2af907e1-127c-4c83-a117-af18f211c59d" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="f0fc3adc-db50-4a8d-bd30-904902cbefbd" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="766d4d52-d6a1-4efd-b37b-bd1496718e49" />
+        <field name="DamageType" type="EnumerationTableFieldDefinition" value="Slashing" enumeration_type_name="Damage Type" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3410,7 +3441,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="a8122fae-49ed-4551-99f6-627cff0c927e" />
         <field name="Name" type="NameTableFieldDefinition" value="HailOfSplinters" />
         <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Evocation" enumeration_type_name="SpellSchool" version="1" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="RemoveStatus(ChannelElementsStatusAir);RemoveStatus(ChannelElementsStatusEarth);RemoveStatus(ChannelElementsStatusFire);RemoveStatus(ChannelElementsStatusWater);RemoveStatus(ChannelElementsStatusMetal);RemoveStatus(ChannelElementsStatusWood);RemoveStatus(ChannelingStatus);RemoveStatus(EternalTorchStatus);RemoveStatus(FreshProduceStatus);RemoveStatus(OceansBalmStatus);RemoveStatus(ScorchingColumnStatus);RemoveStatus(SteppingStonesStatus);RemoveStatus(TremorStatus);RemoveStatus(WintersClutchStatus);RemoveStatus(AirCushionStatus);RemoveStatus(ArmorInEarthUnlockStatus);RemoveStatus(GeologicalAttunementUnlockStatus);RemoveStatusHardwoodArmorUnlockStatus);RemoveStatus(MetalCarapaceUnlockStatus);RemoveStatus(AerialBoomerangUnlockStatus);RemoveStatus(FlyingFlameStatus);RemoveStatus(HailOfSplintersStatus);RemoveStatus(ShardstrikeStatus);RemoveStatus(TidalHandsStatus);RemoveStatus(BurningJetStatus);RemoveStatus(MagneticPinionsStatus);RemoveStatus(DeflectingWaveStatus);RemoveStatus(FourWindsUnlockStatus);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="RemoveStatus(ChannelElementsStatusAir);RemoveStatus(ChannelElementsStatusEarth);RemoveStatus(ChannelElementsStatusFire);RemoveStatus(ChannelElementsStatusWater);RemoveStatus(ChannelElementsStatusMetal);RemoveStatus(ChannelElementsStatusWood);RemoveStatus(ChannelingStatus);RemoveStatus(EternalTorchStatus);RemoveStatus(FreshProduceStatus);RemoveStatus(OceansBalmStatus);RemoveStatus(ScorchingColumnStatus);RemoveStatus(SteppingStonesStatus);RemoveStatus(TremorStatus);RemoveStatus(WintersClutchStatus);RemoveStatus(AirCushionStatus);RemoveStatus(ArmorInEarthUnlockStatus);RemoveStatus(GeologicalAttunementUnlockStatus);RemoveStatus(HardwoodArmorUnlockStatus);RemoveStatus(MetalCarapaceUnlockStatus);RemoveStatus(AerialBoomerangUnlockStatus);RemoveStatus(FlyingFlameStatus);RemoveStatus(HailOfSplintersStatus);RemoveStatus(ShardstrikeStatus);RemoveStatus(TidalHandsStatus);RemoveStatus(BurningJetStatus);RemoveStatus(MagneticPinionsStatus);RemoveStatus(DeflectingWaveStatus);RemoveStatus(FourWindsUnlockStatus);" />
         <field name="SurfaceType" type="EnumerationTableFieldDefinition" value="Sentinel" enumeration_type_name="Surface Type" version="1" />
         <field name="SurfaceLifetime" type="IntegerTableFieldDefinition" value="0" />
         <field name="SurfaceGrowStep" type="IntegerTableFieldDefinition" value="5" />

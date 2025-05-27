@@ -240,6 +240,12 @@ function RageSpell()
 	return SpellId('Shout_Rage') | SpellId('Shout_AnimalRage') | SpellId('Shout_FuryRage') | SpellId('Shout_BludgeoningDragonRage') | SpellId('Shout_PoisonDragonRage') | SpellId('Shout_FireDragonRage') | SpellId('Shout_ForceDragonRage') | SpellId('Shout_PsychicDragonRage') | SpellId('Shout_GiantRage') | SpellId('Shout_Rage_Frenzy') | SpellId('Shout_Rage_Totem_Bear') | SpellId('Shout_Rage_Boar')
 end
 
+-- Fix for redefined armor
+function HasHeavyArmor(entity)
+    entity = entity or context.Target
+    local armor = GetActiveArmor(entity)
+    return IsOfProficiencyGroup("HeavyArmor", armor)
+end
 --Bard
 
 function HasMartialExtendableComposition(source)
