@@ -232,6 +232,38 @@
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="154802bd-3dae-4bdc-9889-4addfdc0ca57" />
         <field name="StopAtFirstContact" type="BoolTableFieldDefinition" value="False" />
         <field name="Sheathing" type="EnumerationTableFieldDefinition" value="DontChange" enumeration_type_name="SpellSheathing" version="1" />
+        <field name="OnlyHit1Target" type="BoolTableFieldDefinition" value="False" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="36062ac9-273a-4768-a050-57803ac786a5" />
+        <field name="Name" type="NameTableFieldDefinition" value="LightningDash" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="9" />
+        <field name="HitRadius" type="FloatTableFieldDefinition" value="1.5" />
+        <field name="MovementSpeed" type="IntegerTableFieldDefinition" value="99999" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC())" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(LightningDashDamage),Lightning,Magical);RemoveStatus(SELF,ChannelElementsStatusAir);RemoveStatus(SELF,ChannelElementsStatusEarth);RemoveStatus(SELF,ChannelElementsStatusFire);RemoveStatus(SELF,ChannelElementsStatusWater);RemoveStatus(SELF,ChannelElementsStatusMetal);RemoveStatus(SELF,ChannelElementsStatusWood);RemoveStatus(SELF,ChannelingStatus);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(LightningDashDamage)/2,Lightning,Magical);RemoveStatus(SELF,ChannelElementsStatusAir);RemoveStatus(SELF,ChannelElementsStatusEarth);RemoveStatus(SELF,ChannelElementsStatusFire);RemoveStatus(SELF,ChannelElementsStatusWater);RemoveStatus(SELF,ChannelElementsStatusMetal);RemoveStatus(SELF,ChannelElementsStatusWood);RemoveStatus(SELF,ChannelingStatus);" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_LightningBolt" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h01bcbc45g9cadgffd3g900bge496a47d51bc" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h53684e38g32a2ga723g7ff0g5b60d6d60287" version="1" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(LightningDashDamage),Lightning);" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC())" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Monk_FistofFourThunders_L1to3" />
+        <field name="PreviewCursor" type="EnumerationTableFieldDefinition" value="Cast" enumeration_type_name="CursorMode" version="1" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="Requirements" type="StringTableFieldDefinition" value="not HasStatus('Grappled') and not HasStatus('ENSNARED') and not HasStatus('WEB')" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="0319ca29-4024-4649-9278-3c1f20c5f023,,;e329fa49-fa97-41a5-9b37-5157bb17d398,,;5527380a-aa1c-4b96-9321-c9da23af7396,,;,,;b24b3f23-6d3a-43ce-ae3a-abfb44d26082,,;,,;d13e9dce-8866-4833-98e3-f2e8cad0d790,,;,,;,," />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="a0458d31-f8ef-419a-8708-5715c81e91d3" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="154802bd-3dae-4bdc-9889-4addfdc0ca57" />
+        <field name="StopAtFirstContact" type="BoolTableFieldDefinition" value="False" />
+        <field name="OnlyHit1Target" type="BoolTableFieldDefinition" value="False" />
+        <field name="DamageType" type="EnumerationTableFieldDefinition" value="Lightning" enumeration_type_name="Damage Type" version="1" />
       </fields>
     </stat_object>
   </stat_objects>

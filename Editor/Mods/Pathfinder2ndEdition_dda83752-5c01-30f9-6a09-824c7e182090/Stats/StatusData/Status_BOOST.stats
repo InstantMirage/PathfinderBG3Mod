@@ -131,7 +131,6 @@
         <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_Intent_Buff" />
         <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not Tagged('CIRC_BON_1ATTACK')" />
-        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnTurn" enumeration_type_name="StatusEvent" version="1" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="ApplyToDead;DisableOverhead;IgnoreResting" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
@@ -256,7 +255,6 @@
         <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="RollBonus(Attack,1)" />
         <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not Tagged('STAT_BON_1ATTACK')" />
-        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnTurn" enumeration_type_name="StatusEvent" version="1" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="ApplyToDead;DisableOverhead;IgnoreResting" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
@@ -437,7 +435,6 @@
         <field name="TickType" type="EnumerationTableFieldDefinition" value="StartTurn" enumeration_type_name="TickType" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="AC(1)" />
         <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not Tagged('STAT_BON_1AC')" />
-        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnTurn" enumeration_type_name="StatusEvent" version="1" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="ApplyToDead;DisableOverhead;IgnoreResting" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
@@ -467,7 +464,6 @@
         <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="AC(-1)" />
         <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not Tagged('STAT_PEN_1AC')" />
-        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnTurn" enumeration_type_name="StatusEvent" version="1" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="ApplyToDead;DisableOverhead;IgnoreResting" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
@@ -496,7 +492,6 @@
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="1" />
         <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
         <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not Tagged('STAT_PEN_1DAMAGE')" />
-        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnTurn" enumeration_type_name="StatusEvent" version="1" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="ApplyToDead;DisableOverhead;IgnoreResting" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
@@ -975,6 +970,17 @@
         <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
         <field name="TooltipSave" type="StringTableFieldDefinition" value="Strength" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="InitiateCombat" enumeration_type_name="StatusPropertyFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="962769d6-43c6-4755-8b21-a04b9bf9e531" />
+        <field name="Name" type="NameTableFieldDefinition" value="DoubleShotMovement" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc3fa7319g598fg4577gccbdga88c5867ecb2" version="1" />
+        <field name="StackId" type="StringTableFieldDefinition" value="ENSNARED" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResourceBlock(Movement);" />
+        <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnAttack" enumeration_type_name="StatusEvent" version="1" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisableCombatlog;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1804,7 +1810,7 @@
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Bard_GrantBardicInspiration" />
         <field name="SoundLoop" type="StringTableFieldDefinition" value="Spell_Status_BardicInspiration_MO" />
         <field name="StackId" type="StringTableFieldDefinition" value="COURAGE" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(STAT_BON_1ATTACK), Tag(STAT_BON_1DAMAGE)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(STAT_BON_1ATTACK);Tag(STAT_BON_1DAMAGE);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h7c914ffeg041bgd9dfg4ab9gb29858edf706" version="1" />
         <field name="SoundStop" type="StringTableFieldDefinition" value="Spell_Status_BardicInspiration_MO_Stop" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="29d548ee-cf3e-465c-b12d-004240ce0546" />
@@ -2938,7 +2944,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hfd7e5cdeg922eg2e81gbf3dg034db35a2b75" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Divination_Guidance" />
         <field name="StackId" type="StringTableFieldDefinition" value="GUIDANCE" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="RollBonus(Attack, 1)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="RollBonus(Attack, 1);RollBonus(SkillCheck,1);" />
         <field name="SoundLoop" type="StringTableFieldDefinition" value="Spell_Status_Guidance_MO" />
         <field name="ManagedStatusEffectType" type="EnumerationTableFieldDefinition" value="Positive" enumeration_type_name="ManagedStatusEffectType" version="1" />
         <field name="ManagedStatusEffectGroup" type="GuidObjectTableFieldDefinition" value="6435c10a-c67d-4f79-8813-b84b0762f92b" />
@@ -2956,7 +2962,7 @@
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="1" />
         <field name="StackId" type="StringTableFieldDefinition" value="MAGIC_WEAPON" />
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="0" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="RollBonus(MeleeWeaponAttack, 1); RollBonus(RangedWeaponAttack, 1);WeaponProperty(Magical);DamageBonus(MainMeleeWeapon)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="WeaponProperty(Magical);WeaponAttackRollBonus(1);IF(IsWeaponDamageDieD4()):WeaponDamageDieOverride(2d4);IF(IsWeaponDamageDieD6()):WeaponDamageDieOverride(2d6);IF(IsWeaponDamageDieD8()):WeaponDamageDieOverride(2d8);IF(IsWeaponDamageDieD10()):WeaponDamageDieOverride(2d10);IF(IsWeaponDamageDieD12()):WeaponDamageDieOverride(2d12);" />
         <field name="ApplyEffect" type="GuidObjectTableFieldDefinition" value="6994e8dc-14ac-48a5-9c8e-c1925031e852" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="359918c9-0c9a-4714-a032-0deac359d00b" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Transmutation_MagicWeapon" />
@@ -2964,6 +2970,15 @@
         <field name="SoundStop" type="StringTableFieldDefinition" value="Spell_Status_MagicWeapon_MO_Stop" />
         <field name="StatusGroups" type="EnumerationListTableFieldDefinition" value="SG_RemoveOnRespec" enumeration_type_name="StatusGroupFlags" version="1" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="RemoveOnLongRest" enumeration_type_name="StatusPropertyFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="fbbcbaad-c93a-463e-84ab-9dd562ea124a" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAGIC_WEAPON_6" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="0dfaec7d-fb0e-4bd6-82cc-2d713e3169a2" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="WeaponProperty(Magical);WeaponAttackRollBonus(2);IF(IsWeaponDamageDieD4()):WeaponDamageDieOverride(3d4);IF(IsWeaponDamageDieD6()):WeaponDamageDieOverride(3d6);IF(IsWeaponDamageDieD8()):WeaponDamageDieOverride(3d8);IF(IsWeaponDamageDieD10()):WeaponDamageDieOverride(3d10);IF(IsWeaponDamageDieD12()):WeaponDamageDieOverride(3d12);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -8328,7 +8343,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="ChannelElementsStatusAir" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he0edcaa7g6876g7203g8dc0g9a4c4d72760d" version="1" />
         <field name="StackId" type="StringTableFieldDefinition" value="ChannelElements_Air" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Air_Electric);UnlockSpell(Projectile_ElementalBlast_Air_Electric_2Action);UnlockSpell(Projectile_ElementalBlast_Air_Slashing);UnlockSpell(Projectile_ElementalBlast_Air_Slashing_2Action);UnlockSpell(Target_ElementalBlast_Air_Electric);UnlockSpell(Target_ElementalBlast_Air_Electric_2Action);UnlockSpell(Target_ElementalBlast_Air_Slashing);UnlockSpell(Target_ElementalBlast_Air_Slashing_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Air_Cold);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Air_Cold_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Air_Cold);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Air_Cold_2Action);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Air_Electric);UnlockSpell(Projectile_ElementalBlast_Air_Electric_2Action);UnlockSpell(Projectile_ElementalBlast_Air_Slashing);UnlockSpell(Projectile_ElementalBlast_Air_Slashing_2Action);UnlockSpell(Target_ElementalBlast_Air_Electric);UnlockSpell(Target_ElementalBlast_Air_Electric_2Action);UnlockSpell(Target_ElementalBlast_Air_Slashing);UnlockSpell(Target_ElementalBlast_Air_Slashing_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Air_Cold);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Air_Cold_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Air_Cold);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Air_Cold_2Action);IF(HasPassive('AirCushion',context.Source)):UnlockSpell(Shout_AirCushion);IF(HasPassive('AerialBoomerang',context.Source)):UnlockSpell(Zone_AerialBoomerang);IF(HasPassive('FourWinds',context.Source)):UnlockSpell(Target_FourWinds);IF(HasPassive('AirShroud',context.Source)):UnlockSpell(Shout_AirShroud);IF(HasPassive('LightningDash',context.Source)):UnlockSpell(Rush_LightningDash);" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="ca600bf6-3845-44d5-a9dc-b327661babb8" />
       </fields>
@@ -8339,7 +8354,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="ChannelElementsStatusEarth" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h73311cc9gf84agf92ag3100ga2dd7ede9c97" version="1" />
         <field name="StackId" type="StringTableFieldDefinition" value="ChannelElements_Earth" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Earth_Bludgeoning);UnlockSpell(Projectile_ElementalBlast_Earth_Bludgeoning_2Action);UnlockSpell(Projectile_ElementalBlast_Earth_Piercing);UnlockSpell(Projectile_ElementalBlast_Earth_Piercing_2Action);UnlockSpell(Target_ElementalBlast_Earth_Bludgeoning);UnlockSpell(Target_ElementalBlast_Earth_Bludgeoning_2Action);UnlockSpell(Target_ElementalBlast_Earth_Piercing);UnlockSpell(Target_ElementalBlast_Earth_Piercing_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Earth_Poison);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Earth_Poison_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Earth_Poison);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Earth_Poison_2Action);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Earth_Bludgeoning);UnlockSpell(Projectile_ElementalBlast_Earth_Bludgeoning_2Action);UnlockSpell(Projectile_ElementalBlast_Earth_Piercing);UnlockSpell(Projectile_ElementalBlast_Earth_Piercing_2Action);UnlockSpell(Target_ElementalBlast_Earth_Bludgeoning);UnlockSpell(Target_ElementalBlast_Earth_Bludgeoning_2Action);UnlockSpell(Target_ElementalBlast_Earth_Piercing);UnlockSpell(Target_ElementalBlast_Earth_Piercing_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Earth_Poison);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Earth_Poison_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Earth_Poison);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Earth_Poison_2Action);IF(HasPassive('SteppingStones',context.Source)):UnlockSpell(Target_SteppingStones);IF(HasPassive('Tremor',context.Source)):UnlockSpell(Target_Tremor);IF(HasPassive('ArmorInEarth',context.Source)):UnlockSpell(Shout_ArmorInEarth);IF(HasPassive('GeologicalAttunement',context.Source)):UnlockSpell(Shout_GeologicalAttunement);IF(HasPassive('CalcifyingSand',context.Source)):UnlockInterrupt(CalcifyingSandIntterupt);IF(HasPassive('Igneogenesis',context.Source)):UnlockSpell(Target_Igneogenesis);" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="ca600bf6-3845-44d5-a9dc-b327661babb8" />
       </fields>
@@ -8350,7 +8365,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="ChannelElementsStatusFire" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h051f9bbdg9004ga148gadc8gf85612ea0155" version="1" />
         <field name="StackId" type="StringTableFieldDefinition" value="ChannelElements_Fire" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Fire_Fire);UnlockSpell(Projectile_ElementalBlast_Fire_Fire_2Action);UnlockSpell(Target_ElementalBlast_Fire_Fire);UnlockSpell(Target_ElementalBlast_Fire_Fire_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Fire_Cold);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Fire_Cold_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Fire_Cold);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Fire_Cold_2Action);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Fire_Fire);UnlockSpell(Projectile_ElementalBlast_Fire_Fire_2Action);UnlockSpell(Target_ElementalBlast_Fire_Fire);UnlockSpell(Target_ElementalBlast_Fire_Fire_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Fire_Cold);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Fire_Cold_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Fire_Cold);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Fire_Cold_2Action);IF(HasPassive('EternalTorch',context.Source)):UnlockSpell(Target_EternalTorch);IF(HasPassive('ScorchingColumn',context.Source)):UnlockSpell(Target_ScorchingColumn);IF(HasPassive('FlyingFlame',context.Source)):UnlockSpell(Zone_FlyingFlame);IF(HasPassive('BurningJet',context.Source)):UnlockSpell(Rush_BurningJet_Level1);IF(HasPassive('BlazingWave',context.Source)):UnlockSpell(Zone_BlazingWave);IF(HasPassive('LavaLeap',context.Source)):UnlockSpell(Projectile_LavaLeap);" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="ca600bf6-3845-44d5-a9dc-b327661babb8" />
       </fields>
@@ -8361,7 +8376,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="ChannelElementsStatusWater" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6b70efefg6519g08bbg7006g8b6346f1dc18" version="1" />
         <field name="StackId" type="StringTableFieldDefinition" value="ChannelElements_Water" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Water_Bludgeoning);UnlockSpell(Projectile_ElementalBlast_Water_Cold);UnlockSpell(Projectile_ElementalBlast_Water_Bludgeoning_2Action);UnlockSpell(Projectile_ElementalBlast_Water_Cold_2Action);UnlockSpell(Target_ElementalBlast_Water_Bludgeoning);UnlockSpell(Target_ElementalBlast_Water_Cold);UnlockSpell(Target_ElementalBlast_Water_Bludgeoning_2Action);UnlockSpell(Target_ElementalBlast_Water_Cold_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Water_Acid);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Water_Acid_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Water_Acid);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Water_Acid_2Action);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Water_Bludgeoning);UnlockSpell(Projectile_ElementalBlast_Water_Cold);UnlockSpell(Projectile_ElementalBlast_Water_Bludgeoning_2Action);UnlockSpell(Projectile_ElementalBlast_Water_Cold_2Action);UnlockSpell(Target_ElementalBlast_Water_Bludgeoning);UnlockSpell(Target_ElementalBlast_Water_Cold);UnlockSpell(Target_ElementalBlast_Water_Bludgeoning_2Action);UnlockSpell(Target_ElementalBlast_Water_Cold_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Water_Acid);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Water_Acid_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Water_Acid);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Water_Acid_2Action);IF(HasPassive('OceansBalm',context.Source)):UnlockSpell(Target_OceansBalm);IF(HasPassive('WintersClutch',context.Source)):UnlockSpell(Target_WintersClutch);IF(HasPassive('TidalHands',context.Source)):UnlockSpell(Zone_TidalHands);IF(HasPassive('DeflectingWave',context.Source)):UnlockInterrupt(DeflectingWave_Physical);IF(HasPassive('DeflectingWave',context.Source)):UnlockInterrupt(DeflectingWave_Energy);" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="ca600bf6-3845-44d5-a9dc-b327661babb8" />
       </fields>
@@ -8372,7 +8387,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="ChannelElementsStatusWood" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h73c1a212gd74fg9829g39cbgdaeeb0af7db3" version="1" />
         <field name="StackId" type="StringTableFieldDefinition" value="ChannelElements_Water" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Wood_Bludgeoning);UnlockSpell(Projectile_ElementalBlast_Wood_Vitality);UnlockSpell(Projectile_ElementalBlast_Wood_Bludgeoning_2Action);UnlockSpell(Projectile_ElementalBlast_Wood_Vitality_2Action);UnlockSpell(Target_ElementalBlast_Wood_Bludgeoning);UnlockSpell(Target_ElementalBlast_Wood_Vitality);UnlockSpell(Target_ElementalBlast_Wood_Bludgeoning_2Action);UnlockSpell(Target_ElementalBlast_Wood_Vitality_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Wood_Poison);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Wood_Poison_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Wood_Poison);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Wood_Poison_2Action);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Wood_Bludgeoning);UnlockSpell(Projectile_ElementalBlast_Wood_Vitality);UnlockSpell(Projectile_ElementalBlast_Wood_Bludgeoning_2Action);UnlockSpell(Projectile_ElementalBlast_Wood_Vitality_2Action);UnlockSpell(Target_ElementalBlast_Wood_Bludgeoning);UnlockSpell(Target_ElementalBlast_Wood_Vitality);UnlockSpell(Target_ElementalBlast_Wood_Bludgeoning_2Action);UnlockSpell(Target_ElementalBlast_Wood_Vitality_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Wood_Poison);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Wood_Poison_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Wood_Poison);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Wood_Poison_2Action);IF(HasPassive('ProtectorTree',context.Source)):UnlockSpell(Target_ProtectorTreeTempHPVersion);IF(HasPassive('FreshProduce',context.Source)):UnlockSpell(Target_FreshProduce);IF(HasPassive('HardwoodArmor',context.Source)):UnlockSpell(Shout_HardwoodArmor);IF(HasPassive('HailOfSplinters',context.Source)):UnlockSpell(Zone_HailOfSplinters);" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="ca600bf6-3845-44d5-a9dc-b327661babb8" />
       </fields>
@@ -8383,7 +8398,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="ChannelElementsStatusMetal" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h33c27d37gb204g501ag3976g001f59b112ba" version="1" />
         <field name="StackId" type="StringTableFieldDefinition" value="ChannelElements_Metal" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Metal_Piercing);UnlockSpell(Projectile_ElementalBlast_Metal_Slashing);UnlockSpell(Projectile_ElementalBlast_Metal_Piercing_2Action);UnlockSpell(Projectile_ElementalBlast_Metal_Slashing_2Action);UnlockSpell(Target_ElementalBlast_Metal_Piercing);UnlockSpell(Target_ElementalBlast_Metal_Slashing);UnlockSpell(Target_ElementalBlast_Metal_Piercing_2Action);UnlockSpell(Target_ElementalBlast_Metal_Slashing_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Metal_Lightning);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Metal_Lightning_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Metal_Lightning);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Metal_Lightning_2Action);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_ElementalBlast_Metal_Piercing);UnlockSpell(Projectile_ElementalBlast_Metal_Slashing);UnlockSpell(Projectile_ElementalBlast_Metal_Piercing_2Action);UnlockSpell(Projectile_ElementalBlast_Metal_Slashing_2Action);UnlockSpell(Target_ElementalBlast_Metal_Piercing);UnlockSpell(Target_ElementalBlast_Metal_Slashing);UnlockSpell(Target_ElementalBlast_Metal_Piercing_2Action);UnlockSpell(Target_ElementalBlast_Metal_Slashing_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Metal_Lightning);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Projectile_ElementalBlast_Metal_Lightning_2Action);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Metal_Lightning);IF(HasPassive('VersatileBlasts',context.Source)):UnlockSpell(Target_ElementalBlast_Metal_Lightning_2Action);IF(HasPassive('MetalCarapace',context.Source)):UnlockSpell(Shout_MetalCarapace);IF(HasPassive('Shardstrike',context.Source)):UnlockSpell(Zone_ShardStrike_Cone);IF(HasPassive('Shardstrike',context.Source)):UnlockSpell(Zone_ShardStrike_Line);IF(HasPassive('MagneticPinions',context.Source)):UnlockSpell(Projectile_MagneticPinions);" />
         <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="ca600bf6-3845-44d5-a9dc-b327661babb8" />
       </fields>
@@ -8395,6 +8410,8 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha0819b82g80d6ga710ged8ag70404a450f59" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5948fec7g30c2g98fbg7e3cgd20d6e2dc9f5" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="TadpoleSuperPower_ReflectiveShell" />
+        <field name="StackId" type="StringTableFieldDefinition" value="ChannelingStatus" />
+        <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -8433,6 +8450,8 @@
         <field name="Boosts" type="StringTableFieldDefinition" value="Tag(BLINDSIGHT);StatusImmunity(SG_Blinded)" />
         <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not HasStatus('ChannelElementsStatusEarth');" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnStatusRemoved" enumeration_type_name="StatusEvent" version="1" />
+        <field name="StackId" type="StringTableFieldDefinition" value="STANCE" />
+        <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -8529,170 +8548,28 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="b94fae8b-cccc-4380-b3e3-112e3d657fa8" />
-        <field name="Name" type="NameTableFieldDefinition" value="EternalTorchStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_EternalTorch);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="UUID" type="IdTableFieldDefinition" value="b2ce1a65-20c2-45d0-84b6-70da94c12dd5" />
+        <field name="Name" type="NameTableFieldDefinition" value="AirShroudStatus" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf1f6e56cg6e63g7a08g1b47g35b709d0b978" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h0a252deeg2d37g48f4gdb94gb431432d7354" version="1" />
+        <field name="StackId" type="StringTableFieldDefinition" value="STANCE" />
+        <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
+        <field name="AuraStatuses" type="StringTableFieldDefinition" value="IF(not Tagged('INVISIBLE_HELPER') ):ApplyStatus(CircumstanceBonus1AC);" />
+        <field name="TickType" type="EnumerationTableFieldDefinition" value="StartTurn" enumeration_type_name="TickType" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="a07ece4e-5055-4a15-8ddc-e1be532243e5" />
-        <field name="Name" type="NameTableFieldDefinition" value="FreshProduceStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_FreshProduce);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="UUID" type="IdTableFieldDefinition" value="b716a2be-b641-4b20-9a24-9dc9e377720d" />
+        <field name="Name" type="NameTableFieldDefinition" value="BlazingWaveUnlock" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator;DisableCombatlog" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="6f0147b1-28c5-4be9-b75e-167bc28cff51" />
-        <field name="Name" type="NameTableFieldDefinition" value="OceansBalmStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_OceansBalm);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="594c8913-4ae0-44fe-ac60-e2b8a249889d" />
-        <field name="Name" type="NameTableFieldDefinition" value="ScorchingColumnStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ScorchingColumn);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="80bc9afc-d6ab-4b2a-a34d-ce416f1139d1" />
-        <field name="Name" type="NameTableFieldDefinition" value="SteppingStonesStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_SteppingStones);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="e2e8a025-f4a5-4081-a4e6-af5beda4a1f5" />
-        <field name="Name" type="NameTableFieldDefinition" value="TremorStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_Tremor);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="76cf904a-7ace-45d3-881d-8913eb2fce29" />
-        <field name="Name" type="NameTableFieldDefinition" value="WintersClutchStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_WintersClutch);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="384fbc0a-c547-4789-b2bf-a8539ccdbc01" />
-        <field name="Name" type="NameTableFieldDefinition" value="AirCushionStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_AirCushion);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="6ce0d0fb-b697-4b2b-a580-791bf52bd3dd" />
-        <field name="Name" type="NameTableFieldDefinition" value="ArmorInEarthUnlockStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_ArmorInEarth);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="96389b7b-168b-437d-a4b3-7a15ce2b1358" />
-        <field name="Name" type="NameTableFieldDefinition" value="GeologicalAttunmentUnlockStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_GeologicalAttunement);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="34cb4471-eb81-42e9-bd0d-4cf684c979f6" />
-        <field name="Name" type="NameTableFieldDefinition" value="HardwoodArmorUnlockStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_HardwoodArmor);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="f18c97bc-477f-420a-b2e5-3ce637a2e19d" />
-        <field name="Name" type="NameTableFieldDefinition" value="MetalCarapaceUnlockStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_MetalCarapace);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="ddfe919e-ac91-4757-8527-7b713942a246" />
-        <field name="Name" type="NameTableFieldDefinition" value="AerialBoomerangUnlockStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Zone_AerialBoomerang);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="8962bf12-f01e-4154-bbc6-bbca37c16dd9" />
-        <field name="Name" type="NameTableFieldDefinition" value="FlyingFlameStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Zone_FlyingFlame);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="6fbc80b0-03c9-4b85-8967-cfd0e0f8d058" />
-        <field name="Name" type="NameTableFieldDefinition" value="HailOfSplintersStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Zone_HailOfSplinters);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="bd6c377b-21b3-4caa-a28d-e1e120dc411b" />
-        <field name="Name" type="NameTableFieldDefinition" value="ShardstrikeStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Zone_ShardStrike_Cone);UnlockSpell(Zone_ShardStrike_Line);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="8071661d-dad4-4d7d-b8f4-787b9e8c8c93" />
-        <field name="Name" type="NameTableFieldDefinition" value="TidalHandsStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Zone_TidalHands);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="6cde93f9-8325-41e6-b7ba-9f1bf04e25aa" />
-        <field name="Name" type="NameTableFieldDefinition" value="BurningJetStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Rush_BurningJet_Level1);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="3407b8a8-a30d-4c60-a776-05698ff53323" />
-        <field name="Name" type="NameTableFieldDefinition" value="MagneticPinionsStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_MagneticPinions);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="fe57c1bd-de6f-4856-a27a-a13cc30a94db" />
-        <field name="Name" type="NameTableFieldDefinition" value="DeflectingWaveStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(DeflectingWave_Physical);UnlockInterrupt(DeflectingWave_Energy);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="UUID" type="IdTableFieldDefinition" value="922d5f34-f136-4756-ac8d-17abc41aaf25" />
-        <field name="Name" type="NameTableFieldDefinition" value="FourWindsUnlockStatus" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(HasPassive('FourWinds')):UnlockSpell(Target_FourWinds);" />
-        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="UUID" type="IdTableFieldDefinition" value="48f9c25b-2bd9-470e-85b8-76f43f343bd9" />
+        <field name="Name" type="NameTableFieldDefinition" value="CalcifyingSandUnlock" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="DisableOverhead;DisablePortraitIndicator;DisableCombatlog" enumeration_type_name="StatusPropertyFlags" version="1" />
       </fields>
     </stat_object>
   </stat_objects>

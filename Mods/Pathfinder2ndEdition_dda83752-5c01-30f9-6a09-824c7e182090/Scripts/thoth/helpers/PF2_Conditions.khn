@@ -675,3 +675,30 @@ function LastConditionRollValues(conditionRollType)
     end
     return conditionRoll.Total, conditionRoll.Difficulty
 end
+
+function IsWeaponDamageDieD4()
+	local weapon = context.Source
+	local owner = GetOwner(weapon)
+	return IsWeaponOfProficiencyGroup('Daggers|Sickles', weapon) | (IsWeaponOfProficiencyGroup('Quarterstaffs', weapon) & (DualWielder(owner) | HasShieldEquipped(owner)))
+end
+
+function IsWeaponDamageDieD6()
+	local weapon = context.Source
+	return IsWeaponOfProficiencyGroup('Clubs|Flails|LightHammers|Maces|Morningstars|HandCrossbows|Javelins|Warpicks|Shortbows|Shortswords|Spears|Handaxes|Scimitars', weapon)
+end
+
+function IsWeaponDamageDieD8()
+	local weapon = context.Source
+	local owner = GetOwner(weapon)
+	return IsWeaponOfProficiencyGroup('Greatclubs|Warhammers|Rapiers|LightCrossbows|Longbows|Tridents|Battleaxes|Glaives|Longswords', weapon) | (IsWeaponOfProficiencyGroup('Quarterstaffs', weapon) & ~(DualWielder(owner) | HasShieldEquipped(owner)))
+end
+
+function IsWeaponDamageDieD10()
+	local weapon = context.Source
+	return IsWeaponOfProficiencyGroup('HeavyCrossbows|Halberds|Pikes', weapon)
+end
+
+function IsWeaponDamageDieD12()
+	local weapon = context.Source
+	return IsWeaponOfProficiencyGroup('Mauls|Greataxes|Greatswords', weapon)
+end

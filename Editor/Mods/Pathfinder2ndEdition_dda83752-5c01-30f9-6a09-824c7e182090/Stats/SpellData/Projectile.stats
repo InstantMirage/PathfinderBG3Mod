@@ -4777,6 +4777,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h1051c7aegfa74g4a05g4ad9g3a88c02be005" version="1" />
         <field name="CastSound" type="StringTableFieldDefinition" value="Action_Cast_MobileShooting" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1;Flourish:1" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:DealDamage(MainRangedWeapon, MainRangedWeaponDamageType);GROUND:ExecuteWeaponFunctors(MainHand);RemoveStatus(SELF,DEBUG_RESET_MOVE);IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1);CastOffhand[GROUND:DealDamage(OffhandRangedWeapon,OffhandRangedWeaponDamageType);GROUND:ExecuteWeaponFunctors(OffHand)];" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5062,12 +5063,11 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="75f23133-e7fb-40a5-8398-8c0609661a1f" />
         <field name="Name" type="NameTableFieldDefinition" value="MagneticPinions" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="RemoveStatus(SELF,'ChannelElementsStatus_Air');RemoveStatus(SELF,'ChannelElementsStatus_Earth');RemoveStatus(SELF,'ChannelElementsStatus_Fire');RemoveStatus(SELF,'ChannelElementsStatus_Water');RemoveStatus(SELF,'ChannelElementsStatus_Metal');RemoveStatus(SELF,'ChannelElementsStatus_Wood');" />
         <field name="TargetFloor" type="StringTableFieldDefinition" value="-1" />
         <field name="TargetRadius" type="StringTableFieldDefinition" value="18" />
         <field name="AmountOfTargets" type="StringTableFieldDefinition" value="3" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="Attack(AttackType.RangedSpellAttack)" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D4Bonus),Piercing,Magical);DealDamage(LevelMapValue(D4Bonus),Bludgeoning,Magical);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D4Bonus),Piercing,Magical);DealDamage(LevelMapValue(D4Bonus),Bludgeoning,Magical);RemoveStatus(SELF,ChannelElementsStatusAir);RemoveStatus(SELF,ChannelElementsStatusEarth);RemoveStatus(SELF,ChannelElementsStatusFire);RemoveStatus(SELF,ChannelElementsStatusWater);RemoveStatus(SELF,ChannelElementsStatusMetal);RemoveStatus(SELF,ChannelElementsStatusWood);RemoveStatus(SELF,ChannelingStatus);" />
         <field name="Trajectories" type="StringTableFieldDefinition" value="c7cd4b0a-2b2e-47ae-a4e8-849ad5d448f8" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Conjuration_IceKnife" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h18915c82g5680g0542g4738gf8d2a750a003" version="1" />
@@ -5082,11 +5082,12 @@
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:3;" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;38cdb41c-2eec-4e03-bb31-83cff0346c35,,;85414f5f-b448-4dda-9370-1b6c4b38b561,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
-        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell;Temporary" enumeration_type_name="SpellFlagList" version="1" />
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="PhysicalDamage" enumeration_type_name="HitAnimationType" version="1" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="153bd5cf-0c67-4cb3-9847-27019d659ab0" />
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="fa32df5a-2f3a-41ee-b199-09922eb7abc9" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="RemoveStatus(SELF,ChannelElementsStatusAir);RemoveStatus(SELF,ChannelElementsStatusEarth);RemoveStatus(SELF,ChannelElementsStatusFire);RemoveStatus(SELF,ChannelElementsStatusWater);RemoveStatus(SELF,ChannelElementsStatusMetal);RemoveStatus(SELF,ChannelElementsStatusWood);RemoveStatus(SELF,ChannelingStatus);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5099,7 +5100,7 @@
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;cd5e5d4a-38e1-4d4d-b346-3fbc1e4c3c90,,;141f48d9-9615-496a-8737-9240f0dba60d,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Blast),Lightning,Magical);" />
         <field name="Trajectories" type="StringTableFieldDefinition" value="c7cd4b0a-2b2e-47ae-a4e8-849ad5d448f8" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Lightning" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Lightning" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h67e673dbg4db5g5efag7be9gadf26277374d" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Blast),Lightning);" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="RangedSpellAttack" />
@@ -5123,7 +5124,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3256b413g9232g04edg4391g8396b0a7a9e0" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Blast)+ConstitutionModifier,Lightning);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Lightning" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Lightning" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5136,7 +5137,7 @@
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;cd5e5d4a-38e1-4d4d-b346-3fbc1e4c3c90,,;141f48d9-9615-496a-8737-9240f0dba60d,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Blast),Slashing,Magical);" />
         <field name="Trajectories" type="StringTableFieldDefinition" value="c7cd4b0a-2b2e-47ae-a4e8-849ad5d448f8" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ScorchingRay" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Slaying" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0cf0dff3gc8bdg67c1g4259gb70e3dedc93a" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Blast),Slashing);" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="RangedSpellAttack" />
@@ -5170,7 +5171,7 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Blast),Cold,Magical);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h54b86ef1gd96fg3bd5gf595g0353e62cb1b5" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Blast),Cold);" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Cold" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Ice" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5181,7 +5182,7 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Blast)+ConstitutionModifier,Cold,Magical);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hedc38996gda4cga62eg31dfg230da641c859" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Blast)+ConstitutionModifier,Cold);" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Cold" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Ice" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5194,7 +5195,7 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Bludgeoning,Magical);" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;cd5e5d4a-38e1-4d4d-b346-3fbc1e4c3c90,,;141f48d9-9615-496a-8737-9240f0dba60d,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="Trajectories" type="StringTableFieldDefinition" value="c7cd4b0a-2b2e-47ae-a4e8-849ad5d448f8" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Thunder" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Detonation" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hdc44ff27ga909gc3caga54dg64d53fcc9660" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Bludgeoning);" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="RangedSpellAttack" />
@@ -5218,7 +5219,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h8f45e170gb0d6g28efge1a7g658a7d3edee1" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Bludgeoning);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Thunder" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Detonation" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5231,7 +5232,7 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Piercing,Magical);" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;cd5e5d4a-38e1-4d4d-b346-3fbc1e4c3c90,,;141f48d9-9615-496a-8737-9240f0dba60d,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="Trajectories" type="StringTableFieldDefinition" value="c7cd4b0a-2b2e-47ae-a4e8-849ad5d448f8" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Thunder" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Piercing" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he27a499eg934bg33b8g29dfg8b395b036baf" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Piercing);" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="RangedSpellAttack" />
@@ -5255,7 +5256,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h342042ccg88d4g7dc4g352fgce45bb607386" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Piercing);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Thunder" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Piercing" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5290,7 +5291,7 @@
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;cd5e5d4a-38e1-4d4d-b346-3fbc1e4c3c90,,;141f48d9-9615-496a-8737-9240f0dba60d,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Blast),Fire,Magical);" />
         <field name="Trajectories" type="StringTableFieldDefinition" value="c7cd4b0a-2b2e-47ae-a4e8-849ad5d448f8" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Fire" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Fire" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h914834ddg4491g93f5g493eg9860120d1c17" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Blast),Fire);" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="RangedSpellAttack" />
@@ -5314,7 +5315,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hcaf8e504g2a20g9853g236bg0114a9336cee" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="IF(not HasPassive('FireJunction',context.Source)):DealDamage(LevelMapValue(D6Blast)+ConstitutionModifier,Fire);&#xD;&#xA;IF(HasPassive('FireJunction',context.Source)):DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Fire);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Fire" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Fire" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5325,7 +5326,7 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Blast),Cold,Magical);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hafe4005agbc63g8439gea9dg903ee72dd66d" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Blast),Cold);" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Cold" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Ice" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5336,7 +5337,7 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not HasPassive('FireJunction',context.Source)):DealDamage(LevelMapValue(D6Blast)+ConstitutionModifier,Cold,Magical);IF(HasPassive('FireJunction',context.Source)):DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Cold,Magical);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6d3c1d67g4558gd870gba9dga0b797c249fa" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="IF(not HasPassive('FireJunction',context.Source)):DealDamage(LevelMapValue(D6Blast)+ConstitutionModifier,Cold);&#xD;&#xA;IF(HasPassive('FireJunction',context.Source)):DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Cold);" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Cold" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Ice" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5349,7 +5350,7 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Piercing,Magical);" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;cd5e5d4a-38e1-4d4d-b346-3fbc1e4c3c90,,;141f48d9-9615-496a-8737-9240f0dba60d,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="Trajectories" type="StringTableFieldDefinition" value="c7cd4b0a-2b2e-47ae-a4e8-849ad5d448f8" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Thunder" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Piercing" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h20352ee6g30afg0254g59b2gd64f98f46e37" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Piercing);" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="RangedSpellAttack" />
@@ -5373,7 +5374,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h69f3d89dg3023g6faag35b5gfad35c866cef" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Piercing);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Thunder" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Piercing" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5386,7 +5387,7 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Slashing,Magical);" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;cd5e5d4a-38e1-4d4d-b346-3fbc1e4c3c90,,;141f48d9-9615-496a-8737-9240f0dba60d,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="Trajectories" type="StringTableFieldDefinition" value="c7cd4b0a-2b2e-47ae-a4e8-849ad5d448f8" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Thunder" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Slaying" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf0ac433cgfd4dgf9a7g95c7g7facfb535be6" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Slashing);" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="RangedSpellAttack" />
@@ -5410,7 +5411,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h8e6235cdg707fg4eeagf2a5ga583d47e6054" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Slashing);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Thunder" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Slaying" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5421,7 +5422,7 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Lightning,Magical);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hdeb6528dgf7deg58ddga6f2g68dcd48f2f52" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Lightning);" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Lightning" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Lightning" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5432,7 +5433,7 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Lightning,Magical);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2609c6f7g6a18g5981g73a2g853e1242e2a3" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Lightning);" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Lightning" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Lightning" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5445,7 +5446,7 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Bludgeoning,Magical);" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;cd5e5d4a-38e1-4d4d-b346-3fbc1e4c3c90,,;141f48d9-9615-496a-8737-9240f0dba60d,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="Trajectories" type="StringTableFieldDefinition" value="c7cd4b0a-2b2e-47ae-a4e8-849ad5d448f8" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Thunder" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Detonation" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb0e0d052g14b4gf9d2g0d82g26c5516793d9" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Bludgeoning);" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="RangedSpellAttack" />
@@ -5469,7 +5470,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h03ad14c0g0e16g3cc0g1e75gabc0b0acfbca" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Bludgeoning);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Thunder" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Detonation" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5482,7 +5483,7 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Cold,Magical);" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;cd5e5d4a-38e1-4d4d-b346-3fbc1e4c3c90,,;141f48d9-9615-496a-8737-9240f0dba60d,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="Trajectories" type="StringTableFieldDefinition" value="c7cd4b0a-2b2e-47ae-a4e8-849ad5d448f8" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Cold" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Ice" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he756c486gba88gaba0g4c7fg316659252eff" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Cold);" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="RangedSpellAttack" />
@@ -5506,7 +5507,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="heb8be1c2gf50fg1fc2g8a8eg78295e5731a3" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Cold);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Cold" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Ice" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5517,7 +5518,7 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Acid,Magical);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hfef5058cgd521gb85dg68b6g6b8a4edc2218" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Acid);" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Acid" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Acid" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5528,7 +5529,7 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Acid,Magical);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc6e30c1eg9d29g8d0cg2838ge61ce2dde813" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Acid);" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Acid" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Acid" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5541,7 +5542,7 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Bludgeoning,Magical);" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;cd5e5d4a-38e1-4d4d-b346-3fbc1e4c3c90,,;141f48d9-9615-496a-8737-9240f0dba60d,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="Trajectories" type="StringTableFieldDefinition" value="c7cd4b0a-2b2e-47ae-a4e8-849ad5d448f8" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Thunder" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Detonation" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2effe7b3gc05dg8ac3ge394g566166de97c8" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Bludgeoning);" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="RangedSpellAttack" />
@@ -5565,7 +5566,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5175e3d6gdc15gbc75gb879g63f9610c91a2" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Bludgeoning);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Thunder" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Detonation" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5578,7 +5579,7 @@
         <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Radiant,Magical);" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;cd5e5d4a-38e1-4d4d-b346-3fbc1e4c3c90,,;141f48d9-9615-496a-8737-9240f0dba60d,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="Trajectories" type="StringTableFieldDefinition" value="c7cd4b0a-2b2e-47ae-a4e8-849ad5d448f8" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Acid" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_GuidingBolt" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h61a12a96gc719g50abg756egef1484d309c9" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Radiant);" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="RangedSpellAttack" />
@@ -5602,7 +5603,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h76734ca4g02a2gf766g3f22g9d1a5d86e22b" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Radiant);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
-        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Acid" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_GuidingBolt" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5625,6 +5626,49 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3fce8224gb33egb4dcgeec9g0b0c740ee67e" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Poison);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Poison" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="53588a61-9fca-4165-9b69-846637f003b9" />
+        <field name="Name" type="NameTableFieldDefinition" value="LavaLeap" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="ApplyStatus(SELF,CircumstanceBonus2AC,100,1);" />
+        <field name="TargetCeiling" type="StringTableFieldDefinition" value="0.8" />
+        <field name="TargetFloor" type="StringTableFieldDefinition" value="-1" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="9" />
+        <field name="ExplodeRadius" type="IntegerTableFieldDefinition" value="3" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC())" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not HasPassive('FireJunction',context.Source)):DealDamage(LevelMapValue(LavaLeapDamage),Fire,Magical);IF(HasPassive('FireJunction',context.Source)):DealDamage(LevelMapValue(LavaLeapDamageJunction),Fire,Magical);DealDamage(LevelMapValue(LavaLeapBludgeoning),Bludgeoning,Magical);RemoveStatus(SELF,ChannelElementsStatusAir);RemoveStatus(SELF,ChannelElementsStatusEarth);RemoveStatus(SELF,ChannelElementsStatusFire);RemoveStatus(SELF,ChannelElementsStatusWater);RemoveStatus(SELF,ChannelElementsStatusMetal);RemoveStatus(SELF,ChannelElementsStatusWood);RemoveStatus(SELF,ChannelingStatus);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not HasPassive('FireJunction',context.Source)):DealDamage(LevelMapValue(LavaLeapDamage)/2,Fire,Magical);IF(HasPassive('FireJunction',context.Source)):DealDamage(LevelMapValue(LavaLeapDamageJunction)/2,Fire,Magical);DealDamage(LevelMapValue(LavaLeapBludgeoning)/2,Bludgeoning,Magical);RemoveStatus(SELF,ChannelElementsStatusAir);RemoveStatus(SELF,ChannelElementsStatusEarth);RemoveStatus(SELF,ChannelElementsStatusFire);RemoveStatus(SELF,ChannelElementsStatusWater);RemoveStatus(SELF,ChannelElementsStatusMetal);RemoveStatus(SELF,ChannelElementsStatusWood);RemoveStatus(SELF,ChannelingStatus);" />
+        <field name="Trajectories" type="StringTableFieldDefinition" value="rules:861d0046-1858-401e-b97b-28f7b3e3e89a,d5e54f29-f80f-4105-96b2-23b5af9321c7,bac38aab-dfa7-4a5a-9c2a-552b0b626ee3" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_Fireball" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb549caa9gb5f5gd02eg417fgfe47d345779d" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7f5b2853g3260g5e38g6dc4gec4e79cfb2eb" version="1" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Generic_Prepare_Jump" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Generic_GeneralAction_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Action_Cast_Jump" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="ProjectileTerrainOffset" type="EnumerationTableFieldDefinition" value="Yes" enumeration_type_name="YesNo" version="1" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="b6bebde2-ecff-4df6-9d24-cd9fabb9fe79,,;,,;f49c1788-7819-481f-9b83-2344d708e682,,;8ee67630-f1c7-441d-aaf6-fa4633c890da,,;f8fe2e89-2313-48f7-963c-0907b6306fd1,,;,,;5abe3725-c152-42de-98c8-0dbf872e1ff2,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsJump;AddFallDamageOnLand;HasHighGroundRangeExtension;IgnoreVisionBlock;Stealth;Invisible;Temporary" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellActionType" type="EnumerationTableFieldDefinition" value="Jump" enumeration_type_name="SpellActionType" version="1" />
+        <field name="SpellCategory" type="EnumerationListTableFieldDefinition" value="SC_Jump" enumeration_type_name="SpellCategoryFlags" version="1" />
+        <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Action" enumeration_type_name="SpellAnimationIntentType" version="1" />
+        <field name="SpellJumpType" type="EnumerationTableFieldDefinition" value="Jump" enumeration_type_name="SpellJumpType" version="1" />
+        <field name="MinJumpDistance" type="FloatTableFieldDefinition" value="1" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="095b53a6-b1f1-4f4f-84ab-88c2f90d85b0" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="e20c5e32-203b-4dae-9049-f0289a60c31d" />
+        <field name="SpellSoundMagnitude" type="EnumerationTableFieldDefinition" value="Big" enumeration_type_name="SpellSoundMagnitude" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="100614e7-b184-49ff-b7ba-a4292d99f758" />
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_1" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="d6d9e619-ddd0-4a06-a3ac-f789a88126ea" />
       </fields>
     </stat_object>
   </stat_objects>
