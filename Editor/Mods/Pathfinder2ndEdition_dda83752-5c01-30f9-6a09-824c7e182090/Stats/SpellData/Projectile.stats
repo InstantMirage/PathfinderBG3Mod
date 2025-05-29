@@ -5048,7 +5048,7 @@
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="b6bebde2-ecff-4df6-9d24-cd9fabb9fe79,,;,,;f49c1788-7819-481f-9b83-2344d708e682,,;8ee67630-f1c7-441d-aaf6-fa4633c890da,,;f8fe2e89-2313-48f7-963c-0907b6306fd1,,;,,;5abe3725-c152-42de-98c8-0dbf872e1ff2,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Utility" enumeration_type_name="VerbalIntent" version="1" />
-        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsJump;AddFallDamageOnLand;HasHighGroundRangeExtension;IgnoreVisionBlock;Stealth;Invisible;CannotTargetCharacter;CannotTargetItems" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsJump;AddFallDamageOnLand;HasHighGroundRangeExtension;IgnoreVisionBlock;Stealth;Invisible;CannotTargetCharacter;CannotTargetItems;IsSpell" enumeration_type_name="SpellFlagList" version="1" />
         <field name="SpellActionType" type="EnumerationTableFieldDefinition" value="Jump" enumeration_type_name="SpellActionType" version="1" />
         <field name="SpellCategory" type="EnumerationListTableFieldDefinition" value="SC_Jump" enumeration_type_name="SpellCategoryFlags" version="1" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Action" enumeration_type_name="SpellAnimationIntentType" version="1" />
@@ -5057,6 +5057,7 @@
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="095b53a6-b1f1-4f4f-84ab-88c2f90d85b0" />
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="e20c5e32-203b-4dae-9049-f0289a60c31d" />
         <field name="Sheathing" type="EnumerationTableFieldDefinition" value="DontChange" enumeration_type_name="SpellSheathing" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusFire',context.Source);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5082,12 +5083,13 @@
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:3;" />
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;38cdb41c-2eec-4e03-bb31-83cff0346c35,,;85414f5f-b448-4dda-9370-1b6c4b38b561,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
-        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell;Temporary" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="PhysicalDamage" enumeration_type_name="HitAnimationType" version="1" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="153bd5cf-0c67-4cb3-9847-27019d659ab0" />
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="fa32df5a-2f3a-41ee-b199-09922eb7abc9" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="RemoveStatus(SELF,ChannelElementsStatusAir);RemoveStatus(SELF,ChannelElementsStatusEarth);RemoveStatus(SELF,ChannelElementsStatusFire);RemoveStatus(SELF,ChannelElementsStatusWater);RemoveStatus(SELF,ChannelElementsStatusMetal);RemoveStatus(SELF,ChannelElementsStatusWood);RemoveStatus(SELF,ChannelingStatus);" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusMetal',context.Source);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5113,6 +5115,8 @@
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="PhysicalDamage" enumeration_type_name="HitAnimationType" version="1" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
         <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusAir',context.Source);" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5150,6 +5154,8 @@
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="PhysicalDamage" enumeration_type_name="HitAnimationType" version="1" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
         <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusAir',context.Source);" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5172,6 +5178,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h54b86ef1gd96fg3bd5gf595g0353e62cb1b5" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Blast),Cold);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Ice" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_ElementalBlast_Air_Cold_Container" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5183,6 +5190,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hedc38996gda4cga62eg31dfg230da641c859" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Blast)+ConstitutionModifier,Cold);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Ice" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_ElementalBlast_Air_Cold_Container" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5208,6 +5216,8 @@
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="PhysicalDamage" enumeration_type_name="HitAnimationType" version="1" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
         <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusEarth',context.Source);" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5245,6 +5255,8 @@
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="PhysicalDamage" enumeration_type_name="HitAnimationType" version="1" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
         <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusEarth',context.Source);" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5268,6 +5280,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hca90ed11g198agebfbga88cg69db8774203f" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Poison);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Poison" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_ElementalBlast_Earth_Poison_Container" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5279,6 +5292,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h54ee877cg996cg1f1bg8393ge8b8ed3658e2" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Poison);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Poison" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_ElementalBlast_Earth_Poison_Container" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5304,6 +5318,8 @@
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="PhysicalDamage" enumeration_type_name="HitAnimationType" version="1" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
         <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusFire',context.Source);" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5327,6 +5343,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hafe4005agbc63g8439gea9dg903ee72dd66d" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D6Blast),Cold);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Ice" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_ElementalBlast_Fire_Cold_Container" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5338,6 +5355,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6d3c1d67g4558gd870gba9dga0b797c249fa" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="IF(not HasPassive('FireJunction',context.Source)):DealDamage(LevelMapValue(D6Blast)+ConstitutionModifier,Cold);&#xD;&#xA;IF(HasPassive('FireJunction',context.Source)):DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Cold);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Ice" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_ElementalBlast_Fire_Cold_Container" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5363,6 +5381,8 @@
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="PhysicalDamage" enumeration_type_name="HitAnimationType" version="1" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
         <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusMetal',context.Source);" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5400,6 +5420,8 @@
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="PhysicalDamage" enumeration_type_name="HitAnimationType" version="1" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
         <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusMetal',context.Source);" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5423,6 +5445,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hdeb6528dgf7deg58ddga6f2g68dcd48f2f52" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Lightning);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Lightning" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_ElementalBlast_Metal_Lightning_Container" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5434,6 +5457,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2609c6f7g6a18g5981g73a2g853e1242e2a3" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Lightning);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Lightning" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_ElementalBlast_Metal_Lightning_Container" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5459,6 +5483,8 @@
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="PhysicalDamage" enumeration_type_name="HitAnimationType" version="1" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
         <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusWater',context.Source);" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5496,6 +5522,8 @@
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="PhysicalDamage" enumeration_type_name="HitAnimationType" version="1" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
         <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusWater',context.Source);" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5519,6 +5547,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hfef5058cgd521gb85dg68b6g6b8a4edc2218" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Acid);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Acid" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_ElementalBlast_Water_Acid_Container" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5530,6 +5559,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc6e30c1eg9d29g8d0cg2838ge61ce2dde813" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Acid);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Item_ARR_Arrow_Of_Acid" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_ElementalBlast_Water_Acid_Container" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5555,6 +5585,8 @@
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="PhysicalDamage" enumeration_type_name="HitAnimationType" version="1" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
         <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusWood',context.Source);" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5592,6 +5624,8 @@
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="PhysicalDamage" enumeration_type_name="HitAnimationType" version="1" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
         <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusWood',context.Source);" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5615,6 +5649,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hcf89ae86gc999gfb18gd4e4g2190773a5594" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip),Poison);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Poison" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_ElementalBlast_Wood_Poison_Container" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5626,6 +5661,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3fce8224gb33egb4dcgeec9g0b0c740ee67e" version="1" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(D8AoeCantrip)+ConstitutionModifier,Poison);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Poison" />
+        <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_ElementalBlast_Wood_Poison_Container" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5653,7 +5689,7 @@
         <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="b6bebde2-ecff-4df6-9d24-cd9fabb9fe79,,;,,;f49c1788-7819-481f-9b83-2344d708e682,,;8ee67630-f1c7-441d-aaf6-fa4633c890da,,;f8fe2e89-2313-48f7-963c-0907b6306fd1,,;,,;5abe3725-c152-42de-98c8-0dbf872e1ff2,,;,,;,," />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
         <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
-        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsJump;AddFallDamageOnLand;HasHighGroundRangeExtension;IgnoreVisionBlock;Stealth;Invisible;Temporary" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsJump;AddFallDamageOnLand;HasHighGroundRangeExtension;IgnoreVisionBlock;Stealth;Invisible;Temporary;IsSpell" enumeration_type_name="SpellFlagList" version="1" />
         <field name="SpellActionType" type="EnumerationTableFieldDefinition" value="Jump" enumeration_type_name="SpellActionType" version="1" />
         <field name="SpellCategory" type="EnumerationListTableFieldDefinition" value="SC_Jump" enumeration_type_name="SpellCategoryFlags" version="1" />
         <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Action" enumeration_type_name="SpellAnimationIntentType" version="1" />
@@ -5662,6 +5698,34 @@
         <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="095b53a6-b1f1-4f4f-84ab-88c2f90d85b0" />
         <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="e20c5e32-203b-4dae-9049-f0289a60c31d" />
         <field name="SpellSoundMagnitude" type="EnumerationTableFieldDefinition" value="Big" enumeration_type_name="SpellSoundMagnitude" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="1a4acf39-ec11-40cc-971c-40a6fff8c8e4" />
+        <field name="Name" type="NameTableFieldDefinition" value="WhirlingGrindstone" />
+        <field name="TargetFloor" type="StringTableFieldDefinition" value="-1" />
+        <field name="TargetRadius" type="StringTableFieldDefinition" value="9" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="Attack(AttackType.RangedSpellAttack)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(GrindstoneSlashing),Slashing,Magical);DealDamage(LevelMapValue(GrindstoneFire),Fire,Magical);" />
+        <field name="Trajectories" type="StringTableFieldDefinition" value="c7cd4b0a-2b2e-47ae-a4e8-849ad5d448f8" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Throw" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2e45ef61g513cg65e1gad23gc22e29abbcc0" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5410f5f4g9486g169dgf434g8e33a7aa6890" version="1" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(GrindstoneSlashing),Slashing);&#xD;&#xA;DealDamage(LevelMapValue(GrindstoneFire),Fire);" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="RangedSpellAttack" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Physical_Gen_L1to3" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Fire_Gen_L1to3_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_Fire_ScorchingRay_L0" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;cd5e5d4a-38e1-4d4d-b346-3fbc1e4c3c90,,;141f48d9-9615-496a-8737-9240f0dba60d,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,," />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellStyleGroup" type="EnumerationTableFieldDefinition" value="Class" enumeration_type_name="SpellStyleGroup" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="IsSpell" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="PhysicalDamage" enumeration_type_name="HitAnimationType" version="1" />
+        <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusMetal',context.Source);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
