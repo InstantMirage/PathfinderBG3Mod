@@ -574,7 +574,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="FlankingRules" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="5e8db560-3c0a-4b8a-b19b-fcbc34a9a2e3" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h1b6d9aa9g518eg9fe4g7273gc44efcdc9a90" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF( Flanking() ):RollBonus(MeleeWeaponAttack, 2)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF( OffGuardFlanking() and not OffGuardNoFlanking() and not (Tagged('CIRC_PEN_1AC',context.Target) or Tagged('CIRC_PEN_2AC',context.Target)) ):RollBonus(Attack, 2);IF( OffGuardFlanking() and not OffGuardNoFlanking() and Tagged('CIRC_PEN_1AC',context.Target) ):RollBonus(Attack, 1);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -690,7 +690,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="0bb3f688-cdfc-4bc6-8e3a-5426e60796b2" />
         <field name="Name" type="NameTableFieldDefinition" value="AttackOfOpportunity" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="41204b86-1ee1-4443-a926-34c5d54f7b45" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(Interrupt_AttackOfOpportunity);UnlockInterrupt(Interrupt_AttackOfOpportunity_OnCast); IF( Enemy(context.Source, context.Observer) ):RollBonus(MeleeWeaponAttack,-10);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(Interrupt_AttackOfOpportunity);UnlockInterrupt(Interrupt_AttackOfOpportunity_OnCast);" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnCreate" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(REACTIVE_STRIKE_AURA,100,-1)" />
         <field name="TooltipPermanentWarnings" type="StringTableFieldDefinition" value="8d8151f8-ddac-4900-a784-eeea1b97f651" />
@@ -4250,7 +4250,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="habd7ffdcge1eeg5e4ag8831g6b59aff142f7" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_MartialArts_DextrousUnarmedAttacks" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted;ForceShowInCC" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(SneakAttackWeapon()):DamageBonus(DexterityModifier-StrengthModifier);IF(IsCritical()):DamageBonus(DexterityModifier-StrengthModifier);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(SneakAttackWeapon() and not IsRangedWeaponAttack()):DamageBonus(DexterityModifier-StrengthModifier);IF(IsCritical() and SneakAttackWeapon() and not IsRangedWeaponAttack()):DamageBonus(DexterityModifier-StrengthModifier);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -4573,7 +4573,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h158f7529ga73dg4de0gfbe8g491a5a9bebca" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_RakishAudacity_SneakAttack_Melee" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF( SneakAttackWeapon() and (not OffGuard() or not (IsMeleeAttack() and not HasAllyWithinRange('SG_Incapacitated',1.5))) and CanPrecisionDamage() ):DamageBonus(1d6);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF( SneakAttackWeapon() and (not OffGuard() and not (IsMeleeAttack() and not HasAllyWithinRange('SG_Incapacitated',1.5))) and CanPrecisionDamage() ):DamageBonus(1d6);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -7660,6 +7660,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4e7fd7e7g58acg8545gf519g0455bb6988be" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h3f49016dgd813g7dcbg9171gaed92e3a7622" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_ChannelElements);" />
+        <field name="DynamicAnimationTag" type="GuidObjectTableFieldDefinition" value="c4598bdb-fc07-40dd-a62c-90cc138bd76f" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">

@@ -16,7 +16,9 @@
         <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
         <field name="EnableCondition" type="StringTableFieldDefinition" value="not HasStatus('SG_Blinded')" />
         <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
-        <field name="Properties" type="StringTableFieldDefinition" value="UseAttack(OBSERVER_SOURCE);" />
+        <field name="Roll" type="StringTableFieldDefinition" value="RollDieAgainstDC(DiceType.d20, 17)" />
+        <field name="Success" type="StringTableFieldDefinition" value="Counterspell();ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_RIPOSTE,100,0);UseSpell(OBSERVER_SOURCE,Target_AttackOfOpportunity_Crit,true,true,true);" />
+        <field name="Failure" type="StringTableFieldDefinition" value="UseAttack(OBSERVER_SOURCE);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
