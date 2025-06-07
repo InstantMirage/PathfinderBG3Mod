@@ -35,7 +35,7 @@ function HasteSpellCheck()
 end
 
 --Chance of a crit on an opportunity attack
-function OpportunityAttackCritRoll(source,source_pos,observer,observer_pos)
+function OpportunityAttackCritRoll()
 	
 	local attacktype = AttackType.MeleeUnarmedAttack
 	
@@ -43,13 +43,7 @@ function OpportunityAttackCritRoll(source,source_pos,observer,observer_pos)
 		attacktype = AttackType.MeleeWeaponAttack
 	end
 	
-	local attack = Attack(attacktype,false,false,source,source_pos,observer,observer_pos)
-
-	--Crit chance can be more than success-50%, with Advantage or an exceedingly high bonus.
-	local crit_chance = attack.Chance - 0.5
-	local crit_flat_dc = math.floor( 21 - crit_chance*20 )
-	
-    return ConditionResult(true,{},{},1.0) --RollDieAgainstDC(DiceType.d20,crit_flat_dc)
+	return Attack(attacktype,false,false,context.Observer,context.ObserverPosition,context.Source,context.SourcePosition)
 end
 
 function OpportunityAttackNonCritRoll()
@@ -60,7 +54,7 @@ function OpportunityAttackNonCritRoll()
 		attacktype = AttackType.MeleeWeaponAttack
 	end
 	
-	local attack = Attack(AttackType.MeleeWeaponAttack)
+	local attack = Attack(attacktype)
 	
 	--Note: Crit chance can be more than success-50%, with Advantage or an exceedingly high bonus.
 	local crit_chance = math.max(attack.Chance - 0.5, 0.05)
@@ -138,8 +132,13 @@ end
 function OffGuard(target,source)
     target = target or context.Target
     source = source or context.Source
-	
-local feint = IsMeleeAttack() & HasAnyStatus({'FEINT_ROUND','FEINT_ONCE'},{},{},target,source)
+	return OffGuardNoFlanking(target,source) | OffGuardFlanking(target, source)
+end
+
+function OffGuardNoFlanking(target,source)
+    target = target or context.Target
+    source = source or context.Source
+	local feint = IsMeleeAttack() & HasAnyStatus({'FEINT_ROUND','FEINT_ONCE'},{},{},target,source)
 	local hidden = HasStatus('SG_Invisible',source) | HasStatus('SNEAKING',source)
 	--You aren't off-guard to hidden, undetected, or flanking creatures of your level or lower
 	local denyadvantage = Tagged('ROGUE_DENYADVANTAGE',target) & (target.Level >= source.Level)
@@ -154,43 +153,40 @@ local feint = IsMeleeAttack() & HasAnyStatus({'FEINT_ROUND','FEINT_ONCE'},{},{},
 	return ConditionResult( result.Result , {ConditionError("OffGuard")})
 end
 
-function Flanking(exclusionStatus, distance, tag, hasShield, target, source)
-	distance = distance or 1.5
+function OffGuardFlanking(target, source)
+    target = target or context.Target
+    source = source or context.Source
+	local denyadvantage = Tagged('ROGUE_DENYADVANTAGE',target) & (target.Level >= source.Level)
+	return ~Ally() & ~denyadvantage & DistanceToTargetLessThan(2) & IsMeleeAttack() & Flanking(target, source)
+end
+
+function Flanking(target, source)
+	local distance = 2
     target = target or context.Target
     source = source or context.Source
 
     local errorTrue = {ConditionError("HasAllyWithinRange", {ConditionErrorData.MakeFromNumber(distance, EErrorDataType.Distance)})}
     local errorFalse = {ConditionError("HasNotAllyWithinRange", {ConditionErrorData.MakeFromNumber(distance, EErrorDataType.Distance)})}
 
+	--Source must face target
+	
     local allies = GetAlliesWithinRange(distance, target, source)
     if allies ~= nil then
         for _, entity in ipairs(allies.Allies) do
+
+			-- cannot be incapacitated
+			local incapacitated = ~HasStatus('SG_Incapacitated', entity) & ~HasStatus('SG_Prone', entity)
 			
-            -- ensure entity does not have the excluded status
-            local noExcludedStatus = ConditionResult(exclusionStatus == nil)
-            if exclusionStatus then
-                noExcludedStatus = ~HasStatus(exclusionStatus, entity)
-            end
-
-            -- filter by tag if provided
-            local hasTag = ConditionResult(tag == nil)
-            if tag then
-                hasTag = Tagged(tag, entity)
-            end
-
-            -- filter by having a shield if requested
-            local shieldEquipped = ConditionResult(not hasShield)
-            if hasShield then
-                shieldEquipped = HasShieldEquipped(entity)
-            end
-
-			-- need to be looking at an ally, and that ally must be looking at you and the enemy
-			local flankingAngles = ConditionResult(false)
-			if FacingMe(entity,source).Result then
-				flankingAngles = ConditionResult(true)
-			end
-
-            if noExcludedStatus.Result and hasTag.Result and shieldEquipped.Result and flankingAngles.Result then
+			-- ally must be facing source (but not necessarily reciprocally) and the target
+            local facing = (FacingMe(entity,source) & FacingMe(entity,target)).Result
+			
+			-- target must not be able to face both at the same time
+			local side_frontback = FacingMe(target,source) & ~FacingMe(target,entity)
+			local side_backfront = ~FacingMe(target,source) & FacingMe(target,entity)
+			
+			local on_both_sides = ( side_frontback | side_backfront ).Result
+			
+			if incapacitated.Result and facing and on_both_sides then
                 return ConditionResult(true, errorFalse, errorTrue)
             end
         end
@@ -293,19 +289,19 @@ end
 
 --Champion
 
-function RetributiveStrikeRange(observer,source)
-	observer = observer or context.Observer
-	source = source or context.Source
+function RetributiveStrikeRange()
+	local source = context.Source
+	local target = context.Target
 	
-	local reach_nimble = WieldingWeapon('Reach', false, false, observer) & ~DistanceToGreaterThan(observer, source, 5)
-	local ranged = WieldingWeapon('Ammunition', false, false, observer)
-	local melee_nimble = ~WieldingWeapon('Ammunition', false, false, observer) & ~DistanceToGreaterThan(observer, source, 3.5)
-	local nimble_reprisal = (ranged|reach_nimble|melee_nimble) & HasPassive('NimbleReprisal',observer)
+	local ranged = WieldingWeapon('Ammunition', false, false, source).Result & ~WieldingWeapon('Melee', false, false, source)
+	local reach_nimble = WieldingWeapon('Reach', false, false, source).Result & DistanceToTargetLessThan(5)
+	local melee_nimble = ~WieldingWeapon('Ammunition', false, false, source) & ~DistanceToTargetLessThan(3.5)
+	local nimble_reprisal = (ranged|reach_nimble|melee_nimble) & HasPassive('NimbleReprisal',source)
 	
-	local reach = WieldingWeapon('Reach', false, false, observer) & ~DistanceToGreaterThan(observer, source, 3.5)	
-	local melee = ~WieldingWeapon('Ammunition', false, false, observer) & ~DistanceToGreaterThan(observer, source, 2)
+	local reach = WieldingWeapon('Reach', false, false, source) & DistanceToTargetLessThan(3.5)
+	local melee = ~WieldingWeapon('Ammunition', false, false, source) & DistanceToTargetLessThan(2)
 
-	return nimble_reprisal | reach | melee
+	return HasPassive('JusticeCause',source) & (nimble_reprisal | reach | melee)
 end
 
 --Cleric
@@ -417,6 +413,10 @@ end
 
 function Press()
 	return HasStatus('MAP_PENALTY_2ND') | HasStatus('MAP_PENALTY_3RD')
+end
+
+function ReactableSpellTooltip()
+	return (HasSpellFlag(SpellFlags.Spell) & HasSpellFlag(SpellFlags.Somatic)) | HasStringInSpellRoll('Ranged')
 end
 
 --Monk
@@ -577,7 +577,7 @@ end
 -- Witch
 
 function OngoingMisery()
-	return HasAnyStatus({'OFF_BALANCED','Grappled','FEINT_ROUND','POISONED','BLINDED','CLUMSY','CLUMSY2','STUNNED1','STUNNED2','Stupefied1','Stupefied2','ENFEEBLED'}, {}, {},context.Target)
+	return HasAnyStatus({'OFF_BALANCED','Grappled','FEINT_ROUND','POISONED','Dazzled','BLINDED','CLUMSY','CLUMSY2','CLUMSY3','STUNNED1','STUNNED2','Stupefied1','Stupefied2','Stupefied4','ENFEEBLED','ENFEEBLED_2','ENFEEBLED_3'}, {}, {},context.Target)
 end
 
 function OwnerCanSustain(status)
