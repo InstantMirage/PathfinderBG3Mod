@@ -2518,11 +2518,12 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he26e1268g0268ga03fgb5b3gca2abbb2c020" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hbcd20a6dg416bgc6dagd812gc509a3a37ae9" version="2" />
         <field name="StackId" type="StringTableFieldDefinition" value="MARTIAL_ARTS_BONUS_UNARMED_STRIKE" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpellVariant(IsMonkUnarmedSpell(),ModifyUseCosts(Replace,ActionPoint,0,0,ActionPoint),ModifyUseCosts(Add,Flourish,1,0),ModifyIconGlow(),ModifyTooltipDescription())" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpellVariant(IsMonkUnarmedSpell(),ModifyUseCosts(Replace,ActionPoint,0,0,ActionPoint),ModifyUseCosts(Add,Flourish,1,0),ModifyIconGlow(),ModifyTooltipDescription());" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_MartialArts_UnarmedDamage" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnAttack;OnTurn;OnMove;OnCombatEnded" enumeration_type_name="StatusEvent" version="1" />
         <field name="StackPriority" type="IntegerTableFieldDefinition" value="0" />
         <field name="StackType" type="EnumerationTableFieldDefinition" value="Overwrite" enumeration_type_name="StatusStackType" version="1" />
+        <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="not HasActionResource('Flourish', 1, 0, false, false)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2655,12 +2656,12 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha92ca62ag146dge407gce1ega62fa237901f" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h65894b23g0c8dg087eg50e2g72c6175fe2ca" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_Duergar_MentalArrow" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpellVariant(NonBowStrikeCheck(),ModifyUseCosts(Add,Block,1,0))" />
+        <field name="Boosts" type="StringTableFieldDefinition" clear_inherited_value="true" value="" />
         <field name="Sheathing" type="EnumerationTableFieldDefinition" value="Ranged" enumeration_type_name="StatusSheathing" version="1" />
         <field name="RemoveConditions" type="RollConditionsTableFieldDefinition" value="WieldingWeapon('Loading', false, false, context.Source) or not WieldingWeapon('Ammunition', false, false, context.Source) or WearingArmor(context.Source) or not Combat()" />
         <field name="RemoveEvents" type="EnumerationListTableFieldDefinition" value="OnCombatEnded;OnEquip;OnUnequip" enumeration_type_name="StatusEvent" version="1" />
-        <field name="Passives" type="StringTableFieldDefinition" value=";" />
         <field name="DynamicAnimationTag" type="GuidObjectTableFieldDefinition" value="1be5aa5a-e221-4f0e-a1bf-be25f5d23224" />
+        <field name="Passives" type="StringTableFieldDefinition" clear_inherited_value="true" value="Block_NonUnarmedStrike" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
