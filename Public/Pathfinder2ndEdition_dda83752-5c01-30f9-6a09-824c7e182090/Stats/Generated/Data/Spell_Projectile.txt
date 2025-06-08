@@ -1074,8 +1074,53 @@ data "ProjectileCount" "1"
 data "Trajectories" "792ba497-a6ea-46bc-81cb-deb78e4dd9d3"
 data "Icon" "Spell_Evocation_FireBolt"
 data "DisplayName" "h3cbd716fg36faga806g6d73g8225b0191f03;1"
-data "Description" "hd072f7fcgbad9gbde6g7525gae21ebad5fb6;1"
-data "TooltipDamageList" "DealDamage(LevelMapValue(D4Cantrip),Fire)"
+data "Description" "hd072f7fcgbad9gbde6g7525gae21ebad5fb6;2"
+data "TooltipDamageList" "DealDamage(LevelMapValue(D4Cantrip),Fire);
+IF(IsCritical() and not CharacterLevelGreaterThan(2)):ApplyStatus(IgnitionPersistent_Rank1,100,-1);
+IF(IsCritical() and CharacterLevelGreaterThan(2) and not CharacterLevelGreaterThan(4)):ApplyStatus(IgnitionPersistent_Rank2,100,-1);
+IF(IsCritical() and CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(6)):ApplyStatus(IgnitionPersistent_Rank3,100,-1);
+IF(IsCritical() and CharacterLevelGreaterThan(6) and not CharacterLevelGreaterThan(8)):ApplyStatus(IgnitionPersistent_Rank4,100,-1);
+IF(IsCritical() and CharacterLevelGreaterThan(8) and not CharacterLevelGreaterThan(10)):ApplyStatus(IgnitionPersistent_Rank5,100,-1);
+IF(IsCritical() and CharacterLevelGreaterThan(10) and not CharacterLevelGreaterThan(12)):ApplyStatus(IgnitionPersistent_Rank6,100,-1);"
+data "TooltipAttackSave" "RangedSpellAttack"
+data "PrepareSound" "Spell_Prepare_Damage_Fire_Gen_L1to3"
+data "PrepareLoopSound" "Spell_Prepare_Damage_Fire_Gen_L1to3_Loop"
+data "CastSound" "Spell_Cast_Damage_Fire_FireBolt_L1to3"
+data "PreviewCursor" "Cast"
+data "CastTextEvent" "Cast"
+data "CycleConditions" "Enemy() and not Dead()"
+data "UseCosts" "ActionPoint:2"
+data "SpellAnimation" "3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;38cdb41c-2eec-4e03-bb31-83cff0346c35,,;85414f5f-b448-4dda-9370-1b6c4b38b561,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,,"
+data "VerbalIntent" "Damage"
+data "SpellFlags" "HasVerbalComponent;HasSomaticComponent;IsSpell;HasHighGroundRangeExtension;RangeIgnoreVerticalThreshold;IsHarmful"
+data "HitAnimationType" "MagicalDamage_External"
+data "PrepareEffect" "c88e9cfa-df92-477a-ae75-cbfb932350b4"
+data "CastEffect" "e235ca47-1bf5-4587-9475-cf191b6005f9"
+data "DamageType" "Fire"
+
+new entry "Projectile_Ignition"
+type "SpellData"
+data "SpellType" "Projectile"
+data "Level" "0"
+data "SpellSchool" "Evocation"
+data "SpellProperties" "GROUND:SurfaceChange(Ignite);GROUND:SurfaceChange(Melt)"
+data "TargetFloor" "-1"
+data "TargetRadius" "9"
+data "SpellRoll" "Attack(AttackType.RangedSpellAttack)"
+data "SpellSuccess" "DealDamage(LevelMapValue(D4Cantrip),Fire,Magical)"
+data "TargetConditions" "not Self() and not Dead()"
+data "ProjectileCount" "1"
+data "Trajectories" "792ba497-a6ea-46bc-81cb-deb78e4dd9d3"
+data "Icon" "Spell_Evocation_FireBolt"
+data "DisplayName" "h9ef73049g261ag8688g1ab0g3ebda2919636;1"
+data "Description" "h8cd61df7g494cg0c07g2a17ge9279f18b96b;1"
+data "TooltipDamageList" "DealDamage(LevelMapValue(D4Cantrip),Fire);
+IF(IsCritical() and not CharacterLevelGreaterThan(2)):ApplyStatus(IgnitionPersistent_Rank1,100,-1);
+IF(IsCritical() and CharacterLevelGreaterThan(2) and not CharacterLevelGreaterThan(4)):ApplyStatus(IgnitionPersistent_Rank2,100,-1);
+IF(IsCritical() and CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(6)):ApplyStatus(IgnitionPersistent_Rank3,100,-1);
+IF(IsCritical() and CharacterLevelGreaterThan(6) and not CharacterLevelGreaterThan(8)):ApplyStatus(IgnitionPersistent_Rank4,100,-1);
+IF(IsCritical() and CharacterLevelGreaterThan(8) and not CharacterLevelGreaterThan(10)):ApplyStatus(IgnitionPersistent_Rank5,100,-1);
+IF(IsCritical() and CharacterLevelGreaterThan(10) and not CharacterLevelGreaterThan(12)):ApplyStatus(IgnitionPersistent_Rank6,100,-1);"
 data "TooltipAttackSave" "RangedSpellAttack"
 data "PrepareSound" "Spell_Prepare_Damage_Fire_Gen_L1to3"
 data "PrepareLoopSound" "Spell_Prepare_Damage_Fire_Gen_L1to3_Loop"
@@ -5146,4 +5191,24 @@ new entry "Projectile_New_Stat_2"
 type "SpellData"
 data "SpellType" "Projectile"
 using "Projectile_RayOfSickness"
+
+new entry "Projectile_MAG_ScorchingRay_3"
+type "SpellData"
+data "SpellType" "Projectile"
+using "Projectile_ScorchingRay_3"
+data "Level" "3"
+data "Cooldown" "OncePerRestPerItem"
+data "AmountOfTargets" "2"
+data "SpellSuccess" "DealDamage(6d6,Fire,Magical)"
+data "DisplayName" "h95f1a12dg8b2bg71a6g2e85g583702ecdeb4;1"
+data "DescriptionParams" "DealDamage(6d6,Fire);2"
+data "TooltipDamageList" "DealDamage(6d6,Fire)"
+data "UseCosts" "ActionPoint:2;"
+data "RootSpellID" ""
+data "PowerLevel" ""
+
+new entry "Projectile_New_Stat_3"
+type "SpellData"
+data "SpellType" "Projectile"
+using "Projectile_BlazingBolt_2Action_Rank3"
 

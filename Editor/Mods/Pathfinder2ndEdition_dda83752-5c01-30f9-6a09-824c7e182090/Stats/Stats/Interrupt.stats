@@ -153,12 +153,12 @@
         <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Nearby" enumeration_type_name="InterruptContextScope" version="1" />
         <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
         <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and not Self(context.Target,context.Observer) and Enemy(context.Source, context.Observer) and HasStatus('CHAMPION_AURA_STATUS',context.Target,context.Observer) and HasStatus('CHAMPION_AURA_STATUS',context.Source,context.Observer) and not AnyEntityIsItem();" />
-        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(OBSERVER_TARGET,-(LevelMapValue(CharacterLevel)+2));ApplyStatus(OBSERVER_SOURCE,StatusPenalty2Attack,100,1);" />
+        <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(OBSERVER_TARGET,-(LevelMapValue(CharacterLevel)+2));ApplyStatus(OBSERVER_SOURCE,ENFEEBLED_2,100,1);" />
         <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:1" />
         <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Ask;Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
         <field name="EnableCondition" type="StringTableFieldDefinition" value="HasStatus('CHAMPION_AURA') and not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')" />
         <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
-        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(StatusPenalty2Attack,100,1)" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(OBSERVER_SOURCE,ENFEEBLED_2,100,1);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -187,6 +187,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h9267af5fg39b0gaa83ge837g20a382388b18" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha80e782eg279eg7126ga8degf5e4c5477a19" version="2" />
         <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(OBSERVER_TARGET,-(LevelMapValue(CharacterLevel)+2));" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" clear_inherited_value="true" value="" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -198,6 +199,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h0b5b2ee0g7b09g675dgc3d7g35e83402acd7" version="2" />
         <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(OBSERVER_TARGET,-(LevelMapValue(CharacterLevel)+2));UseAttack(OBSERVER_SOURCE);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_RighteousClarity" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" clear_inherited_value="true" value="" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -347,7 +349,7 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="7378d6dc-7088-4f62-9a0d-764a5b475d36" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd986e2ccgbb0fg4a36gf4c5g40f1dbcadfa4" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd4333571g1d85g2f3dgcadcge0bbf11bd335" version="1" />
-        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsAttack() and HasInterruptedAttack() and IsFlatValueInterruptInteresting(2, context.Source) and not HasStatus('SG_Polymorph_BeastShape') and not AnyEntityIsItem();" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsAttack() and IsFlatValueInterruptInteresting(2, context.Source) and not HasStatus('SG_Polymorph_BeastShape') and not AnyEntityIsItem();" />
         <field name="Properties" type="StringTableFieldDefinition" value="IF(HasInterruptedAttack()):AdjustRoll(-2);" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_UncannyDodge" />
         <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll" enumeration_type_name="InterruptContext" version="1" />
@@ -1088,7 +1090,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h12923a14gf164g7862gffafg1f95df4d0248" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h1dced594gda35gdb67g3056g08dfcddc4654" version="2" />
         <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
-        <field name="Conditions" type="StringTableFieldDefinition" value="not Dead(context.Observer) and HasInterruptedSavingThrow() and Self(context.Observer,context.Target) and not AnyEntityIsItem() and and IsSpell() IsFlatValueInterruptInteresting(1);" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="not Dead(context.Observer) and Self(context.Observer,context.Target) and not AnyEntityIsItem() and IsSpell() and IsFlatValueInterruptInteresting(1);" />
         <field name="Properties" type="StringTableFieldDefinition" value="AdjustRoll(OBSERVER_OBSERVER,1);ApplyStatus(CircumstanceBonus1Saves,100,1);" />
       </fields>
     </stat_object>
