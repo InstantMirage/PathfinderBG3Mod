@@ -39,9 +39,9 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h261bac52g67b7g7056gfc50g37ea68fa38d1" version="1" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(2+LevelMapValue(CharacterLevel)/2,Force)" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_HuntersMark" />
-        <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
-        <field name="Conditions" type="StringTableFieldDefinition" value="HasStatus('Exploited',context.Target,context.Source) and (IsWeaponAttack() or Is UnarmedAttack())" />
-        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(2+LevelMapValue(CharacterLevel)/2,Force)" />
+        <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnAttack" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="HasStatus('Exploited',context.Target,context.Source) and (IsHit() or IsCritical()) and (IsWeaponAttack() or Is UnarmedAttack());" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(2+(LevelMapValue(CharacterLevel))/2,Force)" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
