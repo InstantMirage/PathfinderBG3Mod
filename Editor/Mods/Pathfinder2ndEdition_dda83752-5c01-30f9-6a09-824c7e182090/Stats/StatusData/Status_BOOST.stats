@@ -13,7 +13,7 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="7386c69d-b214-4a05-a995-37b7245bd419" />
         <field name="Name" type="NameTableFieldDefinition" value="Stupefied1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Ability(Charisma, -2);Ability(Wisdom, -2);Ability(Intelligence, -2);IF(IsSpell()):Disadvantage(AttackRoll)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Ability(Charisma, -2);Ability(Wisdom, -2);Ability(Intelligence, -2);" />
         <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h1b07c35cg3849gfcd2g3cf8g1dbe818c7aaa" version="1" />
         <field name="StillAnimationType" type="EnumerationTableFieldDefinition" value="Mental" enumeration_type_name="StatusAnimationType" version="1" />
@@ -25,7 +25,7 @@
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="0f5d214f-852a-43c8-9c48-91feae3cd002" />
         <field name="Name" type="NameTableFieldDefinition" value="Stupefied2" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Ability(Charisma, -4);Ability(Wisdom, -4);Ability(Intelligence, -4);IF(IsSpell()):Disadvantage(AttackRoll)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Ability(Charisma, -4);Ability(Wisdom, -4);Ability(Intelligence, -4);" />
         <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h9579833fgcff0g68dagfaf4g3b2cfdd5f910" version="1" />
         <field name="StillAnimationType" type="EnumerationTableFieldDefinition" value="Mental" enumeration_type_name="StatusAnimationType" version="1" />
@@ -35,11 +35,20 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="6905ca2d-80e6-486d-85d5-f8effa51a68a" />
+        <field name="Name" type="NameTableFieldDefinition" value="Stupefied3" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="0f5d214f-852a-43c8-9c48-91feae3cd002" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3feec3f3g61ccg5bb0g5c6dge1f105c7802d" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Ability(Charisma, -6);Ability(Wisdom, -6);Ability(Intelligence, -6);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="bf072160-f889-4f63-a6c7-09d9e0dde4e6" />
         <field name="Name" type="NameTableFieldDefinition" value="Stupefied4" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="7386c69d-b214-4a05-a995-37b7245bd419" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he53aaff0gdb1fg6d86g3b96g12a8f447e56f" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Ability(Charisma, -8);Ability(Wisdom, -8);Ability(Intelligence, -8);IF(IsSpell()):Disadvantage(AttackRoll);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Ability(Charisma, -8);Ability(Wisdom, -8);Ability(Intelligence, -8);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1005,6 +1014,16 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="90315a39-de36-40c7-ae85-61758bf9ffd6" />
+        <field name="Name" type="NameTableFieldDefinition" value="STUNNED3" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="c71fd888-b375-42b8-b0da-21c0e4af8b5d" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h978f0d9bgf753gb441gdc74gbee6de915e0c" version="1" />
+        <field name="StackPriority" type="IntegerTableFieldDefinition" value="3" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(ActionPoint,-3,0);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="3caa45e2-f6b1-4e70-a2f1-d8e04520e5d9" />
         <field name="Name" type="NameTableFieldDefinition" value="DemoralizeImmune" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h61021380ga4e7ge40ag45ffge7537ac834d4" version="1" />
@@ -1837,7 +1856,7 @@
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Bard_GrantBardicInspiration" />
         <field name="SoundLoop" type="StringTableFieldDefinition" value="Spell_Status_BardicInspiration_MO" />
         <field name="StackId" type="StringTableFieldDefinition" value="COURAGE" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(STAT_BON_1ATTACK);Tag(STAT_BON_1DAMAGE);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="Tag(STAT_BON_1ATTACK);DamageBonus(1);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h7c914ffeg041bgd9dfg4ab9gb29858edf706" version="1" />
         <field name="SoundStop" type="StringTableFieldDefinition" value="Spell_Status_BardicInspiration_MO_Stop" />
         <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="29d548ee-cf3e-465c-b12d-004240ce0546" />
@@ -9582,6 +9601,44 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha14d413egf463gf539geda5g3608642a3e47" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Physical" />
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_WhirlingGrindstone_Sustain);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="095572d3-f374-4845-bfa0-d4abd79ea9eb" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_VIOLENCE" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he24160f7g4118ga3a9g4fbdg7ee28adbb6e1" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h66045a61g5497g7bddg433ag7442a3ebdb20" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="statIcons_Violence" />
+        <field name="StackId" type="StringTableFieldDefinition" value="MAG_VIOLENCE" />
+        <field name="StackType" type="EnumerationTableFieldDefinition" value="Additive" enumeration_type_name="StatusStackType" version="1" />
+        <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeWeaponAttack()):CharacterWeaponDamage(1)" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="MultiplyEffectsByDuration" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="ApplyEffect" type="GuidObjectTableFieldDefinition" value="6757b0ff-7bc8-489b-b474-e6c7b867cef3" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="2dfef979-a542-4b9e-8854-436216f2836b" />
+        <field name="SoundLoop" type="StringTableFieldDefinition" value="Misc_Status_Violence" />
+        <field name="SoundStop" type="StringTableFieldDefinition" value="Misc_Status_Violence_Stop" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="bab92850-6297-435e-9399-d672bf496412" />
+        <field name="Name" type="NameTableFieldDefinition" value="COLOR_SPRAY" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="8cc0e13c-ea75-4f4c-b1ba-9b245e22f2bb" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Illusion_ColorSpray" />
+        <field name="StackId" type="StringTableFieldDefinition" value="COLOR_SPRAY" />
+        <field name="TickType" type="EnumerationTableFieldDefinition" value="EndTurn" enumeration_type_name="TickType" version="1" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5541ede9g87f4g29e5g5ca7gb3e84c54d7a5" version="1" />
+        <field name="StatusGroups" type="EnumerationListTableFieldDefinition" value="SG_RemoveOnRespec" enumeration_type_name="StatusGroupFlags" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha8e932abgc9d8g481fg09b1g5ce5ffc336cd" version="1" />
+        <field name="StillAnimationType" type="EnumerationTableFieldDefinition" value="None" enumeration_type_name="StatusAnimationType" version="1" />
+        <field name="StillAnimationPriority" type="EnumerationTableFieldDefinition" value="Dance" enumeration_type_name="StillAnimPriority" version="1" />
+        <field name="SoundVocalStart" type="EnumerationTableFieldDefinition" value="LAUGHTERMANIACAL" enumeration_type_name="SoundVocalType" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActiveCharacterLight(051648e6-f05a-e41f-e398-ffd5cd148989);" />
+        <field name="StatusPropertyFlags" type="EnumerationListTableFieldDefinition" value="InitiateCombat" enumeration_type_name="StatusPropertyFlags" version="1" />
+        <field name="ApplyEffect" type="GuidObjectTableFieldDefinition" value="6757b0ff-7bc8-489b-b474-e6c7b867cef3" />
+        <field name="StatusEffect" type="GuidObjectTableFieldDefinition" value="2dfef979-a542-4b9e-8854-436216f2836b" />
       </fields>
     </stat_object>
   </stat_objects>

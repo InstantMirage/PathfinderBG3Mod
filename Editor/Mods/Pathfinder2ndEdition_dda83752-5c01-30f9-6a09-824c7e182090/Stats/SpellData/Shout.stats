@@ -2777,6 +2777,24 @@
         <field name="Name" type="NameTableFieldDefinition" value="ArmsOfHadar" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="e5c04225-1f14-4bdd-bbd1-b11db127687b" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:1" />
+        <field name="AreaRadius" type="IntegerTableFieldDefinition" value="2" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC())" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit()):DealDamage(2d6,Acid,Magical);IF(SaveCrit()):DealDamage((2d6)*2,Acid,Magical);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage(2d6/2,Acid,Magical);" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="not Self()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Acid" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2640cce4g7a39g4a49g1e67g5f3a944bfe95" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hafe97dcdgabadga11fg71ddg84f5ec8e1d92" version="1" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(2d6,Acid,Magical)" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Dexterity" />
+        <field name="TooltipUpcastDescriptionParams" type="StringTableFieldDefinition" value="DealDamage(2d6,Acid)" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Acid_Gen_L1to3" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Acid_Gen_L1to3_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_Acid_ChromaticOrbAcid_L1to3" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="d54a3eba-3ed7-4474-9ce9-6967d3b9bd14" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="07eb7abf-83f5-4a36-ae9c-7fef7a789ac3" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="fa3eaf23-5a9a-47a0-bc24-eb03d85d4d7a" />
+        <field name="DamageType" type="EnumerationTableFieldDefinition" value="Acid" enumeration_type_name="Damage Type" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2784,14 +2802,30 @@
         <field name="UUID" type="IdTableFieldDefinition" value="cbe47c21-8a7d-4e4f-8ab0-baec281c8513" />
         <field name="Name" type="NameTableFieldDefinition" value="ArmsOfHadar_2" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="e5c04225-1f14-4bdd-bbd1-b11db127687b" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(3d6, Necrotic,Magical); ApplyStatus(ARMS_OF_HADAR,100,1)" />
-        <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage((3d6)/2, Necrotic,Magical)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit()):DealDamage(4d6,Acid,Magical);IF(SaveCrit()):DealDamage((4d6)*2,Acid,Magical);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage(4d6/2,Acid,Magical);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:2" />
         <field name="RootSpellID" type="StringTableFieldDefinition" value="Shout_ArmsOfHadar" />
         <field name="PowerLevel" type="IntegerTableFieldDefinition" value="2" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(3d6,Necrotic)" />
-        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(3d6,Necrotic)" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(4d6,Acid,Magical)" />
         <field name="TooltipOnSave" type="StringTableFieldDefinition" value="f762efbb-f8f1-493e-b248-2de1567b4bd2" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="2" />
+        <field name="AreaRadius" type="IntegerTableFieldDefinition" value="2" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC())" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="not Self()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Acid" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4d019d7bgb8b5g688cg0677g09d9c670b735" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h0eaa599dg1804gece6g2d2dgbad41863cd7a" version="1" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Dexterity" />
+        <field name="TooltipUpcastDescriptionParams" type="StringTableFieldDefinition" value="DealDamage(2d6,Acid)" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Acid_Gen_L1to3" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Acid_Gen_L1to3_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_Acid_ChromaticOrbAcid_L1to3" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="d54a3eba-3ed7-4474-9ce9-6967d3b9bd14" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="07eb7abf-83f5-4a36-ae9c-7fef7a789ac3" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="fa3eaf23-5a9a-47a0-bc24-eb03d85d4d7a" />
+        <field name="DamageType" type="EnumerationTableFieldDefinition" value="Acid" enumeration_type_name="Damage Type" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2799,13 +2833,29 @@
         <field name="UUID" type="IdTableFieldDefinition" value="271afbe4-ce23-4be6-8200-edcbe0d4cfb1" />
         <field name="Name" type="NameTableFieldDefinition" value="ArmsOfHadar_3" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="e5c04225-1f14-4bdd-bbd1-b11db127687b" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(4d6, Necrotic,Magical); ApplyStatus(ARMS_OF_HADAR,100,1)" />
-        <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage((4d6)/2, Necrotic,Magical)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit()):DealDamage(6d6,Acid,Magical);IF(SaveCrit()):DealDamage((6d6)*2,Acid,Magical);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage(6d6/2,Acid,Magical);" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(4d6,Necrotic)" />
-        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(4d6,Necrotic)" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(6d6,Acid,Magical)" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:3" />
         <field name="RootSpellID" type="StringTableFieldDefinition" value="Shout_ArmsOfHadar" />
         <field name="PowerLevel" type="IntegerTableFieldDefinition" value="3" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="3" />
+        <field name="AreaRadius" type="IntegerTableFieldDefinition" value="2" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC())" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="not Self()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Acid" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4a9ab3fcg7c3dg5bc0gd1ffgdc39e76a7906" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hc729891cgac3eg3f0fg8c28gb50936b924d9" version="1" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Dexterity" />
+        <field name="TooltipUpcastDescriptionParams" type="StringTableFieldDefinition" value="DealDamage(2d6,Acid)" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Acid_Gen_L1to3" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Acid_Gen_L1to3_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_Acid_ChromaticOrbAcid_L1to3" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="d54a3eba-3ed7-4474-9ce9-6967d3b9bd14" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="07eb7abf-83f5-4a36-ae9c-7fef7a789ac3" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="fa3eaf23-5a9a-47a0-bc24-eb03d85d4d7a" />
+        <field name="DamageType" type="EnumerationTableFieldDefinition" value="Acid" enumeration_type_name="Damage Type" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2813,13 +2863,29 @@
         <field name="UUID" type="IdTableFieldDefinition" value="dbe176c0-61a2-4ce0-bdba-6a5eeb7568be" />
         <field name="Name" type="NameTableFieldDefinition" value="ArmsOfHadar_4" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="e5c04225-1f14-4bdd-bbd1-b11db127687b" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(5d6, Necrotic,Magical); ApplyStatus(ARMS_OF_HADAR,100,1)" />
-        <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage((5d6)/2, Necrotic,Magical)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit()):DealDamage(8d6,Acid,Magical);IF(SaveCrit()):DealDamage((8d6)*2,Acid,Magical);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage(8d6/2,Acid,Magical);" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(5d6,Necrotic)" />
-        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(5d6,Necrotic)" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(8d6,Acid,Magical)" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:4" />
         <field name="RootSpellID" type="StringTableFieldDefinition" value="Shout_ArmsOfHadar" />
         <field name="PowerLevel" type="IntegerTableFieldDefinition" value="4" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="4" />
+        <field name="AreaRadius" type="IntegerTableFieldDefinition" value="2" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC())" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="not Self()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Acid" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h181b0cdagad45gb352g3a4ag97d8c7325f83" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="he28fb0e2g6b30g1256gf7e7gee9ee1267c99" version="1" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Dexterity" />
+        <field name="TooltipUpcastDescriptionParams" type="StringTableFieldDefinition" value="DealDamage(2d6,Acid)" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Acid_Gen_L1to3" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Acid_Gen_L1to3_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_Acid_ChromaticOrbAcid_L1to3" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="d54a3eba-3ed7-4474-9ce9-6967d3b9bd14" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="07eb7abf-83f5-4a36-ae9c-7fef7a789ac3" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="fa3eaf23-5a9a-47a0-bc24-eb03d85d4d7a" />
+        <field name="DamageType" type="EnumerationTableFieldDefinition" value="Acid" enumeration_type_name="Damage Type" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2827,14 +2893,30 @@
         <field name="UUID" type="IdTableFieldDefinition" value="88c8df59-35ed-43a7-96f3-21735dbb7489" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="e5c04225-1f14-4bdd-bbd1-b11db127687b" />
         <field name="Name" type="NameTableFieldDefinition" value="ArmsOfHadar_5" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(6d6,Necrotic,Magical);ApplyStatus(ARMS_OF_HADAR,100,1)" />
-        <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage((6d6)/2,Necrotic,Magical)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit()):DealDamage(10d6,Acid,Magical);IF(SaveCrit()):DealDamage((10d6)*2,Acid,Magical);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage(10d6/2,Acid,Magical);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:5" />
         <field name="RootSpellID" type="StringTableFieldDefinition" value="Shout_ArmsOfHadar" />
         <field name="PowerLevel" type="IntegerTableFieldDefinition" value="5" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(6d6,Necrotic)" />
-        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(6d6,Necrotic)" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(10d6,Acid,Magical)" />
         <field name="TooltipOnSave" type="StringTableFieldDefinition" value="f762efbb-f8f1-493e-b248-2de1567b4bd2" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="5" />
+        <field name="AreaRadius" type="IntegerTableFieldDefinition" value="2" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC())" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="not Self()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Acid" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hfe32364dgbd1dgf835g9142g0778297957af" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h8d77888ageeceg64c0gdbc8g28828ff8a56f" version="1" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Dexterity" />
+        <field name="TooltipUpcastDescriptionParams" type="StringTableFieldDefinition" value="DealDamage(2d6,Acid)" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Acid_Gen_L1to3" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Acid_Gen_L1to3_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_Acid_ChromaticOrbAcid_L1to3" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="d54a3eba-3ed7-4474-9ce9-6967d3b9bd14" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="07eb7abf-83f5-4a36-ae9c-7fef7a789ac3" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="fa3eaf23-5a9a-47a0-bc24-eb03d85d4d7a" />
+        <field name="DamageType" type="EnumerationTableFieldDefinition" value="Acid" enumeration_type_name="Damage Type" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -2842,14 +2924,30 @@
         <field name="UUID" type="IdTableFieldDefinition" value="d838fb31-44d1-464b-abba-6bbe4fa56751" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="e5c04225-1f14-4bdd-bbd1-b11db127687b" />
         <field name="Name" type="NameTableFieldDefinition" value="ArmsOfHadar_6" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(7d6,Necrotic,Magical);ApplyStatus(ARMS_OF_HADAR,100,1)" />
-        <field name="SpellFail" type="StringTableFieldDefinition" value="DealDamage((7d6)/2,Necrotic,Magical)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit()):DealDamage(12d6,Acid,Magical);IF(SaveCrit()):DealDamage((12d6)*2,Acid,Magical);" />
+        <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage(12d6/2,Acid,Magical);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:6" />
         <field name="RootSpellID" type="StringTableFieldDefinition" value="Shout_ArmsOfHadar" />
         <field name="PowerLevel" type="IntegerTableFieldDefinition" value="6" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(7d6,Necrotic)" />
-        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(7d6,Necrotic)" />
+        <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(12d6,Acid,Magical)" />
         <field name="TooltipOnSave" type="StringTableFieldDefinition" value="f762efbb-f8f1-493e-b248-2de1567b4bd2" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="6" />
+        <field name="AreaRadius" type="IntegerTableFieldDefinition" value="2" />
+        <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC())" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="not Self()" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Acid" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h901af1a9gfed0g0d6cgf9f1gbdd2a50e64c5" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha821e4f8g145egf7c7g71c3g6e7e81efdb4d" version="1" />
+        <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Dexterity" />
+        <field name="TooltipUpcastDescriptionParams" type="StringTableFieldDefinition" value="DealDamage(2d6,Acid)" />
+        <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Acid_Gen_L1to3" />
+        <field name="PrepareLoopSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Acid_Gen_L1to3_Loop" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="Spell_Cast_Damage_Acid_ChromaticOrbAcid_L1to3" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" value="d54a3eba-3ed7-4474-9ce9-6967d3b9bd14" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="07eb7abf-83f5-4a36-ae9c-7fef7a789ac3" />
+        <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="fa3eaf23-5a9a-47a0-bc24-eb03d85d4d7a" />
+        <field name="DamageType" type="EnumerationTableFieldDefinition" value="Acid" enumeration_type_name="Damage Type" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3374,7 +3472,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="063b145b-8e74-47cd-a319-6d0909a182fc" />
         <field name="Name" type="NameTableFieldDefinition" value="FlameBlade" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="e25f75dd-ff6f-4233-98a4-398f539c1066" />
-        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1;SpellSlotsGroup:1:1:2" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:2;" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3382,7 +3480,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="2c2d7b24-2f79-430e-934d-ce5cd71c5f6d" />
         <field name="Name" type="NameTableFieldDefinition" value="FlameBlade_3" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="e25f75dd-ff6f-4233-98a4-398f539c1066" />
-        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1;SpellSlotsGroup:1:1:3" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:3;" />
         <field name="RootSpellID" type="StringTableFieldDefinition" value="Shout_FlameBlade" />
         <field name="PowerLevel" type="IntegerTableFieldDefinition" value="3" />
       </fields>
@@ -3392,7 +3490,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="b04c568b-24e9-4926-9634-0091ad85df51" />
         <field name="Name" type="NameTableFieldDefinition" value="FlameBlade_4" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="e25f75dd-ff6f-4233-98a4-398f539c1066" />
-        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1;SpellSlotsGroup:1:1:4" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:4;" />
         <field name="RootSpellID" type="StringTableFieldDefinition" value="Shout_FlameBlade" />
         <field name="PowerLevel" type="IntegerTableFieldDefinition" value="4" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:SummonInInventory(7bbfed72-1302-4709-8da5-2220343d7d29,10,1,true,true,true,,,FLAME_BLADE,FLAME_BLADE);AI_ONLY:IF(not HasStatus('FLAME_BLADE',GetActiveWeapon())):ApplyStatus(AI_HELPER_FLAMEBLADE_4,100,5)" />
@@ -3404,7 +3502,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="968e8300-3bd4-4ac1-8578-09da4acc4278" />
         <field name="Name" type="NameTableFieldDefinition" value="FlameBlade_5" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="e25f75dd-ff6f-4233-98a4-398f539c1066" />
-        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1;SpellSlotsGroup:1:1:5" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:5;" />
         <field name="RootSpellID" type="StringTableFieldDefinition" value="Shout_FlameBlade" />
         <field name="PowerLevel" type="IntegerTableFieldDefinition" value="5" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:SummonInInventory(7bbfed72-1302-4709-8da5-2220343d7d29,10,1,true,true,true,,,FLAME_BLADE,FLAME_BLADE);AI_ONLY:IF(not HasStatus('FLAME_BLADE',GetActiveWeapon())):ApplyStatus(AI_HELPER_FLAMEBLADE_4,100,5)" />
@@ -3416,7 +3514,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="89afb2b9-bf42-43a4-9ff0-a4172f1bfe38" />
         <field name="Name" type="NameTableFieldDefinition" value="FlameBlade_6" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="e25f75dd-ff6f-4233-98a4-398f539c1066" />
-        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:1;SpellSlotsGroup:1:1:6" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:6;" />
         <field name="RootSpellID" type="StringTableFieldDefinition" value="Shout_FlameBlade" />
         <field name="PowerLevel" type="IntegerTableFieldDefinition" value="6" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:SummonInInventory(86792fbe-2344-4742-b114-e3836442c943,10,1,true,true,true,,,FLAME_BLADE,FLAME_BLADE);AI_ONLY:IF(not HasStatus('FLAME_BLADE',GetActiveWeapon())):ApplyStatus(AI_HELPER_FLAMEBLADE_6,100,5)" />
