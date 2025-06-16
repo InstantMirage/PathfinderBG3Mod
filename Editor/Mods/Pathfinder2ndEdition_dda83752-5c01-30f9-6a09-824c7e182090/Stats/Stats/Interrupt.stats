@@ -449,6 +449,7 @@
         <field name="Cost" type="StringTableFieldDefinition" value="ReactionActionPoint:0" />
         <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf18ee282g7be5gb1c4gf74cgcef027567ae7" version="1" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPreDamage" enumeration_type_name="InterruptContext" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1024,10 +1025,10 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="6b435f5b-931f-4d26-aa61-656582325124" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5d8bd820g05e7ga357ge758gc2822ac2f4a9" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h406f41bcg1b65g0594g8a35g4d6db184d973" version="1" />
-        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPreDamage" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll" enumeration_type_name="InterruptContext" version="1" />
         <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Nearby" enumeration_type_name="InterruptContextScope" version="1" />
-        <field name="Conditions" type="StringTableFieldDefinition" value="HasAllyWithinRange('SG_Incapacitated',1.5) and IsMeleeAttack() and IsHit() and IsAbleToReact(context.Observer) and not Self(context.Observer, context.Target) and Enemy() and not HasStatus('SANCTUARY',context.Source) and not WieldingWeapon('Ammunition', false, false, context.Source);" />
-        <field name="Properties" type="StringTableFieldDefinition" value="UseAttack();" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and not Self(context.Source,context.Observer) and HasInterruptedAttack() and Ally(context.Source, context.Observer) and not DistanceToEntityGreaterThan(2, context.ObserverPosition, context.Source);" />
+        <field name="Properties" type="StringTableFieldDefinition" value="UseAttack(OBSERVER_TARGET);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1095,6 +1096,38 @@
         <field name="Conditions" type="StringTableFieldDefinition" value="Self(context.Source,context.Observer) and (IsAttack() or IsSpell());" />
         <field name="Roll" type="StringTableFieldDefinition" value="RollDieAgainstDC(DiceType.d20,10)" />
         <field name="Success" type="StringTableFieldDefinition" value="IF(HasInterruptedAttack()):AdjustRoll(-400);IF(HasInterruptedSavingThrow()):AdjustRoll(OBSERVER_OBSERVER,400)" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="0f839c17-d16a-4f2a-91b9-5bb39cc0fcb7" />
+        <field name="Name" type="NameTableFieldDefinition" value="CriticalHit_10" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hcbb5e661g8509gc112g3617g505339302f8a" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h434f4506ga893g3752g200cgfae73015fbdc" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Halfling_Lucky" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="Self(context.Observer,context.Target) and CheckCriticalTen(10) and (IsSkillChecked() or IsAttack());" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(20);" />
+        <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
+        <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="33b398b2-e10f-4f9b-9f79-102d1248b11e" />
+        <field name="Name" type="NameTableFieldDefinition" value="CriticalMiss_10" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hbd5d42e7gfce7g9bd0g56d5g513c7f09aa2c" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h4ef5f0edg9c0dg8397g73dcgb6d7ec75396c" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Halfling_Lucky" />
+        <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll" enumeration_type_name="InterruptContext" version="1" />
+        <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />
+        <field name="Container" type="StringTableFieldDefinition" value="YesNoDecision" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="Self(context.Observer,context.Target) and CheckCriticalMissTen(-10) and (IsSkillChecked() or IsAttack());" />
+        <field name="Properties" type="StringTableFieldDefinition" value="SetRoll(1);" />
         <field name="InterruptDefaultValue" type="EnumerationListTableFieldDefinition" value="Enabled" enumeration_type_name="InterruptDefaultValue" version="1" />
         <field name="EnableContext" type="EnumerationListTableFieldDefinition" value="OnStatusApplied;OnStatusRemoved" enumeration_type_name="StatsFunctorContext" version="1" />
       </fields>

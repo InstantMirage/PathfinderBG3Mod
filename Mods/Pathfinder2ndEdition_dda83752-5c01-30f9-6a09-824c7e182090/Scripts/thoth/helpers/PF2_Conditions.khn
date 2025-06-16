@@ -676,33 +676,57 @@ function LastConditionRollValues(conditionRollType)
     return conditionRoll.Total, conditionRoll.Difficulty
 end
 
-function IsWeaponDamageDieD4()
-	local weapon = context.Source
+function IsWeaponDamageDieD4(weapon)
+	local weapon = context.Source or weapon
 	local owner = GetOwner(weapon)
 	return IsWeaponOfProficiencyGroup('Daggers|Sickles', weapon) | (IsWeaponOfProficiencyGroup('Quarterstaffs', weapon) & (DualWielder(owner) | HasShieldEquipped(owner)))
 end
 
-function IsWeaponDamageDieD6()
-	local weapon = context.Source
+function IsWeaponDamageDieD6(weapon)
+	local weapon = context.Source or weapon
 	return IsWeaponOfProficiencyGroup('Clubs|Flails|LightHammers|Maces|Morningstars|HandCrossbows|Javelins|Warpicks|Shortbows|Shortswords|Spears|Handaxes|Scimitars', weapon)
 end
 
-function IsWeaponDamageDieD8()
-	local weapon = context.Source
+function IsWeaponDamageDieD8(weapon)
+	local weapon = context.Source or weapon
 	local owner = GetOwner(weapon)
 	return IsWeaponOfProficiencyGroup('Greatclubs|Warhammers|Rapiers|LightCrossbows|Longbows|Tridents|Battleaxes|Glaives|Longswords', weapon) | (IsWeaponOfProficiencyGroup('Quarterstaffs', weapon) & ~(DualWielder(owner) | HasShieldEquipped(owner)))
 end
 
-function IsWeaponDamageDieD10()
-	local weapon = context.Source
+function IsWeaponDamageDieD10(weapon)
+	local weapon = context.Source or weapon
 	return IsWeaponOfProficiencyGroup('HeavyCrossbows|Halberds|Pikes', weapon)
 end
 
-function IsWeaponDamageDieD12()
-	local weapon = context.Source
+function IsWeaponDamageDieD12(weapon)
+	local weapon = context.Source or weapon
 	return IsWeaponOfProficiencyGroup('Mauls|Greataxes|Greatswords', weapon)
 end
 -- Can be a free action with Channel Elements
 function IsKineticistFree()
 	return SpellId('Target_ElementalBlast_Air_Electric') | SpellId('Target_ElementalBlast_Air_Slashing') | SpellId('Target_ElementalBlast_Air_Cold') | SpellId('Target_ElementalBlast_Earth_Bludgeoning') | SpellId('Target_ElementalBlast_Earth_Piercing') | SpellId('Target_ElementalBlast_Earth_Poison') | SpellId('Target_ElementalBlast_Fire_Fire') | SpellId('Target_ElementalBlast_Fire_Cold') | SpellId('Target_ElementalBlast_Metal_Piercing') | SpellId('Target_ElementalBlast_Metal_Slashing') | SpellId('Target_ElementalBlast_Metal_Lightning') | SpellId('Target_ElementalBlast_Water_Bludgeoning') | SpellId('Target_ElementalBlast_Water_Cold') | SpellId('Target_ElementalBlast_Water_Acid') | SpellId('Target_ElementalBlast_Wood_Bludgeoning') | SpellId('Target_ElementalBlast_Wood_Vitality') | SpellId('Target_ElementalBlast_Wood_Poison') | SpellId('Projectile_ElementalBlast_Air_Electric') | SpellId('Projectile_ElementalBlast_Air_Slashing') | SpellId('Projectile_ElementalBlast_Air_Cold') | SpellId('Projectile_ElementalBlast_Earth_Bludgeoning') | SpellId('Projectile_ElementalBlast_Earth_Piercing') | SpellId('Projectile_ElementalBlast_Earth_Poison') | SpellId('Projectile_ElementalBlast_Fire_Fire') | SpellId('Projectile_ElementalBlast_Fire_Cold') | SpellId('Projectile_ElementalBlast_Metal_Piercing') | SpellId('Projectile_ElementalBlast_Metal_Slashing') | SpellId('Projectile_ElementalBlast_Metal_Lightning') | SpellId('Projectile_ElementalBlast_Water_Bludgeoning') | SpellId('Projectile_ElementalBlast_Water_Cold') | SpellId('Projectile_ElementalBlast_Water_Acid') | SpellId('Projectile_ElementalBlast_Wood_Bludgeoning') | SpellId('Projectile_ElementalBlast_Wood_Vitality') | SpellId('Projectile_ElementalBlast_Wood_Poison')
+end
+function CheckCriticalTen(max, entity)
+    local entity = entity or context.Target
+    local max = max or 0
+    if context.InterruptedRoll.RollCritical ~= RollCritical.None then
+        return ConditionResult(false, {ConditionError("IsCriticalFailSuccess")})
+    end
+
+    local rollSuccess = context.InterruptedRoll.Total >= context.InterruptedRoll.Difficulty
+
+	local result = rollSuccess and ((context.InterruptedRoll.Total - context.InterruptedRoll.Difficulty) >= max)
+        return ConditionResult(result)
+end
+function CheckCriticalMissTen(max, entity)
+    local entity = entity or context.Target
+    local max = max or 0
+    if context.InterruptedRoll.RollCritical ~= RollCritical.None then
+        return ConditionResult(false, {ConditionError("IsCriticalFailSuccess")})
+    end
+
+    local rollSuccess = context.InterruptedRoll.Total >= context.InterruptedRoll.Difficulty
+
+	local result = not rollSuccess and ((context.InterruptedRoll.Total - context.InterruptedRoll.Difficulty) <= max)
+        return ConditionResult(result)
 end

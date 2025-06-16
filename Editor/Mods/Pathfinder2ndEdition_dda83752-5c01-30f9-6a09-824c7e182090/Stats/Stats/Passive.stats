@@ -77,8 +77,8 @@
         <field name="UUID" type="IdTableFieldDefinition" value="9cb8d00b-61a5-442e-8909-7ccf3fa91843" />
         <field name="Name" type="NameTableFieldDefinition" value="PathfinderDCBoost" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hdff3f897gdee6g3ed9g0b28gd06945f0f08f" version="2" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h07f7b560gf34dgdf73g3d1dg9a5369f5689e" version="2" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="SpellSaveDC(2);UnlockSpellVariant(HasUseCosts('BonusActionPoint'),ModifyUseCosts(Replace,ActionPoint,1,0,BonusActionPoint));ActionResource(Stride,9,0);ActionResource(Flourish,1,0);IgnorePointBlankDisadvantage(Ammunition);IgnorePointBlankDisadvantage(Loading);IgnorePointBlankDisadvantage(Thrown);IF((IsWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source)):DamageBonus(StrengthModifier);" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h07f7b560gf34dgdf73g3d1dg9a5369f5689e" version="3" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="SpellSaveDC(2);UnlockSpellVariant(HasUseCosts('BonusActionPoint'),ModifyUseCosts(Replace,ActionPoint,1,0,BonusActionPoint));ActionResource(Stride,9,0);ActionResource(Flourish,1,0);IgnorePointBlankDisadvantage(Ammunition);IgnorePointBlankDisadvantage(Loading);IgnorePointBlankDisadvantage(Thrown);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source)):DamageBonus(StrengthModifier);UnlockInterrupt(CriticalHit_10);UnlockInterrupt(CriticalMiss_10);" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnTurn" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="TurnBased()" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="AI_IGNORE:IF( not (HasDashStatus() or HasStatus('STRIDE') or HasStatus('DISENGAGE')) ):ApplyStatus(DEBUG_RESET_MOVE,100,-1); IF( HasDashStatus() or HasStatus('STRIDE') or HasStatus('DISENGAGE') ):UseActionResource(ActionPoint,0.5,0)" />
@@ -3608,9 +3608,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="3bc8fa82-738b-492b-8428-f18109223180" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Air" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha5a0fcd6g151dg82ecg5d3cg42531b4780ed" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7a5bc9c1g2439gefacg531ag7cd16f12c990" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7a5bc9c1g2439gefacg531ag7cd16f12c990" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_GustOfWind" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_PushingGust);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_GustOfWind_Pathfinder,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_LightningBolt_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Projectile_ChainLightning,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_PushingGust);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_GustOfWind_Pathfinder,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_LightningBolt_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Projectile_ChainLightning,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3619,9 +3619,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="db42b733-a3de-4604-865e-75f6a00b5e3f" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Cities" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he379c958g4a9bgad8age530g1ed3e12489b7" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5b1c60ebg71b5g3d23g57e3g921e30ec8a33" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5b1c60ebg71b5g3d23g57e3g921e30ec8a33" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Illusion_DisguiseSelf" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_DisguiseSelf_override);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_CharmPerson,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_DaysWeight_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_QuickenTime_Rank5,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_DisguiseSelf_override);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_CharmPerson,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_DaysWeight_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_QuickenTime_Rank5,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3630,9 +3630,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="64d1766b-53f5-4d82-8629-b5a10c00deab" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Confidence" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0481745cgf60bgdd6eg2f8cg81e637880b10" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hcf481068g8d90g1c58g5b48g198fa18d55f2" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hcf481068g8d90g1c58g5b48g198fa18d55f2" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Paladin_AuraOfCourage" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_Shout_VeilOfConfidence);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Shout_DisguiseSelf_override,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Stupefy,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Dominate_Rank6,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_Shout_VeilOfConfidence);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Shout_DisguiseSelf_override,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Stupefy,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Dominate_Rank6,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3641,9 +3641,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="29d46620-483f-486d-b72d-3e3d7f93118f" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Darkness" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha6d42c6fgc3d2g8694ge8b0g5a648074b881" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h71fc0486g82b0g8a39g178bg6a9475226a28" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h71fc0486g82b0g8a39g178bg6a9475226a28" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_Darkness" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_Darkness_override);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_ColorSpray,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Darkness_PF2,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_GraspOfTheDeep_Rank4,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_Darkness_override);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_ColorSpray,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Darkness_PF2,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_GraspOfTheDeep_Rank4,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3652,10 +3652,10 @@
         <field name="UUID" type="IdTableFieldDefinition" value="fa009d20-b9f3-4414-87b8-544d2af9fc77" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Death" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h26ef9bcbg664eg8839g095dg6865eae92e1e" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h0df8f443g4e25g367cg29d2g3e3da767e1de" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h0df8f443g4e25g367cg29d2g3e3da767e1de" version="2" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="Grants the Death's Call reaction. &lt;br&gt;Trigger An enemy misses you with a melee attack &lt;br&gt;Duration until the end of your next turn &lt;br&gt;You swiftly move from a dangerous spot and veil yourself. You Step and become concealed." />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Cleric_TurnUndead" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(DeathCallInterrupt);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Fear_Rank1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_RouseSkeletons_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_VampiricMaiden_Rank4,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(DeathCallInterrupt);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Fear_Rank1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_RouseSkeletons_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_VampiricMaiden_Rank4,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3664,9 +3664,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="cf0788f9-4747-446d-853b-69aef38f2e61" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Destruction" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2e0bd5fag3f0fga862gd268g3a0660f270e2" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hc648ec06g1dcdgab10gad57g93a6eab3bb6d" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hc648ec06g1dcdgab10gad57g93a6eab3bb6d" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_Thunderwave" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Zone_CryOfDestruction);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_PummelingRubble_1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Projectile_PercussiveImpact_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_ImpalingSpike_Rank5,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Zone_CryOfDestruction);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_PummelingRubble_1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Projectile_PercussiveImpact_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_ImpalingSpike_Rank5,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3675,9 +3675,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="5607a393-7558-44e9-bbb8-695f326b9945" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Earth" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h84448737g24f9g7ccfg01f7g0cb9ebf975a3" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf80b6f91g6288g18bcgdbfdg666e90f80510" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf80b6f91g6288g18bcgdbfdg666e90f80510" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_ChromaticOrb_Thunder" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_HurtlingStone);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_PummelingRubble_1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Earthbind_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_ImpalingSpike_Rank5,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_HurtlingStone);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_PummelingRubble_1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Earthbind_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_ImpalingSpike_Rank5,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3686,9 +3686,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="434d9459-97d0-4eee-a637-f28b02cfcf2d" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Fire" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hab727112gafceg5f4dg8070ge6044f0c7e6b" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h930a1e95gee45g210ag7539gb636c5aefb69" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h930a1e95gee45g210ag7539gb636c5aefb69" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_Cambion_FireRay" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_FireRayDomain);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_BurningHands,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Projectile_Fireball,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_BlazingFissure_Rank5,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_FireRayDomain);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_BurningHands,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Projectile_Fireball,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_BlazingFissure_Rank5,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3697,9 +3697,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="f4c8c1e9-342a-43b5-a87c-1f302cc62992" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Freedom" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h946a7ac9g70degd445g830agd7fa0b46727c" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h072f376dg397bga0f2g829fgda56e5393c27" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h072f376dg397bga0f2g829fgda56e5393c27" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Abjuration_FreedomOfMovement" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_UnimpededStride);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Longstrider,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Haste_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Teleporation_DimensionDoor,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_UnimpededStride);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Longstrider,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Haste_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Teleporation_DimensionDoor,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3708,9 +3708,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="a8f2732c-3ed7-4413-87a2-d1a12b886359" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Healing" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4db7958dg91a0g7badg334fg07bc82754ffd" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h920e3229gd07cg8781g3466g28041da84c2c" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h920e3229gd07cg8781g3466g28041da84c2c" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_TurnTheTide" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_HealersBlessing);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Endure_Rank1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_VampiricFeast_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_LifeDrainingRoots_Rank4,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_HealersBlessing);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Endure_Rank1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_VampiricFeast_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_LifeDrainingRoots_Rank4,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3719,9 +3719,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="e8ae5bf0-95c7-426b-890a-875f2ca2960e" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Indulgence" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd0c4b8a4ga43dg2a0cge844g7f6ed8a0419b" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7111aeacgd80ag3b4cg61feg373eadcf855b" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h7111aeacgd80ag3b4cg61feg373eadcf855b" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_Cheese_StinkingCloud" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_Overstuff);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Sleep,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Slow_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_GrislyGrowths_Rank5,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_Overstuff);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Sleep,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Slow_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_GrislyGrowths_Rank5,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3730,9 +3730,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="cee8e68d-a830-4e3e-80c5-eb4ab6f3c316" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Moon" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha838cafcg5b09g418egaf4bg751fc3f9cbf0" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf17fe67ag1f8ag6e5fg97f4g2ad07a69a051" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf17fe67ag1f8ag6e5fg97f4g2ad07a69a051" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_Moonbeam" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_MoonbeamPathfinder);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_GravitationalPull_Base,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_GravityWell_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Wall_WallOfIce_Rank5,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_MoonbeamPathfinder);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_GravitationalPull_Base,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_GravityWell_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Wall_WallOfIce_Rank5,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3741,9 +3741,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="11188287-8d84-4d57-8a51-27874072e0da" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Nature" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he4b4f85bg3bfdge8bfgb1e7g97fda27593b3" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha2cfe436gd2b2g4353gf5d0g6c58a9fa84c5" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha2cfe436gd2b2g4353gf5d0g6c58a9fa84c5" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Transmutation_ThornWhip" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_VibrantThorns);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_FlourishingFlora_Rank1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_NoxiousMetals_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_LifeDrainingRoots_Rank4,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_VibrantThorns);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_FlourishingFlora_Rank1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_NoxiousMetals_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Zone_LifeDrainingRoots_Rank4,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3752,9 +3752,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="0fdcaaf7-e5b8-447c-af2f-b28c375857cc" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Nightmare" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h1ffe75d8g3814g23d2g674fg541f7e5189fd" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf8425314gb533g0f2egc59agcc30d6135135" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf8425314gb533g0f2egc59agcc30d6135135" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Quasit_Scare" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_WakingNightmare);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Sleep,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_AgonizingDespair_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_VisionOfDeath_Rank4,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_WakingNightmare);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Sleep,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_AgonizingDespair_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_VisionOfDeath_Rank4,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3763,9 +3763,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="86149ac6-4be0-43ed-92ed-c2f157310f54" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Pain" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h61ce0243gf92fg05d5gbfc5g40f4ff972b0b" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hb18f4652gbcd5gfbb1g532egfdc6bea6bfde" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hb18f4652gbcd5gfbb1g532egfdc6bea6bfde" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Spider_Giant_PoisonousBite" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_SavorTheSting);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Dehydrate_Rank1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_NoxiousMetals_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Blister_Rank5,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_SavorTheSting);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Dehydrate_Rank1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_NoxiousMetals_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Blister_Rank5,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3774,9 +3774,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="8c9aa72e-6406-440a-96dc-37bfc547bc92" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Passion" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h57ca574ag17d4g0768g5a42gf183c586c75b" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hff414671gb9e9g74d4gf654g8457b0cd6f39" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hff414671gb9e9g74d4gf654g8457b0cd6f39" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Enchantment_CharmPerson" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_CharmingTouch);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_CharmPerson,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Hypnotize_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_NeverMind,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_CharmingTouch);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_CharmPerson,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Hypnotize_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_NeverMind,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3785,10 +3785,10 @@
         <field name="UUID" type="IdTableFieldDefinition" value="fcd8ad56-89f5-4653-a219-512ef106f272" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Protection" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd0a83567g696cgb2aag44a7g606a2eae6e6a" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h773afdedgc4d2g086fg5e9dg04e7b2ebaf4e" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h773afdedgc4d2g086fg5e9dg04e7b2ebaf4e" version="2" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="Grants the Protector's Sacrifice reaction. &lt;br&gt;Trigger An ally within 30 feet takes damage &lt;br&gt;Range 30 feet &lt;br&gt;You protect your ally by suffering in their stead. Reduce the damage the ally would take by 3. You redirect this damage to yourself, but your immunities, weaknesses, resistances and so on do not apply You aren't subject to any conditions or other effects of whatever damaged your ally (such as poison from a venomous bite). Your ally is still subject to those effects even if you redirect all of the triggering damage to yourself." />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ProjectedWard" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(ProtectorsSacrificeInterrupt);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Endure_Rank1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_ResistEnergyPF2_Container_Rank2,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Wall_WallOfIce_Rank5,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(ProtectorsSacrificeInterrupt);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Endure_Rank1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_ResistEnergyPF2_Container_Rank2,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Wall_WallOfIce_Rank5,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3797,9 +3797,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="f6a2a957-e46d-4328-9f80-8a4e57b7e83c" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Sun" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h7faddafeg4400g6e62g8b24g08789e4d057d" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h3dcaa70cgca03gae81g1859g3e41c233270d" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h3dcaa70cgca03gae81g1859g3e41c233270d" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveAction_WardingFlare" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Zone_DazzlingFlash);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Dehydrate_Rank1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Projectile_Fireball,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_FlameVortex,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Zone_DazzlingFlash);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Dehydrate_Rank1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Projectile_Fireball,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_FlameVortex,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3808,10 +3808,10 @@
         <field name="UUID" type="IdTableFieldDefinition" value="523b08ca-7a8a-4e5e-9a9d-55a0aa4fbcc7" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Trickery" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3be981f7g4024gb3ecg1ac3g0638c923a713" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd243e5dfg698cg3e4egbe32g7fdd383f87d2" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd243e5dfg698cg3e4egbe32g7fdd383f87d2" version="2" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="Grants the Sudden Shift reaction. &lt;br&gt;Trigger An enemy misses you with a melee attack &lt;br&gt;Duration until the end of your next turn &lt;br&gt;You swiftly move from a dangerous spot and veil yourself. You Step and become concealed." />
         <field name="Icon" type="StringTableFieldDefinition" value="statIcons_HagsTrickery" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(SuddenShiftInterrupt);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Grease,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Hypnotize_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Confusion_Rank4,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockInterrupt(SuddenShiftInterrupt);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Grease,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Hypnotize_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Confusion_Rank4,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3820,9 +3820,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="e7da0496-35e1-437f-8ec0-d77ba66ea0e9" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Truth" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h99e64148geb2ag63cdg0a43gb1e524170214" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="he70331f4g2023g8d32gcdc1gb51735a7aaba" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="he70331f4g2023g8d32gcdc1gb51735a7aaba" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Enchantment_CharmPerson" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_CharmingTouch);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Command_Container,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Stupefy,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Banishment_Rank5_Container,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_CharmingTouch);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Command_Container,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Stupefy,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Banishment_Rank5_Container,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3831,9 +3831,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="98223233-5c78-47b9-9dd0-b9cd831f8bd3" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Undeath" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h023a9136g489agdba9gc22eg84942bfeea44" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5780e3afg2f57g1310g2589g7fcf3ec1fcd2" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h5780e3afg2f57g1310g2589g7fcf3ec1fcd2" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_TouchOfDeath" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_TouchOfUndeath);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Fear_Rank1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_RouseSkeletons_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_VampiricMaiden_Rank4,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_TouchOfUndeath);ActionResource(KiPoint,1,0);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Fear_Rank1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_RouseSkeletons_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_VampiricMaiden_Rank4,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -3842,9 +3842,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="cccaf429-65e1-45bf-928c-1e7cfa5291af" />
         <field name="Name" type="NameTableFieldDefinition" value="Domain_Zeal" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0607e470g057cga12cg254bgd5904874779a" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hdb575178g5ac8gbb19ga195gde30e7fda8dd" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hdb575178g5ac8gbb19ga195gde30e7fda8dd" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Transmutation_MagicWeapon" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);UnlockSpell(Shout_WeaponSurge);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_MysticArmor_Base,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Enlarge_Rank2,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_UnfetteredMovement_Rank4,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="ActionResource(KiPoint,1,0);UnlockSpell(Shout_WeaponSurge);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_MysticArmor_Base,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_Enlarge_Rank2,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);IF(HasPassive('DivineAccess',context.Source)):UnlockSpell(Target_UnfetteredMovement_Rank4,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
         <field name="TooltipUseCosts" type="StringTableFieldDefinition" value="KiPoint:1" />
       </fields>
     </stat_object>
@@ -4434,8 +4434,6 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h41a073aag745dg816fg4274g9440a5a4d98f" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="haeac8651gd565gac9fg86c1ga115ff963a74" version="1" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Conditions" type="StringTableFieldDefinition" value="SpellId('Target_Trip')" />
-        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(1d6,Bludgeoning);IF(IsCritical()):DealDamage(LevelMapValue(SneakAttack),Bludgeoning)" />
         <field name="DynamicAnimationTag" type="GuidObjectTableFieldDefinition" value="e8b1eab0-ef11-40a2-8a0b-cee8d062bf2a" />
       </fields>
     </stat_object>
@@ -5124,7 +5122,7 @@
         <field name="Conditions" type="StringTableFieldDefinition" value="IsSpell() and not IsCantrip()" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(H1Plus1),Slashing,Magical);ApplyStatus(BloodMagicSelf,100,1)" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_ElementalAir_Whirlwind" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossSlashing);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_EldritchBlast);UnlockSpell(Target_Longstrider,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossSlashing);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_EldritchBlast);UnlockSpell(Target_Longstrider,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5138,7 +5136,7 @@
         <field name="Conditions" type="StringTableFieldDefinition" value="IsSpell() and not IsCantrip()" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(H1Plus1),Bludgeoning,Magical);ApplyStatus(BloodMagicSelf,100,1)" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_ElementalEarth_SeismicStrike" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossBludgeoning);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_ScatterScree);UnlockSpell(Zone_Shockwave,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossBludgeoning);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_ScatterScree);UnlockSpell(Zone_Shockwave,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5152,7 +5150,7 @@
         <field name="Conditions" type="StringTableFieldDefinition" value="IsSpell() and not IsCantrip()" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(H1Plus1),Fire,Magical);ApplyStatus(BloodMagicSelf,100,1)" />
         <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Fire" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossFire);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_FireBolt);UnlockSpell(Zone_BurningHands,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossFire);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_FireBolt);UnlockSpell(Zone_BurningHands,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5166,7 +5164,7 @@
         <field name="Conditions" type="StringTableFieldDefinition" value="IsSpell() and not IsCantrip()" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(H1Plus1),Piercing,Magical);ApplyStatus(BloodMagicSelf,100,1)" />
         <field name="Icon" type="StringTableFieldDefinition" value="GenericIcon_DamageType_Physical" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossPiercing);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_ElectricArc);UnlockSpell(Target_Thunderstrike_Rank1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossPiercing);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_ElectricArc);UnlockSpell(Target_Thunderstrike_Rank1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5180,7 +5178,7 @@
         <field name="Conditions" type="StringTableFieldDefinition" value="IsSpell() and not IsCantrip()" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(H1Plus1),Bludgeoning,Magical);ApplyStatus(BloodMagicSelf,100,1)" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Monk_WaterWhip" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossBludgeoning);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_RayOfFrost);UnlockSpell(Projectile_IceKnife,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossBludgeoning);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_RayOfFrost);UnlockSpell(Projectile_IceKnife,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5194,7 +5192,7 @@
         <field name="Conditions" type="StringTableFieldDefinition" value="IsSpell() and not IsCantrip()" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(H1Plus1),Bludgeoning,Magical);ApplyStatus(BloodMagicSelf,100,1)" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Generic_Nature" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossBludgeoning);ActionResource(KiPoint,1,0);UnlockSpell(Target_ThornWhip);UnlockSpell(Target_Goodberry,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalTossBludgeoning);ActionResource(KiPoint,1,0);UnlockSpell(Target_ThornWhip);UnlockSpell(Target_Goodberry,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -5631,7 +5629,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h848f94f0g1735g19e0gb961g709b2f5ab890" version="2" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ColossusSlayer" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="Highlighted;ForceShowInCC" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(PrecisionEdge()):DamageBonus(1d8); UnlockSpellVariant(SpellId('Target_HuntPrey'),ModifyTooltipDescription())" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(PrecisionEdge() and not CharacterLevelGreaterThan(10)):DamageBonus(1d8);IF(PrecisionEdge() and CharacterLevelGreaterThan(10)):DamageBonus(2d8);UnlockSpellVariant(SpellId('Target_HuntPrey'),ModifyTooltipDescription());" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="1d8" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="PrecisionEdge()" />
@@ -5666,7 +5664,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="HuntPreyPrecisionPassive" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="HuntedPrey() and not HasStatus('PrecisionEdgeRound',context.Source)" />
-        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(1d8,Piercing);ApplyStatus(SELF,PrecisionEdgeRound,100,1)" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="IF(not CharacterLevelGreaterThan(10)):DealDamage(1d8,Piercing);&#xD;&#xA;IF(CharacterLevelGreaterThan(10)):DealDamage(2d8,Piercing);&#xD;&#xA;ApplyStatus(SELF,PrecisionEdgeRound,100,1)" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="IsHidden" enumeration_type_name="PassiveFlags" version="1" />
       </fields>
     </stat_object>
@@ -6373,7 +6371,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb13845adgd945g2665g6dc0g2d7fd89e0bef" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h689217a4ga077gbc2agc04fg245955515655" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_SelunesDream" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_Sleep);UnlockSpell(Target_VeilOfDreams);ActionResource(KiPoint,1,0)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_Sleep,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Target_VeilOfDreams);ActionResource(KiPoint,1,0);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6383,7 +6381,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0b40046fg0fecg353cgbfe0g5ade69e5db2d" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h8df918a4ga63bg7de5g764age3531614694f" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Cleric_PerserveLife" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_LifeBoost);UnlockSpell(Target_HealBase1);ActionResource(KiPoint,1,0)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_LifeBoost);UnlockSpell(Target_HealBase1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);ActionResource(KiPoint,1,0);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6393,7 +6391,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h984dc88ag71e7gc4d0gd0fag11c1f38c6c96" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h883069fcgcb6dg1f13gc99agc87d7be29cc9" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Abjuration_BladeWard" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_BloodWard_Base);UnlockSpell(Target_MysticArmor);ActionResource(KiPoint,1,0)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_BloodWard_Base);UnlockSpell(Target_MysticArmor,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);ActionResource(KiPoint,1,0);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6403,7 +6401,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc22f2a5ag84a8g3666g2ba5g62dd642c784d" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h438e40f3ga25bg5340gd6f2gbc4a11eca278" version="3" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_AbsorbElements" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalBetrayal_Container);UnlockSpell(Zone_BurningHands,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Zone_GustOfWind_Pathfinder,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Projectile_HydraulicPush_1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Zone_PummelingRubble_1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);ActionResource(KiPoint,1,0)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_ElementalBetrayal_Container);UnlockSpell(Zone_BurningHands,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Zone_GustOfWind_Pathfinder,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Projectile_HydraulicPush_1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);UnlockSpell(Zone_PummelingRubble_1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);ActionResource(KiPoint,1,0);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6413,7 +6411,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha3713421gde20g0005gf3b7g0a48f25aaa7a" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h61cd8db2gdb11g6be1g407fgc54a8b2bb58d" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_Duergar_MindSpike" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_PhantomPain_1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);ActionResource(KiPoint,1,0);UnlockSpell(Target_NeedleOfVengeance_1)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_PhantomPain_1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);ActionResource(KiPoint,1,0);UnlockSpell(Target_NeedleOfVengeance_1);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6460,7 +6458,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4a927d01g591fg8ea6gf445gd6574ca675b3" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="he49967a4g07aagd3f4gd786g1610aeeb9fe6" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_ShadowStrike" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_MaliciousShadow);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_ChillingDarkness_3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_MaliciousShadow);ActionResource(KiPoint,1,0);UnlockSpell(Projectile_ChillingDarkness_3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6469,7 +6467,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="LessonOfSnow" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h60dc9883g3ef8g3d77g8dafgca065c7cbd43" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha063bde7g2826geed3g33eag7545cf53dec6" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_PersonalBlizzard);ActionResource(KiPoint,1,0);UnlockSpell(Wall_WallOfIce_Pathfinder,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_PersonalBlizzard);ActionResource(KiPoint,1,0);UnlockSpell(Wall_WallOfIce_Pathfinder,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6522,7 +6520,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="LessonOfDeath" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4522150fg7883g8fb9gefe2gb8c21b439c66" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha52bf3b6g4ecbgcca2g39a5g4913640f92ee" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Teleporation_RaiseDead,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Teleporation_RaiseDead,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -6994,7 +6992,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="c1757448-eddb-4483-ad33-55938b4a0039" />
         <field name="Name" type="NameTableFieldDefinition" value="NPC_Arcane" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="IsHidden" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_Thunderstrike_Rank1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Zone_ChillingSpray_Rank1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_AshCloud_Rank2,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Projectile_ExplodingEarth_Rank2,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_StinkingCloud_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Projectile_PercussiveImpact_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_SolidFog_Rank4,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_IceStorm_Rank4,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Zone_BlazingFissure_Rank5,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_CorrosiveMuck,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_FlameVortex,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Projectile_Disintegrate,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_Thunderstrike_Rank1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Zone_ChillingSpray_Rank1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_AshCloud_Rank2,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Projectile_ExplodingEarth_Rank2,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_StinkingCloud_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Projectile_PercussiveImpact_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_SolidFog_Rank4,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_IceStorm_Rank4,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Zone_BlazingFissure_Rank5,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_CorrosiveMuck,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_FlameVortex,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Projectile_Disintegrate,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -7002,7 +7000,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="2cb1bce5-1101-4c4d-9646-fb15d7051ae1" />
         <field name="Name" type="NameTableFieldDefinition" value="NPC_Divine" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="IsHidden" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_SacredBeasts_Rank1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_Enfeeble_PF2,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_SuddenBlight_Rank2,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_NoiseBlast_Rank2,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Projectile_ChillingDarkness_3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_AgonizingDespair_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_WhispersOfTheVoid_Rank4,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_VampiricMaiden_Rank4,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Shout_ConfusingCry_Rank5,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_DivineImmolation_Rank5,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_SpiritBlast,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Zone_VampiricExsanguination,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_SacredBeasts_Rank1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_Enfeeble_PF2,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_SuddenBlight_Rank2,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_NoiseBlast_Rank2,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Projectile_ChillingDarkness_3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_AgonizingDespair_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_WhispersOfTheVoid_Rank4,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_VampiricMaiden_Rank4,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Shout_ConfusingCry_Rank5,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_DivineImmolation_Rank5,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_SpiritBlast,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Zone_VampiricExsanguination,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -7010,7 +7008,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="43b5d0f2-061b-4ac4-95d4-36b4115dc40c" />
         <field name="Name" type="NameTableFieldDefinition" value="NPC_Primal" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="IsHidden" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_SacredBeasts_Rank1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_Thunderstrike_Rank1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_SuddenBlight_Rank2,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_AshCloud_Rank2,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Projectile_Fireball,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Zone_LightningBolt_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Zone_LifeDrainingRoots_Rank4,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_PetalStorm_Rank4,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_Geyser_Rank5,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_AcidStorm,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Projectile_ChainLightning,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_FieldOfRazors,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_SacredBeasts_Rank1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_Thunderstrike_Rank1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_SuddenBlight_Rank2,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_AshCloud_Rank2,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Projectile_Fireball,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Zone_LightningBolt_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Zone_LifeDrainingRoots_Rank4,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_PetalStorm_Rank4,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_Geyser_Rank5,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_AcidStorm,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Projectile_ChainLightning,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_FieldOfRazors,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -7018,7 +7016,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="1ea5f51e-b1f6-4334-abb9-186a49ac7acb" />
         <field name="Name" type="NameTableFieldDefinition" value="NPC_Occult" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="IsHidden" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_PhantomPain_1,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Projectile_MagicMissile,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_BlisteringInvective_Rank2,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_NoiseBlast_Rank2,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_RouseSkeletons_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_VampiricFeast_Rank3,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_WhispersOfTheVoid_Rank4,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_PainfulVibrations_Rank4,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Shout_SynapticPulse,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_Synesthesia,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_SpiritBlast,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_PhantasmalCalamity,,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Target_PhantomPain_1,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Projectile_MagicMissile,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_BlisteringInvective_Rank2,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_NoiseBlast_Rank2,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_RouseSkeletons_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_VampiricFeast_Rank3,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_WhispersOfTheVoid_Rank4,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_PainfulVibrations_Rank4,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Shout_SynapticPulse,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_Synesthesia,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_SpiritBlast,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);UnlockSpell(Target_PhantasmalCalamity,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,);" />
       </fields>
     </stat_object>
     <stat_object color="#FF0000FF" is_substat="false">
@@ -8294,6 +8292,109 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h86c85456g3744g0458g44b4g23b9f303f4a4" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h2d82fdb4g7553g3f0bgdb4cgb2f3756d4e12" version="1" />
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_Fireball);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="db702e76-9f9e-4788-9a6a-d1e153b49dfe" />
+        <field name="Name" type="NameTableFieldDefinition" value="BardicInspiration_d10" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="6d06d6b0-99f5-475a-9261-7a1c22a52ace" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="1d10" />
+        <field name="Properties" type="EnumerationListTableFieldDefinition" value="IsHidden" enumeration_type_name="PassiveFlags" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="c662a264-85bd-48b3-bfe7-3a15a61a8ef4" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_BG_Harold_HeavyCrossbow_Passive" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h58d80af2gbcb9g9bd3g0867gf7156726b738" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h07a75a7ag3288g77e9gc5c0g7af7ca9725f0" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="2" />
+        <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="IsRangedWeaponAttack() and not HasStatus('BANE', context.Target)" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="ApplyStatus(StatusPenalty1Attack, 100, 1,,,,not SavingThrow(Ability.Wisdom,13))" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="70829e44-032c-4502-9a95-89cd5c3508b4" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_Radiant_UnarmedAttack_Passive" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hb22c7fa8g1088g66fdg6e3fge96fa4d6b668" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h2d861265gd725g2892gdec8g68c5794f0452" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(1d4, Radiant)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsUnarmedAttack()):DamageBonus(1d4, Radiant);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="e7cd9138-9867-45c3-831f-eca9c04dd70f" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_Cold_UnarmedAttack_Passive" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hfe9f39e1g780bg200ag6975gc9e138769bf3" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hfd7cd487gac1dg9aa1g8eb0gf8d1d1bd4c78" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(1d4, Cold)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsUnarmedAttack()):DamageBonus(1d4, Cold);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="48055462-5220-4720-a729-2d96f8a3b8c9" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_Force_UnarmedAttack_Passive" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h8c15dc1dgdee2g6202gb30agaaa7574e0c93" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hb7899896gca2agf20cg3853gd6e250d347c1" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(1d4, Force)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsUnarmedAttack()):DamageBonus(1d4, Force);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="94d889d6-2ed1-47ce-86ad-9b871641c23d" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_Lightning_UnarmedAttack_Passive" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h07fa5dfcgf259g34b2g03ffg8d1ef989e556" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h073624d9g3e47g852egd613g3bde0a8da500" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(1d4, Lightning)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsUnarmedAttack()):DamageBonus(1d4, Lightning);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="760a6613-3a01-4334-97f2-4b6f3d747c7c" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_Thunder_UnarmedAttack_Passive" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h9daf03c3gd78eg3ee9gb55dgc5cdb4d82307" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hff0469a4gc726gfe54g4e6fgdb8705359a85" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(1d4, Thunder)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsUnarmedAttack()):DamageBonus(1d4, Thunder);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="3b809fcd-66f9-4668-b6b1-b7680469feb6" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_Fire_UnarmedAttack_Passive" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hff0ceb3eg6f6bg610dgc9d5g1e48909f5240" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="ha2cd961bgf618g9d57gadfeg61995c88f2ad" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(1d4, Fire)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsUnarmedAttack()):DamageBonus(1d4, Fire);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="2c41f9b7-c67e-4cc7-b4ad-67991ee71771" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_Force_SoulCatchingDamage_Passive" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="48055462-5220-4720-a729-2d96f8a3b8c9" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3042bd48gbaa2g783cgdb15gf159402da0d9" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="DealDamage(1d10, Force);1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsUnarmedAttack()):DamageBonus(1d10, Force);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="73ba08a2-01d4-4e7e-86b8-f741811b767f" />
+        <field name="Name" type="NameTableFieldDefinition" value="MAG_BardicInspiration_Heal_Hat_Passive" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0e9d4ea1g23f7ged93gcb68ga8c6ae180f41" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h1243517ag6387g2e67gdda2g94d3e5c69e13" version="1" />
+        <field name="Conditions" type="StringTableFieldDefinition" value="SpellId('Target_BardicInspiration') or SpellId('Target_BardicInspiration_Combat') or SpellId('Shout_CourageousAnthem') or SpellId('Shout_CourageousAnthem_Lingering') or SpellId('Shout_SongOfStrength_Lingering') or SpellId('Shout_RallyingAnthem_Lingering') or SpellId('Shout_TripleTime_Lingering');" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="RegainHitPoints(1d6)" />
+        <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnAttack" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="DescriptionParams" type="StringTableFieldDefinition" value="RegainHitPoints(1d6)" />
       </fields>
     </stat_object>
   </stat_objects>
