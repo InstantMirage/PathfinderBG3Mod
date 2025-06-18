@@ -350,7 +350,7 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd986e2ccgbb0fg4a36gf4c5g40f1dbcadfa4" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd4333571g1d85g2f3dgcadcge0bbf11bd335" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsAttack() and IsFlatValueInterruptInteresting(2, context.Source) and not HasStatus('SG_Polymorph_BeastShape') and not AnyEntityIsItem();" />
-        <field name="Properties" type="StringTableFieldDefinition" value="IF(HasInterruptedAttack()):AdjustRoll(-2);" />
+        <field name="Properties" type="StringTableFieldDefinition" value="IF(HasInterruptedAttack()):AdjustRoll(-2);IF(HasPassive('NimbleStrike',context.Source)):UseAttack(OBSERVER_TARGET);" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_UncannyDodge" />
         <field name="InterruptContext" type="EnumerationListTableFieldDefinition" value="OnPostRoll" enumeration_type_name="InterruptContext" version="1" />
         <field name="InterruptContextScope" type="EnumerationListTableFieldDefinition" value="Self" enumeration_type_name="InterruptContextScope" version="1" />

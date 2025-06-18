@@ -677,29 +677,29 @@ function LastConditionRollValues(conditionRollType)
 end
 
 function IsWeaponDamageDieD4(weapon)
-	local weapon = context.Source or weapon
+	local weapon = weapon or context.Source
 	local owner = GetOwner(weapon)
 	return IsWeaponOfProficiencyGroup('Daggers|Sickles', weapon) | (IsWeaponOfProficiencyGroup('Quarterstaffs', weapon) & (DualWielder(owner) | HasShieldEquipped(owner)))
 end
 
 function IsWeaponDamageDieD6(weapon)
-	local weapon = context.Source or weapon
+	local weapon = weapon or context.Source
 	return IsWeaponOfProficiencyGroup('Clubs|Flails|LightHammers|Maces|Morningstars|HandCrossbows|Javelins|Warpicks|Shortbows|Shortswords|Spears|Handaxes|Scimitars', weapon)
 end
 
 function IsWeaponDamageDieD8(weapon)
-	local weapon = context.Source or weapon
+	local weapon = weapon or context.Source
 	local owner = GetOwner(weapon)
 	return IsWeaponOfProficiencyGroup('Greatclubs|Warhammers|Rapiers|LightCrossbows|Longbows|Tridents|Battleaxes|Glaives|Longswords', weapon) | (IsWeaponOfProficiencyGroup('Quarterstaffs', weapon) & ~(DualWielder(owner) | HasShieldEquipped(owner)))
 end
 
 function IsWeaponDamageDieD10(weapon)
-	local weapon = context.Source or weapon
+	local weapon = weapon or context.Source
 	return IsWeaponOfProficiencyGroup('HeavyCrossbows|Halberds|Pikes', weapon)
 end
 
 function IsWeaponDamageDieD12(weapon)
-	local weapon = context.Source or weapon
+	local weapon = weapon or context.Source
 	return IsWeaponOfProficiencyGroup('Mauls|Greataxes|Greatswords', weapon)
 end
 -- Can be a free action with Channel Elements

@@ -1075,7 +1075,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="ViciousSwing" />
         <field name="RequirementConditions" type="StringTableFieldDefinition" value="CanUseWeaponActions()" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="Attack(AttackType.MeleeWeaponAttack)" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon*2-StrengthModifier, MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);IF(not HasPassive('FuriousFocus',context.Source)):ApplyStatus(SELF,MAP_PENALTY_3RD,100,1);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(IsWeaponDamageDieD4(GetAttackWeapon(context.Source)) and not CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+1d4, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD4(GetAttackWeapon(context.Source)) and CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+2d4, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD6(GetAttackWeapon(context.Source)) and not CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+1d6, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD6(GetAttackWeapon(context.Source)) and CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+2d6, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD8(GetAttackWeapon(context.Source)) and not CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+1d8, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD8(GetAttackWeapon(context.Source)) and CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+2d8, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD10(GetAttackWeapon(context.Source)) and not CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+1d10, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD10(GetAttackWeapon(context.Source)) and CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+2d10, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD12(GetAttackWeapon(context.Source)) and not CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+1d12, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD12(GetAttackWeapon(context.Source)) and CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+2d12, MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);IF(not HasPassive('FuriousFocus',context.Source)):ApplyStatus(SELF,MAP_PENALTY_3RD,100,1);" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Smash" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6d8a4fddg50ceg4893g846eg740765e3549e" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hc21c2423gdf83gdda8g65beg334b5a98a95a" version="1" />
@@ -13940,6 +13940,7 @@
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hf1a9d1d4ge1c0gd3aagf6d6g9b9db969ac1c" version="1" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:3" />
         <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Damage" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="PowerLevel" type="IntegerTableFieldDefinition" value="3" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -13951,6 +13952,7 @@
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage((8d6)/2,Piercing,Magical);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:4" />
         <field name="RootSpellID" type="StringTableFieldDefinition" value="Target_CaveFangs_Rank3" />
+        <field name="PowerLevel" type="IntegerTableFieldDefinition" value="4" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -13962,6 +13964,7 @@
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage((10d6)/2,Piercing,Magical);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:5" />
         <field name="RootSpellID" type="StringTableFieldDefinition" value="Target_CaveFangs_Rank3" />
+        <field name="PowerLevel" type="IntegerTableFieldDefinition" value="5" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -13973,6 +13976,7 @@
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMiss()):DealDamage((10d6)/2,Piercing,Magical);" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:6" />
         <field name="RootSpellID" type="StringTableFieldDefinition" value="Target_CaveFangs_Rank3" />
+        <field name="PowerLevel" type="IntegerTableFieldDefinition" value="6" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -14670,6 +14674,28 @@
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:3" />
         <field name="HitAnimationType" type="EnumerationTableFieldDefinition" value="MagicalNonDamage" enumeration_type_name="HitAnimationType" version="1" />
         <field name="PowerLevel" type="IntegerTableFieldDefinition" value="3" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="b789e4b4-3d67-4723-801a-d521a4a9b8ca" />
+        <field name="Name" type="NameTableFieldDefinition" value="Slow_Rank4" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="eebb3c01-7e9c-4dc3-9425-607b24037fae" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="4" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:4" />
+        <field name="RootSpellID" type="StringTableFieldDefinition" value="Target_Slow_Rank3" />
+        <field name="PowerLevel" type="IntegerTableFieldDefinition" value="4" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="5522e075-e27d-4b80-9978-45033f252c68" />
+        <field name="Name" type="NameTableFieldDefinition" value="Slow_Rank5" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="eebb3c01-7e9c-4dc3-9425-607b24037fae" />
+        <field name="Level" type="IntegerTableFieldDefinition" value="5" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;SpellSlotsGroup:1:1:5" />
+        <field name="RootSpellID" type="StringTableFieldDefinition" value="Target_Slow_Rank3" />
+        <field name="PowerLevel" type="IntegerTableFieldDefinition" value="5" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -21627,7 +21653,7 @@
         <field name="TargetSound" type="StringTableFieldDefinition" value="Action_Impact_RecklessAttack" />
         <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
         <field name="AIFlags" type="EnumerationListTableFieldDefinition" value="IgnoreDebuff" enumeration_type_name="AIFlags" version="1" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="DealDamage(MainMeleeWeapon*2-StrengthModifier, MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);IF(not HasPassive('FuriousFocus',context.Source)):ApplyStatus(SELF,MAP_PENALTY_3RD,100,1)" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(IsWeaponDamageDieD4(GetAttackWeapon(context.Source)) and not CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+1d4, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD4(GetAttackWeapon(context.Source)) and CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+2d4, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD6(GetAttackWeapon(context.Source)) and not CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+1d6, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD6(GetAttackWeapon(context.Source)) and CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+2d6, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD8(GetAttackWeapon(context.Source)) and not CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+1d8, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD8(GetAttackWeapon(context.Source)) and CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+2d8, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD10(GetAttackWeapon(context.Source)) and not CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+1d10, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD10(GetAttackWeapon(context.Source)) and CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+2d10, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD12(GetAttackWeapon(context.Source)) and not CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+1d12, MainMeleeWeaponDamageType);IF(IsWeaponDamageDieD12(GetAttackWeapon(context.Source)) and CharacterLevelGreaterThan(9)):DealDamage(MainMeleeWeapon+2d12, MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand);IF(not HasPassive('FuriousFocus',context.Source)):ApplyStatus(SELF,MAP_PENALTY_3RD,100,1);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not HasPassive('FuriousFocus',context.Source)):ApplyStatus(SELF,MAP_PENALTY_3RD,100,1)" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="not Self() and not Dead()" />
       </fields>

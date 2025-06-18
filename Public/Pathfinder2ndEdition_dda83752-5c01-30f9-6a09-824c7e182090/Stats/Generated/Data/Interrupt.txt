@@ -282,7 +282,7 @@ data "Icon" "PassiveFeature_UncannyDodge"
 data "InterruptContext" "OnPostRoll"
 data "InterruptContextScope" "Self"
 data "Conditions" "IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsAttack() and IsFlatValueInterruptInteresting(2, context.Source) and not HasStatus('SG_Polymorph_BeastShape') and not AnyEntityIsItem();"
-data "Properties" "IF(HasInterruptedAttack()):AdjustRoll(-2);"
+data "Properties" "IF(HasInterruptedAttack()):AdjustRoll(-2);IF(HasPassive('NimbleStrike',context.Source)):UseAttack(OBSERVER_TARGET);"
 
 new entry "Interrupt_Counterspell"
 type "InterruptData"
