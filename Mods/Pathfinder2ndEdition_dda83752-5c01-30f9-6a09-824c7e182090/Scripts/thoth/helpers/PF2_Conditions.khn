@@ -645,6 +645,19 @@ end
 
 -- Critical hits for non-attack spells
 
+function LastConditionRollValues(conditionRollType)
+    try
+        conditionRoll = context.HitDescription.GetLastConditionRoll(conditionRollType)
+    catch e then
+        if ls.CheckType(e, ls.error.UnsupportedAttributeType) or ls.CheckType(e, ls.error.NotFound) then
+            return ConditionResult(false)
+        else
+            return ConditionResult(false)
+        end
+    end
+    return conditionRoll
+end
+
 function SaveCrit(threshold)
     local total, difficulty = LastConditionRollValues(ConditionRollType.ConditionSavingThrow)
     local thresholdtotal = 10 + total
@@ -704,7 +717,7 @@ function IsWeaponDamageDieD12(weapon)
 end
 -- Can be a free action with Channel Elements
 function IsKineticistFree()
-	return SpellId('Target_ElementalBlast_Air_Electric') | SpellId('Target_ElementalBlast_Air_Slashing') | SpellId('Target_ElementalBlast_Air_Cold') | SpellId('Target_ElementalBlast_Earth_Bludgeoning') | SpellId('Target_ElementalBlast_Earth_Piercing') | SpellId('Target_ElementalBlast_Earth_Poison') | SpellId('Target_ElementalBlast_Fire_Fire') | SpellId('Target_ElementalBlast_Fire_Cold') | SpellId('Target_ElementalBlast_Metal_Piercing') | SpellId('Target_ElementalBlast_Metal_Slashing') | SpellId('Target_ElementalBlast_Metal_Lightning') | SpellId('Target_ElementalBlast_Water_Bludgeoning') | SpellId('Target_ElementalBlast_Water_Cold') | SpellId('Target_ElementalBlast_Water_Acid') | SpellId('Target_ElementalBlast_Wood_Bludgeoning') | SpellId('Target_ElementalBlast_Wood_Vitality') | SpellId('Target_ElementalBlast_Wood_Poison') | SpellId('Projectile_ElementalBlast_Air_Electric') | SpellId('Projectile_ElementalBlast_Air_Slashing') | SpellId('Projectile_ElementalBlast_Air_Cold') | SpellId('Projectile_ElementalBlast_Earth_Bludgeoning') | SpellId('Projectile_ElementalBlast_Earth_Piercing') | SpellId('Projectile_ElementalBlast_Earth_Poison') | SpellId('Projectile_ElementalBlast_Fire_Fire') | SpellId('Projectile_ElementalBlast_Fire_Cold') | SpellId('Projectile_ElementalBlast_Metal_Piercing') | SpellId('Projectile_ElementalBlast_Metal_Slashing') | SpellId('Projectile_ElementalBlast_Metal_Lightning') | SpellId('Projectile_ElementalBlast_Water_Bludgeoning') | SpellId('Projectile_ElementalBlast_Water_Cold') | SpellId('Projectile_ElementalBlast_Water_Acid') | SpellId('Projectile_ElementalBlast_Wood_Bludgeoning') | SpellId('Projectile_ElementalBlast_Wood_Vitality') | SpellId('Projectile_ElementalBlast_Wood_Poison')
+	return SpellId('Shout_RavelOfThorns') | SpellId('Shout_ThermalNimbusFire') | SpellId('Shout_ThermalNimbusCold') | SpellId('Target_ElementalBlast_Air_Electric') | SpellId('Target_ElementalBlast_Air_Slashing') | SpellId('Target_ElementalBlast_Air_Cold') | SpellId('Target_ElementalBlast_Earth_Bludgeoning') | SpellId('Target_ElementalBlast_Earth_Piercing') | SpellId('Target_ElementalBlast_Earth_Poison') | SpellId('Target_ElementalBlast_Fire_Fire') | SpellId('Target_ElementalBlast_Fire_Cold') | SpellId('Target_ElementalBlast_Metal_Piercing') | SpellId('Target_ElementalBlast_Metal_Slashing') | SpellId('Target_ElementalBlast_Metal_Lightning') | SpellId('Target_ElementalBlast_Water_Bludgeoning') | SpellId('Target_ElementalBlast_Water_Cold') | SpellId('Target_ElementalBlast_Water_Acid') | SpellId('Target_ElementalBlast_Wood_Bludgeoning') | SpellId('Target_ElementalBlast_Wood_Vitality') | SpellId('Target_ElementalBlast_Wood_Poison') | SpellId('Projectile_ElementalBlast_Air_Electric') | SpellId('Projectile_ElementalBlast_Air_Slashing') | SpellId('Projectile_ElementalBlast_Air_Cold') | SpellId('Projectile_ElementalBlast_Earth_Bludgeoning') | SpellId('Projectile_ElementalBlast_Earth_Piercing') | SpellId('Projectile_ElementalBlast_Earth_Poison') | SpellId('Projectile_ElementalBlast_Fire_Fire') | SpellId('Projectile_ElementalBlast_Fire_Cold') | SpellId('Projectile_ElementalBlast_Metal_Piercing') | SpellId('Projectile_ElementalBlast_Metal_Slashing') | SpellId('Projectile_ElementalBlast_Metal_Lightning') | SpellId('Projectile_ElementalBlast_Water_Bludgeoning') | SpellId('Projectile_ElementalBlast_Water_Cold') | SpellId('Projectile_ElementalBlast_Water_Acid') | SpellId('Projectile_ElementalBlast_Wood_Bludgeoning') | SpellId('Projectile_ElementalBlast_Wood_Vitality') | SpellId('Projectile_ElementalBlast_Wood_Poison')
 end
 function CheckCriticalTen(max, entity)
     local entity = entity or context.Target
