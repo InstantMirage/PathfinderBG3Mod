@@ -645,19 +645,6 @@ end
 
 -- Critical hits for non-attack spells
 
-function LastConditionRollValues(conditionRollType)
-    try
-        conditionRoll = context.HitDescription.GetLastConditionRoll(conditionRollType)
-    catch e then
-        if ls.CheckType(e, ls.error.UnsupportedAttributeType) or ls.CheckType(e, ls.error.NotFound) then
-            return ConditionResult(false)
-        else
-            return ConditionResult(false)
-        end
-    end
-    return conditionRoll
-end
-
 function SaveCrit(threshold)
     local total, difficulty = LastConditionRollValues(ConditionRollType.ConditionSavingThrow)
     local thresholdtotal = 10 + total

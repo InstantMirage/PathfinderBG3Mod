@@ -3576,6 +3576,7 @@
         <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="f76bd260-d059-4c93-8b69-3983a0e65fb9" />
         <field name="DamageType" type="EnumerationTableFieldDefinition" value="Piercing" enumeration_type_name="Damage Type" version="1" />
         <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusWood',context.Source);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HasPassive('WoodJunction',context.Source) and not CharacterLevelGreaterThan(3)):ApplyStatus(SELF,WoodTempJunction_Rank1,100,1);IF(HasPassive('WoodJunction',context.Source) and CharacterLevelGreaterThan(3) and not CharacterLevelGreaterThan(5)):ApplyStatus(SELF,WoodTempJunction_Rank2,100,1);IF(HasPassive('WoodJunction',context.Source) and CharacterLevelGreaterThan(5) and not CharacterLevelGreaterThan(7)):ApplyStatus(SELF,WoodTempJunction_Rank3,100,1);IF(HasPassive('WoodJunction',context.Source) and CharacterLevelGreaterThan(7) and not CharacterLevelGreaterThan(9)):ApplyStatus(SELF,WoodTempJunction_Rank4,100,1);IF(HasPassive('WoodJunction',context.Source) and CharacterLevelGreaterThan(9) and not CharacterLevelGreaterThan(11)):ApplyStatus(SELF,WoodTempJunction_Rank5,100,1);IF(HasPassive('WoodJunction',context.Source) and CharacterLevelGreaterThan(11) and not CharacterLevelGreaterThan(12)):ApplyStatus(SELF,WoodTempJunction_Rank6,100,1);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3616,6 +3617,7 @@
         <field name="TargetEffect" type="GuidObjectTableFieldDefinition" value="fcd2026b-2cac-4eb3-a0f2-cbbb54dd248c" />
         <field name="DamageType" type="EnumerationTableFieldDefinition" value="Piercing" enumeration_type_name="Damage Type" version="1" />
         <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusMetal',context.Source);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HasPassive('MetalJunction',context.Source)):ApplyStatus(SELF,MetalJunctionStatus,100,1);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3659,6 +3661,7 @@
         <field name="HitEffect" type="GuidObjectTableFieldDefinition" value="f2ca2970-0882-412b-9c84-033ac7160ed7" />
         <field name="BeamEffect" type="GuidObjectTableFieldDefinition" value="6a1dbffa-77da-4362-bcad-a035db12aeec" />
         <field name="RequirementConditions" type="StringTableFieldDefinition" value="HasStatus('ChannelElementsStatusMetal',context.Source);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HasPassive('MetalJunction',context.Source)):ApplyStatus(SELF,MetalJunctionStatus,100,1);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -3675,7 +3678,7 @@
         <field name="SpellPrepareCost" type="IntegerTableFieldDefinition" value="0" />
         <field name="DamageType" type="EnumerationTableFieldDefinition" value="Bludgeoning" enumeration_type_name="Damage Type" version="1" />
         <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Evocation" enumeration_type_name="SpellSchool" version="1" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:SurfaceChange(Douse);RemoveStatus(BURNING);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:SurfaceChange(Douse);RemoveStatus(BURNING);IF(HasPassive('WaterJunction',context.Source)):Force(3, OriginToEntity, Neutral, false, true);" />
         <field name="SurfaceType" type="EnumerationTableFieldDefinition" value="Sentinel" enumeration_type_name="Surface Type" version="1" />
         <field name="SurfaceLifetime" type="IntegerTableFieldDefinition" value="0" />
         <field name="SurfaceGrowStep" type="IntegerTableFieldDefinition" value="5" />
@@ -3747,7 +3750,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="3a77d0c9-8c2a-47b7-87dc-8099b37f9005" />
         <field name="Name" type="NameTableFieldDefinition" value="TumblingLumber" />
         <field name="SpellSchool" type="EnumerationTableFieldDefinition" value="Conjuration" enumeration_type_name="SpellSchool" version="1" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:SurfaceChange(Douse);GROUND:SurfaceChange(Melt);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="GROUND:SurfaceChange(Douse);GROUND:SurfaceChange(Melt);IF(HasPassive('WoodJunction',context.Source) and not CharacterLevelGreaterThan(3)):ApplyStatus(SELF,WoodTempJunction_Rank1,100,1);IF(HasPassive('WoodJunction',context.Source) and CharacterLevelGreaterThan(3) and not CharacterLevelGreaterThan(5)):ApplyStatus(SELF,WoodTempJunction_Rank2,100,1);IF(HasPassive('WoodJunction',context.Source) and CharacterLevelGreaterThan(5) and not CharacterLevelGreaterThan(7)):ApplyStatus(SELF,WoodTempJunction_Rank3,100,1);IF(HasPassive('WoodJunction',context.Source) and CharacterLevelGreaterThan(7) and not CharacterLevelGreaterThan(9)):ApplyStatus(SELF,WoodTempJunction_Rank4,100,1);IF(HasPassive('WoodJunction',context.Source) and CharacterLevelGreaterThan(9) and not CharacterLevelGreaterThan(11)):ApplyStatus(SELF,WoodTempJunction_Rank5,100,1);IF(HasPassive('WoodJunction',context.Source) and CharacterLevelGreaterThan(11) and not CharacterLevelGreaterThan(12)):ApplyStatus(SELF,WoodTempJunction_Rank6,100,1);" />
         <field name="SurfaceType" type="EnumerationTableFieldDefinition" value="Sentinel" enumeration_type_name="Surface Type" version="1" />
         <field name="SurfaceLifetime" type="IntegerTableFieldDefinition" value="0" />
         <field name="SurfaceGrowStep" type="IntegerTableFieldDefinition" value="50" />

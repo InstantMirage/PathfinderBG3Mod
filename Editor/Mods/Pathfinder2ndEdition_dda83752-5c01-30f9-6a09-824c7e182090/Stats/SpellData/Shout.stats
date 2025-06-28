@@ -6734,7 +6734,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="eb88beb6-12b8-4ff6-aaa3-6b4a1395efa4" />
         <field name="Name" type="NameTableFieldDefinition" value="ChannelElements" />
         <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
-        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HasPassive('AirGate',context.Source)):ApplyStatus(ChannelElementsStatusAir,100,-1);IF(HasPassive('EarthGate',context.Source)):ApplyStatus(ChannelElementsStatusEarth,100,-1);IF(HasPassive('FireGate',context.Source)):ApplyStatus(ChannelElementsStatusFire,100,-1);IF(HasPassive('WaterGate',context.Source)):ApplyStatus(ChannelElementsStatusWater,100,-1);IF(HasPassive('WoodGate',context.Source)):ApplyStatus(ChannelElementsStatusWood,100,-1);IF(HasPassive('MetalGate',context.Source)):ApplyStatus(ChannelElementsStatusMetal,100,-1);ApplyStatus(ChannelingStatus,100,-1);" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HasPassive('AirGate',context.Source)):ApplyStatus(ChannelElementsStatusAir,100,-1);IF(HasPassive('EarthGate',context.Source)):ApplyStatus(ChannelElementsStatusEarth,100,-1);IF(HasPassive('FireGate',context.Source)):ApplyStatus(ChannelElementsStatusFire,100,-1);IF(HasPassive('WaterGate',context.Source)):ApplyStatus(ChannelElementsStatusWater,100,-1);IF(HasPassive('WoodGate',context.Source)):ApplyStatus(ChannelElementsStatusWood,100,-1);IF(HasPassive('MetalGate',context.Source)):ApplyStatus(ChannelElementsStatusMetal,100,-1);ApplyStatus(ChannelingStatus,100,-1);IF(HasPassive('AirGate',context.Source) and HasPassive('SkillJunction_Air',context.Source) and not CharacterLevelGreaterThan(9)):ApplyStatus(SkillJunctionStatus_Air,100,-1);IF(HasPassive('EarthGate',context.Source) and HasPassive('SkillJunction_Earth',context.Source) and not CharacterLevelGreaterThan(9)):ApplyStatus(SkillJunctionStatus_Earth,100,-1);IF(HasPassive('FireGate',context.Source) and HasPassive('SkillJunction_Fire',context.Source) and not CharacterLevelGreaterThan(9)):ApplyStatus(SkillJunctionStatus_Fire,100,-1);IF(HasPassive('WaterGate',context.Source) and HasPassive('SkillJunction_Water',context.Source) and not CharacterLevelGreaterThan(9)):ApplyStatus(SkillJunctionStatus_Water,100,-1);IF(HasPassive('WoodGate',context.Source) and HasPassive('SkillJunction_Wood',context.Source) and not CharacterLevelGreaterThan(9)):ApplyStatus(SkillJunctionStatus_Wood,100,-1);IF(HasPassive('MetalGate',context.Source) and HasPassive('SkillJunction_Metal',context.Source) and not CharacterLevelGreaterThan(9)):ApplyStatus(SkillJunctionStatus_Metal,100,-1);IF(HasPassive('AirGate',context.Source) and HasPassive('SkillJunction_Air',context.Source) and CharacterLevelGreaterThan(9)):ApplyStatus(SkillJunctionStatus_Air2,100,-1);IF(HasPassive('EarthGate',context.Source) and HasPassive('SkillJunction_Earth',context.Source) and CharacterLevelGreaterThan(9)):ApplyStatus(SkillJunctionStatus_Earth2,100,-1);IF(HasPassive('FireGate',context.Source) and HasPassive('SkillJunction_Fire',context.Source) and CharacterLevelGreaterThan(9)):ApplyStatus(SkillJunctionStatus_Fire2,100,-1);IF(HasPassive('WaterGate',context.Source) and HasPassive('SkillJunction_Water',context.Source) and CharacterLevelGreaterThan(9)):ApplyStatus(SkillJunctionStatus_Water2,100,-1);IF(HasPassive('WoodGate',context.Source) and HasPassive('SkillJunction_Wood',context.Source) and CharacterLevelGreaterThan(9)):ApplyStatus(SkillJunctionStatus_Wood2,100,-1);IF(HasPassive('MetalGate',context.Source) and HasPassive('SkillJunction_Metal',context.Source) and CharacterLevelGreaterThan(9)):ApplyStatus(SkillJunctionStatus_Metal2,100,-1);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h9da0ad3dg41cbgb9e7g1b7dg5c55cec5cc19" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h65515714g1e94g03d1g55acgcbd1ca0a0862" version="1" />
         <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
@@ -7147,7 +7147,7 @@
         <field name="TargetConditions" type="StringTableFieldDefinition" value="not Self();" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_Djinni_Whirlwind" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hdf1c9d05gec55g6b9cg0fe4g9c4054707f0b" version="1" />
-        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h2c035bb2g03caga088ga05egb0a275f6bfae" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h2c035bb2g03caga088ga05egb0a275f6bfae" version="2" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage((LevelMapValue(CallHurricaneDamage)))" />
         <field name="TooltipAttackSave" type="StringTableFieldDefinition" value="Dexterity" />
         <field name="PrepareSound" type="StringTableFieldDefinition" value="Spell_Prepare_Damage_Thunder_ChromaticOrbThunder_L1to3" />
@@ -7359,6 +7359,55 @@
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
         <field name="RootSpellID" type="StringTableFieldDefinition" clear_inherited_value="true" value="" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h36257679g1d79ga2c8g8ea8gcd274e92e909" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="36285018-fb5d-4efd-a930-6e122dc269ae" />
+        <field name="Name" type="NameTableFieldDefinition" value="UND_Phase2_AdamantineGolem" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="27ff4697-68e7-432e-8a73-eade41df95cf" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_ONLY:ApplyStatus(SELF,AI_STATUS_FAKE,100,5);AI_IGNORE:ApplyStatus(SELF,UND_ADAMANTINEGOLEM_PHASE2,100,-1)" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_Generic_Tactical" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5ce09731ge5c9g489ege5fag3fd374279d44" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h48a906f4gc59fg0d96g6c67g19ad8f61d518" version="1" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
+        <field name="RequirementConditions" type="StringTableFieldDefinition" value="not HasStatus('UND_ADAMANTINEGOLEM_PHASE2')" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value=",,;,,;af4a74d1-a4cb-4ec9-9811-6c69fd6ee510,,;26c2cc48-104a-4366-ac09-7b512db4c639,,;,,;,,;,,;,,;,," />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="307de217-77ec-43fc-8ebf-0b30caf71c23" />
+        <field name="PrepareEffect" type="GuidObjectTableFieldDefinition" clear_inherited_value="true" value="" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="CrSpell_Cast_Berzerk" />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" clear_inherited_value="true" value="" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="660aefbb-54e3-492b-9aaa-a47bdce6d633" />
+        <field name="Name" type="NameTableFieldDefinition" value="UND_Phase2_AdamantineGolem_Hardcore" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="36285018-fb5d-4efd-a930-6e122dc269ae" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="4d5cdf0b-c559-4c4d-ad78-74e5340ab947" />
+        <field name="Name" type="NameTableFieldDefinition" value="LuringSong_Harpy" />
+        <field name="AreaRadius" type="IntegerTableFieldDefinition" value="25" />
+        <field name="Icon" type="StringTableFieldDefinition" value="Action_Singing" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd6c84d23gd1fagc2a7g2cfcge32e65d3389d" version="1" />
+        <field name="CastTextEvent" type="StringTableFieldDefinition" value="Cast" />
+        <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:2;" />
+        <field name="VerbalIntent" type="EnumerationTableFieldDefinition" value="Control" enumeration_type_name="VerbalIntent" version="1" />
+        <field name="SpellFlags" type="EnumerationListTableFieldDefinition" value="HasVerbalComponent;IsEnemySpell;IgnoreVisionBlock" enumeration_type_name="SpellFlagList" version="1" />
+        <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:ApplyStatus(SELF,LURING_SONG_AURA,100,-1);AI_ONLY:ApplyStatus(AI_HELPER_DEBUFF,100,-1)" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerCombat" enumeration_type_name="CooldownType" version="1" />
+        <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Ally() and not HasStatus('LURING_SONG_AURA_VICTIM') and not HasStatus('LURING_SONG_AURA_LISTENER',context.Source) and not IsConcentrating(context.Source)" />
+        <field name="RechargeValues" type="StringTableFieldDefinition" value="5-6" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h2c30342ega72fg284eg57f6g005afaefc104" version="1" />
+        <field name="AnimationIntentType" type="EnumerationTableFieldDefinition" value="Aggressive" enumeration_type_name="SpellAnimationIntentType" version="1" />
+        <field name="CastEffect" type="GuidObjectTableFieldDefinition" value="eec31b12-beb7-4473-8be9-0ec441a5b1ff" />
+        <field name="CastSound" type="StringTableFieldDefinition" value="CrSpell_Cast_LuringSong" />
+        <field name="SpellAnimation" type="CastAnimationsTableFieldDefinition" value="e300098e-46f5-456d-b99a-01c95585c689,,;7b1554c9-4040-4992-86ac-f8050895ce0a,,;654c8b25-9484-440a-8185-029a8fdf5c6b,,;e5138e36-3625-4222-bc8a-2b0841ba23ae,,;b66568ca-1898-44e2-8852-b27677a40c9c,,;,,;,,;,,;,," />
+        <field name="TooltipStatusApply" type="StringTableFieldDefinition" value="ApplyStatus(LURING_SONG_AURA_VICTIM,100,-1)" />
+        <field name="Sheathing" type="EnumerationTableFieldDefinition" value="DontChange" enumeration_type_name="SpellSheathing" version="1" />
       </fields>
     </stat_object>
   </stat_objects>
