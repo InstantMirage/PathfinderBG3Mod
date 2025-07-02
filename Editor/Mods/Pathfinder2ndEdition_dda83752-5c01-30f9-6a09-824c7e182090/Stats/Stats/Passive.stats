@@ -1192,10 +1192,10 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3575a711g8387ge4efgce9egaf2cbc717f67" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hebfdfaa9gbeeaged7bg276ag92b9c9fd1197" version="1" />
         <field name="Properties" type="EnumerationListTableFieldDefinition" value="IsHidden;DisplayBoostInTooltip" enumeration_type_name="PassiveFlags" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(RageDamage));CharacterUnarmedDamage(LevelMapValue(RageDamage));IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(RageDamage));IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(RageDamage));FallDamageMultiplier(0.5)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(RageDamage));CharacterUnarmedDamage(LevelMapValue(RageDamage));IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(RageDamage));IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(RageDamage));FallDamageMultiplier(0.5);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source)):DamageBonus(LevelMapValue(RageDamage));IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source) and HasPassive('MightyRage',context.Source)):DamageBonus(LevelMapValue(RageDamage));" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="SpellId('Target_Thrash')" />
-        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(RageDamage));IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(RageDamage))" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(RageDamage));IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(RageDamage));" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1203,8 +1203,8 @@
         <field name="UUID" type="IdTableFieldDefinition" value="1b885be6-d5e9-4e25-9710-e5d1a50bdd18" />
         <field name="Name" type="NameTableFieldDefinition" value="DragonRageBoost" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="8af84c51-35e2-42e9-8443-eb2ae781c822" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Bludgeoning);CharacterUnarmedDamage(LevelMapValue(DragonRage),Bludgeoning);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Bludgeoning);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Bludgeoning);FallDamageMultiplier(0.5)" />
-        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(DragonRage));IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(DragonRage))" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Bludgeoning);CharacterUnarmedDamage(LevelMapValue(DragonRage),Bludgeoning);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Bludgeoning);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Bludgeoning);FallDamageMultiplier(0.5);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source)):DamageBonus(LevelMapValue(DragonRage),Bludgeoning);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source) and HasPassive('MightyRage',context.Source)):DamageBonus(LevelMapValue(DragonRage),Bludgeoning);" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(DragonRage));IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(DragonRage));" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1212,8 +1212,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="10d4bcd6-a3b7-4883-84ee-d5ac9b7dd495" />
         <field name="Name" type="NameTableFieldDefinition" value="PoisonDragonRageBoost" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1b885be6-d5e9-4e25-9710-e5d1a50bdd18" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Poison);CharacterUnarmedDamage(LevelMapValue(DragonRage),Poison);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Poison);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Poison);FallDamageMultiplier(0.5)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Poison);CharacterUnarmedDamage(LevelMapValue(DragonRage),Poison);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Poison);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Poison);FallDamageMultiplier(0.5);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source)):DamageBonus(LevelMapValue(DragonRage),Poison);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source) and HasPassive('MightyRage',context.Source)):DamageBonus(LevelMapValue(DragonRage),Poison);" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(DragonRage),Poison,Magical);IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(DragonRage),Poison,Magical);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1221,8 +1222,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="2bd3ca67-8b43-47d1-acad-7ade01b03f70" />
         <field name="Name" type="NameTableFieldDefinition" value="FireDragonRageBoost" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1b885be6-d5e9-4e25-9710-e5d1a50bdd18" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Fire);CharacterUnarmedDamage(LevelMapValue(DragonRage),Fire);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Fire);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Fire);FallDamageMultiplier(0.5)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Fire);CharacterUnarmedDamage(LevelMapValue(DragonRage),Fire);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Fire);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Fire);FallDamageMultiplier(0.5);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source)):DamageBonus(LevelMapValue(DragonRage),Fire);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source) and HasPassive('MightyRage',context.Source)):DamageBonus(LevelMapValue(DragonRage),Fire);" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(DragonRage),Fire,Magical);IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(DragonRage),Fire,Magical);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1230,8 +1232,9 @@
         <field name="UUID" type="IdTableFieldDefinition" value="de295232-90f1-4411-a463-faf740863eff" />
         <field name="Name" type="NameTableFieldDefinition" value="ForceDragonRageBoost" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1b885be6-d5e9-4e25-9710-e5d1a50bdd18" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Force);CharacterUnarmedDamage(LevelMapValue(DragonRage),Force);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Force);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Force);FallDamageMultiplier(0.5)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Force);CharacterUnarmedDamage(LevelMapValue(DragonRage),Force);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Force);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Force);FallDamageMultiplier(0.5);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source)):DamageBonus(LevelMapValue(DragonRage),Force);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source) and HasPassive('MightyRage',context.Source)):DamageBonus(LevelMapValue(DragonRage),Force);" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(DragonRage),Force,Magical);IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(DragonRage),Force,Magical);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1239,10 +1242,10 @@
         <field name="UUID" type="IdTableFieldDefinition" value="910d8e23-682d-4ab4-a8e5-365be48ab938" />
         <field name="Name" type="NameTableFieldDefinition" value="PsychicDragonRageBoost" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1b885be6-d5e9-4e25-9710-e5d1a50bdd18" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Psychic);CharacterUnarmedDamage(LevelMapValue(DragonRage),Psychic);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Psychic);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Psychic);FallDamageMultiplier(0.5)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Psychic);CharacterUnarmedDamage(LevelMapValue(DragonRage),Psychic);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Psychic);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Psychic);FallDamageMultiplier(0.5);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source)):DamageBonus(LevelMapValue(DragonRage),Psychic);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source) and HasPassive('MightyRage',context.Source)):DamageBonus(LevelMapValue(DragonRage),Psychic);" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="SpellId('Target_Thrash')" />
-        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(FuryRageDamage));IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(FuryRageDamage));" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(DragonRage),Psychic,Magical);IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(DragonRage),Psychic,Magical);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1250,7 +1253,8 @@
         <field name="UUID" type="IdTableFieldDefinition" value="1a82fa5b-fe34-40cb-ad6a-cf66abc66da4" />
         <field name="Name" type="NameTableFieldDefinition" value="RadiantRageBoost" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="1b885be6-d5e9-4e25-9710-e5d1a50bdd18" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Radiant);CharacterUnarmedDamage(LevelMapValue(DragonRage),Radiant);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Radiant);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Radiant);FallDamageMultiplier(0.5);" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Radiant);CharacterUnarmedDamage(LevelMapValue(DragonRage),Radiant);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(DragonRage),Radiant);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(DragonRage),Radiant);FallDamageMultiplier(0.5);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source)):DamageBonus(LevelMapValue(DragonRage),Radiant);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source) and HasPassive('MightyRage',context.Source)):DamageBonus(LevelMapValue(DragonRage),Radiant);" />
+        <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(DragonRage),Radiant,Magical);IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(DragonRage),Radiant,Magical);" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1258,7 +1262,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="e7d50d0c-b16d-44cb-9233-75332c6b1907" />
         <field name="Name" type="NameTableFieldDefinition" value="GiantRageBoosts" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="820668c6-5bc5-4277-91cd-4a136d885abc" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(GiantRageDamage));CharacterUnarmedDamage(LevelMapValue(GiantRageDamage));IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(GiantRageDamage));IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(GiantRageDamage));FallDamageMultiplier(0.5)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(GiantRageDamage));CharacterUnarmedDamage(LevelMapValue(GiantRageDamage));IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(GiantRageDamage));IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(GiantRageDamage));FallDamageMultiplier(0.5);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source)):DamageBonus(LevelMapValue(GiantRageDamage));IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source) and HasPassive('MightyRage',context.Source)):DamageBonus(LevelMapValue(GiantRageDamage));" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(GiantRageDamage));IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(GiantRageDamage))" />
       </fields>
     </stat_object>
@@ -1267,7 +1271,7 @@
         <field name="UUID" type="IdTableFieldDefinition" value="f1ab7cea-7f75-4cdc-bd98-f2e72e0002cb" />
         <field name="Name" type="NameTableFieldDefinition" value="SpiritRageBoosts" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="820668c6-5bc5-4277-91cd-4a136d885abc" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(FuryRageDamage),Radiant);CharacterUnarmedDamage(LevelMapValue(FuryRageDamage),Radiant);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(FuryRageDamage),Radiant);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(FuryRageDamage),Radiant);FallDamageMultiplier(0.5)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(FuryRageDamage),Radiant);CharacterUnarmedDamage(LevelMapValue(FuryRageDamage),Radiant);IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(FuryRageDamage),Radiant);IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(FuryRageDamage),Radiant);FallDamageMultiplier(0.5);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source)):DamageBonus(LevelMapValue(FuryRageDamage),Radiant);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source) and HasPassive('MightyRage',context.Source)):DamageBonus(LevelMapValue(FuryRageDamage),Radiant);" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(FuryRageDamage));" />
       </fields>
     </stat_object>
@@ -1277,7 +1281,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="FuryRageBoosts" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="8af84c51-35e2-42e9-8443-eb2ae781c822" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h4788832ag55d3g3541g2142g732b643758b3" version="1" />
-        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(FuryRageDamage));CharacterUnarmedDamage(LevelMapValue(FuryRageDamage));IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(FuryRageDamage));IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(FuryRageDamage));FallDamageMultiplier(0.5)" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(FuryRageDamage));CharacterUnarmedDamage(LevelMapValue(FuryRageDamage));IF(HasStatus('MightyRage',context.Source) and IsMeleeAttack()):CharacterWeaponDamage(LevelMapValue(FuryRageDamage));IF(HasStatus('MightyRage',context.Source)):CharacterUnarmedDamage(LevelMapValue(FuryRageDamage));FallDamageMultiplier(0.5);IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source)):DamageBonus(LevelMapValue(FuryRageDamage));IF((IsMeleeWeaponAttack() or IsUnarmedAttack()) and IsCritical() and not HasPassive('Thief_Finesse',context.Source) and HasPassive('MightyRage',context.Source)):DamageBonus(LevelMapValue(FuryRageDamage));" />
         <field name="StatsFunctorContext" type="EnumerationListTableFieldDefinition" value="OnDamage" enumeration_type_name="StatsFunctorContext" version="1" />
         <field name="Conditions" type="StringTableFieldDefinition" value="SpellId('Target_Thrash')" />
         <field name="StatsFunctors" type="FunctorsTableFieldDefinition" value="DealDamage(LevelMapValue(FuryRageDamage));IF(HasStatus('MightyRageStatus')):DealDamage(LevelMapValue(FuryRageDamage));" />
@@ -7966,6 +7970,26 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="0136589e-fb54-4a1d-a5ac-a648d6b23b36" />
+        <field name="Name" type="NameTableFieldDefinition" value="Attenuator_1" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h7e0b4817gae87g49aag08c1g410e0060ad29" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hfc9ea727g6386gd625g50d8g13f15e76b55a" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ExtraAttack" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeSpellAttack() or IsRangedSpellAttack()):RollBonus(Attack, 1);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="6b545697-1b27-4750-9d33-83ec6d10ad87" />
+        <field name="Name" type="NameTableFieldDefinition" value="Attenuator_2" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h44906884g275bg39d3g118cgd6087ffb354e" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="he94c2a5fgb978gd6dfge861g794222ccfd45" version="1" />
+        <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_ExtraAttack" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="IF(IsMeleeSpellAttack() or IsRangedSpellAttack()):RollBonus(Attack, 2);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="741786c6-e137-42b7-9768-e6aa940c4187" />
         <field name="Name" type="NameTableFieldDefinition" value="AirGate" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h14bc3ef3g2253gf42cgd022g9d48334e9b9d" version="1" />
@@ -8738,6 +8762,23 @@
         <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Shout_CallTheHurricane);" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h1692d01eg469cg5617g645eg4ebcf20eef16" version="1" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd5ca6d2bgeff4ge14dg6f18g9cf67f84987f" version="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="fa0aff31-c054-4783-ae1f-aba78819072e" />
+        <field name="Name" type="NameTableFieldDefinition" value="MoltenWire" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3c7b4bc4g40e9g9e79gee40g521ceee8b688" version="1" />
+        <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hc3379e34g6a88g1067ga9fag0349819f1f12" version="1" />
+        <field name="Boosts" type="StringTableFieldDefinition" value="UnlockSpell(Projectile_MoltenWire);" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="69f56dde-0e91-45cb-b9fa-8d0dab18054d" />
+        <field name="Name" type="NameTableFieldDefinition" value="Composite_FireMetal" />
+        <field name="Using" type="BaseClassTableFieldDefinition" value="de35d88e-5a1d-4083-8966-f2b1da23d741" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h773177f9g616age073g290egcbbbb9d9e568" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
