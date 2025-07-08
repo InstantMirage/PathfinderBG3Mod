@@ -108,6 +108,7 @@
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Disengage_Bonus" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="h9c17cceagfb2bge509ged47g2b735549d60b" version="2" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="AI_IGNORE:RestoreResource(Movement,100%,0,true);AI_IGNORE:ApplyStatus(DISENGAGE,100,1);AI_ONLY:IF(HasStatus('FLANKED')):ApplyStatus(DISENGAGE,100,1);" />
+        <field name="Cooldown" type="EnumerationTableFieldDefinition" value="OncePerTurn" enumeration_type_name="CooldownType" version="1" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -1452,7 +1453,7 @@
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HealLive(8)):RegainHitPoints(1d8);IF(HealLive(10)):RegainHitPoints(1d10);IF(AngelicHalo()):RegainHitPoints(2);" />
         <field name="AreaRadius" type="IntegerTableFieldDefinition" value="9" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="IF(Tagged('UNDEAD')):(not SavingThrow(Ability.Constitution, SourceSpellDC()));" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HealVoid(8)):DealDamage(1d8,Radiant,Magical);IF(not SaveCrit() and HealVoid(10)):DealDamage(1d10,Radiant,Magical);IF(SaveCrit() and HealVoid(8)):DealDamage((1d8)*2,Radiant,Magical);IF(SaveCrit() and HealVoid(10)):DealDamage((1d10)*2,Radiant,Magical);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HealVoid(8)):DealDamage(1d8,Radiant,Magical);IF(not SaveCrit() and HealVoid(10)):DealDamage(1d10,Radiant,Magical);IF(SaveCrit() and HealVoid(8)):DealDamage((1d8)*2,Radiant,Magical);IF(SaveCrit() and HealVoid(10)):DealDamage((1d10)*2,Radiant,Magical);IF(SaveCrit()):ApplyStatus(CriticalFailureDisplay,100,0);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HealVoid(8) and not SaveCritMiss()):DealDamage((1d8)/2,Radiant,Magical);IF(HealVoid(10) and not SaveCritMiss()):DealDamage((1d10)/2,Radiant,Magical);" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Dead() and not Tagged('CONSTRUCT')" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Evocation_CureWounds" />
@@ -1486,7 +1487,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="HealThreeAction_Rank_2" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="8d311122-a71f-4537-812c-a437ac8ccef0" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HealLive(8)):RegainHitPoints(2d8);IF(HealLive(10)):RegainHitPoints(2d10);IF(AngelicHalo()):RegainHitPoints(4);" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HealVoid(8)):DealDamage(2d8,Radiant,Magical);IF(not SaveCrit() and HealVoid(10)):DealDamage(2d10,Radiant,Magical);IF(SaveCrit() and HealVoid(8)):DealDamage((2d8)*2,Radiant,Magical);IF(SaveCrit() and HealVoid(10)):DealDamage((2d10)*2,Radiant,Magical);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HealVoid(8)):DealDamage(2d8,Radiant,Magical);IF(not SaveCrit() and HealVoid(10)):DealDamage(2d10,Radiant,Magical);IF(SaveCrit() and HealVoid(8)):DealDamage((2d8)*2,Radiant,Magical);IF(SaveCrit() and HealVoid(10)):DealDamage((2d10)*2,Radiant,Magical);IF(SaveCrit()):ApplyStatus(CriticalFailureDisplay,100,0);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HealVoid(8) and not SaveCritMiss()):DealDamage((2d8)/2,Radiant,Magical);IF(HealVoid(10) and not SaveCritMiss()):DealDamage((2d10)/2,Radiant,Magical);" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="2d8" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:3;SpellSlotsGroup:1:1:2" />
@@ -1501,7 +1502,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="HealThreeAction_Rank_3" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="054eb087-7159-4a13-b68f-2e4f5f28ce77" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HealLive(8)):RegainHitPoints(3d8);IF(HealLive(10)):RegainHitPoints(3d10);IF(AngelicHalo()):RegainHitPoints(6);" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HealVoid(8)):DealDamage(3d8,Radiant,Magical);IF(not SaveCrit() and HealVoid(10)):DealDamage(3d10,Radiant,Magical);IF(SaveCrit() and HealVoid(8)):DealDamage((3d8)*2,Radiant,Magical);IF(SaveCrit() and HealVoid(10)):DealDamage((3d10)*2,Radiant,Magical);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HealVoid(8)):DealDamage(3d8,Radiant,Magical);IF(not SaveCrit() and HealVoid(10)):DealDamage(3d10,Radiant,Magical);IF(SaveCrit() and HealVoid(8)):DealDamage((3d8)*2,Radiant,Magical);IF(SaveCrit() and HealVoid(10)):DealDamage((3d10)*2,Radiant,Magical);IF(SaveCrit()):ApplyStatus(CriticalFailureDisplay,100,0);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HealVoid(8) and not SaveCritMiss()):DealDamage((3d8)/2,Radiant,Magical);IF(HealVoid(10) and not SaveCritMiss()):DealDamage((3d10)/2,Radiant,Magical);" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="3d8" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:3;SpellSlotsGroup:1:1:3" />
@@ -1515,7 +1516,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="HealThreeAction_Rank_4" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="054eb087-7159-4a13-b68f-2e4f5f28ce77" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HealLive(8)):RegainHitPoints(4d8);IF(HealLive(10)):RegainHitPoints(4d10);IF(AngelicHalo()):RegainHitPoints(8);" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HealVoid(8)):DealDamage(4d8,Radiant,Magical);IF(not SaveCrit() and HealVoid(10)):DealDamage(4d10,Radiant,Magical);IF(SaveCrit() and HealVoid(8)):DealDamage((4d8)*2,Radiant,Magical);IF(SaveCrit() and HealVoid(10)):DealDamage((4d10)*2,Radiant,Magical);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HealVoid(8)):DealDamage(4d8,Radiant,Magical);IF(not SaveCrit() and HealVoid(10)):DealDamage(4d10,Radiant,Magical);IF(SaveCrit() and HealVoid(8)):DealDamage((4d8)*2,Radiant,Magical);IF(SaveCrit() and HealVoid(10)):DealDamage((4d10)*2,Radiant,Magical);IF(SaveCrit()):ApplyStatus(CriticalFailureDisplay,100,0);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HealVoid(8) and not SaveCritMiss()):DealDamage((4d8)/2,Radiant,Magical);IF(HealVoid(10) and not SaveCritMiss()):DealDamage((4d10)/2,Radiant,Magical);" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="4d8" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:3;SpellSlotsGroup:1:1:4" />
@@ -1529,7 +1530,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="HealThreeAction_Rank_5" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="054eb087-7159-4a13-b68f-2e4f5f28ce77" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HealLive(8)):RegainHitPoints(5d8);IF(HealLive(10)):RegainHitPoints(5d10);IF(AngelicHalo()):RegainHitPoints(10);" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HealVoid(8)):DealDamage(5d8,Radiant,Magical);IF(not SaveCrit() and HealVoid(10)):DealDamage(5d10,Radiant,Magical);IF(SaveCrit() and HealVoid(8)):DealDamage((5d8)*2,Radiant,Magical);IF(SaveCrit() and HealVoid(10)):DealDamage((5d10)*2,Radiant,Magical);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HealVoid(8)):DealDamage(5d8,Radiant,Magical);IF(not SaveCrit() and HealVoid(10)):DealDamage(5d10,Radiant,Magical);IF(SaveCrit() and HealVoid(8)):DealDamage((5d8)*2,Radiant,Magical);IF(SaveCrit() and HealVoid(10)):DealDamage((5d10)*2,Radiant,Magical);IF(SaveCrit()):ApplyStatus(CriticalFailureDisplay,100,0);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HealVoid(8) and not SaveCritMiss()):DealDamage((5d8)/2,Radiant,Magical);IF(HealVoid(10) and not SaveCritMiss()):DealDamage((5d10)/2,Radiant,Magical);" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="5d8" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:3;SpellSlotsGroup:1:1:5" />
@@ -1543,7 +1544,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="HealThreeAction_Rank_6" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="054eb087-7159-4a13-b68f-2e4f5f28ce77" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HealLive(8)):RegainHitPoints(6d8);IF(HealLive(10)):RegainHitPoints(6d10);IF(AngelicHalo()):RegainHitPoints(12);" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HealVoid(8)):DealDamage(6d8,Radiant,Magical);IF(not SaveCrit() and HealVoid(10)):DealDamage(6d10,Radiant,Magical);IF(SaveCrit() and HealVoid(8)):DealDamage((6d8)*2,Radiant,Magical);IF(SaveCrit() and HealVoid(10)):DealDamage((6d10)*2,Radiant,Magical);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HealVoid(8)):DealDamage(6d8,Radiant,Magical);IF(not SaveCrit() and HealVoid(10)):DealDamage(6d10,Radiant,Magical);IF(SaveCrit() and HealVoid(8)):DealDamage((6d8)*2,Radiant,Magical);IF(SaveCrit() and HealVoid(10)):DealDamage((6d10)*2,Radiant,Magical);IF(SaveCrit()):ApplyStatus(CriticalFailureDisplay,100,0);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HealVoid(8) and not SaveCritMiss()):DealDamage((6d8)/2,Radiant,Magical);IF(HealVoid(10) and not SaveCritMiss()):DealDamage((6d10)/2,Radiant,Magical);" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="6d8" />
         <field name="UseCosts" type="StringTableFieldDefinition" value="ActionPoint:3;SpellSlotsGroup:1:1:6" />
@@ -1558,7 +1559,7 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="8d311122-a71f-4537-812c-a437ac8ccef0" />
         <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_HealingFont" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HealLive(8)):RegainHitPoints(LevelMapValue(H1D8));IF(HealLive(10)):RegainHitPoints(LevelMapValue(H1D10));IF(AngelicHalo()):RegainHitPoints(2*LevelMapValue(H1Plus1));" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HealVoid(8)):DealDamage(LevelMapValue(H1D8),Radiant,Magical);IF(not SaveCrit() and HealVoid(10)):DealDamage(LevelMapValue(H1D10),Radiant,Magical);IF(SaveCrit() and HealVoid(8)):DealDamage((LevelMapValue(H1D8))*2,Radiant,Magical);IF(SaveCrit() and HealVoid(10)):DealDamage((LevelMapValue(H1D10))*2,Radiant,Magical);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HealVoid(8)):DealDamage(LevelMapValue(H1D8),Radiant,Magical);IF(not SaveCrit() and HealVoid(10)):DealDamage(LevelMapValue(H1D10),Radiant,Magical);IF(SaveCrit() and HealVoid(8)):DealDamage((LevelMapValue(H1D8))*2,Radiant,Magical);IF(SaveCrit() and HealVoid(10)):DealDamage((LevelMapValue(H1D10))*2,Radiant,Magical);IF(SaveCrit()):ApplyStatus(CriticalFailureDisplay,100,0);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HealVoid(8) and not SaveCritMiss()):DealDamage(LevelMapValue(H1D8)/2,Radiant,Magical);IF(HealVoid(10) and not SaveCritMiss()):DealDamage(LevelMapValue(H1D10)/2,Radiant,Magical);" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(H1D8)" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="RegainHitPoints(LevelMapValue(H1D8))" />
@@ -1575,7 +1576,7 @@
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HarmVoid(8)):RegainHitPoints(1d8,Undead);IF(HarmVoid(10)):RegainHitPoints(1d10,Undead);IF(SapLife()):RegainHitPoints(SELF,1,Undead);" />
         <field name="AreaRadius" type="IntegerTableFieldDefinition" value="9" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="IF(not Tagged('UNDEAD')):(not SavingThrow(Ability.Constitution, SourceSpellDC()));" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HarmLive(8)):DealDamage(1d8,Necrotic,Magical);IF(not SaveCrit() and HarmLive(10)):DealDamage(1d10,Necrotic,Magical);IF(SaveCrit() and HarmLive(8)):DealDamage((1d8)*2,Necrotic,Magical);IF(SaveCrit() and HarmLive(10)):DealDamage((1d10)*2,Necrotic,Magical);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HarmLive(8)):DealDamage(1d8,Necrotic,Magical);IF(not SaveCrit() and HarmLive(10)):DealDamage(1d10,Necrotic,Magical);IF(SaveCrit() and HarmLive(8)):DealDamage((1d8)*2,Necrotic,Magical);IF(SaveCrit() and HarmLive(10)):DealDamage((1d10)*2,Necrotic,Magical);IF(SaveCrit()):ApplyStatus(CriticalFailureDisplay,100,0);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HarmLive(8) and not SaveCritMiss()):DealDamage((1d8)/2,Necrotic,Magical);IF(HarmLive(10) and not SaveCritMiss()):DealDamage((1d10)/2,Necrotic,Magical);" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and (not Self() or (Self() and Tagged('UNDEAD'))) and not Dead() and not Tagged('CONSTRUCT');" />
         <field name="Icon" type="StringTableFieldDefinition" value="Spell_Necromancy_Harm" />
@@ -1611,7 +1612,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="HarmThreeAction_Rank_2" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="367b229b-912d-4def-924c-4a5c769239a3" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HarmVoid(8)):RegainHitPoints(2d8,Undead);IF(HarmVoid(10)):RegainHitPoints(2d10,Undead);IF(SapLife()):RegainHitPoints(SELF,2,Undead);" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HarmLive(8)):DealDamage(2d8,Necrotic,Magical);IF(not SaveCrit() and HarmLive(10)):DealDamage(2d10,Necrotic,Magical);IF(SaveCrit() and HarmLive(8)):DealDamage((2d8)*2,Necrotic,Magical);IF(SaveCrit() and HarmLive(10)):DealDamage((2d10)*2,Necrotic,Magical);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HarmLive(8)):DealDamage(2d8,Necrotic,Magical);IF(not SaveCrit() and HarmLive(10)):DealDamage(2d10,Necrotic,Magical);IF(SaveCrit() and HarmLive(8)):DealDamage((2d8)*2,Necrotic,Magical);IF(SaveCrit() and HarmLive(10)):DealDamage((2d10)*2,Necrotic,Magical);IF(SaveCrit()):ApplyStatus(CriticalFailureDisplay,100,0);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HarmLive(8) and not SaveCritMiss()):DealDamage((2d8)/2,Necrotic,Magical);IF(HarmLive(10) and not SaveCritMiss()):DealDamage((2d10)/2,Necrotic,Magical);" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="2d8" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(2d8,Necrotic)" />
@@ -1626,7 +1627,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="HarmThreeAction_Rank_3" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="9c3a5a51-214a-4367-8636-92d2c001ce7f" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HarmVoid(8)):RegainHitPoints(3d8,Undead);IF(HarmVoid(10)):RegainHitPoints(3d10,Undead);IF(SapLife()):RegainHitPoints(SELF,3,Undead);" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HarmLive(8)):DealDamage(3d8,Necrotic,Magical);IF(not SaveCrit() and HarmLive(10)):DealDamage(3d10,Necrotic,Magical);IF(SaveCrit() and HarmLive(8)):DealDamage((3d8)*2,Necrotic,Magical);IF(SaveCrit() and HarmLive(10)):DealDamage((3d10)*2,Necrotic,Magical);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HarmLive(8)):DealDamage(3d8,Necrotic,Magical);IF(not SaveCrit() and HarmLive(10)):DealDamage(3d10,Necrotic,Magical);IF(SaveCrit() and HarmLive(8)):DealDamage((3d8)*2,Necrotic,Magical);IF(SaveCrit() and HarmLive(10)):DealDamage((3d10)*2,Necrotic,Magical);IF(SaveCrit()):ApplyStatus(CriticalFailureDisplay,100,0);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HarmLive(8) and not SaveCritMiss()):DealDamage((3d8)/2,Necrotic,Magical);IF(HarmLive(10) and not SaveCritMiss()):DealDamage((3d10)/2,Necrotic,Magical);" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="3d8" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(3d8,Necrotic)" />
@@ -1640,7 +1641,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="HarmThreeAction_Rank_4" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="9c3a5a51-214a-4367-8636-92d2c001ce7f" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HarmVoid(8)):RegainHitPoints(4d8,Undead);IF(HarmVoid(10)):RegainHitPoints(4d10,Undead);IF(SapLife()):RegainHitPoints(SELF,4,Undead);" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HarmLive(8)):DealDamage(4d8,Necrotic,Magical);IF(not SaveCrit() and HarmLive(10)):DealDamage(4d10,Necrotic,Magical);IF(SaveCrit() and HarmLive(8)):DealDamage((4d8)*2,Necrotic,Magical);IF(SaveCrit() and HarmLive(10)):DealDamage((4d10)*2,Necrotic,Magical);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HarmLive(8)):DealDamage(4d8,Necrotic,Magical);IF(not SaveCrit() and HarmLive(10)):DealDamage(4d10,Necrotic,Magical);IF(SaveCrit() and HarmLive(8)):DealDamage((4d8)*2,Necrotic,Magical);IF(SaveCrit() and HarmLive(10)):DealDamage((4d10)*2,Necrotic,Magical);IF(SaveCrit()):ApplyStatus(CriticalFailureDisplay,100,0);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HarmLive(8) and not SaveCritMiss()):DealDamage((4d8)/2,Necrotic,Magical);IF(HarmLive(10) and not SaveCritMiss()):DealDamage((4d10)/2,Necrotic,Magical);" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="4d8" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(4d8,Necrotic)" />
@@ -1654,7 +1655,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="HarmThreeAction_Rank_5" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="9c3a5a51-214a-4367-8636-92d2c001ce7f" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HarmVoid(8)):RegainHitPoints(5d8,Undead);IF(HarmVoid(10)):RegainHitPoints(5d10,Undead);IF(SapLife()):RegainHitPoints(SELF,5,Undead);" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HarmLive(8)):DealDamage(5d8,Necrotic,Magical);IF(not SaveCrit() and HarmLive(10)):DealDamage(5d10,Necrotic,Magical);IF(SaveCrit() and HarmLive(8)):DealDamage((5d8)*2,Necrotic,Magical);IF(SaveCrit() and HarmLive(10)):DealDamage((5d10)*2,Necrotic,Magical);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HarmLive(8)):DealDamage(5d8,Necrotic,Magical);IF(not SaveCrit() and HarmLive(10)):DealDamage(5d10,Necrotic,Magical);IF(SaveCrit() and HarmLive(8)):DealDamage((5d8)*2,Necrotic,Magical);IF(SaveCrit() and HarmLive(10)):DealDamage((5d10)*2,Necrotic,Magical);IF(SaveCrit()):ApplyStatus(CriticalFailureDisplay,100,0);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HarmLive(8) and not SaveCritMiss()):DealDamage((5d8)/2,Necrotic,Magical);IF(HarmLive(10) and not SaveCritMiss()):DealDamage((5d10)/2,Necrotic,Magical);" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="5d8" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(5d8,Necrotic)" />
@@ -1668,7 +1669,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="HarmThreeAction_Rank_6" />
         <field name="Using" type="BaseClassTableFieldDefinition" value="9c3a5a51-214a-4367-8636-92d2c001ce7f" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HarmVoid(8)):RegainHitPoints(6d8,Undead);IF(HarmVoid(10)):RegainHitPoints(6d10,Undead);IF(SapLife()):RegainHitPoints(SELF,6,Undead);" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HarmLive(8)):DealDamage(6d8,Necrotic,Magical);IF(not SaveCrit() and HarmLive(10)):DealDamage(6d10,Necrotic,Magical);IF(SaveCrit() and HarmLive(8)):DealDamage((6d8)*2,Necrotic,Magical);IF(SaveCrit() and HarmLive(10)):DealDamage((6d10)*2,Necrotic,Magical);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HarmLive(8)):DealDamage(6d8,Necrotic,Magical);IF(not SaveCrit() and HarmLive(10)):DealDamage(6d10,Necrotic,Magical);IF(SaveCrit() and HarmLive(8)):DealDamage((6d8)*2,Necrotic,Magical);IF(SaveCrit() and HarmLive(10)):DealDamage((6d10)*2,Necrotic,Magical);IF(SaveCrit()):ApplyStatus(CriticalFailureDisplay,100,0);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HarmLive(8) and not SaveCritMiss()):DealDamage((6d8)/2,Necrotic,Magical);IF(HarmLive(10) and not SaveCritMiss()):DealDamage((6d10)/2,Necrotic,Magical);" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="6d8" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(6d8,Necrotic)" />
@@ -1683,7 +1684,7 @@
         <field name="Using" type="BaseClassTableFieldDefinition" value="367b229b-912d-4def-924c-4a5c769239a3" />
         <field name="SpellContainerID" type="StringTableFieldDefinition" value="Target_HarmingFont" />
         <field name="SpellProperties" type="StringTableFieldDefinition" value="IF(HarmVoid(8)):RegainHitPoints(LevelMapValue(H1D8),Undead);IF(HarmVoid(10)):RegainHitPoints(LevelMapValue(H1D10),Undead);IF(SapLife()):RegainHitPoints(SELF,LevelMapValue(H1Plus1),Undead);" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HarmLive(8)):DealDamage(LevelMapValue(H1D8),Necrotic,Magical);IF(not SaveCrit() and HarmLive(10)):DealDamage(LevelMapValue(H1D10),Necrotic,Magical);IF(SaveCrit() and HarmLive(8)):DealDamage((LevelMapValue(H1D8))*2,Necrotic,Magical);IF(SaveCrit() and HarmLive(10)):DealDamage((LevelMapValue(H1D10))*2,Necrotic,Magical);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit() and HarmLive(8)):DealDamage(LevelMapValue(H1D8),Necrotic,Magical);IF(not SaveCrit() and HarmLive(10)):DealDamage(LevelMapValue(H1D10),Necrotic,Magical);IF(SaveCrit() and HarmLive(8)):DealDamage((LevelMapValue(H1D8))*2,Necrotic,Magical);IF(SaveCrit() and HarmLive(10)):DealDamage((LevelMapValue(H1D10))*2,Necrotic,Magical);IF(SaveCrit()):ApplyStatus(CriticalFailureDisplay,100,0);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(HarmLive(8) and not SaveCritMiss()):DealDamage(LevelMapValue(H1D8)/2,Necrotic,Magical);IF(HarmLive(10) and not SaveCritMiss()):DealDamage(LevelMapValue(H1D10)/2,Necrotic,Magical);" />
         <field name="DescriptionParams" type="StringTableFieldDefinition" value="LevelMapValue(H1D8)" />
         <field name="TooltipDamageList" type="StringTableFieldDefinition" value="DealDamage(LevelMapValue(H1D8),Necrotic)" />
@@ -1697,7 +1698,7 @@
         <field name="Name" type="NameTableFieldDefinition" value="LocalizedQuake" />
         <field name="AreaRadius" type="IntegerTableFieldDefinition" value="5" />
         <field name="SpellRoll" type="StringTableFieldDefinition" value="not SavingThrow(Ability.Dexterity, SourceSpellDC());" />
-        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit()):DealDamage(LevelMapValue(4d6Rank4),Bludgeoning,Magical);IF(SaveCrit()):DealDamage((LevelMapValue(4d6Rank4))*2,Bludgeoning,Magical);ApplyStatus(PRONE,100,1);" />
+        <field name="SpellSuccess" type="StringTableFieldDefinition" value="IF(not SaveCrit()):DealDamage(LevelMapValue(4d6Rank4),Bludgeoning,Magical);IF(SaveCrit()):DealDamage((LevelMapValue(4d6Rank4))*2,Bludgeoning,Magical);ApplyStatus(PRONE,100,1);IF(SaveCrit()):ApplyStatus(CriticalFailureDisplay,100,0);" />
         <field name="SpellFail" type="StringTableFieldDefinition" value="IF(not SaveCritMis()):DealDamage((LevelMapValue(4d6Rank4))/2,Bludgeoning,Magical);" />
         <field name="TargetConditions" type="StringTableFieldDefinition" value="Character() and not Self()" />
         <field name="Icon" type="StringTableFieldDefinition" value="Action_Monster_ElementalEarth_SeismicStrike" />
